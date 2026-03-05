@@ -1,0 +1,4 @@
+{
+    "script": "A well-lit home scene on a rustic wooden table where a person's hands open a box, revealing a shiny iPhone 16 Pro in Desert Titanium.",
+    "narration": "Watch as the latest iPhone 16 Pro in Desert Titanium is unveiled on a wooden tabletop."
+}

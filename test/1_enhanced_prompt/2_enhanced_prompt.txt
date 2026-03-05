@@ -1,0 +1,4 @@
+{
+    "script": "A steady, front view shot captures an individual carefully unboxing an iPhone 16 Pro in Desert Titanium on a warm, wooden table. They reveal the phone to the viewer, gently running their fingers over its smooth surface.",
+    "narration": "Witness the unveiling of the sleek, new iPhone 16 Pro in Desert Titanium, straight from the box."
+}
