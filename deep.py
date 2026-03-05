@@ -1,6 +1,7 @@
 import os, re, asyncio, requests, nest_asyncio, openai, subprocess, tempfile
 import sys
 import subprocess, time, uuid, base64
+import aiohttp
 from urllib.parse import quote_plus
 from typing import Dict, Any, Optional, List
 import numpy as np
@@ -26,6 +27,7 @@ from pathlib import Path
 load_dotenv()
 # nest_asyncio.apply()
 openai_client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+async_openai_client = openai.AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 elevenlabs_client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
 
 # PROJECT_ID = "gen-lang-client-0239546387"
@@ -126,12 +128,14 @@ def clean_json_block(s: str):
 class WebKnowledgeRetrieverArgs(BaseModel):
     query: str
     detail_level: str = "comprehensive"
+    num_images: int = 5
+    max_searches: int = 2
 
 class WebKnowledgeRetrieverTool(BaseTool[WebKnowledgeRetrieverArgs, Any]):
     def __init__(self):
         super().__init__(
             args_type=WebKnowledgeRetrieverArgs,
-            return_type=str,
+            return_type=dict[str, Any],
             name="web_knowledge_retriever",
             description="Retrieves comprehensive knowledge from the web using MultimodalWebSurfer"
         )
@@ -142,20 +146,99 @@ class WebKnowledgeRetrieverTool(BaseTool[WebKnowledgeRetrieverArgs, Any]):
             description="Search and browse the web to gather comprehensive knowledge for video generation."
         )
 
+    async def _download_image(self, session: aiohttp.ClientSession, url: str) -> tuple[str, bytes | None]:
+        """Download image asynchronously."""
+        try:
+            async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as response:
+                if response.status == 200:
+                    return url, await response.read()
+        except Exception as e:
+            print(f"✗ Failed to download {url}: {str(e)[:50]}")
+        return url, None
+
+    async def _validate_image(self, url: str, img_bytes: bytes, query: str) -> dict | None:
+        """Validate image relevance asynchronously using GPT-4o."""
+        try:
+            img_b64 = base64.b64encode(img_bytes).decode('utf-8')
+            validation_prompt = f"""Analyze this image for the query: "{query}"
+
+Is this image suitable as a reference for video generation? Check:
+1. Does it show relevant step-by-step instructions for the task?
+2. Are there clear hands/objects performing the action?
+3. Is it NOT a logo, icon, diagram, or text-heavy image?
+4. Is the image quality good enough (not blurry, not too dark)?
+5. Does it show REAL hands/objects (not cartoons/illustrations)?
+
+Respond with JSON only:
+{{
+"is_valid": true/false,
+"reason": "brief explanation",
+"relevance_score": 0-10
+}}"""
+            
+            validation_response = await async_openai_client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "text", "text": validation_prompt},
+                            {
+                                "type": "image_url",
+                                "image_url": {
+                                    "url": f"data:image/jpeg;base64,{img_b64}"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                max_tokens=150
+            )
+            
+            validation_text = validation_response.choices[0].message.content.strip()
+            validation_text = clean_json_block(validation_text)
+            validation_data = json.loads(validation_text)
+            
+            if validation_data.get("is_valid") and validation_data.get("relevance_score", 0) >= 6:
+                print(f"✓ Validated image (score: {validation_data['relevance_score']}/10)")
+                return {
+                    "url": url,
+                    "bytes": img_bytes,
+                    "relevance_score": validation_data["relevance_score"]
+                }
+            else:
+                print(f"✗ Rejected image: {validation_data.get('reason', 'low quality')}")
+        except json.JSONDecodeError as e:
+            print(f"✗ Invalid JSON response for {url}: {e}")
+        except Exception as e:
+            print(f"✗ Failed to validate {url}: {str(e)[:50]}")
+        return None
+
     async def run(self, args: WebKnowledgeRetrieverArgs, context):
-        search_queries = [
+        # Mix image-focused queries with explanation-focused queries.
+        # The goal is to retrieve BOTH: strong visual references + solid conceptual writeups.
+        search_queries = list(dict.fromkeys([
+            # Image-focused
+            f"{args.query} high quality images"
+            f"{args.query} visual reference examples",
+            # Explanation-focused (often yields better context + sometimes embeds images)
             f"{args.query} detailed explanation",
             f"{args.query} tutorial guide",
             f"{args.query} step by step",
-            f"how {args.query} works visual guide"
-        ]
+            f"how {args.query} works visual guide",
+        ]))
         
         all_knowledge = []
         
-        for query in search_queries[:2]:
+        for query in search_queries[:args.max_searches]:
             print(f"WebSurfer searching: {query}")
             search_message = TextMessage(
-                content=f"Search for comprehensive information about: {query}. Focus on visual descriptions, step-by-step processes, and key concepts that would translate well to video format.",
+                content=(
+                    f"Search for BOTH high-quality images and clear explanations about: {query}. "
+                    "Prefer pages that include directly linkable images (jpg/png/webp), diagrams, "
+                    "infographics, and labeled illustrations; also include a concise explanation "
+                    "of what the visuals show."
+                ),
                 source="user"
             )
             
@@ -182,13 +265,46 @@ class WebKnowledgeRetrieverTool(BaseTool[WebKnowledgeRetrieverArgs, Any]):
         
         combined_knowledge = "\n\n---SEARCH RESULT---\n\n".join(all_knowledge)
         
-        last_image = None
-        if hasattr(self.web_surfer, 'last_screenshot'):
-            last_image = self.web_surfer.last_screenshot
-
+        image_urls = re.findall(r'https?://[^\s<>"]+?\.(?:jpg|jpeg|png|gif|webp)', combined_knowledge)
+        image_urls = list(dict.fromkeys(image_urls))[:args.num_images * 3]
+        
+        print(f"Found {len(image_urls)} potential reference image URLs")
+        
+        async with aiohttp.ClientSession(headers={"User-Agent": "Mozilla/5.0"}) as session:
+            download_tasks = [self._download_image(session, url) for url in image_urls]
+            download_results = await asyncio.gather(*download_tasks)
+        
+        valid_downloads = [(url, data) for url, data in download_results if data is not None]
+        print(f"Successfully downloaded {len(valid_downloads)} images")
+        ref_dir = Path("test/references")
+        ref_dir.mkdir(parents=True, exist_ok=True)
+        for idx, (url, img_bytes) in enumerate(valid_downloads):
+            fmt = "jpg"  
+            ext = fmt
+            safe_url = re.sub(r'[^A-Za-z0-9_]+', '', url)[:30]
+            out_name = f"last_screenshot_{idx}_{safe_url}.{ext}"
+            out_path = ref_dir / out_name
+            with open(out_path, "wb") as imgf:
+                imgf.write(img_bytes)
+            
+        validation_tasks = [
+            self._validate_image(url, data, args.query) 
+            for url, data in valid_downloads
+        ]
+        validation_results = await asyncio.gather(*validation_tasks)
+        
+        reference_images = [r for r in validation_results if r is not None]
+        reference_images.sort(key=lambda x: x["relevance_score"], reverse=True)
+        reference_images = reference_images[:args.num_images]
+        
+        for idx, img in enumerate(reference_images):
+            img["index"] = idx
+        
+        print(f"Validated {len(reference_images)} reference images")
+  
         return {
             "knowledge": combined_knowledge,
-            "screenshot": last_image  # This returns the <autogen_core._image.Image object>
+            "screenshot": reference_images
         }
 
 class ImageRetrieverArgs(BaseModel):
@@ -730,25 +846,40 @@ async def run_pipeline(query: str, iid: int):
     print("[STEP 1/5] Retrieving web knowledge...")
     retriever_args = WebKnowledgeRetrieverArgs(query=query, detail_level="comprehensive")
     web_context = await web_retriever.run(retriever_args, None)
+    context = web_context["knowledge"]
+    frame = web_context["screenshot"]
+
+    ref_dir = Path("test/references")
+    ref_dir.mkdir(parents=True, exist_ok=True)
+    for ref in frame:
+        fmt = "jpg"  
+        ext = fmt
+        img_bytes = ref["bytes"]
+        idx = ref.get("index", 0)
+        safe_url = re.sub(r'[^A-Za-z0-9_]+', '', ref["url"])[:30]
+        out_name = f"last_screenshot_{idx}_{safe_url}.{ext}"
+        out_path = ref_dir / out_name
+        with open(out_path, "wb") as imgf:
+            imgf.write(img_bytes)
     
     out_dir = Path("test") / "0_web_knowledge"
     out_dir.mkdir(parents=True, exist_ok=True)
     filename = out_dir / f"{iid}_web_knowledge.txt"
     with open(filename, "w", encoding="utf-8") as f:
-        f.write(web_context)
+        f.write(context)
     
-    print("[STEP 2/5] Generating prompt enhancer...")
-    enhancer_args = PromptEnhancerArgs(query=query, context_info=web_context)
-    raw = await prompt_enhancer.run(enhancer_args, None)
-    enhanced_prompt = clean_json_block(raw)
-    data = json.loads(enhanced_prompt)
-    print("data", data)
+    # print("[STEP 2/5] Generating prompt enhancer...")
+    # enhancer_args = PromptEnhancerArgs(query=query, context_info=context)
+    # raw = await prompt_enhancer.run(enhancer_args, None)
+    # enhanced_prompt = clean_json_block(raw)
+    # data = json.loads(enhanced_prompt)
+    # print("data", data)
 
-    out_dir = Path("test") / "1_enhanced_prompt"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    filename = out_dir / f"{iid}_enhanced_prompt.txt"
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(enhanced_prompt)
+    # out_dir = Path("test") / "1_enhanced_prompt"
+    # out_dir.mkdir(parents=True, exist_ok=True)
+    # filename = out_dir / f"{iid}_enhanced_prompt.txt"
+    # with open(filename, "w", encoding="utf-8") as f:
+    #     f.write(enhanced_prompt)
     
     # print("[STEP 3/5] Running critique agent...")
     # # critique_args = PromptCritiqueArgs(video_prompt=data, topic=query)
