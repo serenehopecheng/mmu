@@ -1,6 +1,7 @@
 import os, re, asyncio, requests, nest_asyncio, openai, subprocess, tempfile
-import sys
+import sys, io
 import subprocess, time, uuid, base64
+import aiohttp
 from urllib.parse import quote_plus
 from typing import Dict, Any, Optional, List
 import numpy as np
@@ -12,6 +13,7 @@ from autogen_agentchat.messages import TextMessage
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.teams import RoundRobinGroupChat
 from autogen_agentchat.ui import Console
+from autogen_core import Image
 from dotenv import load_dotenv
 import argparse
 from moviepy.editor import VideoFileClip, AudioFileClip, concatenate_videoclips, vfx, CompositeAudioClip
@@ -715,33 +717,34 @@ class PostProcessingAgent(BaseTool[PostProcessingArgs, str]):
 async def run_pipeline(query: str, iid: int):  
     iid = str(iid)   
     web_retriever = WebKnowledgeRetrieverTool()
+    image_retriever = ImageRetrieverTool()
     prompt_enhancer = PromptEnhancerTool()
     simple_critique = PromptCritiqueTool()
     veo_tool = VeoVideoGeneratorTool()
     post_processor = PostProcessingAgent()
     
-    print("[STEP 1/5] Retrieving web knowledge...")
-    retriever_args = WebKnowledgeRetrieverArgs(query=query, detail_level="comprehensive")
-    web_context = await web_retriever.run(retriever_args, None)
+    # print("[STEP 1/5] Retrieving web knowledge...")
+    # retriever_args = WebKnowledgeRetrieverArgs(query=query, detail_level="comprehensive")
+    # web_context = await web_retriever.run(retriever_args, None)
     
-    out_dir = Path("test") / "0_web_knowledge"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    filename = out_dir / f"{iid}_web_knowledge.txt"
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(web_context)
+    # out_dir = Path("test") / "0_web_knowledge"
+    # out_dir.mkdir(parents=True, exist_ok=True)
+    # filename = out_dir / f"{iid}_web_knowledge.txt"
+    # with open(filename, "w", encoding="utf-8") as f:
+    #     f.write(web_context)
     
-    print("[STEP 2/5] Generating prompt enhancer...")
-    enhancer_args = PromptEnhancerArgs(query=query, context_info=web_context)
-    raw = await prompt_enhancer.run(enhancer_args, None)
-    enhanced_prompt = clean_json_block(raw)
-    data = json.loads(enhanced_prompt)
-    print("data", data)
+    # print("[STEP 2/5] Generating prompt enhancer...")
+    # enhancer_args = PromptEnhancerArgs(query=query, context_info=web_context)
+    # raw = await prompt_enhancer.run(enhancer_args, None)
+    # enhanced_prompt = clean_json_block(raw)
+    # data = json.loads(enhanced_prompt)
+    # print("data", data)
 
-    out_dir = Path("test") / "1_enhanced_prompt"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    filename = out_dir / f"{iid}_enhanced_prompt.txt"
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(enhanced_prompt)
+    # out_dir = Path("test") / "1_enhanced_prompt"
+    # out_dir.mkdir(parents=True, exist_ok=True)
+    # filename = out_dir / f"{iid}_enhanced_prompt.txt"
+    # with open(filename, "w", encoding="utf-8") as f:
+    #     f.write(enhanced_prompt)
     
     # print("[STEP 3/5] Running critique agent...")
     # # critique_args = PromptCritiqueArgs(video_prompt=data, topic=query)
@@ -756,47 +759,64 @@ async def run_pipeline(query: str, iid: int):
     print("[STEP 4/5] Generating videos...")
     generated_paths = []
     narrations = []
-    frame = None
+    reference_images = await image_retriever.run(ImageRetrieverArgs(query=query, num_images=1), None)
+    if not reference_images:
+        raise Exception("No reference images were retrieved")
 
-    if not data:
-        raise Exception("No validated prompts to generate video")
+    frame = Image.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
+    ref_dir = Path("test/references")
+    ref_dir.mkdir(parents=True, exist_ok=True)
+    for ref in reference_images:
+        url = str(ref.get("url", ""))
+        m = re.search(r"\.(jpg|jpeg|png|gif|webp)(?:$|[?#])", url, flags=re.IGNORECASE)
+        ext = (m.group(1).lower() if m else "jpg")
+        img_bytes = ref["bytes"]
+        idx = ref.get("index", 0)
+        safe_url = re.sub(r"[^A-Za-z0-9_]+", "", url)[:30]
+        out_name = f"last_screenshot_{idx}_{safe_url}.{ext}"
+        out_path = ref_dir / out_name
+        with open(out_path, "wb") as imgf:
+            imgf.write(img_bytes)
 
-    script = str(data["script"]).strip()
-    narration = str(data["narration"]).strip()
+    # if not data:
+    #     raise Exception("No validated prompts to generate video")
 
-    print(f"  Generating single video (1/1)...")
+    # script = str(data["script"]).strip()
+    # narration = str(data["narration"]).strip()
 
-    try:
-        veo_args = VeoVideoGeneratorArgs(
-            query=script,
-            iid=iid,
-            duration_seconds=8,
-            frame=frame
-        )
-        veo_result = await veo_tool.run(veo_args, None)
+    # print(f"  Generating single video (1/1)...")
 
-        generated_paths.extend(veo_result["video_paths"])
-        narrations.append(narration)
+    # try:
+    #     veo_args = VeoVideoGeneratorArgs(
+    #         query=script,
+    #         iid=iid,
+    #         duration_seconds=8,
+    #         frame=frame
+    #     )
+    #     veo_result = await veo_tool.run(veo_args, None)
 
-    except Exception as e:
-        print(f"  ✗ Video generation failed: {str(e)}")
-        print(f"  Pipeline halted while generating the video\n")
-        raise
+    #     generated_paths.extend(veo_result["video_paths"])
+    #     narrations.append(narration)
 
-    if not generated_paths:
-        raise Exception("No videos were successfully generated")
+    # except Exception as e:
+    #     print(f"  ✗ Video generation failed: {str(e)}")
+    #     print(f"  Pipeline halted while generating the video\n")
+    #     raise
+
+    # if not generated_paths:
+    #     raise Exception("No videos were successfully generated")
         
-    print("[STEP 5/5] Post-processing...")
-    post_args = PostProcessingArgs(
-        video_paths=generated_paths,
-        narrations=narrations,
-        iid=iid,
-        query=query,
-        crossfade_duration=0.0
-    )
-    final_video_path = await post_processor.run(post_args, None)
+    # print("[STEP 5/5] Post-processing...")
+    # post_args = PostProcessingArgs(
+    #     video_paths=generated_paths,
+    #     narrations=narrations,
+    #     iid=iid,
+    #     query=query,
+    #     crossfade_duration=0.0
+    # )
+    # final_video_path = await post_processor.run(post_args, None)
     
-    return final_video_path
+    # return final_video_path
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
