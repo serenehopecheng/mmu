@@ -13,7 +13,8 @@ from autogen_agentchat.messages import TextMessage
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.teams import RoundRobinGroupChat
 from autogen_agentchat.ui import Console
-from autogen_core import Image
+from autogen_core import Image as AutogenImage
+from PIL import Image as PILImage
 from dotenv import load_dotenv
 import argparse
 from moviepy.editor import VideoFileClip, AudioFileClip, concatenate_videoclips, vfx, CompositeAudioClip
@@ -95,7 +96,7 @@ def poll_operation(operation_name):
 
 def extract_frame_bytes(video_path: str):
     vp = Path(video_path)
-    out_dir = Path("test/references")
+    out_dir = Path("test/r")
     out_dir.mkdir(parents=True, exist_ok=True)
     output_path = out_dir / f"{vp.stem}_last.jpg"
 
@@ -191,6 +192,11 @@ class ImageRetrieverArgs(BaseModel):
     num_images: int = 1 
 
 class ImageRetrieverTool(BaseTool[ImageRetrieverArgs, list]):
+    MAX_URLS_PER_ENGINE = 5
+    MAX_VALIDATION_ATTEMPTS = 6
+    ACCEPT_SCORE_THRESHOLD = 6
+    EARLY_EXIT_SCORE = 8
+
     def __init__(self):
         super().__init__(
             args_type=ImageRetrieverArgs,
@@ -198,114 +204,191 @@ class ImageRetrieverTool(BaseTool[ImageRetrieverArgs, list]):
             name="image_retriever",
             description="Retrieves reference images from the web for video generation"
         )
-        client = OpenAIChatCompletionClient(model="gpt-4o", api_key=os.getenv("OPENAI_API_KEY"))
-        self.web_surfer = MultimodalWebSurfer(
-            name="ImageWebSurfer",
-            model_client=client,
-            description="Search and retrieve step-by-step instructional images from the web."
+
+    def _scrape_google_images(self, query: str, num_results: int = 20) -> list[str]:
+        """Scrape image URLs from Google Images search results."""
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                          "AppleWebKit/537.36 (KHTML, like Gecko) "
+                          "Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.5",
+        }
+        url = f"https://www.google.com/search?q={quote_plus(query)}&tbm=isch&ijn=0"
+        resp = requests.get(url, headers=headers, timeout=15)
+        resp.raise_for_status()
+        html = resp.text
+        
+        urls = []
+        for match in re.finditer(r'\["(https?://[^"]+)",[0-9]+,[0-9]+\]', html):
+            img_url = match.group(1)
+            if any(img_url.endswith(ext) or f".{ext}?" in img_url or f".{ext}%" in img_url
+                   for ext in ("jpg", "jpeg", "png", "webp")):
+                if "gstatic.com" not in img_url and "google.com" not in img_url:
+                    urls.append(img_url)
+        
+        if not urls:
+            for match in re.finditer(r'(https?://[^\s"\\]+\.(?:jpg|jpeg|png|webp)(?:\?[^\s"\\]*)?)', html):
+                img_url = match.group(1).replace("\\u003d", "=").replace("\\u0026", "&")
+                if "gstatic.com" not in img_url and "google.com" not in img_url:
+                    urls.append(img_url)
+        
+        return list(dict.fromkeys(urls))[:num_results]
+
+    def _scrape_duckduckgo_images(self, query: str, num_results: int = 20) -> list[str]:
+        """Scrape image URLs from DuckDuckGo image search (vqd token + API)."""
+        session = requests.Session()
+        session.headers.update({
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                          "AppleWebKit/537.36 (KHTML, like Gecko) "
+                          "Chrome/120.0.0.0 Safari/537.36",
+        })
+        
+        token_resp = session.get(f"https://duckduckgo.com/?q={quote_plus(query)}&iax=images&ia=images", timeout=15)
+        vqd_match = re.search(r'vqd=["\']([^"\']+)', token_resp.text)
+        if not vqd_match:
+            return []
+        vqd = vqd_match.group(1)
+        
+        api_url = "https://duckduckgo.com/i.js"
+        params = {"l": "us-en", "o": "json", "q": query, "vqd": vqd, "f": ",,,,,", "p": "1"}
+        api_resp = session.get(api_url, params=params, timeout=15)
+        results = api_resp.json().get("results", [])
+        
+        urls = []
+        for r in results:
+            img_url = r.get("image", "")
+            if img_url and any(ext in img_url.lower() for ext in (".jpg", ".jpeg", ".png", ".webp")):
+                urls.append(img_url)
+        return list(dict.fromkeys(urls))[:num_results]
+
+    def _validate_image(self, img_bytes: bytes, query: str) -> dict | None:
+        """Use GPT-4o to validate an image is a real, relevant photo."""
+        if len(img_bytes) < 5000:
+            return None
+        
+        img_b64 = base64.b64encode(img_bytes).decode('utf-8')
+        validation_prompt = f"""Analyze this image for the query: "{query}"
+
+        Is this a high-quality, real-world photograph suitable as a visual reference? Check:
+        1. Is it a REAL photograph (not a logo, icon, clipart, cartoon, diagram, or illustration)?
+        2. Is it relevant to the topic?
+        3. Is the image quality acceptable (not tiny, blurry, or corrupted)?
+        4. Does it show real-world content (people, animals, objects, scenes)?
+
+        Respond with JSON only:
+        {{"is_valid": true/false, "reason": "brief explanation", "relevance_score": 0-10}}"""
+
+        validation_response = openai_client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": validation_prompt},
+                    {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"}}
+                ]
+            }],
+            max_tokens=100
         )
+        validation_text = validation_response.choices[0].message.content.strip()
+        validation_text = clean_json_block(validation_text)
+        return json.loads(validation_text)
 
     async def run(self, args: ImageRetrieverArgs, context):
-        search_query = f"{args.query} step by step tutorial images visual guide"
-        print(f"Searching for reference images: {search_query}")
-        
-        search_message = TextMessage(
-            content=f"Search for high-quality step-by-step instructional images for: {args.query}. Find images that show clear, detailed visual steps. Look for tutorial websites, how-to guides, and educational resources with images.",
-            source="user"
-        )
-        
-        response = await self.web_surfer.on_messages([search_message], context)
-        
-        content = ""
-        if hasattr(response, 'chat_message'):
-            if hasattr(response.chat_message, 'content'):
-                content = response.chat_message.content
-        elif hasattr(response, 'content'):
-            content = response.content
-        elif isinstance(response, list) and len(response) > 0:
-            if hasattr(response[-1], 'content'):
-                content = response[-1].content
-            else:
-                content = str(response[-1])
-        else:
-            content = str(response)
-        
-        if isinstance(content, list):
-            content = " ".join(str(item) for item in content)
-        
-        image_urls = re.findall(r'https?://[^\s<>"]+?\.(?:jpg|jpeg|png|gif|webp)', str(content))
-        image_urls = list(dict.fromkeys(image_urls))[:args.num_images * 3]
-        
-        print(f"Found {len(image_urls)} potential reference image URLs")
-        
-        reference_images = []
-        for idx, url in enumerate(image_urls):
+        search_queries = [
+            f"{args.query} photo",
+            f"{args.query} real",
+            f"{args.query} how to",
+        ]
+
+        all_urls = []
+        for sq in search_queries:
+            print(f"Searching images: {sq}")
             try:
-                img_response = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
-                if img_response.status_code == 200:
-                    img_bytes = img_response.content
-                    
-                    img_b64 = base64.b64encode(img_bytes).decode('utf-8')
-                    
-                    validation_prompt = f"""Analyze this image for the query: "{args.query}"
-
-    Is this image suitable as a reference for video generation? Check:
-    1. Does it show relevant step-by-step instructions for the task?
-    2. Are there clear hands/objects performing the action?
-    3. Is it NOT a logo, icon, diagram, or text-heavy image?
-    4. Is the image quality good enough (not blurry, not too dark)?
-    5. Does it show REAL hands/objects (not cartoons/illustrations)?
-
-    Respond with JSON only:
-    {{
-    "is_valid": true/false,
-    "reason": "brief explanation",
-    "relevance_score": 0-10
-    }}"""
-                    
-                    validation_response = openai_client.chat.completions.create(
-                        model="gpt-4o",
-                        messages=[
-                            {
-                                "role": "user",
-                                "content": [
-                                    {"type": "text", "text": validation_prompt},
-                                    {
-                                        "type": "image_url",
-                                        "image_url": {
-                                            "url": f"data:image/jpeg;base64,{img_b64}"
-                                        }
-                                    }
-                                ]
-                            }
-                        ],
-                        max_tokens=150
-                    )
-                    
-                    validation_text = validation_response.choices[0].message.content.strip()
-                    validation_text = clean_json_block(validation_text)
-                    validation_data = json.loads(validation_text)
-                    
-                    if validation_data.get("is_valid") and validation_data.get("relevance_score", 0) >= 6:
-                        reference_images.append({
-                            "url": url,
-                            "bytes": img_bytes,
-                            "index": len(reference_images),
-                            "relevance_score": validation_data["relevance_score"]
-                        })
-                        print(f"✓ Validated reference image {len(reference_images)} (score: {validation_data['relevance_score']}/10)")
-                    else:
-                        print(f"✗ Rejected image: {validation_data.get('reason', 'low quality')}")
-                    
-                    if len(reference_images) >= args.num_images:
-                        break
-                        
+                urls = self._scrape_google_images(sq, num_results=self.MAX_URLS_PER_ENGINE)
+                print(f"  Google Images: {len(urls)} URLs")
+                all_urls.extend(urls)
             except Exception as e:
-                print(f"✗ Failed to process {url}: {str(e)[:50]}")
+                print(f"  Google Images failed: {str(e)[:80]}")
+            try:
+                urls = self._scrape_duckduckgo_images(sq, num_results=self.MAX_URLS_PER_ENGINE)
+                print(f"  DuckDuckGo Images: {len(urls)} URLs")
+                all_urls.extend(urls)
+            except Exception as e:
+                print(f"  DuckDuckGo Images failed: {str(e)[:80]}")
+
+        all_urls = list(dict.fromkeys(all_urls))
+
+        # Save all unique candidate images to "test/unique"
+        unique_dir = Path("test/unique")
+        unique_dir.mkdir(parents=True, exist_ok=True)
+        for i, url in enumerate(all_urls):
+            try:
+                img_response = requests.get(url, timeout=10, headers={
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                                  "AppleWebKit/537.36 (KHTML, like Gecko) "
+                                  "Chrome/120.0.0.0 Safari/537.36"
+                })
+                if img_response.status_code == 200:
+                    content_type = img_response.headers.get("Content-Type", "")
+                    ext = "jpg"
+                    if "png" in content_type:
+                        ext = "png"
+                    elif "gif" in content_type:
+                        ext = "gif"
+                    elif "webp" in content_type:
+                        ext = "webp"
+                    filename = unique_dir / f"unique_{i}.{ext}"
+                    with open(filename, "wb") as f:
+                        f.write(img_response.content)
+            except Exception as e:
+                print(f"  Failed to save unique image from {url[:60]}: {str(e)[:50]}")
+        print(f"Found {len(all_urls)} unique candidate image URLs")
+
+        reference_images = []
+        validation_attempts = 0
+        for url in all_urls:
+            if len(reference_images) >= args.num_images:
+                break
+            if validation_attempts >= self.MAX_VALIDATION_ATTEMPTS:
+                print(f"Stopping validation after {validation_attempts} attempts to limit GPT usage")
+                break
+            try:
+                img_response = requests.get(url, timeout=10, headers={
+                    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                                  "AppleWebKit/537.36 (KHTML, like Gecko) "
+                                  "Chrome/120.0.0.0 Safari/537.36"
+                })
+                if img_response.status_code != 200:
+                    continue
+                img_bytes = img_response.content
+
+                validation_attempts += 1
+                validation_data = self._validate_image(img_bytes, args.query)
+                if validation_data is None:
+                    print(f"✗ Skipped tiny image: {url[:80]}")
+                    continue
+
+                relevance_score = validation_data.get("relevance_score", 0)
+                if validation_data.get("is_valid") and relevance_score >= self.ACCEPT_SCORE_THRESHOLD:
+                    reference_images.append({
+                        "url": url,
+                        "bytes": img_bytes,
+                        "index": len(reference_images),
+                        "relevance_score": relevance_score
+                    })
+                    print(f"✓ Validated reference image {len(reference_images)} (score: {relevance_score}/10)")
+                    if relevance_score >= self.EARLY_EXIT_SCORE:
+                        print(f"Stopping early after finding a strong match ({relevance_score}/10)")
+                        break
+                else:
+                    print(f"✗ Rejected image: {validation_data.get('reason', 'low quality')}")
+
+            except Exception as e:
+                print(f"✗ Failed to process {url[:60]}: {str(e)[:50]}")
                 continue
-        
+
         reference_images.sort(key=lambda x: x["relevance_score"], reverse=True)
-        
         print(f"Successfully validated {len(reference_images)} high-quality reference images")
         return reference_images
 
@@ -732,6 +815,28 @@ async def run_pipeline(query: str, iid: int):
     # filename = out_dir / f"{iid}_web_knowledge.txt"
     # with open(filename, "w", encoding="utf-8") as f:
     #     f.write(web_context)
+
+    print("[STEP 4/5] Generating videos...")
+    generated_paths = []
+    narrations = []
+    reference_images = await image_retriever.run(ImageRetrieverArgs(query=query, num_images=1), None)
+    if not reference_images:
+        raise Exception("No reference images were retrieved")
+
+    frame = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
+    ref_dir = Path("test/0_images")
+    ref_dir.mkdir(parents=True, exist_ok=True)
+    for ref in reference_images:
+        url = str(ref.get("url", ""))
+        m = re.search(r"\.(jpg|jpeg|png|gif|webp)(?:$|[?#])", url, flags=re.IGNORECASE)
+        ext = (m.group(1).lower() if m else "jpg")
+        img_bytes = ref["bytes"]
+        idx = ref.get("index", 0)
+        safe_url = re.sub(r"[^A-Za-z0-9_]+", "", url)[:30]
+        out_name = f"{iid}.{ext}"
+        out_path = ref_dir / out_name
+        with open(out_path, "wb") as imgf:
+            imgf.write(img_bytes)
     
     # print("[STEP 2/5] Generating prompt enhancer...")
     # enhancer_args = PromptEnhancerArgs(query=query, context_info=web_context)
@@ -755,28 +860,6 @@ async def run_pipeline(query: str, iid: int):
     # print(validated_prompts)
     # with open(filename, "w", encoding="utf-8") as f:
     #     f.write(json.dumps(validated_prompts, indent=2))
-    
-    print("[STEP 4/5] Generating videos...")
-    generated_paths = []
-    narrations = []
-    reference_images = await image_retriever.run(ImageRetrieverArgs(query=query, num_images=1), None)
-    if not reference_images:
-        raise Exception("No reference images were retrieved")
-
-    frame = Image.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
-    ref_dir = Path("test/references")
-    ref_dir.mkdir(parents=True, exist_ok=True)
-    for ref in reference_images:
-        url = str(ref.get("url", ""))
-        m = re.search(r"\.(jpg|jpeg|png|gif|webp)(?:$|[?#])", url, flags=re.IGNORECASE)
-        ext = (m.group(1).lower() if m else "jpg")
-        img_bytes = ref["bytes"]
-        idx = ref.get("index", 0)
-        safe_url = re.sub(r"[^A-Za-z0-9_]+", "", url)[:30]
-        out_name = f"last_screenshot_{idx}_{safe_url}.{ext}"
-        out_path = ref_dir / out_name
-        with open(out_path, "wb") as imgf:
-            imgf.write(img_bytes)
 
     # if not data:
     #     raise Exception("No validated prompts to generate video")
