@@ -1,4 +1,0 @@
-{
-    "script": "Footage of a Tesla Cybertruck driving through a clear, sizeable puddle from a low angle, captured in broad daylight.",
-    "narration": "A Tesla Cybertruck boldly navigates through a puddle, showcasing its robust design."
-}

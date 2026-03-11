@@ -1,4 +1,0 @@
-{
-    "script": "On a wooden table under natural light, a person unpacks the iPhone 16 Pro in Desert Titanium, revealing its features slowly.",
-    "narration": "Watch the unboxing of the iPhone 16 Pro in Desert Titanium."
-}

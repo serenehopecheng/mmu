@@ -1,0 +1,4 @@
+{
+    "script": "A Mongolian horseman, rugged in leather attire, stands under the expansive azure Mongolian sky. He readies his Uurga, carved from strong, flexible wood, and shadows shift subtly across his face as he scans the vast grassland. At his feet, wildflowers momentarily sway in the wind, adding a touch of color against the endless green canvas. Distant mountain silhouettes frame the background, rendering a sense of isolation. As the seconds pass, his arm arcs backward, then propels forward powerfully, casting the Uurga. It unfurls, flying towards a dappled wild horse which meticulously avoids it, before galloping away towards the mountains, the horseman in pursuit.",
+    "narration": "A timeless dance against nature unfolds, a testament to Mongolian survival and heritage."
+}

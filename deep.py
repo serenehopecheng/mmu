@@ -416,48 +416,45 @@ class ImageRetrieverTool(BaseTool[ImageRetrieverArgs, list]):
         print(f"Successfully validated {len(reference_images)} reference images")
         return reference_images
 
-class PromptEnhancerArgs(BaseModel):
+class ScriptGeneratorArgs(BaseModel):
     query: str
     context_info: Optional[str] = None
 
-class PromptEnhancerTool(BaseTool[PromptEnhancerArgs, str]):
+class ScriptGeneratorTool(BaseTool[ScriptGeneratorArgs, str]):
     def __init__(self):
         super().__init__(
-            args_type=PromptEnhancerArgs,
+            args_type=ScriptGeneratorArgs,
             return_type=str,
-            name="prompt_enhancer",
-            description="Enhances scripts for short, cinematic videos with narration and duration."
+            name="script_generator",
+            description="Generates scripts for short, cinematic videos with narration."
         )
 
-    async def run(self, args: PromptEnhancerArgs, context):
-        prompt = f"""
-        VIDEO GENERATOR TASK
-
-        Your goal: Write a concise, visually clear script for an 8-second real-world (not animated) video that directly answers or illustrates the topic.
-        Include a single, standalone narration sentence, no more than 20 words, that summarizes or addresses the topic.
+    async def run(self, args: ScriptGeneratorArgs, context):
+        prompt = f"""You are writing a prompt for Veo 3, a text-to-video AI model that generates photorealistic real-world footage. 
+        Your output will be fed directly to the model as its generation prompt, so write in vivid, descriptive, present-tense language—as if narrating what the camera sees moment by moment.
 
         TOPIC: "{args.query}"
-        ADDITIONAL CONTEXT: "{args.context_info or ''}"
+        BACKGROUND RESEARCH (use for factual accuracyy): {args.context_info or 'None provided.'}
 
-        STRUCTURE YOUR RESPONSE USING THESE INSTRUCTIONS:
-        1. Footage/scene type: 
-        - Specify an authentic real-world scene. Only use real locations, objects, and people (no animation/graphics).
-        2. Camera setup: 
-        - Camera is stationary or moves minimally (e.g. slow pan); keeps a fixed distance from subject.
-        - Do NOT allow zooms, fast moves, whip pans, or rapid changes.
-        3. Subject & action: 
-        - Clearly describe the subject placement and exactly what they/it are doing; keep actions simple and realistic.
-        4. Setting/background: 
-        - Describe the environment, lighting, and any relevant background elements.
+        SCRIPT REQUIREMENTS:
+        - The clip is exactly 8 seconds of continuous, photorealistic footage. No cuts, transitions, or scene changes.
+        - Describe a single real-world scene with one clear subject performing one simple, observable action.
+        - Write in temporal order: what the viewer sees at the start, what unfolds over the 8 seconds, and how the shot ends.
+        - Use specific, concrete visual details—materials, textures, colors, lighting quality, and spatial relationships.
+        - Camera: stationary or slow dolly/pan only. Specify the angle (e.g. eye-level, overhead, 45-degree). No zooms, whip pans, handheld shake, or rack focus.
+        - Lighting: specify the light source (e.g. soft window light, golden hour sun, overhead fluorescents).
+        - Keep the scene grounded and filmable—nothing fantastical, animated, graphical, or text-overlay based.
+        - Avoid: multiple competing subjects, complex multi-step actions, grid/pattern layouts, technical measurement setups, or scanning motions.
 
-        RESPONSE FORMAT (strictly output only valid JSON as below):
+        NARRATION REQUIREMENTS:
+        - One spoken sentence, max 18 words, that a voiceover narrator would say over the clip.
+        - Should complement the visuals—not merely describe what is shown, but add insight or context.
+
+        OUTPUT (valid JSON only, no other text):
         {{
-            "script": "Detailed, stepwise description of the video clip, following ALL requirements above.",
-            "narration": "A single, clear sentence addressing the topic (max 20 words)."
-        }}  
-
-        DO NOT print anything outside the JSON array. Double-check all requirements are met and JSON is valid.
-        """
+            "script": "Present-tense, temporally ordered description of the 8-second clip with specific visual and cinematic details.",
+            "narration": "A single conversational sentence adding insight to the visuals (max 18 words)."
+        }}"""
 
         r = openai_client.chat.completions.create(
             model="gpt-4",
@@ -825,7 +822,7 @@ async def run_pipeline(query: str, iid: int):
     iid = str(iid)   
     web_retriever = WebKnowledgeRetrieverTool()
     image_retriever = ImageRetrieverTool()
-    prompt_enhancer = PromptEnhancerTool()
+    script_generator = ScriptGeneratorTool()
     simple_critique = PromptCritiqueTool()
     veo_tool = VeoVideoGeneratorTool()
     post_processor = PostProcessingAgent()
@@ -834,64 +831,64 @@ async def run_pipeline(query: str, iid: int):
     retriever_args = WebKnowledgeRetrieverArgs(query=query, detail_level="comprehensive")
     web_context = await web_retriever.run(retriever_args, None)
     
-    out_dir = Path("test") / "0_web_knowledge"
+    out_dir = Path("test") / "0_web"
     out_dir.mkdir(parents=True, exist_ok=True)
-    filename = out_dir / f"{iid}_web_knowledge.txt"
+    filename = out_dir / f"{iid}_web.txt"
     with open(filename, "w", encoding="utf-8") as f:
         f.write(web_context)
 
-    print("[STEP 2/5] Retrieving reference images...")
-    reference_images = await image_retriever.run(ImageRetrieverArgs(query=query, iid=iid, pynum_images=1), None)
-    if not reference_images:
-        raise Exception("No reference images were retrieved")
+    # print("[STEP 2/5] Retrieving reference images...")
+    # reference_images = await image_retriever.run(ImageRetrieverArgs(query=query, iid=iid, pynum_images=1), None)
+    # if not reference_images:
+    #     raise Exception("No reference images were retrieved")
 
-    # # TEST IMAGES
-    # reference_images = Path("test/2_unique/unique3__0.jpg")
-    # if isinstance(reference_images, (str, Path)):
-    #     image_path = Path(reference_images)
-    #     reference_images = [{
-    #         "url": str(image_path),
-    #         "bytes": image_path.read_bytes(),
-    #         "index": 0,
-    #         "relevance_score": 10,
-    #     }]
+    # # # TEST IMAGES
+    # # reference_images = Path("test/2_unique/unique3__0.jpg")
+    # # if isinstance(reference_images, (str, Path)):
+    # #     image_path = Path(reference_images)
+    # #     reference_images = [{
+    # #         "url": str(image_path),
+    # #         "bytes": image_path.read_bytes(),
+    # #         "index": 0,
+    # #         "relevance_score": 10,
+    # #     }]
 
-    frame_image = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
-    frame_buffer = io.BytesIO()
-    frame_image.save(frame_buffer, format="JPEG", quality=95)
-    frame = frame_buffer.getvalue()
-    ref_dir = Path("test/2_images")
-    ref_dir.mkdir(parents=True, exist_ok=True)
-    for ref in reference_images:
-        url = str(ref.get("url", ""))
-        m = re.search(r"\.(jpg|jpeg|png|gif|webp)(?:$|[?#])", url, flags=re.IGNORECASE)
-        ext = (m.group(1).lower() if m else "jpg")
-        img_bytes = ref["bytes"]
-        idx = ref.get("index", 0)
-        safe_url = re.sub(r"[^A-Za-z0-9_]+", "", url)[:30]
-        out_name = f"{iid}.{ext}"
-        out_path = ref_dir / out_name
-        with open(out_path, "wb") as imgf:
-            imgf.write(img_bytes)
+    # frame_image = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
+    # frame_buffer = io.BytesIO()
+    # frame_image.save(frame_buffer, format="JPEG", quality=95)
+    # frame = frame_buffer.getvalue()
+    # ref_dir = Path("test/2_images")
+    # ref_dir.mkdir(parents=True, exist_ok=True)
+    # for ref in reference_images:
+    #     url = str(ref.get("url", ""))
+    #     m = re.search(r"\.(jpg|jpeg|png|gif|webp)(?:$|[?#])", url, flags=re.IGNORECASE)
+    #     ext = (m.group(1).lower() if m else "jpg")
+    #     img_bytes = ref["bytes"]
+    #     idx = ref.get("index", 0)
+    #     safe_url = re.sub(r"[^A-Za-z0-9_]+", "", url)[:30]
+    #     out_name = f"{iid}.{ext}"
+    #     out_path = ref_dir / out_name
+    #     with open(out_path, "wb") as imgf:
+    #         imgf.write(img_bytes)
     
-    print("[STEP 3/5] Generating prompt enhancer...")
-    enhancer_args = PromptEnhancerArgs(query=query, context_info=web_context)
-    raw = await prompt_enhancer.run(enhancer_args, None)
-    enhanced_prompt = clean_json_block(raw)
-    data = json.loads(enhanced_prompt)
+    print("[STEP 3/5] Generating script...")
+    generator_args = ScriptGeneratorArgs(query=query, context_info=web_context)
+    raw = await script_generator.run(generator_args, None)
+    script = clean_json_block(raw)
+    data = json.loads(script)
     print("data", data)
 
-    out_dir = Path("test") / "1_enhanced_prompt"
+    out_dir = Path("test") / "1_script"
     out_dir.mkdir(parents=True, exist_ok=True)
-    filename = out_dir / f"{iid}_enhanced_prompt.txt"
+    filename = out_dir / f"{iid}_script.txt"
     with open(filename, "w", encoding="utf-8") as f:
-        f.write(enhanced_prompt)
+        f.write(script)
 
     # # TEST DATA
-    # file_path = Path("test") / "1_enhanced_prompt" / "1_enhanced_prompt.txt"
+    # file_path = Path("test") / "1_script" / "1_script.txt"
     # with open(file_path, "r", encoding="utf-8") as f:
-    #     enhanced_prompt = f.read()
-    # data = json.loads(enhanced_prompt)
+    #     script = f.read()
+    # data = json.loads(script)
 
     
     # print("[STEP 4/5] Running critique agent...")
@@ -904,47 +901,47 @@ async def run_pipeline(query: str, iid: int):
     # with open(filename, "w", encoding="utf-8") as f:
     #     f.write(json.dumps(validated_prompts, indent=2))
     
-    print("[STEP 5/5] Generating videos...")
-    generated_paths = []
-    narrations = []
+    # print("[STEP 5/5] Generating videos...")
+    # generated_paths = []
+    # narrations = []
 
-    if not data:
-        raise Exception("No validated prompts to generate video")
+    # if not data:
+    #     raise Exception("No validated prompts to generate video")
 
-    script = str(data["script"]).strip()
-    narration = str(data["narration"]).strip()
+    # script = str(data["script"]).strip()
+    # narration = str(data["narration"]).strip()
 
-    try:
-        veo_args = VeoVideoGeneratorArgs(
-            query=script,
-            iid=iid,
-            duration_seconds=8,
-            frame=frame
-        )
-        veo_result = await veo_tool.run(veo_args, None)
+    # try:
+    #     veo_args = VeoVideoGeneratorArgs(
+    #         query=script,
+    #         iid=iid,
+    #         duration_seconds=8,
+    #         frame=frame
+    #     )
+    #     veo_result = await veo_tool.run(veo_args, None)
 
-        generated_paths.extend(veo_result["video_paths"])
-        narrations.append(narration)
+    #     generated_paths.extend(veo_result["video_paths"])
+    #     narrations.append(narration)
 
-    except Exception as e:
-        print(f"  ✗ Video generation failed: {str(e)}")
-        print(f"  Pipeline halted while generating the video\n")
-        raise
+    # except Exception as e:
+    #     print(f"  ✗ Video generation failed: {str(e)}")
+    #     print(f"  Pipeline halted while generating the video\n")
+    #     raise
 
-    if not generated_paths:
-        raise Exception("No videos were successfully generated")
+    # if not generated_paths:
+    #     raise Exception("No videos were successfully generated")
         
-    print("[STEP 6] Post-processing...")
-    post_args = PostProcessingArgs(
-        video_paths=generated_paths,
-        narrations=narrations,
-        iid=iid,
-        query=query,
-        crossfade_duration=0.0
-    )
-    final_video_path = await post_processor.run(post_args, None)
+    # print("[STEP 6] Post-processing...")
+    # post_args = PostProcessingArgs(
+    #     video_paths=generated_paths,
+    #     narrations=narrations,
+    #     iid=iid,
+    #     query=query,
+    #     crossfade_duration=0.0
+    # )
+    # final_video_path = await post_processor.run(post_args, None)
     
-    return final_video_path
+    # return final_video_path
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
