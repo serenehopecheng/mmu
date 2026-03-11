@@ -1,4 +1,4 @@
 {
-    "script": "A steady, front view shot captures an individual carefully unboxing an iPhone 16 Pro in Desert Titanium on a warm, wooden table. They reveal the phone to the viewer, gently running their fingers over its smooth surface.",
-    "narration": "Witness the unveiling of the sleek, new iPhone 16 Pro in Desert Titanium, straight from the box."
+    "script": "Footage of a Tesla Cybertruck driving through a clear, sizeable puddle from a low angle, captured in broad daylight.",
+    "narration": "A Tesla Cybertruck boldly navigates through a puddle, showcasing its robust design."
 }

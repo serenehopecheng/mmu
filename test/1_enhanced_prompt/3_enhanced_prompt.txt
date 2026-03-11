@@ -1,0 +1,4 @@
+{
+    "script": "In a brightly lit kitchen, a person's hand grabs a Coca-Cola bottle from a white table, unscrews the new tethered cap, and sets the bottle back down, cap open.",
+    "narration": "A person swiftly opens a Coca-Cola bottle showcasing the new tethered cap."
+}

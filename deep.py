@@ -189,6 +189,7 @@ class WebKnowledgeRetrieverTool(BaseTool[WebKnowledgeRetrieverArgs, str]):
 
 class ImageRetrieverArgs(BaseModel):
     query: str
+    iid: str
     num_images: int = 1 
 
 class ImageRetrieverTool(BaseTool[ImageRetrieverArgs, list]):
@@ -263,18 +264,20 @@ class ImageRetrieverTool(BaseTool[ImageRetrieverArgs, list]):
         return list(dict.fromkeys(urls))[:num_results]
 
     def _validate_image(self, img_bytes: bytes, query: str) -> dict | None:
-        """Use GPT-4o to validate an image is a real, relevant photo."""
+        """Use GPT-4o to validate an image is suitable as a visual reference."""
         if len(img_bytes) < 5000:
             return None
         
         img_b64 = base64.b64encode(img_bytes).decode('utf-8')
         validation_prompt = f"""Analyze this image for the query: "{query}"
 
-        Is this a high-quality, real-world photograph suitable as a visual reference? Check:
-        1. Is it a REAL photograph (not a logo, icon, clipart, cartoon, diagram, or illustration)?
-        2. Is it relevant to the topic?
-        3. Is the image quality acceptable (not tiny, blurry, or corrupted)?
-        4. Does it show real-world content (people, animals, objects, scenes)?
+        This image will be used as a VISUAL REFERENCE for video generation. We need images that show what the subject LOOKS LIKE.
+
+        ACCEPT images that:
+        - Show real-world subjects, objects, people, or scenes 
+        - Are photographs or photo-realistic images (not pure illustrations/cartoons)
+        - Are relevant to the query topic
+        - Have acceptable visual quality
 
         Respond with JSON only:
         {{"is_valid": true/false, "reason": "brief explanation", "relevance_score": 0-10}}"""
@@ -319,8 +322,7 @@ class ImageRetrieverTool(BaseTool[ImageRetrieverArgs, list]):
 
         all_urls = list(dict.fromkeys(all_urls))
 
-        # Save all unique candidate images to "test/unique"
-        unique_dir = Path("test/unique")
+        unique_dir = Path("test/2_unique")
         unique_dir.mkdir(parents=True, exist_ok=True)
         for i, url in enumerate(all_urls):
             try:
@@ -338,7 +340,7 @@ class ImageRetrieverTool(BaseTool[ImageRetrieverArgs, list]):
                         ext = "gif"
                     elif "webp" in content_type:
                         ext = "webp"
-                    filename = unique_dir / f"unique_{i}.{ext}"
+                    filename = unique_dir / f"unique{args.iid}_{i}.{ext}"
                     with open(filename, "wb") as f:
                         f.write(img_response.content)
             except Exception as e:
@@ -389,7 +391,29 @@ class ImageRetrieverTool(BaseTool[ImageRetrieverArgs, list]):
                 continue
 
         reference_images.sort(key=lambda x: x["relevance_score"], reverse=True)
-        print(f"Successfully validated {len(reference_images)} high-quality reference images")
+        
+        if not reference_images and all_urls:
+            print("No validated images found, falling back to first downloadable image...")
+            for url in all_urls:
+                try:
+                    img_response = requests.get(url, timeout=10, headers={
+                        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                                      "Chrome/120.0.0.0 Safari/537.36"
+                    })
+                    if img_response.status_code == 200 and len(img_response.content) >= 5000:
+                        reference_images.append({
+                            "url": url,
+                            "bytes": img_response.content,
+                            "index": 0,
+                            "relevance_score": 0
+                        })
+                        print(f"✓ Using fallback image: {url[:80]}")
+                        break
+                except Exception:
+                    continue
+        
+        print(f"Successfully validated {len(reference_images)} reference images")
         return reference_images
 
 class PromptEnhancerArgs(BaseModel):
@@ -806,22 +830,36 @@ async def run_pipeline(query: str, iid: int):
     veo_tool = VeoVideoGeneratorTool()
     post_processor = PostProcessingAgent()
     
-    # print("[STEP 1/5] Retrieving web knowledge...")
-    # retriever_args = WebKnowledgeRetrieverArgs(query=query, detail_level="comprehensive")
-    # web_context = await web_retriever.run(retriever_args, None)
+    print("[STEP 1/5] Retrieving web knowledge...")
+    retriever_args = WebKnowledgeRetrieverArgs(query=query, detail_level="comprehensive")
+    web_context = await web_retriever.run(retriever_args, None)
     
-    # out_dir = Path("test") / "0_web_knowledge"
-    # out_dir.mkdir(parents=True, exist_ok=True)
-    # filename = out_dir / f"{iid}_web_knowledge.txt"
-    # with open(filename, "w", encoding="utf-8") as f:
-    #     f.write(web_context)
+    out_dir = Path("test") / "0_web_knowledge"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    filename = out_dir / f"{iid}_web_knowledge.txt"
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(web_context)
 
     print("[STEP 2/5] Retrieving reference images...")
-    reference_images = await image_retriever.run(ImageRetrieverArgs(query=query, num_images=1), None)
+    reference_images = await image_retriever.run(ImageRetrieverArgs(query=query, iid=iid, pynum_images=1), None)
     if not reference_images:
         raise Exception("No reference images were retrieved")
 
-    frame = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
+    # # TEST IMAGES
+    # reference_images = Path("test/2_unique/unique3__0.jpg")
+    # if isinstance(reference_images, (str, Path)):
+    #     image_path = Path(reference_images)
+    #     reference_images = [{
+    #         "url": str(image_path),
+    #         "bytes": image_path.read_bytes(),
+    #         "index": 0,
+    #         "relevance_score": 10,
+    #     }]
+
+    frame_image = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
+    frame_buffer = io.BytesIO()
+    frame_image.save(frame_buffer, format="JPEG", quality=95)
+    frame = frame_buffer.getvalue()
     ref_dir = Path("test/2_images")
     ref_dir.mkdir(parents=True, exist_ok=True)
     for ref in reference_images:
@@ -836,18 +874,25 @@ async def run_pipeline(query: str, iid: int):
         with open(out_path, "wb") as imgf:
             imgf.write(img_bytes)
     
-    # print("[STEP 3/5] Generating prompt enhancer...")
-    # enhancer_args = PromptEnhancerArgs(query=query, context_info=web_context)
-    # raw = await prompt_enhancer.run(enhancer_args, None)
-    # enhanced_prompt = clean_json_block(raw)
-    # data = json.loads(enhanced_prompt)
-    # print("data", data)
+    print("[STEP 3/5] Generating prompt enhancer...")
+    enhancer_args = PromptEnhancerArgs(query=query, context_info=web_context)
+    raw = await prompt_enhancer.run(enhancer_args, None)
+    enhanced_prompt = clean_json_block(raw)
+    data = json.loads(enhanced_prompt)
+    print("data", data)
 
-    # out_dir = Path("test") / "1_enhanced_prompt"
-    # out_dir.mkdir(parents=True, exist_ok=True)
-    # filename = out_dir / f"{iid}_enhanced_prompt.txt"
-    # with open(filename, "w", encoding="utf-8") as f:
-    #     f.write(enhanced_prompt)
+    out_dir = Path("test") / "1_enhanced_prompt"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    filename = out_dir / f"{iid}_enhanced_prompt.txt"
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(enhanced_prompt)
+
+    # # TEST DATA
+    # file_path = Path("test") / "1_enhanced_prompt" / "1_enhanced_prompt.txt"
+    # with open(file_path, "r", encoding="utf-8") as f:
+    #     enhanced_prompt = f.read()
+    # data = json.loads(enhanced_prompt)
+
     
     # print("[STEP 4/5] Running critique agent...")
     # # critique_args = PromptCritiqueArgs(video_prompt=data, topic=query)
@@ -859,49 +904,47 @@ async def run_pipeline(query: str, iid: int):
     # with open(filename, "w", encoding="utf-8") as f:
     #     f.write(json.dumps(validated_prompts, indent=2))
     
-    # print("[STEP 5/5] Generating videos...")
-    # generated_paths = []
-    # narrations = []
+    print("[STEP 5/5] Generating videos...")
+    generated_paths = []
+    narrations = []
 
-    # if not data:
-    #     raise Exception("No validated prompts to generate video")
+    if not data:
+        raise Exception("No validated prompts to generate video")
 
-    # script = str(data["script"]).strip()
-    # narration = str(data["narration"]).strip()
+    script = str(data["script"]).strip()
+    narration = str(data["narration"]).strip()
 
-    # print(f"  Generating single video (1/1)...")
+    try:
+        veo_args = VeoVideoGeneratorArgs(
+            query=script,
+            iid=iid,
+            duration_seconds=8,
+            frame=frame
+        )
+        veo_result = await veo_tool.run(veo_args, None)
 
-    # try:
-    #     veo_args = VeoVideoGeneratorArgs(
-    #         query=script,
-    #         iid=iid,
-    #         duration_seconds=8,
-    #         frame=frame
-    #     )
-    #     veo_result = await veo_tool.run(veo_args, None)
+        generated_paths.extend(veo_result["video_paths"])
+        narrations.append(narration)
 
-    #     generated_paths.extend(veo_result["video_paths"])
-    #     narrations.append(narration)
+    except Exception as e:
+        print(f"  ✗ Video generation failed: {str(e)}")
+        print(f"  Pipeline halted while generating the video\n")
+        raise
 
-    # except Exception as e:
-    #     print(f"  ✗ Video generation failed: {str(e)}")
-    #     print(f"  Pipeline halted while generating the video\n")
-    #     raise
-
-    # if not generated_paths:
-    #     raise Exception("No videos were successfully generated")
+    if not generated_paths:
+        raise Exception("No videos were successfully generated")
         
-    # print("[STEP 6] Post-processing...")
-    # post_args = PostProcessingArgs(
-    #     video_paths=generated_paths,
-    #     narrations=narrations,
-    #     iid=iid,
-    #     query=query,
-    #     crossfade_duration=0.0
-    # )
-    # final_video_path = await post_processor.run(post_args, None)
+    print("[STEP 6] Post-processing...")
+    post_args = PostProcessingArgs(
+        video_paths=generated_paths,
+        narrations=narrations,
+        iid=iid,
+        query=query,
+        crossfade_duration=0.0
+    )
+    final_video_path = await post_processor.run(post_args, None)
     
-    # return final_video_path
+    return final_video_path
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

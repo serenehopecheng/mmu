@@ -1,11 +1,11 @@
-I typed 'A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view. Detailed visual descriptions and step-by-step processes for video format.' into 'Enter your search here - Search suggestions will show as you type'.
+I typed 'person opening a Coca-Cola bottle with new attached tethered cap, side view, detailed explanation, visual descriptions, step-by-step process, key concepts for video' into 'Enter your search here - Search suggestions will show as you type'.
 
-The web browser is open to the page [A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view. Detailed visual descriptions and step-by-step processes for video format. - Search](https://www.bing.com/search?q=A+person+unboxing+the+latest+iPhone+16+Pro+in+Desert+Titanium+on+a+wooden+table%2C+front+view.+Detailed+visual+descriptions+and+step-by-step+processes+for+video+format.&form=QBLH&sp=-1&lq=0&pq=&sc=0-0&qs=n&sk=&cvid=0A9BBCC0B6934A8686BA6B1707F50EAB).
-The viewport shows 22% of the webpage, and is positioned at the top of the page
+The web browser is open to the page [person opening a Coca-Cola bottle with new attached tethered cap, side view, detailed explanation, visual descriptions, step-by-step process, key concepts for video - Search](https://www.bing.com/search?q=person+opening+a+Coca-Cola+bottle+with+new+attached+tethered+cap%2C+side+view%2C+detailed+explanation%2C+visual+descriptions%2C+step-by-step+process%2C+key+concepts+for+video&form=QBLH&sp=-1&lq=0&pq=&sc=0-0&qs=n&sk=&cvid=03DD1C29A79540D5AB077FE59CE2759A).
+The viewport shows 26% of the webpage, and is positioned at the top of the page
 The following text is visible in the viewport:
 
 Skip to content
-A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view. Detailed visual descriptions and step-by-step processes for video format.5
+person opening a Coca-Cola bottle with new attached tethered cap, side view, detailed explanation, visual descriptions, step-by-step process, key concepts for video5
 All
 Search
 Videos
@@ -14,43 +14,30 @@ Maps
 News
 Copilot
 More
-About 84 resultsVideos of A Person Unboxing The Latest iPhone 16 Pro In Desert Titani…
-17:52
-iPhone 
-16 
-Pro 
-Unboxing, Hands 
-On & First Impressions! (
-DesertTitanium)
-YouTubeTechDaily316.6K viewsSep 24, 202435:12
-iPhone 
-16 
-Pro 
-Desert 
-Titanium - 
-Unboxing, Setup, Ai Comparison & Overview
-YouTubeHalfManHalfTech68K viewsSep 21, 20247:31
-iPhone 
-16 
-Pro 
-Desert 
-Titanium 
-Unboxing + Setup
-YouTubeAria Connor10.4K viewsSep 20, 20245:17
-iPhone 
-16 
-Pro Max 
-Desert 
-Titanium 
-UnboxingSee more
+About 259 resultsThe new tethered caps for Coca-Cola bottles are designed to stay attached to the bottle after opening, making it easier to recycle the entire package. Here’s a detailed explanation of the process:Opening the Bottle: Simply open the bottle as usual.Flipping the Cap: Flip the cap back onto the bottle until it clicks into place.Enjoying the Beverage: Sip your drink and enjoy.Re-sealing the Cap: After finishing, reseal the cap.Recycling: Return the bottle and cap together to the recycling bin, ensuring no cap gets left behind. 6
+This design is part of a broader initiative to reduce plastic waste and promote recycling, aligning with EU regulations requiring attached caps for single-use plastic products. 5
+6 Sources
+Read more
+Coca-Cola Global
+Better Together
+When you enjoy your drink from a bottle, you’re not necessarily planning for the future of that bottle or, indeed, the cap. And when the time comes to recycle the bottle, sadly, fo…
+Euronews
+What’s behind the new attached bottle caps? Inside the EU directive ...
+A new requirement for a tethered design for plastic caps on drinks bottles officially comes into force in the EU on Wednesday, but what’s behind the move? Cracking open a cold coke…
+View all
+Videos of Person Opening a Coca-Cola Bottle With new Attached Tethe…
+0:11
+How to Properly Open 
+a 
+Coca-
+Cola 
+BottleTikTokjasonmomentsFeb 5, 2023 
 Deep dive into 
-A person unboxing the latest iPhone 16 Pro in Desert Tit…
-+5
-Microsoft Rewards
-Points now, Rewards later! Sign in and start earning 5 Reward points per search.
-Sign inapple iPhone 16 desert titanium 
-reviewiPhone 16 pro desert titanium 
-review
+person opening a Coca-Cola bottle with new attached tet…
+coke bottle caps attached
+Coca-Cola bottle caps
+coke bottle cap 
+replacement
 
 The following metadata was extracted from the webpage:
 
@@ -59,8 +46,8 @@ The following metadata was extracted from the webpage:
         "referrer": "origin-when-cross-origin",
         "og:description": "Intelligent search from Bing makes it easier to quickly find what you\u2019re looking for and rewards you.",
         "og:site_name": "Bing",
-        "og:title": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view. Detailed visual descriptions and step-by-step processes for video format. - Bing",
-        "og:url": "https://www.bing.com/search?q=A+person+unboxing+the+latest+iPhone+16+Pro+in+Desert+Titanium+on+a+wooden+table%2C+front+view.+Detailed+visual+descriptions+and+step-by-step+processes+for+video+format.&form=QBLH&sp=-1&lq=0&pq=&sc=0-0&qs=n&sk=&cvid=0A9BBCC0B6934A8686BA6B1707F50EAB",
+        "og:title": "person opening a Coca-Cola bottle with new attached tethered cap, side view, detailed explanation, visual descriptions, step-by-step process, key concepts for video - Bing",
+        "og:url": "https://www.bing.com/search?q=person+opening+a+Coca-Cola+bottle+with+new+attached+tethered+cap%2C+side+view%2C+detailed+explanation%2C+visual+descriptions%2C+step-by-step+process%2C+key+concepts+for+video&form=QBLH&sp=-1&lq=0&pq=&sc=0-0&qs=n&sk=&cvid=03DD1C29A79540D5AB077FE59CE2759A",
         "fb:app_id": "3732605936979161",
         "og:image": "http://www.bing.com/sa/simg/facebook_sharing_5.png",
         "og:type": "website",
@@ -69,18 +56,18 @@ The following metadata was extracted from the webpage:
     }
 }
 
-Here is a screenshot of the page. <autogen_core._image.Image object at 0x1167847d0>
+Here is a screenshot of the page. <autogen_core._image.Image object at 0x115f73610>
 
 ---SEARCH RESULT---
 
-I typed 'iPhone 16 Pro Desert Titanium unboxing tutorial guide wooden table' into the browser search bar.
+I typed 'open Coca-Cola bottle tethered cap tutorial visual descriptions step-by-step' into the browser search bar.
 
-The web browser is open to the page [iPhone 16 Pro Desert Titanium unboxing tutorial guide wooden table - Search](https://www.bing.com/search?q=iPhone+16+Pro+Desert+Titanium+unboxing+tutorial+guide+wooden+table&FORM=QBLH).
+The web browser is open to the page [open Coca-Cola bottle tethered cap tutorial visual descriptions step-by-step - Search](https://www.bing.com/search?q=open+Coca-Cola+bottle+tethered+cap+tutorial+visual+descriptions+step-by-step&FORM=QBLH).
 The viewport shows 100% of the webpage, and is positioned at the top of the page
 The following text is visible in the viewport:
 
 Skip to content
-iPhone 16 Pro Desert Titanium unboxing tutorial guide wooden table10
+open Coca-Cola bottle tethered cap tutorial visual descriptions step-by-step10
 One last step
 Please solve the challenge below to continue
 
@@ -91,8 +78,8 @@ The following metadata was extracted from the webpage:
         "referrer": "origin-when-cross-origin",
         "og:description": "Intelligent search from Bing makes it easier to quickly find what you\u2019re looking for and rewards you.",
         "og:site_name": "Bing",
-        "og:title": "iPhone 16 Pro Desert Titanium unboxing tutorial guide wooden table - Bing",
-        "og:url": "https://www.bing.com/search?q=iPhone+16+Pro+Desert+Titanium+unboxing+tutorial+guide+wooden+table&FORM=QBLH",
+        "og:title": "open Coca-Cola bottle tethered cap tutorial visual descriptions step-by-step - Bing",
+        "og:url": "https://www.bing.com/search?q=open+Coca-Cola+bottle+tethered+cap+tutorial+visual+descriptions+step-by-step&FORM=QBLH",
         "fb:app_id": "3732605936979161",
         "og:image": "http://www.bing.com/sa/simg/facebook_sharing_5.png",
         "og:type": "website",
@@ -101,4 +88,4 @@ The following metadata was extracted from the webpage:
     }
 }
 
-Here is a screenshot of the page. <autogen_core._image.Image object at 0x1166455b0>
+Here is a screenshot of the page. <autogen_core._image.Image object at 0x115f496e0>
