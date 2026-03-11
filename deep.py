@@ -816,15 +816,13 @@ async def run_pipeline(query: str, iid: int):
     # with open(filename, "w", encoding="utf-8") as f:
     #     f.write(web_context)
 
-    print("[STEP 4/5] Generating videos...")
-    generated_paths = []
-    narrations = []
+    print("[STEP 2/5] Retrieving reference images...")
     reference_images = await image_retriever.run(ImageRetrieverArgs(query=query, num_images=1), None)
     if not reference_images:
         raise Exception("No reference images were retrieved")
 
     frame = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
-    ref_dir = Path("test/0_images")
+    ref_dir = Path("test/2_images")
     ref_dir.mkdir(parents=True, exist_ok=True)
     for ref in reference_images:
         url = str(ref.get("url", ""))
@@ -838,7 +836,7 @@ async def run_pipeline(query: str, iid: int):
         with open(out_path, "wb") as imgf:
             imgf.write(img_bytes)
     
-    # print("[STEP 2/5] Generating prompt enhancer...")
+    # print("[STEP 3/5] Generating prompt enhancer...")
     # enhancer_args = PromptEnhancerArgs(query=query, context_info=web_context)
     # raw = await prompt_enhancer.run(enhancer_args, None)
     # enhanced_prompt = clean_json_block(raw)
@@ -851,7 +849,7 @@ async def run_pipeline(query: str, iid: int):
     # with open(filename, "w", encoding="utf-8") as f:
     #     f.write(enhanced_prompt)
     
-    # print("[STEP 3/5] Running critique agent...")
+    # print("[STEP 4/5] Running critique agent...")
     # # critique_args = PromptCritiqueArgs(video_prompt=data, topic=query)
     # messages, validated_prompts = await create_critique_agent_team(query, data)
     # out_dir = Path("test") / "2_critique"
@@ -860,6 +858,10 @@ async def run_pipeline(query: str, iid: int):
     # print(validated_prompts)
     # with open(filename, "w", encoding="utf-8") as f:
     #     f.write(json.dumps(validated_prompts, indent=2))
+    
+    # print("[STEP 5/5] Generating videos...")
+    # generated_paths = []
+    # narrations = []
 
     # if not data:
     #     raise Exception("No validated prompts to generate video")
@@ -889,7 +891,7 @@ async def run_pipeline(query: str, iid: int):
     # if not generated_paths:
     #     raise Exception("No videos were successfully generated")
         
-    # print("[STEP 5/5] Post-processing...")
+    # print("[STEP 6] Post-processing...")
     # post_args = PostProcessingArgs(
     #     video_paths=generated_paths,
     #     narrations=narrations,
