@@ -30,9 +30,9 @@ client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # Domain constants
 # ---------------------------------------------------------------------------
 PROMPTS_FILE = "prompts.json"
-EVAL_MODEL = "gpt-4o"
-MUTATION_MODEL = "gpt-4o"
-SCRIPT_GEN_MODEL = "gpt-4"
+EVAL_MODEL = "gpt-5-nano"
+MUTATION_MODEL = "gpt-5-nano"
+SCRIPT_GEN_MODEL = "gpt-5-nano"
 MINIBATCH_SIZE = 3       # tasks per evaluation round (paper uses b=3)
 PARETO_SET_SIZE = None    # None = use all tasks for Pareto scoring
 
@@ -540,7 +540,7 @@ def print_candidate_summary(c: Candidate, prefix: str = ""):
 def summarize_mutation(old_prompt: str, new_prompt: str) -> str:
     """Ask the LLM for a one-line diff summary."""
     r = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-5-nano",
         messages=[{"role": "user", "content": f"In one sentence, what changed between these two prompts?\n\nOLD:\n{old_prompt[:1500]}\n\nNEW:\n{new_prompt[:1500]}"}],
         max_tokens=100,
         temperature=0.2,
