@@ -114,132 +114,12 @@ OUTPUT (valid JSON only, no other text):
 {{
     "script": "Present-tense, temporally ordered description of the 8-second clip with specific visual and cinematic details.",
     "narration": "A single conversational sentence adding insight to the visuals (max 18 words)."
-}}""",
-
-    # 1 — Cinematographer role-play variant
-    """You are a veteran cinematographer planning a single 8-second take for a documentary.
-Your shot description will be sent directly to Veo 3, a text-to-video AI that produces photorealistic footage.
-
-TOPIC: "{topic}"
-REFERENCE MATERIAL: {context}
-
-Think like a DP: pick ONE subject, ONE action, ONE camera setup. Describe the shot as a continuous present-tense sequence—what the lens sees frame by frame across 8 seconds.
-
-SHOT DESIGN RULES:
-1. Single locked-off or slow-tracking camera. State exact angle and movement.
-2. One subject, one action, no cuts or transitions.
-3. Ground every detail in reality: name materials, colors, textures, light sources.
-4. Temporal structure: opening frame → mid-action → closing frame.
-5. Absolutely no text overlays, graphics, animation, fantasy, or abstract imagery.
-6. No zooms, whip pans, rack focus, handheld shake, scanning, or grid layouts.
-
-NARRATION: Write one concise sentence (max 18 words) a narrator would speak over this shot. It should add context or insight beyond what is visible.
-
-Reply with ONLY valid JSON:
-{{
-    "script": "Your 8-second shot description.",
-    "narration": "Your narrator sentence."
-}}""",
-
-    # 2 — Constraint-first, minimal variant
-    """Generate a Veo 3 video prompt. Veo 3 produces photorealistic real-world footage only.
-
-TOPIC: "{topic}"
-CONTEXT: {context}
-
-HARD CONSTRAINTS (violating any will cause generation failure):
-- Exactly 8 seconds, single continuous take
-- One subject, one simple action
-- Camera: fixed or gentle dolly/pan, specify angle
-- No text, graphics, overlays, animation, fantasy
-- No zooms, whip pans, rack focus, scanning, grids
-- No multi-step processes, technical setups, or abstract scenes
-- Real-world lighting, materials, textures only
-
-Write the prompt in vivid present tense, temporally ordered (start → middle → end of 8s).
-Add a narration sentence (max 18 words) that provides insight beyond the visuals.
-
-JSON only:
-{{
-    "script": "...",
-    "narration": "..."
-}}""",
-
-    # 3 — Step-by-step reasoning variant
-    """You will create a video generation prompt for Veo 3 (photorealistic real-world footage).
-
-TOPIC: "{topic}"
-RESEARCH: {context}
-
-Before writing, reason through these steps internally:
-Step 1: What single, real-world scene best illustrates this topic in 8 seconds?
-Step 2: What is the one subject and one action? Keep it simple and filmable.
-Step 3: What camera angle and movement (stationary or slow pan/dolly only)?
-Step 4: What is the light source? What specific materials, colors, textures are visible?
-Step 5: Describe temporally: what does the viewer see at second 0, second 4, and second 8?
-Step 6: Write a narrator sentence (max 18 words) that adds insight, not description.
-
-After reasoning, output ONLY the final JSON (no explanation):
-{{
-    "script": "Present-tense, temporally ordered 8-second shot with specific visual details.",
-    "narration": "Concise insight sentence (max 18 words)."
-}}""",
-
-    # 4 — Negative-example-aware variant
-    """You are writing a Veo 3 prompt. Veo 3 generates photorealistic real-world footage ONLY.
-
-TOPIC: "{topic}"
-BACKGROUND: {context}
-
-GOOD prompts look like: "A barista pours steamed milk into a ceramic latte cup on a wooden counter. Overhead soft light. Eye-level, stationary camera. The milk swirls into a rosetta pattern over 8 seconds."
-
-BAD prompts (will be rejected by Veo): anything with text overlays, multiple subjects doing different things, animation, fantasy, zooms, scanning motions, grid layouts, technical measurement setups, abstract concepts shown literally, or complex multi-step processes.
-
-Write an 8-second continuous shot description:
-- Single subject, single action, real-world setting
-- Specify camera angle + movement (stationary or slow pan/dolly)
-- Specify light source, materials, textures, colors
-- Temporal order: what happens at start, middle, end
-- Narration: one sentence (max 18 words) adding insight
-
-Output valid JSON only:
-{{
-    "script": "...",
-    "narration": "..."
-}}""",
-
-    # 5 — Veo-failure-aware variant
-    """Write a video prompt for Veo 3 (photorealistic real-world video generator).
-
-TOPIC: "{topic}"
-CONTEXT: {context}
-
-IMPORTANT — Veo 3 commonly fails on these patterns (avoid all):
-- Describing text, labels, or captions appearing on screen
-- Showing abstract concepts literally (e.g., "data flowing")
-- Multiple subjects performing different actions simultaneously
-- Complex multi-step processes compressed into 8 seconds
-- Grid/pattern/comparison layouts
-- Technical measurement or scanning motions
-- Zooms, whip pans, rack focus, handheld shake
-- Fantasy, animation, or non-photorealistic imagery
-
-INSTEAD, describe a single 8-second continuous shot of ONE real person or object performing ONE simple action in a specific, well-lit, real-world environment. Use vivid present tense. State the camera angle (e.g., eye-level, 45°, overhead) and movement (stationary or slow dolly/pan). Name specific materials, colors, textures, and the light source.
-
-Structure: opening frame → what unfolds → how the shot ends.
-
-Also write one narration sentence (max 18 words) adding insight beyond the visuals.
-
-Valid JSON only:
-{{
-    "script": "...",
-    "narration": "..."
-}}""",
+}}"""
 ]
 
 
 # ---------------------------------------------------------------------------
-# Evaluation: generate script + critique it
+# Evaluation: two-stage (hard checks → calibrated quality)
 # ---------------------------------------------------------------------------
 def generate_script(prompt_template: str, topic: str, context: str = "None provided.") -> Dict[str, str]:
     """Run the script generator with a given system prompt template."""
@@ -248,78 +128,244 @@ def generate_script(prompt_template: str, topic: str, context: str = "None provi
     r = client.chat.completions.create(
         model=SCRIPT_GEN_MODEL,
         messages=[{"role": "user", "content": filled}],
-        max_tokens=1200,
-        temperature=0.7,
+        max_completion_tokens=1200,
+        temperature=1,
     )
-    raw = r.choices[0].message.content.strip()
+    content = r.choices[0].message.content
+    if not content:
+        raise ValueError(f"Empty response from model. Finish reason: {r.choices[0].finish_reason}")
+    raw = content.strip()
     raw = _clean_json(raw)
-    return json.loads(raw)
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        print(f"  [DEBUG] JSON parse failed. Raw content ({len(raw)} chars):\n{raw[:500]}")
+        raise
 
 
-def critique_script(script_data: Dict[str, str], topic: str) -> Dict[str, Any]:
-    """Run the critique evaluator. Returns structured feedback + numeric score."""
-    critique_prompt = f"""You are a strict evaluator for Veo 3 video generation prompts.
+# ---- Stage 1: deterministic hard-constraint checks ----
 
+def stage1_hard_checks(script_data: Dict[str, str], topic: str) -> Dict[str, Any]:
+    """
+    Binary pass/fail on verifiable constraints. Each check is phrased as a
+    concrete yes/no question with an extraction requirement so the evaluator
+    must cite evidence rather than hand-wave.
+    """
+    script = script_data.get("script", "")
+    narration = script_data.get("narration", "")
+
+    prompt = f"""You are a QA tester for Veo 3 video prompts. Your job is to run hard-constraint checks.
+For EACH check below, you MUST:
+  (a) quote the specific words from the script that are relevant,
+  (b) give a verdict of PASS or FAIL,
+  (c) if FAIL, state exactly what is wrong.
+
+SCRIPT: "{script}"
+NARRATION: "{narration}"
 TOPIC: {topic}
-VIDEO SCRIPT: {script_data.get("script", "")}
-NARRATION: {script_data.get("narration", "")}
 
-Score this prompt on each dimension (0-10) and list any issues found.
+CHECKS:
 
-SCORING DIMENSIONS:
-1. policy_compliance: No sensitive content, text overlays, graphics, animation, fantasy, or prohibited camera moves.
-2. visual_specificity: Concrete materials, textures, colors, lighting, spatial relationships named explicitly.
-3. temporal_clarity: Clear start-to-end progression across 8 seconds.
-4. single_subject_focus: One subject, one action, no competing elements.
-5. camera_feasibility: Camera angle and movement are specified, realistic, and simple (stationary or slow pan/dolly).
-6. narration_quality: One sentence, max 18 words, adds insight beyond what is shown.
-7. veo_compatibility: Likely to succeed with Veo 3 without triggering policy rejection. Penalize abstract, multi-step, grid, scanning, technical setups.
+C1_JSON_VALID: Does the output contain exactly two keys "script" and "narration" with non-empty string values?
 
-For each issue found, explain what part of the prompt caused it and what instruction change would prevent it.
+C2_SINGLE_SUBJECT: Does the script describe exactly ONE primary subject (person, animal, or object)? Quote the subject. FAIL if two or more distinct subjects perform separate actions.
+
+C3_SINGLE_ACTION: Does the subject perform exactly ONE continuous action across the 8 seconds? Quote the action. FAIL if there are multiple sequential steps (e.g., "first X, then Y, finally Z" with 3+ distinct verbs describing different activities).
+
+C4_CAMERA_SPECIFIED: Does the script explicitly name a camera angle (e.g., "eye-level", "overhead", "low angle", "45-degree")? Quote it. FAIL if no angle is stated.
+
+C5_CAMERA_LEGAL: Is the camera movement stationary, slow dolly, or slow pan ONLY? FAIL if any of these appear: zoom, whip pan, rack focus, handheld, tracking shot, crane, drone sweep, or if movement is not stated.
+
+C6_NO_TEXT_OVERLAYS: Does the script avoid describing any on-screen text, titles, labels, captions, subtitles, watermarks, or graphics? FAIL if any text element is described as appearing in the video.
+
+C7_NO_FANTASY: Is every visual element photorealistic and real-world? FAIL if animation, illustration, cartoon, CGI, fantasy creatures, magic, or surreal imagery is described.
+
+C8_LIGHTING_SPECIFIED: Does the script name a concrete light source (e.g., "sunlight", "window light", "fluorescent", "golden hour")? Quote it. FAIL if lighting is not mentioned or is only vague ("good lighting").
+
+C9_NARRATION_WORD_COUNT: Count the exact words in the narration. List them numbered. FAIL if more than 18 words.
+
+C10_NARRATION_IS_ONE_SENTENCE: Does the narration consist of exactly one sentence? FAIL if it contains two or more sentences (look for multiple periods, semicolons used as sentence separators, or coordinating conjunctions joining independent clauses with a comma).
+
+C11_TEMPORAL_ORDER: Does the script describe events in chronological order with some indication of temporal progression (beginning/middle/end, or phrases like "begins", "over the next seconds", "by the end")? FAIL if the description is a static snapshot with no temporal movement.
+
+C12_TOPIC_FIDELITY: Does the script depict the specific subject/action/setting described in the TOPIC? FAIL if the script describes something substantially different from what the topic asks for (e.g., topic says "French Press coffee" but script shows "pour-over coffee").
 
 Respond with ONLY valid JSON:
 {{
-    "scores": {{
-        "policy_compliance": 0-10,
-        "visual_specificity": 0-10,
-        "temporal_clarity": 0-10,
-        "single_subject_focus": 0-10,
-        "camera_feasibility": 0-10,
-        "narration_quality": 0-10,
-        "veo_compatibility": 0-10
+    "checks": {{
+        "C1_JSON_VALID": {{"verdict": "PASS or FAIL", "evidence": "quoted text", "reason": "..."}},
+        "C2_SINGLE_SUBJECT": {{"verdict": "...", "evidence": "...", "reason": "..."}},
+        "C3_SINGLE_ACTION": {{"verdict": "...", "evidence": "...", "reason": "..."}},
+        "C4_CAMERA_SPECIFIED": {{"verdict": "...", "evidence": "...", "reason": "..."}},
+        "C5_CAMERA_LEGAL": {{"verdict": "...", "evidence": "...", "reason": "..."}},
+        "C6_NO_TEXT_OVERLAYS": {{"verdict": "...", "evidence": "...", "reason": "..."}},
+        "C7_NO_FANTASY": {{"verdict": "...", "evidence": "...", "reason": "..."}},
+        "C8_LIGHTING_SPECIFIED": {{"verdict": "...", "evidence": "...", "reason": "..."}},
+        "C9_NARRATION_WORD_COUNT": {{"verdict": "...", "evidence": "word count: N", "reason": "..."}},
+        "C10_NARRATION_IS_ONE_SENTENCE": {{"verdict": "...", "evidence": "...", "reason": "..."}},
+        "C11_TEMPORAL_ORDER": {{"verdict": "...", "evidence": "...", "reason": "..."}},
+        "C12_TOPIC_FIDELITY": {{"verdict": "...", "evidence": "...", "reason": "..."}}
     }},
-    "issues": ["issue 1 description", "..."],
-    "feedback": "Detailed paragraph: what went wrong, what instruction in the system prompt was insufficient, and what change would fix it."
+    "pass_count": 0,
+    "fail_count": 0,
+    "failed_checks": ["C1_JSON_VALID", "..."]
 }}"""
 
     r = client.chat.completions.create(
         model=EVAL_MODEL,
-        messages=[{"role": "user", "content": critique_prompt}],
-        max_tokens=800,
-        temperature=0.2,
+        messages=[{"role": "user", "content": prompt}],
+        max_completion_tokens=1500,
+        temperature=1,  
     )
     raw = r.choices[0].message.content.strip()
     raw = _clean_json(raw)
     return json.loads(raw)
 
 
-def compute_score(critique: Dict[str, Any]) -> float:
-    """Aggregate critique sub-scores into a single 0-100 fitness value."""
-    scores = critique.get("scores", {})
-    if not scores:
-        return 0.0
-    weights = {
-        "policy_compliance": 2.0,
-        "veo_compatibility": 2.0,
-        "visual_specificity": 1.0,
-        "temporal_clarity": 1.0,
-        "single_subject_focus": 1.5,
-        "camera_feasibility": 1.0,
-        "narration_quality": 0.5,
-    }
-    total_w = sum(weights.get(k, 1.0) for k in scores)
-    weighted = sum(scores.get(k, 0) * weights.get(k, 1.0) for k in scores)
-    return round((weighted / total_w) * 10, 2)  # scale to 0-100
+# ---- Stage 2: calibrated quality scoring with exemplars ----
+
+EXEMPLARS = """
+=== EXEMPLAR A (score: 92/100 — strong) ===
+TOPIC: "A person correctly using a French Press to brew coffee, countertop view."
+SCRIPT: "On a sunlit granite countertop, a pair of hands grips a glass-bodied French Press filled with dark, blooming coffee grounds. Warm morning light from a nearby window catches the amber liquid. The hands slowly press the stainless-steel plunger downward at a steady pace, the mesh filter pushing grounds to the bottom. By the final second the plunger reaches the base and the person's thumb rests on top."
+NARRATION: "Four minutes of patience turns coarse grounds into a full-bodied brew."
+WHY 92: Strong visual specificity (granite, glass, stainless steel, amber). Clear temporal arc (grip → press → rest). Single subject/action. Camera angle implied but not explicitly named—loses a few points. Narration adds brewing insight. Light source named.
+
+=== EXEMPLAR B (score: 55/100 — mediocre) ===
+TOPIC: "A person correctly using a French Press to brew coffee, countertop view."
+SCRIPT: "A person makes coffee with a French Press on a kitchen counter. They put in the coffee, add water, wait, and press down the plunger. The camera shows the whole process."
+NARRATION: "French Press coffee is easy to make at home."
+WHY 55: Extremely vague—no materials, colors, textures, or lighting. Multi-step action compressed ("put in, add, wait, press"). No camera angle or movement specified. Narration is generic description, not insight. Would likely produce an incoherent Veo output due to trying to show 4 steps in 8 seconds.
+
+=== EXEMPLAR C (score: 25/100 — poor) ===
+TOPIC: "A person correctly using a French Press to brew coffee, countertop view."
+SCRIPT: "An animated infographic shows the French Press brewing process with step-by-step labels: 'Step 1: Add grounds', 'Step 2: Pour water', 'Step 3: Wait 4 minutes', 'Step 4: Press'. Arrows and icons guide the viewer through each stage."
+NARRATION: "Follow these four simple steps to brew the perfect cup of French Press coffee every single time at home."
+WHY 25: Text overlays and labels (Veo rejection). Animated infographic (not photorealistic). Multi-step with arrows/icons. Narration exceeds 18 words. Would be immediately rejected by Veo 3.
+
+=== EXEMPLAR D (score: 72/100 — decent but flawed) ===
+TOPIC: "A close-up of a Newton's Cradle in motion on a desk, macro view."
+SCRIPT: "A macro close-up captures a Newton's Cradle on a dark walnut desk. The leftmost chrome sphere swings up and strikes the row, sending the rightmost sphere arcing outward. The camera slowly zooms in as the spheres click rhythmically."
+NARRATION: "Each collision transfers momentum perfectly through the stationary spheres between."
+WHY 72: Good specificity (walnut, chrome, macro). Reasonable temporal arc. But "slowly zooms in" is a prohibited camera move (FAIL on C5). Single subject, good narration with physics insight. The zoom violation would cause Veo generation issues.
+"""
+
+def stage2_quality_scoring(script_data: Dict[str, str], topic: str, stage1_result: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Calibrated quality assessment using exemplar anchoring. The evaluator is
+    shown scored examples first to calibrate its scale, then scores the candidate.
+    """
+    script = script_data.get("script", "")
+    narration = script_data.get("narration", "")
+    failed_checks = stage1_result.get("failed_checks", [])
+    checks = stage1_result.get("checks", {})
+
+    stage1_summary = ""
+    for name, check in checks.items():
+        verdict = check.get("verdict", "?")
+        reason = check.get("reason", "")
+        if verdict == "FAIL":
+            stage1_summary += f"  FAILED {name}: {reason}\n"
+
+    prompt = f"""You are a calibrated evaluator for Veo 3 video generation prompts.
+
+IMPORTANT: Read the scored exemplars below FIRST to calibrate your scoring scale. A score of 92 means excellent with minor flaws. A score of 55 means vague and multi-step. A score of 25 means policy-violating garbage. Score honestly relative to these anchors.
+
+{EXEMPLARS}
+
+--- NOW EVALUATE THIS CANDIDATE ---
+
+TOPIC: {topic}
+SCRIPT: "{script}"
+NARRATION: "{narration}"
+
+HARD-CHECK FAILURES FROM STAGE 1 (these are already verified — do NOT override them):
+{stage1_summary if stage1_summary else "  None — all hard checks passed."}
+
+SCORING RULES:
+- Start from 100 and subtract.
+- Each FAILED hard check from Stage 1: subtract 8-15 points depending on severity.
+- Then evaluate these quality dimensions (each 0-10 scale, where 5 is average and 10 is exceptional):
+
+Q1_VISUAL_RICHNESS: Are specific materials, textures, and colors named? (e.g., "brushed aluminum" not just "metal"; "amber liquid" not just "coffee")
+  - 8-10: 4+ specific material/color/texture terms. Example: "granite countertop, glass-bodied French Press, stainless-steel plunger, amber liquid"
+  - 5-7: 2-3 specific terms with some vague descriptions mixed in
+  - 0-4: Mostly generic ("a person", "a table", "coffee")
+
+Q2_TEMPORAL_DEPTH: Does the description create a sense of motion and change across 8 seconds, or is it a static pose?
+  - 8-10: Clear beginning/middle/end with described motion. Reader can mentally "play" the 8 seconds.
+  - 5-7: Some progression but rushed or with gaps
+  - 0-4: Static scene description or list of features with no temporal flow
+
+Q3_VEO_PROMPT_CRAFT: Would an experienced Veo user consider this a well-crafted generation prompt? Consider: Is it written for a VIDEO MODEL (temporal, motion-focused) rather than an image model? Does it avoid patterns known to cause Veo failures?
+  - 8-10: Reads like a professional Veo prompt. Motion-oriented, avoids all known failure patterns.
+  - 5-7: Functional but could be improved. Minor risk of Veo issues.
+  - 0-4: Reads like an image description, contains known Veo failure patterns.
+
+Q4_NARRATION_INSIGHT: Does the narration add a fact, context, or perspective that the visuals alone don't convey?
+  - 8-10: Adds specific knowledge (a measurement, a historical fact, a causal explanation). Example: "Four minutes of patience turns coarse grounds into a full-bodied brew."
+  - 5-7: Somewhat insightful but could be more specific
+  - 0-4: Merely restates what's visible, or is generic ("This is how it's done")
+
+Q5_TOPIC_PRECISION: Does the output capture the specific subject, action, and framing described in the topic — not just the general category?
+  - 8-10: Matches the exact subject, action, viewpoint, and setting from the topic
+  - 5-7: Captures the general idea but misses specific details from the topic
+  - 0-4: Only loosely related to the topic
+
+Respond with ONLY valid JSON:
+{{
+    "quality_scores": {{
+        "Q1_VISUAL_RICHNESS": {{"score": 0-10, "evidence": "quote key terms or note absence"}},
+        "Q2_TEMPORAL_DEPTH": {{"score": 0-10, "evidence": "describe the temporal arc or lack thereof"}},
+        "Q3_VEO_PROMPT_CRAFT": {{"score": 0-10, "evidence": "note motion language or static/image-like phrasing"}},
+        "Q4_NARRATION_INSIGHT": {{"score": 0-10, "evidence": "what insight does it add?"}},
+        "Q5_TOPIC_PRECISION": {{"score": 0-10, "evidence": "what topic details are captured vs missed?"}}
+    }},
+    "hard_check_penalty": 0,
+    "final_score": 0,
+    "feedback": "2-3 sentences: what specific instruction changes in the system prompt would improve this output? Focus on the weakest dimension."
+}}"""
+
+    r = client.chat.completions.create(
+        model=EVAL_MODEL,
+        messages=[{"role": "user", "content": prompt}],
+        max_completion_tokens=1000,
+        temperature=1, 
+    )
+    raw = r.choices[0].message.content.strip()
+    raw = _clean_json(raw)
+    return json.loads(raw)
+
+
+def compute_score(stage1: Dict[str, Any], stage2: Dict[str, Any]) -> float:
+    """
+    Combine both stages into a single 0-100 fitness score.
+    Hard-check failures impose a ceiling; quality scores fill the rest.
+    """
+    checks = stage1.get("checks", {})
+    num_checks = len(checks)
+    fail_count = sum(1 for c in checks.values() if c.get("verdict") == "FAIL")
+    pass_rate = (num_checks - fail_count) / num_checks if num_checks else 0
+
+    q_scores = stage2.get("quality_scores", {})
+    q_values = [v.get("score", 0) if isinstance(v, dict) else v for v in q_scores.values()]
+    quality_avg = sum(q_values) / len(q_values) if q_values else 0
+
+    # Hard checks gate the score: each failure reduces the ceiling
+    # 0 failures → ceiling 100, 1 failure → ceiling ~88, 2 → ~76, etc.
+    ceiling = 100 * (pass_rate ** 0.5)
+
+    # Quality component: scale 0-10 average to 0-100 range, then cap at ceiling
+    quality_pct = quality_avg * 10
+    raw_score = min(quality_pct, ceiling)
+
+    # Apply the model's own penalty as a cross-check
+    model_penalty = stage2.get("hard_check_penalty", 0)
+    model_final = stage2.get("final_score", raw_score)
+
+    # Average our computed score with the model's to reduce single-point bias
+    blended = (raw_score + model_final) / 2
+    return round(max(0, min(100, blended)), 2)
 
 
 def evaluate_candidate(candidate: Candidate, tasks: List[Dict[str, str]]) -> List[EvalTrace]:
@@ -334,15 +380,35 @@ def evaluate_candidate(candidate: Candidate, tasks: List[Dict[str, str]]) -> Lis
             script_data = {"script": f"GENERATION_ERROR: {e}", "narration": ""}
 
         try:
-            critique = critique_script(script_data, topic)
+            stage1 = stage1_hard_checks(script_data, topic)
         except Exception as e:
-            critique = {"scores": {}, "issues": [str(e)], "feedback": str(e)}
+            stage1 = {"checks": {}, "pass_count": 0, "fail_count": 12, "failed_checks": ["EVAL_ERROR"]}
 
-        score = compute_score(critique)
-        feedback = critique.get("feedback", "")
-        issues = critique.get("issues", [])
-        if issues:
-            feedback = "ISSUES:\n" + "\n".join(f"- {i}" for i in issues) + "\n\nFEEDBACK:\n" + feedback
+        try:
+            stage2 = stage2_quality_scoring(script_data, topic, stage1)
+        except Exception as e:
+            stage2 = {"quality_scores": {}, "hard_check_penalty": 50, "final_score": 0, "feedback": str(e)}
+
+        score = compute_score(stage1, stage2)
+
+        critique = {"stage1": stage1, "stage2": stage2}
+
+        s1_failures = stage1.get("failed_checks", [])
+        s2_feedback = stage2.get("feedback", "")
+        s2_scores = stage2.get("quality_scores", {})
+        weakest = ""
+        if s2_scores:
+            weakest_dim = min(s2_scores.items(), key=lambda x: x[1].get("score", 10) if isinstance(x[1], dict) else x[1])
+            weakest = f"Weakest: {weakest_dim[0]}"
+
+        feedback_parts = []
+        if s1_failures:
+            feedback_parts.append("HARD-CHECK FAILURES:\n" + "\n".join(f"- {f}" for f in s1_failures))
+        if weakest:
+            feedback_parts.append(weakest)
+        if s2_feedback:
+            feedback_parts.append(f"QUALITY FEEDBACK:\n{s2_feedback}")
+        feedback = "\n\n".join(feedback_parts)
 
         trace = EvalTrace(
             task_key=key,
@@ -409,8 +475,8 @@ Provide the new instructions within ``` blocks."""
     r = client.chat.completions.create(
         model=MUTATION_MODEL,
         messages=[{"role": "user", "content": meta_prompt}],
-        max_tokens=2000,
-        temperature=0.8,
+        max_completion_tokens=2000,
+        temperature=1, 
     )
     response = r.choices[0].message.content.strip()
 
@@ -542,8 +608,8 @@ def summarize_mutation(old_prompt: str, new_prompt: str) -> str:
     r = client.chat.completions.create(
         model="gpt-5-nano",
         messages=[{"role": "user", "content": f"In one sentence, what changed between these two prompts?\n\nOLD:\n{old_prompt[:1500]}\n\nNEW:\n{new_prompt[:1500]}"}],
-        max_tokens=100,
-        temperature=0.2,
+        max_completion_tokens=100,
+        temperature=1,  
     )
     return r.choices[0].message.content.strip()
 
@@ -629,6 +695,13 @@ def run_gepa(
 
         child_mb_avg = sum(t.score for t in child_mb_traces) / len(child_mb_traces)
         print(f"  Mutated minibatch avg: {child_mb_avg:.1f} (parent was {mb_avg:.1f})")
+
+        if child_mb_avg <= 0:
+            print("  EARLY STOP: iteration returned 0.0, exiting search.")
+            state.traces.extend(mb_traces)
+            save_state(state, save_path)
+            print(f"  State saved to {save_path}")
+            break
 
         # 5. Accept if improved on minibatch
         if child_mb_avg > mb_avg:

@@ -1,0 +1,430 @@
+{
+  "candidates": [
+    {
+      "id": 0,
+      "prompt": "You are writing a prompt for Veo 3, a text-to-video AI model that generates photorealistic real-world footage. \nYour output will be fed directly to the model as its generation prompt, so write in vivid, descriptive, present-tense language\u2014as if narrating what the camera sees moment by moment.\n\nTOPIC: \"{topic}\"\nBACKGROUND RESEARCH (use for factual accuracy): {context}\n\nSCRIPT REQUIREMENTS:\n- The clip is exactly 8 seconds of continuous, photorealistic footage. No cuts, transitions, or scene changes.\n- Describe a single real-world scene with one clear subject performing one simple, observable action.\n- Write in temporal order: what the viewer sees at the start, what unfolds over the 8 seconds, and how the shot ends.\n- Use specific, concrete visual details\u2014materials, textures, colors, lighting quality, and spatial relationships.\n- Camera: stationary or slow dolly/pan only. Specify the angle (e.g. eye-level, overhead, 45-degree). No zooms, whip pans, handheld shake, or rack focus.\n- Lighting: specify the light source (e.g. soft window light, golden hour sun, overhead fluorescents).\n- Keep the scene grounded and filmable\u2014nothing fantastical, animated, graphical, or text-overlay based.\n- Avoid: multiple competing subjects, complex multi-step actions, grid/pattern layouts, technical measurement setups, or scanning motions.\n\nNARRATION REQUIREMENTS:\n- One spoken sentence, max 18 words, that a voiceover narrator would say over the clip.\n- Should complement the visuals\u2014not merely describe what is shown, but add insight or context.\n\nOUTPUT (valid JSON only, no other text):\n{{\n    \"script\": \"Present-tense, temporally ordered description of the 8-second clip with specific visual and cinematic details.\",\n    \"narration\": \"A single conversational sentence adding insight to the visuals (max 18 words).\"\n}}",
+      "parent_id": null,
+      "generation": 0,
+      "scores": {
+        "3.mp4": 0,
+        "4.mp4": 0,
+        "5.mp4": 0,
+        "7.mp4": 0,
+        "8.mp4": 0,
+        "9.mp4": 0
+      },
+      "avg_score": 0.0,
+      "mutation_summary": ""
+    }
+  ],
+  "traces": [
+    {
+      "task_key": "3.mp4",
+      "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "4.mp4",
+      "topic": "A close-up of a Newton\u2019s Cradle in motion on a desk, macro view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "5.mp4",
+      "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "7.mp4",
+      "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "8.mp4",
+      "topic": "A person walking across the Abbey Road zebra crossing, eye-level view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "9.mp4",
+      "topic": "A Mongolian horseman using an Uurga to catch a wild horse, wide landscape shot.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "7.mp4",
+      "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "5.mp4",
+      "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "3.mp4",
+      "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "4.mp4",
+      "topic": "A close-up of a Newton\u2019s Cradle in motion on a desk, macro view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "7.mp4",
+      "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "5.mp4",
+      "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "5.mp4",
+      "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "9.mp4",
+      "topic": "A Mongolian horseman using an Uurga to catch a wild horse, wide landscape shot.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "3.mp4",
+      "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "stage1": {
+          "checks": {},
+          "pass_count": 0,
+          "fail_count": 12,
+          "failed_checks": [
+            "EVAL_ERROR"
+          ]
+        },
+        "stage2": {
+          "quality_scores": {},
+          "hard_check_penalty": 50,
+          "final_score": 0,
+          "feedback": "Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      "score": 0,
+      "feedback_text": "HARD-CHECK FAILURES:\n- EVAL_ERROR\n\nQUALITY FEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    }
+  ],
+  "next_id": 4,
+  "rollouts_used": 24,
+  "best_candidate_id": 0
+}
