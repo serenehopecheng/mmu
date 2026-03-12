@@ -291,7 +291,7 @@ class ImageRetrieverTool(BaseTool[ImageRetrieverArgs, list]):
                     {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_b64}"}}
                 ]
             }],
-            max_tokens=100
+            max_completion_tokens=100
         )
         validation_text = validation_response.choices[0].message.content.strip()
         validation_text = clean_json_block(validation_text)
@@ -459,12 +459,13 @@ class ScriptGeneratorTool(BaseTool[ScriptGeneratorArgs, str]):
         r = openai_client.chat.completions.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=1200
+            max_completion_tokens=1200
         )
         return r.choices[0].message.content.strip()
 
 class PromptCritiqueArgs(BaseModel):
-    video_prompt: List[Dict[str, Any]]
+    video_prompt: str
+    narration: str
     topic: str
 
 class PromptCritiqueTool(BaseTool[PromptCritiqueArgs, Dict[str, Any]]):
@@ -473,177 +474,111 @@ class PromptCritiqueTool(BaseTool[PromptCritiqueArgs, Dict[str, Any]]):
             args_type=PromptCritiqueArgs,
             return_type=Dict[str, Any],
             name="prompt_critique",
-            description="Validates and critiques video script, checking for policy violations and rephrasing if needed."
+            description="Scores and rewrites a video script across quality dimensions, returning an improved version."
         )
 
     async def run(self, args: PromptCritiqueArgs, context):
-        critique_prompt = f"""SCRIPT VALIDATOR & CRITIC
+        critique_prompt = f"""You are an expert script editor for Veo 3, a text-to-video AI that generates photorealistic 8-second clips.
 
-        You are a meticulous validator for short educational video scripts and narrations.
+TOPIC: {args.topic}
+VIDEO SCRIPT: {args.video_prompt}
+NARRATION: {args.narration}
 
-        Carefully review the video script and narration below for any policy violations, prohibited content, or quality issues.
+SCORE each dimension 0-10, then REWRITE the script to maximize all scores.
 
-        TOPIC: {args.topic}
-        VIDEO SCRIPT: {args.video_prompt}
-        NARRATION: {args.narration}
+SCORING DIMENSIONS:
+1. policy_compliance: No sensitive content, text overlays, graphics, animation, fantasy, or prohibited camera moves (zooms, whip pans, rack focus, scanning).
+2. visual_specificity: Names concrete materials, textures, colors, lighting source/quality, and spatial relationships. Avoids vague words like "beautiful", "amazing", "stunning".
+3. temporal_clarity: Describes a clear start-to-end progression across exactly 8 seconds. The reader can picture what happens at second 1 vs second 4 vs second 8.
+4. single_subject_focus: One subject performing one simple, observable action. No competing elements, no multi-step processes.
+5. camera_feasibility: Camera angle explicitly stated (e.g. eye-level, overhead, 45-degree low angle). Movement is stationary or slow dolly/pan only.
+6. narration_quality: One sentence, max 18 words. Adds insight or context beyond what is visible—not a description of the visuals.
+7. veo_compatibility: Likely to succeed with Veo 3. Penalize: abstract concepts shown literally, grid/pattern layouts, technical measurement setups, multiple scene transitions, complex hand manipulations.
 
-        YOUR REVIEW MUST CHECK FOR (ALL required):
-        1. Sensitive or unsafe content (violence, weapons, disturbing imagery, dangerous acts, etc.)
-        2. Use of text overlays, graphics, or animation (only real-world footage is allowed)
-        3. Camera movements that are prohibited (e.g. zooms, whip pans, sudden shifts; only stationary or gentle pan)
-        4. Abstract, non-literal, or animated visuals (must depict authentic, real-world scenes)
-        5. Multiple simultaneous or confusing subjects (should focus on a single clear subject or action)
-        6. Overly complex actions, technical manipulations, or scanning patterns
-        7. Scenes involving grid patterns, measuring, or comparing objects in a technical/abstract manner
-        8. Showing technical or analytical processes through physical objects or setups
-        9. Any violations of Google responsible AI or content guidelines
+REWRITE RULES:
+- Replace every vague adjective with a concrete visual detail (color, material, texture, light).
+- Add explicit temporal beats ("The shot opens with...", "Over the next few seconds...", "The clip ends as...").
+- Specify camera angle and movement in the first sentence of the script.
+- Ensure the narration teaches or contextualizes—never just restates the visuals.
+- Simplify any action that requires precise timing or coordination.
+- If the original is fundamentally incompatible with Veo 3, reimagine the scene using an everyday analogy that conveys the same concept.
 
-        IF ANY ISSUE IS FOUND:
-        - Clearly identify each specific problem in a bulleted list.
-        - Rewrite the video script and narration to fully resolve these issues, using straightforward and relatable real-world metaphors or analogies where fitting.
-        - Avoid technical manipulations; keep visuals simple and grounded in reality.
-        - Ensure the revised script remains instructional and factually clear.
-
-        IF NO ISSUES, return the original script and narration.
-
-        FORMAT YOUR RESPONSE AS VALID JSON ONLY, with this exact schema:
-        {{
-            "is_valid": true or false,
-            "issues": ["description of each issue"] or [],
-            "rephrased_video_script": "revised script or original if already valid",
-            "rephrased_narration": "revised narration or original if already valid",
-            "explanation": "Brief summary of your changes, or note that none were needed."
-        }}
-
-        Do not include anything but the JSON object above in your reply. Be precise and concise.
-        """
+Respond with ONLY valid JSON:
+{{
+    "scores": {{
+        "policy_compliance": 0-10,
+        "visual_specificity": 0-10,
+        "temporal_clarity": 0-10,
+        "single_subject_focus": 0-10,
+        "camera_feasibility": 0-10,
+        "narration_quality": 0-10,
+        "veo_compatibility": 0-10
+    }},
+    "issues": ["specific issue 1", "..."],
+    "rewritten_script": "The improved 8-second video description with all fixes applied.",
+    "rewritten_narration": "Improved narration, max 18 words.",
+    "explanation": "What was changed and why."
+}}"""
 
         r = openai_client.chat.completions.create(
             model="gpt-4o",
             messages=[{"role": "user", "content": critique_prompt}],
-            max_tokens=300
+            max_completion_tokens=1200
         )
         
         result_text = r.choices[0].message.content.strip()
         result_text = clean_json_block(result_text)
         return json.loads(result_text)
 
-async def create_critique_agent_team(query: str, video_prompts_data: list):
-    client = OpenAIChatCompletionClient(model="gpt-4o", api_key=os.getenv("OPENAI_API_KEY"))
-    
-    orchestrator_agent = AssistantAgent(
-        name="Orchestrator",
-        model_client=client,
-        system_message="""You are the Orchestrator Agent, responsible for generating and ensuring approval of a single, policy-compliant 8-second video script.
+QUALITY_THRESHOLD = 7.0
+MAX_CRITIQUE_ROUNDS = 3
 
-        Your responsibilities:
-        1. Understand the user's topic and determine a clear, approachable way to illustrate it within an 8-second real-world video.
-        2. Compose a concise, high-quality video script and narration that aligns with policy and accurately reflects the topic.
-        3. Submit your draft to the Critique Agent for evaluation of policy compliance and instructional clarity.
-        4. Carefully review feedback from the Critique Agent. Apply specific changes to improve the script and resolve any highlighted issues.
-        5. Once the Critique Agent approves your script, initiate the video creation process.
-        6. If video generation fails—due to policy, technical, or other errors—immediately share the failed script and error message with the Critique Agent. Incorporate their rephrased suggestions and retry.
-        7. Repeat this feedback-and-revision loop as needed, prioritizing clarity, safety, and real-world simplicity for a successful outcome.
-        8. Deliver the approved, successfully generated 8-second video, ensuring it matches the user's intent.
+async def run_iterative_critique(query: str, script_data: dict) -> dict:
+    """Score-and-rewrite loop: critique the script, rewrite weak areas, repeat until good enough."""
+    critique_tool = PromptCritiqueTool()
+    current_script = str(script_data.get("script", ""))
+    current_narration = str(script_data.get("narration", ""))
 
-        Workflow:
-        - Analyze and distill topic into a simple, clear concept suitable for an 8-second, real-world video.
-        - Draft the script and narration.
-        - Send both to the Critique Agent for review.
-        - If issues are found, revise based on detailed feedback.
-        - After approval, proceed to video generation.
-        - On failure, gather feedback and retry as directed.
-        - Persistently collaborate with the Critique Agent until the video passes all checks and is generated successfully.
+    all_rounds = []
 
-        Never give up; always iterate and work with the Critique Agent to achieve a compliant, effective result."""
-    )
-    
-    critique_agent = AssistantAgent(
-        name="CritiqueAgent",
-        model_client=client,
-        system_message="""You are the Critique Agent. Your mission: ensure every video generation script is safe, clear, real-world, policy-compliant, and ALWAYS successfully generates a valid 8-second video.
+    for round_num in range(MAX_CRITIQUE_ROUNDS):
+        print(f"  Critique round {round_num + 1}/{MAX_CRITIQUE_ROUNDS}...")
+        args = PromptCritiqueArgs(
+            video_prompt=current_script,
+            narration=current_narration,
+            topic=query,
+        )
+        result = await critique_tool.run(args, None)
+        all_rounds.append(result)
 
-        Your responsibilities:
-        1. Verify the script accurately distills the topic into a single, straightforward 8-second real-world video concept.
-        2. Detect and flag any policy violations or problematic elements (see "Validation Checks").
-        3. Give specific, constructive feedback and concrete rephrasing suggestions—always aiming for greater clarity, simplicity, and policy compliance.
-        4. If video generation fails, analyze the error message, diagnose the likely cause, and iteratively rephrase the script to resolve it.
-        5. With each failure, make the script increasingly conservative and general until it succeeds.
-        6. Fact-check narration for factual accuracy and directness.
-        7. Persist until a valid, policy-compliant video prompt is achieved—failure is not an option.
+        scores = result.get("scores", {})
+        avg = sum(scores.values()) / len(scores) if scores else 0
+        min_score = min(scores.values()) if scores else 0
+        issues = result.get("issues", [])
 
-        Validation Checks — reject or rewrite if any of the following are present:
-        - Sensitive content (violence, weapons, disturbing imagery)
-        - Text overlays, graphics, or captions (all are prohibited)
-        - Camera movements (zooms, whip pans, sudden shifts)
-        - Animated, abstract, or non-real-world scenes (must be real footage)
-        - Multiple competing visual subjects in a single shot
-        - Complex actions, manipulations, or scanning movements
-        - Grid patterns, matching operations, or technical processes with physical objects
+        print(f"    Avg={avg:.1f}  Min={min_score}  Issues={len(issues)}")
+        for dim, val in sorted(scores.items()):
+            flag = " <--" if val < QUALITY_THRESHOLD else ""
+            print(f"      {dim}: {val}{flag}")
 
-        Recovery & Iteration Strategies (apply in order with each failed attempt):
-        1. Replace technical language with everyday analogies and real-world objects
-        2. Simplify visuals to obvious, familiar scenes and actions
-        3. Use generic, easily filmable everyday scenarios
-        4. Remove any ambiguous or potentially confusing elements
-        5. Make the description more conservative and minimal
+        if avg >= QUALITY_THRESHOLD and min_score >= 5 and not issues:
+            print(f"    Script passes quality threshold (avg={avg:.1f}, min={min_score})")
+            break
 
-        Always deliver:
-        - Clear list of identified issues (or state "No issues found")
-        - Specific and improved rephrasing of the video description and narration
-        - Brief explanation of all changes or rationale for approval
-        - Verification of narration fact accuracy
-        - Explicit approval or needed revision
+        rewritten_script = result.get("rewritten_script", "")
+        rewritten_narration = result.get("rewritten_narration", "")
+        if rewritten_script:
+            current_script = rewritten_script
+        if rewritten_narration:
+            current_narration = rewritten_narration
+        print(f"    Applied rewrite from round {round_num + 1}")
 
-        Actively guide, encourage, and never stop improving prompts until you reach a fully valid and effective outcome. Be specific, actionable, and concise in your feedback."""
-    )
-    
-    team = RoundRobinGroupChat([orchestrator_agent, critique_agent], max_turns=20)
-    
-    initial_message = f"""Topic: {query}
-
-    Video script to validate and improve:
-    {json.dumps(video_prompts_data, indent=2)}
-
-    TASKS:
-    1. Carefully analyze the topic and determine the most effective, policy-compliant way to address it in a real-world video.
-    2. Review the current video script and narration for policy compliance, clarity, and quality.
-    3. Suggest specific, actionable improvements to both the video description and narration, focusing on safety, simplicity, and effectiveness.
-    4. Iterate as needed: If further adjustment is required, clearly provide the revised script and pinpoint all issues.
-
-    Final Output: If any improvements are needed, return the fully improved script as a JSON array using this structure:
-    [
-    {{
-        "video_prompt": "Improved, detailed, policy-compliant real-world video description",
-        "narration": "Revised clear and accurate narration answering the topic in max 20 words"
-    }}
-    ]
-
-    If no further improvement is required, state "No issues found" and confirm the script is ready for video generation.
-    """
-    
-    stream = team.run_stream(task=initial_message)
-    
-    messages = []
-    async for message in stream:
-        messages.append(message)
-    
-    final_data = video_prompts_data
-    for message in reversed(messages):
-        message_text = str(message)
-        json_match = re.search(r'\[[\s\S]*?\{[\s\S]*?"part"[\s\S]*?\}[\s\S]*?\]', message_text)
-        if json_match:
-            try:
-                potential_data = json.loads(json_match.group())
-                if isinstance(potential_data, list) and len(potential_data) > 0:
-                    if all('video_prompt' in item and 'narration' in item for item in potential_data):
-                        final_data = potential_data
-                        print(f"✓ Critique agents adjusted video to {len(final_data)} clips ({len(final_data) * 8} seconds)")
-                        break
-            except:
-                continue
-    
-    return messages, final_data
+    return {
+        "script": current_script,
+        "narration": current_narration,
+        "rounds": all_rounds,
+        "final_scores": all_rounds[-1].get("scores", {}) if all_rounds else {},
+    }
 
 class VeoVideoGeneratorArgs(BaseModel):
     query: str
@@ -890,16 +825,22 @@ async def run_pipeline(query: str, iid: int):
     #     script = f.read()
     # data = json.loads(script)
 
-    
-    # print("[STEP 4/5] Running critique agent...")
-    # # critique_args = PromptCritiqueArgs(video_prompt=data, topic=query)
-    # messages, validated_prompts = await create_critique_agent_team(query, data)
-    # out_dir = Path("test") / "2_critique"
-    # out_dir.mkdir(parents=True, exist_ok=True)
-    # filename = out_dir / f"{iid}_critique.txt"
-    # print(validated_prompts)
-    # with open(filename, "w", encoding="utf-8") as f:
-    #     f.write(json.dumps(validated_prompts, indent=2))
+    print("[STEP 4/5] Running iterative critique...")
+    critique_result = await run_iterative_critique(query, data)
+    data = {
+        "script": critique_result["script"],
+        "narration": critique_result["narration"],
+    }
+    out_dir = Path("test") / "2_critique"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    filename = out_dir / f"{iid}_critique.txt"
+    print(f"Critiqued script: {data['script'][:120]}...")
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(json.dumps({
+            "final": data,
+            "scores": critique_result["final_scores"],
+            "rounds": critique_result["rounds"],
+        }, indent=2))
     
     # print("[STEP 5/5] Generating videos...")
     # generated_paths = []
