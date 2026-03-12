@@ -1,0 +1,141 @@
+Initializing population with 6 seed prompts...
+Evaluating initial population on 3 tasks...
+  Evaluating C0...
+    [C0] gen=0 avg=98.0 parent=CNone | 0.mp4: 97.22, 1.mp4: 97.78, 2.mp4: 98.89...
+  Evaluating C1...
+    [C1] gen=0 avg=93.1 parent=CNone | 0.mp4: 91.67, 1.mp4: 93.33, 2.mp4: 94.44...
+  Evaluating C2...
+    [C2] gen=0 avg=93.3 parent=CNone | 0.mp4: 96.67, 1.mp4: 87.22, 2.mp4: 96.11...
+  Evaluating C3...
+    [C3] gen=0 avg=93.1 parent=CNone | 0.mp4: 96.67, 1.mp4: 91.11, 2.mp4: 91.67...
+  Evaluating C4...
+    [C4] gen=0 avg=93.7 parent=CNone | 0.mp4: 96.67, 1.mp4: 91.67, 2.mp4: 92.78...
+  Evaluating C5...
+    [C5] gen=0 avg=93.3 parent=CNone | 0.mp4: 91.67, 1.mp4: 91.67, 2.mp4: 96.67...
+
+Best after init: C0 (avg=98.0)
+
+======================================================================
+ITERATION 1 | rollouts=18 | budget=60
+======================================================================
+Selected C0 (avg=98.0) for mutation
+Evaluating C0 on minibatch of 3 tasks for feedback...
+  Minibatch avg score: 91.9
+Reflecting and proposing new prompt...
+Evaluating mutated C6 on minibatch...
+  Mutated minibatch avg: 96.3 (parent was 91.9)
+  IMPROVED +4.4 — evaluating on full Pareto set...
+    ACCEPTED: [C6] gen=1 avg=97.0 parent=C0 | 0.mp4: 97.78, 1.mp4: 94.44, 2.mp4: 98.89...
+    Mutation: The new prompt uses "crafting" instead of "writing" and replaces "you are writing a prompt" with "you are tasked with crafting a prompt," while also making slight adjustments to phrasing for clarity and emphasis.
+  State saved to runs/gepa_20260311_171956.json
+
+======================================================================
+ITERATION 2 | rollouts=27 | budget=60
+======================================================================
+Selected C6 (avg=97.0) for mutation
+Evaluating C6 on minibatch of 3 tasks for feedback...
+  Minibatch avg score: 96.5
+Reflecting and proposing new prompt...
+Evaluating mutated C7 on minibatch...
+  Mutated minibatch avg: 96.1 (parent was 96.5)
+  REJECTED (no improvement on minibatch)
+  State saved to runs/gepa_20260311_171956.json
+
+======================================================================
+ITERATION 3 | rollouts=33 | budget=60
+======================================================================
+Selected C0 (avg=98.0) for mutation
+Evaluating C0 on minibatch of 3 tasks for feedback...
+  Minibatch avg score: 93.9
+Reflecting and proposing new prompt...
+Evaluating mutated C8 on minibatch...
+  Mutated minibatch avg: 96.3 (parent was 93.9)
+  IMPROVED +2.4 — evaluating on full Pareto set...
+    ACCEPTED: [C8] gen=1 avg=96.1 parent=C0 | 0.mp4: 95.0, 1.mp4: 95.56, 2.mp4: 97.78...
+    Mutation: The change between the two prompts is the shift in wording from "You are writing a prompt" to "You are tasked with writing a prompt," which adds a sense of responsibility and formality to the instruction.
+  State saved to runs/gepa_20260311_171956.json
+
+======================================================================
+ITERATION 4 | rollouts=42 | budget=60
+======================================================================
+Selected C0 (avg=98.0) for mutation
+Evaluating C0 on minibatch of 3 tasks for feedback...
+  Minibatch avg score: 93.5
+Reflecting and proposing new prompt...
+Evaluating mutated C9 on minibatch...
+  Mutated minibatch avg: 82.4 (parent was 93.5)
+  REJECTED (no improvement on minibatch)
+  State saved to runs/gepa_20260311_171956.json
+
+======================================================================
+ITERATION 5 | rollouts=48 | budget=60
+======================================================================
+Selected C0 (avg=98.0) for mutation
+Evaluating C0 on minibatch of 3 tasks for feedback...
+  Minibatch avg score: 93.5
+Reflecting and proposing new prompt...
+Evaluating mutated C10 on minibatch...
+  Mutated minibatch avg: 63.1 (parent was 93.5)
+  REJECTED (no improvement on minibatch)
+  State saved to runs/gepa_20260311_171956.json
+
+======================================================================
+ITERATION 6 | rollouts=54 | budget=60
+======================================================================
+Selected C6 (avg=97.0) for mutation
+Evaluating C6 on minibatch of 3 tasks for feedback...
+  Minibatch avg score: 95.0
+Reflecting and proposing new prompt...
+Evaluating mutated C11 on minibatch...
+  Mutated minibatch avg: 96.9 (parent was 95.0)
+  IMPROVED +1.9 — evaluating on full Pareto set...
+    ACCEPTED: [C11] gen=2 avg=97.0 parent=C6 | 0.mp4: 97.78, 1.mp4: 94.44, 2.mp4: 98.89...
+    Mutation: The new prompt specifies that the narration must be a single spoken sentence with a maximum of 18 words, whereas the old prompt did not include a word limit for the narration.
+  State saved to runs/gepa_20260311_171956.json
+
+======================================================================
+EVOLUTION COMPLETE
+======================================================================
+Total rollouts: 63
+Candidates explored: 9
+Best candidate: C0 (gen=0, avg=98.0)
+
+Best prompt:
+You are writing a prompt for Veo 3, a text-to-video AI model that generates photorealistic real-world footage. 
+Your output will be fed directly to the model as its generation prompt, so write in vivid, descriptive, present-tense language—as if narrating what the camera sees moment by moment.
+
+TOPIC: "{topic}"
+BACKGROUND RESEARCH (use for factual accuracy): {context}
+
+SCRIPT REQUIREMENTS:
+- The clip is exactly 8 seconds of continuous, photorealistic footage. No cuts, transitions, or scene changes.
+- Describe a single real-world scene with one clear subject performing one simple, observable action.
+- Write in temporal order: what the viewer sees at the start, what unfolds over the 8 seconds, and how the shot ends.
+- Use specific, concrete visual details—materials, textures, colors, lighting quality, and spatial relationships.
+- Camera: stationary or slow dolly/pan only. Specify the angle (e.g. eye-level, overhead, 45-degree). No zooms, whip pans, handheld shake, or rack focus.
+- Lighting: specify the light source (e.g. soft window light, golden hour sun, overhead fluorescents).
+- Keep the scene grounded and filmable—nothing fantastical, animated, graphical, or text-overlay based.
+- Avoid: multiple competing subjects, complex multi-step actions, grid/pattern layouts, technical measurement setups, or scanning motions.
+
+NARRATION REQUIREMENTS:
+- One spoken sentence, max 18 words, that a voiceover narrator would say over the clip.
+- Should complement the visuals—not merely describe what is shown, but add insight or context.
+
+OUTPUT (valid JSON only, no other text):
+{{
+    "script": "Present-tense, temporally ordered description of the 8-second clip with specific visual and cinematic details.",
+    "narration": "A single conversational sentence adding insight to the visuals (max 18 words)."
+}}
+
+Best prompt saved to: runs/best_prompt_20260311_171956.txt
+
+Leaderboard:
+  #1: avg=98.0 gen=0 C0 (seed) | 
+  #2: avg=97.0 gen=1 C0→C6 | The new prompt uses "crafting" instead of "writing" and replaces "you are writin
+  #3: avg=97.0 gen=2 C6→C11 | The new prompt specifies that the narration must be a single spoken sentence wit
+  #4: avg=96.1 gen=1 C0→C8 | The change between the two prompts is the shift in wording from "You are writing
+  #5: avg=93.7 gen=0 C4 (seed) | 
+  #6: avg=93.3 gen=0 C5 (seed) | 
+  #7: avg=93.3 gen=0 C2 (seed) | 
+  #8: avg=93.1 gen=0 C3 (seed) | 
+  #9: avg=93.1 gen=0 C1 (seed) | 

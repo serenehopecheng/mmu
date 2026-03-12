@@ -434,7 +434,7 @@ class ScriptGeneratorTool(BaseTool[ScriptGeneratorArgs, str]):
         Your output will be fed directly to the model as its generation prompt, so write in vivid, descriptive, present-tense language—as if narrating what the camera sees moment by moment.
 
         TOPIC: "{args.query}"
-        BACKGROUND RESEARCH (use for factual accuracyy): {args.context_info or 'None provided.'}
+        BACKGROUND RESEARCH (use for factual accuracy): {args.context_info}
 
         SCRIPT REQUIREMENTS:
         - The clip is exactly 8 seconds of continuous, photorealistic footage. No cuts, transitions, or scene changes.

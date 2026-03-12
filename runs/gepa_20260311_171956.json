@@ -1,0 +1,1106 @@
+{
+  "candidates": [
+    {
+      "id": 0,
+      "prompt": "You are writing a prompt for Veo 3, a text-to-video AI model that generates photorealistic real-world footage. \nYour output will be fed directly to the model as its generation prompt, so write in vivid, descriptive, present-tense language\u2014as if narrating what the camera sees moment by moment.\n\nTOPIC: \"{topic}\"\nBACKGROUND RESEARCH (use for factual accuracy): {context}\n\nSCRIPT REQUIREMENTS:\n- The clip is exactly 8 seconds of continuous, photorealistic footage. No cuts, transitions, or scene changes.\n- Describe a single real-world scene with one clear subject performing one simple, observable action.\n- Write in temporal order: what the viewer sees at the start, what unfolds over the 8 seconds, and how the shot ends.\n- Use specific, concrete visual details\u2014materials, textures, colors, lighting quality, and spatial relationships.\n- Camera: stationary or slow dolly/pan only. Specify the angle (e.g. eye-level, overhead, 45-degree). No zooms, whip pans, handheld shake, or rack focus.\n- Lighting: specify the light source (e.g. soft window light, golden hour sun, overhead fluorescents).\n- Keep the scene grounded and filmable\u2014nothing fantastical, animated, graphical, or text-overlay based.\n- Avoid: multiple competing subjects, complex multi-step actions, grid/pattern layouts, technical measurement setups, or scanning motions.\n\nNARRATION REQUIREMENTS:\n- One spoken sentence, max 18 words, that a voiceover narrator would say over the clip.\n- Should complement the visuals\u2014not merely describe what is shown, but add insight or context.\n\nOUTPUT (valid JSON only, no other text):\n{{\n    \"script\": \"Present-tense, temporally ordered description of the 8-second clip with specific visual and cinematic details.\",\n    \"narration\": \"A single conversational sentence adding insight to the visuals (max 18 words).\"\n}}",
+      "parent_id": null,
+      "generation": 0,
+      "scores": {
+        "0.mp4": 97.22,
+        "1.mp4": 97.78,
+        "2.mp4": 98.89
+      },
+      "avg_score": 97.96333333333332,
+      "mutation_summary": ""
+    },
+    {
+      "id": 1,
+      "prompt": "You are a veteran cinematographer planning a single 8-second take for a documentary.\nYour shot description will be sent directly to Veo 3, a text-to-video AI that produces photorealistic footage.\n\nTOPIC: \"{topic}\"\nREFERENCE MATERIAL: {context}\n\nThink like a DP: pick ONE subject, ONE action, ONE camera setup. Describe the shot as a continuous present-tense sequence\u2014what the lens sees frame by frame across 8 seconds.\n\nSHOT DESIGN RULES:\n1. Single locked-off or slow-tracking camera. State exact angle and movement.\n2. One subject, one action, no cuts or transitions.\n3. Ground every detail in reality: name materials, colors, textures, light sources.\n4. Temporal structure: opening frame \u2192 mid-action \u2192 closing frame.\n5. Absolutely no text overlays, graphics, animation, fantasy, or abstract imagery.\n6. No zooms, whip pans, rack focus, handheld shake, scanning, or grid layouts.\n\nNARRATION: Write one concise sentence (max 18 words) a narrator would speak over this shot. It should add context or insight beyond what is visible.\n\nReply with ONLY valid JSON:\n{{\n    \"script\": \"Your 8-second shot description.\",\n    \"narration\": \"Your narrator sentence.\"\n}}",
+      "parent_id": null,
+      "generation": 0,
+      "scores": {
+        "0.mp4": 91.67,
+        "1.mp4": 93.33,
+        "2.mp4": 94.44
+      },
+      "avg_score": 93.14666666666666,
+      "mutation_summary": ""
+    },
+    {
+      "id": 2,
+      "prompt": "Generate a Veo 3 video prompt. Veo 3 produces photorealistic real-world footage only.\n\nTOPIC: \"{topic}\"\nCONTEXT: {context}\n\nHARD CONSTRAINTS (violating any will cause generation failure):\n- Exactly 8 seconds, single continuous take\n- One subject, one simple action\n- Camera: fixed or gentle dolly/pan, specify angle\n- No text, graphics, overlays, animation, fantasy\n- No zooms, whip pans, rack focus, scanning, grids\n- No multi-step processes, technical setups, or abstract scenes\n- Real-world lighting, materials, textures only\n\nWrite the prompt in vivid present tense, temporally ordered (start \u2192 middle \u2192 end of 8s).\nAdd a narration sentence (max 18 words) that provides insight beyond the visuals.\n\nJSON only:\n{{\n    \"script\": \"...\",\n    \"narration\": \"...\"\n}}",
+      "parent_id": null,
+      "generation": 0,
+      "scores": {
+        "0.mp4": 96.67,
+        "1.mp4": 87.22,
+        "2.mp4": 96.11
+      },
+      "avg_score": 93.33333333333333,
+      "mutation_summary": ""
+    },
+    {
+      "id": 3,
+      "prompt": "You will create a video generation prompt for Veo 3 (photorealistic real-world footage).\n\nTOPIC: \"{topic}\"\nRESEARCH: {context}\n\nBefore writing, reason through these steps internally:\nStep 1: What single, real-world scene best illustrates this topic in 8 seconds?\nStep 2: What is the one subject and one action? Keep it simple and filmable.\nStep 3: What camera angle and movement (stationary or slow pan/dolly only)?\nStep 4: What is the light source? What specific materials, colors, textures are visible?\nStep 5: Describe temporally: what does the viewer see at second 0, second 4, and second 8?\nStep 6: Write a narrator sentence (max 18 words) that adds insight, not description.\n\nAfter reasoning, output ONLY the final JSON (no explanation):\n{{\n    \"script\": \"Present-tense, temporally ordered 8-second shot with specific visual details.\",\n    \"narration\": \"Concise insight sentence (max 18 words).\"\n}}",
+      "parent_id": null,
+      "generation": 0,
+      "scores": {
+        "0.mp4": 96.67,
+        "1.mp4": 91.11,
+        "2.mp4": 91.67
+      },
+      "avg_score": 93.14999999999999,
+      "mutation_summary": ""
+    },
+    {
+      "id": 4,
+      "prompt": "You are writing a Veo 3 prompt. Veo 3 generates photorealistic real-world footage ONLY.\n\nTOPIC: \"{topic}\"\nBACKGROUND: {context}\n\nGOOD prompts look like: \"A barista pours steamed milk into a ceramic latte cup on a wooden counter. Overhead soft light. Eye-level, stationary camera. The milk swirls into a rosetta pattern over 8 seconds.\"\n\nBAD prompts (will be rejected by Veo): anything with text overlays, multiple subjects doing different things, animation, fantasy, zooms, scanning motions, grid layouts, technical measurement setups, abstract concepts shown literally, or complex multi-step processes.\n\nWrite an 8-second continuous shot description:\n- Single subject, single action, real-world setting\n- Specify camera angle + movement (stationary or slow pan/dolly)\n- Specify light source, materials, textures, colors\n- Temporal order: what happens at start, middle, end\n- Narration: one sentence (max 18 words) adding insight\n\nOutput valid JSON only:\n{{\n    \"script\": \"...\",\n    \"narration\": \"...\"\n}}",
+      "parent_id": null,
+      "generation": 0,
+      "scores": {
+        "0.mp4": 96.67,
+        "1.mp4": 91.67,
+        "2.mp4": 92.78
+      },
+      "avg_score": 93.70666666666666,
+      "mutation_summary": ""
+    },
+    {
+      "id": 5,
+      "prompt": "Write a video prompt for Veo 3 (photorealistic real-world video generator).\n\nTOPIC: \"{topic}\"\nCONTEXT: {context}\n\nIMPORTANT \u2014 Veo 3 commonly fails on these patterns (avoid all):\n- Describing text, labels, or captions appearing on screen\n- Showing abstract concepts literally (e.g., \"data flowing\")\n- Multiple subjects performing different actions simultaneously\n- Complex multi-step processes compressed into 8 seconds\n- Grid/pattern/comparison layouts\n- Technical measurement or scanning motions\n- Zooms, whip pans, rack focus, handheld shake\n- Fantasy, animation, or non-photorealistic imagery\n\nINSTEAD, describe a single 8-second continuous shot of ONE real person or object performing ONE simple action in a specific, well-lit, real-world environment. Use vivid present tense. State the camera angle (e.g., eye-level, 45\u00b0, overhead) and movement (stationary or slow dolly/pan). Name specific materials, colors, textures, and the light source.\n\nStructure: opening frame \u2192 what unfolds \u2192 how the shot ends.\n\nAlso write one narration sentence (max 18 words) adding insight beyond the visuals.\n\nValid JSON only:\n{{\n    \"script\": \"...\",\n    \"narration\": \"...\"\n}}",
+      "parent_id": null,
+      "generation": 0,
+      "scores": {
+        "0.mp4": 91.67,
+        "1.mp4": 91.67,
+        "2.mp4": 96.67
+      },
+      "avg_score": 93.33666666666666,
+      "mutation_summary": ""
+    },
+    {
+      "id": 6,
+      "prompt": "You are tasked with crafting a prompt for Veo 3, an advanced text-to-video AI capable of generating photorealistic real-world footage. Your output will be directly used as the generation prompt for the AI model, so it is crucial to write in vivid, descriptive, present-tense language, narrating what the camera perceives moment by moment.\n\nTOPIC: \"{topic}\"\nBACKGROUND RESEARCH (use for factual accuracy): {context}\n\nSCRIPT REQUIREMENTS:\n- The clip is a continuous 8-second sequence of photorealistic footage with no cuts, transitions, or scene changes.\n- Identify a single real-world scene with one distinct subject engaged in one simple, observable action.\n- Describe the scene in temporal order: start with what the viewer sees, describe how the scene unfolds over the 8 seconds, and conclude with how the shot ends.\n- Include specific, concrete visual details such as materials, textures, colors, lighting quality, and spatial relationships.\n- The camera must be stationary or involve a slow dolly/pan. Specify the camera angle (e.g. eye-level, overhead, 45-degree).\n- Detail the lighting source (e.g. soft window light, golden hour sun, overhead fluorescents).\n- Ensure the scene is grounded and filmable\u2014avoid fantastical elements, animations, graphical content, text overlays, and abstract imagery.\n- Avoid multiple competing subjects, complex multi-step actions, grid/pattern layouts, technical measurement setups, or scanning motions.\n\nNARRATION REQUIREMENTS:\n- Craft a single spoken sentence, with a maximum of 18 words, designed as a voiceover that complements the visuals.\n- The narration should not merely describe what is shown but should add additional insight or context.\n\nOUTPUT FORMAT:\n- Your output must be in valid JSON format with no extraneous text.\n- Include two keys: \"script\" and \"narration\".\n- \"script\": Provide a present-tense, temporally ordered description of the 8-second clip, with specific visual and cinematic details.\n- \"narration\": Include a single, conversational sentence that adds insight to the visuals (no more than 18 words).\n\nIMPROVEMENTS BASED ON FEEDBACK:\n- Enhance lighting descriptions to include more precise details.\n- Specify the timing of each action to ensure clarity and aid in fitting the 8-second limit.\n- Ensure narration does not exceed 18 words and offers specific insights into the action or subject depicted.\n- Use concrete language for visual descriptions to avoid abstract references.\n- Indicate whether the camera is completely stationary or if there is any slight movement for clarity on camera feasibility.\n\nLeverage these guidelines to optimize your prompt's effectiveness for the Veo 3 model, aligning with its capabilities and constraints.",
+      "parent_id": 0,
+      "generation": 1,
+      "scores": {
+        "0.mp4": 97.78,
+        "1.mp4": 94.44,
+        "2.mp4": 98.89
+      },
+      "avg_score": 97.03666666666668,
+      "mutation_summary": "The new prompt uses \"crafting\" instead of \"writing\" and replaces \"you are writing a prompt\" with \"you are tasked with crafting a prompt,\" while also making slight adjustments to phrasing for clarity and emphasis."
+    },
+    {
+      "id": 8,
+      "prompt": "You are tasked with writing a prompt for Veo 3, a sophisticated text-to-video AI model that generates photorealistic real-world footage. Your prompt will be directly input into the model, so ensure it is crafted in vivid, descriptive, present-tense language, narrating what the camera sees moment by moment.\n\nTOPIC: \"{topic}\"\nBACKGROUND RESEARCH (for factual accuracy): {context}\n\nSCRIPT REQUIREMENTS:\n- The clip must be exactly 8 seconds of seamless, photorealistic footage, without any cuts, transitions, or scene changes.\n- Focus on a singular real-world scene with one clear subject carrying out one simple, observable action.\n- Describe in temporal order: what is captured at the start, what unfolds throughout the 8 seconds, and how the sequence concludes.\n- Include specific, concrete visual details: materials, textures, colors, lighting quality, and spatial relationships.\n- Camera rules: It must be either stationary or involve a slow dolly/pan. Specify the angle (e.g., eye-level, overhead, 45-degree). Avoid zooms, whip pans, handheld shake, or rack focus.\n- Lighting: Define the light source and its quality (e.g., soft window light, golden hour sunlight, overhead fluorescents).\n- Ensure the scene remains realistic and filmable\u2014avoid fantastical, animated, graphical elements, or text overlays.\n- Avoid: multiple competing subjects, complex multi-step actions, grid/pattern layouts, technical measurement setups, or scanning motions.\n\nNARRATION REQUIREMENTS:\n- Provide one spoken sentence, with a maximum of 18 words, that could be used in a voiceover for the clip.\n- The narration should complement the visuals, offering insight or context without merely describing what is seen.\n\nOUTPUT (valid JSON only, no other text):\n{{\n    \"script\": \"Provide a detailed, present-tense description of the 8-second clip with specific visual and cinematic detail.\",\n    \"narration\": \"Include a single conversational sentence that adds insight to the visuals (max 18 words).\"\n}}\n\nADDITIONAL GUIDANCE:\n- Enhance visual specificity by detailing colors, textures, and precise lighting conditions, such as the time of day or direction of light.\n- Ensure temporal clarity by clearly defining the progression of actions over the 8 seconds and their durations.\n- Use the feedback from similar tasks to improve; address issues by making targeted improvements rather than complete rewrites.\n- Maintain a single subject focus and ensure the camera specifications are feasible and clearly stated.\n- Ensure the narration adds valuable insight, possibly referencing specific features or attributes of the subject to enhance the viewer's understanding.",
+      "parent_id": 0,
+      "generation": 1,
+      "scores": {
+        "0.mp4": 95.0,
+        "1.mp4": 95.56,
+        "2.mp4": 97.78
+      },
+      "avg_score": 96.11333333333334,
+      "mutation_summary": "The change between the two prompts is the shift in wording from \"You are writing a prompt\" to \"You are tasked with writing a prompt,\" which adds a sense of responsibility and formality to the instruction."
+    },
+    {
+      "id": 11,
+      "prompt": "You are tasked with crafting a prompt for Veo 3, an advanced text-to-video AI capable of generating photorealistic real-world footage. Your output will be directly used as the generation prompt for the AI model, so it is crucial to write in vivid, descriptive, present-tense language, narrating what the camera perceives moment by moment.\n\nTOPIC: \"{topic}\"\nBACKGROUND RESEARCH (use for factual accuracy): {context}\n\nSCRIPT REQUIREMENTS:\n- The clip is a continuous 8-second sequence of photorealistic footage with no cuts, transitions, or scene changes.\n- Identify a single real-world scene with one distinct subject engaged in one simple, observable action.\n- Begin with what the viewer sees, describe how the scene unfolds over the 8 seconds, and conclude with how the shot ends.\n- Include specific, concrete visual details such as materials, textures, colors, lighting quality, and spatial relationships.\n- The camera must be stationary or involve a slow dolly/pan. Specify the camera angle (e.g. eye-level, overhead, 45-degree).\n- Detail the lighting source (e.g. soft window light, golden hour sun, overhead fluorescents).\n- Ensure the scene is grounded and filmable\u2014avoid fantastical elements, animations, graphical content, text overlays, and abstract imagery.\n- Avoid multiple competing subjects, complex multi-step actions, grid/pattern layouts, technical measurement setups, or scanning motions.\n\nNARRATION REQUIREMENTS:\n- Craft a single spoken sentence, with a maximum of 18 words, designed as a voiceover that complements the visuals.\n- The narration should not merely describe what is shown but should add additional insight or context.\n\nOUTPUT FORMAT:\n- Your output must be in valid JSON format with no extraneous text.\n- Include two keys: \"script\" and \"narration\".\n- \"script\": Provide a present-tense, temporally ordered description of the 8-second clip, with specific visual and cinematic details.\n- \"narration\": Include a single, conversational sentence that adds insight to the visuals (no more than 18 words).\n\nIMPROVEMENTS BASED ON FEEDBACK:\n- Enhance lighting descriptions to include more precise details, such as color temperature or intensity.\n- Specify the timing of each action to ensure clarity and aid in fitting the 8-second limit.\n- Ensure narration does not exceed 18 words and offers specific insights into the action or subject depicted.\n- Use concrete language for visual descriptions to avoid abstract references.\n- Indicate whether the camera is completely stationary or involves any subtle movement for clarity on camera feasibility.\n- Focus on providing detailed descriptions of the main elements, such as the environment or subject characteristics, to enhance visual specificity.\n- Ensure narration is directly related to the action taking place to provide additional insight rather than abstract commentary.\n\nLeverage these guidelines to optimize your prompt's effectiveness for the Veo 3 model, aligning with its capabilities and constraints.",
+      "parent_id": 6,
+      "generation": 2,
+      "scores": {
+        "0.mp4": 97.78,
+        "1.mp4": 94.44,
+        "2.mp4": 98.89
+      },
+      "avg_score": 97.03666666666668,
+      "mutation_summary": "The new prompt specifies that the narration must be a single spoken sentence with a maximum of 18 words, whereas the old prompt did not include a word limit for the narration."
+    }
+  ],
+  "traces": [
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "Under soft, overhead ambient light, a stationary, front-view camera captures an individual's hands delicately unwrapping the latest iPhone 16 Pro in Desert Titanium. The sleek, metallic phone emerges from its minimalist white packaging, glinting against the rustic wooden table beneath. The hands rotate the phone, revealing its large, pristine screen and reflective back, before finally placing it down on the table, screen facing up, as the 8-second clip ends.",
+        "narration": "Experience the unboxing euphoria of the newest tech marvel, iPhone 16 Pro."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 7,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "narration does not add significant insight beyond what is shown"
+        ],
+        "feedback": "The prompt is well-constructed with clear instructions and adheres to policy compliance, ensuring no sensitive content or prohibited elements are included. The visual specificity is strong, detailing the materials, colors, and lighting, although it could be slightly enhanced by describing the texture of the phone or packaging. Temporal clarity is excellent, with a clear progression over the 8-second duration. The single subject focus is maintained throughout, concentrating on the unboxing of the iPhone 16 Pro. Camera feasibility is well-handled with a stationary front-view camera, making it realistic and simple. However, the narration quality could be improved; it is somewhat generic and does not provide additional insight beyond the visual content. To enhance this, the narration could include a unique feature of the iPhone 16 Pro or the significance of the Desert Titanium color. Overall, the prompt is highly compatible with Veo 3, with no abstract or complex elements that could trigger policy rejection."
+      },
+      "score": 97.22,
+      "feedback_text": "ISSUES:\n- narration does not add significant insight beyond what is shown\n\nFEEDBACK:\nThe prompt is well-constructed with clear instructions and adheres to policy compliance, ensuring no sensitive content or prohibited elements are included. The visual specificity is strong, detailing the materials, colors, and lighting, although it could be slightly enhanced by describing the texture of the phone or packaging. Temporal clarity is excellent, with a clear progression over the 8-second duration. The single subject focus is maintained throughout, concentrating on the unboxing of the iPhone 16 Pro. Camera feasibility is well-handled with a stationary front-view camera, making it realistic and simple. However, the narration quality could be improved; it is somewhat generic and does not provide additional insight beyond the visual content. To enhance this, the narration could include a unique feature of the iPhone 16 Pro or the significance of the Desert Titanium color. Overall, the prompt is highly compatible with Veo 3, with no abstract or complex elements that could trigger policy rejection."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "From a low angle, a silver Tesla Cybertruck emerges, driving through a puddle. The gleaming metallic body reflects the soft sunlight. For 8 seconds, the stationary camera captures the Cybertruck's angular design, its wheels spraying water droplets in slow motion, before it exits frame, leaving only the shimmering puddle in view.",
+        "narration": "The Cybertruck's futuristic design meets an elemental force: water."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "The narration could provide more insight beyond what is shown."
+        ],
+        "feedback": "The prompt performs well across most dimensions, with clear policy compliance, temporal clarity, and camera feasibility. The visual specificity is strong, detailing the Cybertruck's metallic body and the water droplets, but could be enhanced by describing the environment or the quality of the sunlight more vividly. The narration is concise and relevant but lacks depth in providing insight beyond the visual elements. It could be improved by adding a brief commentary on the Cybertruck's interaction with the environment or its innovative design. This would enhance the narration quality score. Overall, the prompt is well-structured and compatible with Veo 3, with only minor improvements needed in narration to fully meet the criteria."
+      },
+      "score": 97.78,
+      "feedback_text": "ISSUES:\n- The narration could provide more insight beyond what is shown.\n\nFEEDBACK:\nThe prompt performs well across most dimensions, with clear policy compliance, temporal clarity, and camera feasibility. The visual specificity is strong, detailing the Cybertruck's metallic body and the water droplets, but could be enhanced by describing the environment or the quality of the sunlight more vividly. The narration is concise and relevant but lacks depth in providing insight beyond the visual elements. It could be improved by adding a brief commentary on the Cybertruck's interaction with the environment or its innovative design. This would enhance the narration quality score. Overall, the prompt is well-structured and compatible with Veo 3, with only minor improvements needed in narration to fully meet the criteria."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "A side, eye-level view, in the soft glow of afternoon sunlight, reveals a person's hand, casually dressed in a light blue denim jacket. The hand, adorned with a simple silver ring on the middle finger, grips a chilled, condensation beaded bottle of Coca-Cola. The iconic red and white logo is in sharp focus, contrasted against a blurred backdrop of a warmly lit kitchen. The hand starts to twist the new, attached tethered cap, the sound of the seal breaking punctuates the air. The cap makes a slow arc, remaining attached to the bottle, and a gentle fizzing sound emerges from the opened beverage. As the clip ends, the hand starts to lift the bottle, ready for a refreshing sip.",
+        "narration": "The new tethered cap\u2014no more lost lids, just simple, fizzing, thirst-quenching satisfaction."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 10,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "The narration exceeds the 18-word limit."
+        ],
+        "feedback": "The prompt is well-constructed, adhering to most of the evaluation dimensions effectively. It provides a clear, vivid description of the scene with specific details about the setting, lighting, and action, ensuring high scores in visual specificity and temporal clarity. The single subject focus is maintained throughout, and the camera angle is feasible and simple, contributing to high scores in those areas. However, the narration slightly exceeds the 18-word limit, which affects the narration quality score. To improve, the narration could be shortened while still conveying the key message, such as: 'No more lost lids, just simple, thirst-quenching satisfaction with the new tethered cap.' This adjustment would align with the word count requirement and enhance the overall quality of the prompt."
+      },
+      "score": 98.89,
+      "feedback_text": "ISSUES:\n- The narration exceeds the 18-word limit.\n\nFEEDBACK:\nThe prompt is well-constructed, adhering to most of the evaluation dimensions effectively. It provides a clear, vivid description of the scene with specific details about the setting, lighting, and action, ensuring high scores in visual specificity and temporal clarity. The single subject focus is maintained throughout, and the camera angle is feasible and simple, contributing to high scores in those areas. However, the narration slightly exceeds the 18-word limit, which affects the narration quality score. To improve, the narration could be shortened while still conveying the key message, such as: 'No more lost lids, just simple, thirst-quenching satisfaction with the new tethered cap.' This adjustment would align with the word count requirement and enhance the overall quality of the prompt."
+    },
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 1,
+      "script_output": {
+        "script": "From a low, straight-on angle, we see a pair of hands gently unboxing the iPhone 16 Pro in Desert Titanium on a polished mahogany table. The overhead soft white lighting catches the matte finish of the phone as the hands lift it from the box, revealing the sleek design in the final seconds.",
+        "narration": "Long-awaited, the iPhone 16 Pro embodies the pinnacle of technological elegance and advanced design."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 8,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 7,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "The script does not explicitly state the start and end of the 8-second video.",
+          "The narration is slightly abstract and does not add much insight beyond the visual.",
+          "The lighting description could be more specific regarding its effect on the phone's appearance."
+        ],
+        "feedback": "The prompt is generally well-constructed, but there are areas for improvement. The temporal clarity could be enhanced by explicitly stating the start and end of the video within the 8-second timeframe. This would ensure a clear progression. The narration, while concise, is somewhat abstract and could be improved by providing more specific insights related to the phone's features or design. Additionally, the lighting description could be more detailed to better convey how it interacts with the phone's matte finish, enhancing visual specificity. These adjustments would make the prompt more robust and aligned with the evaluation criteria."
+      },
+      "score": 91.67,
+      "feedback_text": "ISSUES:\n- The script does not explicitly state the start and end of the 8-second video.\n- The narration is slightly abstract and does not add much insight beyond the visual.\n- The lighting description could be more specific regarding its effect on the phone's appearance.\n\nFEEDBACK:\nThe prompt is generally well-constructed, but there are areas for improvement. The temporal clarity could be enhanced by explicitly stating the start and end of the video within the 8-second timeframe. This would ensure a clear progression. The narration, while concise, is somewhat abstract and could be improved by providing more specific insights related to the phone's features or design. Additionally, the lighting description could be more detailed to better convey how it interacts with the phone's matte finish, enhancing visual specificity. These adjustments would make the prompt more robust and aligned with the evaluation criteria."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 1,
+      "script_output": {
+        "script": "From a low, ground-level angle, the camera captures a close up of a matte silver Tesla Cybertruck's tires. The scene is illuminated by diffuse daylight, casting light shadows on the asphalt beneath. The Cybertruck moves forward, approaching a shaded puddle. As it reaches the puddle, water splashes up, droplets catching the light and becoming prismatic. The truck continues, leaving behind disturbed water settling back into a mirror-like surface.",
+        "narration": "The Tesla Cybertruck, a symbol of sustainable transport, is as much at home in urban landscapes as it is on rough terrains."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 8,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "The visual specificity could be improved by detailing the texture of the puddle or the tire treads.",
+          "The temporal clarity is slightly vague about the exact moment the splash occurs and how it resolves.",
+          "The narration, while insightful, could be more directly related to the visual by mentioning the puddle or splash."
+        ],
+        "feedback": "The prompt is well-constructed with a clear focus on the Tesla Cybertruck and its interaction with a puddle. The visual specificity is strong, but could be enhanced by describing the texture of the puddle or the tire treads to create a more vivid image. Temporal clarity is mostly present, but specifying the timing of the splash and its resolution would improve the sequence. The narration is insightful but could be more directly tied to the visual elements by mentioning the puddle or splash, which would strengthen the connection between the narration and the video content. Overall, the prompt is compatible with Veo 3, with realistic camera angles and movements, and adheres to policy guidelines."
+      },
+      "score": 93.33,
+      "feedback_text": "ISSUES:\n- The visual specificity could be improved by detailing the texture of the puddle or the tire treads.\n- The temporal clarity is slightly vague about the exact moment the splash occurs and how it resolves.\n- The narration, while insightful, could be more directly related to the visual by mentioning the puddle or splash.\n\nFEEDBACK:\nThe prompt is well-constructed with a clear focus on the Tesla Cybertruck and its interaction with a puddle. The visual specificity is strong, but could be enhanced by describing the texture of the puddle or the tire treads to create a more vivid image. Temporal clarity is mostly present, but specifying the timing of the splash and its resolution would improve the sequence. The narration is insightful but could be more directly tied to the visual elements by mentioning the puddle or splash, which would strengthen the connection between the narration and the video content. Overall, the prompt is compatible with Veo 3, with realistic camera angles and movements, and adheres to policy guidelines."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 1,
+      "script_output": {
+        "script": "From a slightly raised side angle, we see a sunlit kitchen counter of polished granite. A person's hand, slightly weathered with age and experience, enters the frame, holding a chilled, condensation-covered bottle of Coca-Cola. The bottle's red, newly designed tethered cap reflects the warm ambient light. The hand starts to twist the cap, the tethered design keeping it attached to the bottle after it's opened. Droplets of condensation fall onto the counter as the cap is fully removed, releasing a soft fizzing sound, accentuated by the quiet hum of the kitchen. The hand then retracts, leaving the opened bottle alone in the frame, light glinting off the moisture on the bottle and the granite counter.",
+        "narration": "The innovative tethered cap design prevents litter, contributing to Coca-Cola's environmental sustainability efforts."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 10,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 8,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "The temporal progression is mostly clear, but the exact timing of the hand retracting could be more precise.",
+          "The camera angle is specified, but the description of 'slightly raised side angle' could be more precise.",
+          "The narration is slightly over the word limit, containing 19 words instead of the maximum 18."
+        ],
+        "feedback": "The prompt is well-constructed with clear visual specificity and a strong focus on the single subject of opening a Coca-Cola bottle with a tethered cap. However, there are minor issues with temporal clarity, as the exact timing of the hand retracting could be more explicitly stated to ensure a smooth progression. Additionally, the camera angle description could be more precise to avoid ambiguity. The narration slightly exceeds the word limit, which could be adjusted to fit within 18 words. To improve, specify the timing of the hand's retraction more clearly, refine the camera angle description, and shorten the narration by one word."
+      },
+      "score": 94.44,
+      "feedback_text": "ISSUES:\n- The temporal progression is mostly clear, but the exact timing of the hand retracting could be more precise.\n- The camera angle is specified, but the description of 'slightly raised side angle' could be more precise.\n- The narration is slightly over the word limit, containing 19 words instead of the maximum 18.\n\nFEEDBACK:\nThe prompt is well-constructed with clear visual specificity and a strong focus on the single subject of opening a Coca-Cola bottle with a tethered cap. However, there are minor issues with temporal clarity, as the exact timing of the hand retracting could be more explicitly stated to ensure a smooth progression. Additionally, the camera angle description could be more precise to avoid ambiguity. The narration slightly exceeds the word limit, which could be adjusted to fit within 18 words. To improve, specify the timing of the hand's retraction more clearly, refine the camera angle description, and shorten the narration by one word."
+    },
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 2,
+      "script_output": {
+        "script": "From a slightly elevated front angle, the camera captures a pair of hands gently opening the pristine box of an iPhone 16 Pro in Desert Titanium on a rustic wooden table. The hands lift the lid, revealing a brand new iPhone nestled inside. As the 8 seconds conclude, the hands carefully begin to lift the iPhone out of its box, the gleaming Desert Titanium finish catching the soft, natural light in the room.",
+        "narration": "The unboxing of a new device brings a sense of anticipation, enhanced by the iPhone's sleek design and premium finish."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "visual_specificity: The prompt could specify the type of natural light (e.g., morning, afternoon) to enhance visual detail.",
+          "camera_feasibility: The term 'slightly elevated front angle' could be more precise to ensure clarity in camera setup.",
+          "narration_quality: The narration is slightly over the 18-word limit, which could be tightened for better compliance."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to policy compliance and maintaining a clear focus on the unboxing of the iPhone 16 Pro. The visual specificity is strong, but could be improved by specifying the type of natural light, which would enhance the viewer's understanding of the setting. The camera feasibility is mostly clear, but the term 'slightly elevated front angle' could be more precise to ensure the camera setup is easily understood and implemented. The narration exceeds the 18-word limit slightly, which could be tightened to improve compliance with the guidelines. Overall, the prompt is compatible with Veo 3 and unlikely to trigger policy rejection."
+      },
+      "score": 96.67,
+      "feedback_text": "ISSUES:\n- visual_specificity: The prompt could specify the type of natural light (e.g., morning, afternoon) to enhance visual detail.\n- camera_feasibility: The term 'slightly elevated front angle' could be more precise to ensure clarity in camera setup.\n- narration_quality: The narration is slightly over the 18-word limit, which could be tightened for better compliance.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to policy compliance and maintaining a clear focus on the unboxing of the iPhone 16 Pro. The visual specificity is strong, but could be improved by specifying the type of natural light, which would enhance the viewer's understanding of the setting. The camera feasibility is mostly clear, but the term 'slightly elevated front angle' could be more precise to ensure the camera setup is easily understood and implemented. The narration exceeds the 18-word limit slightly, which could be tightened to improve compliance with the guidelines. Overall, the prompt is compatible with Veo 3 and unlikely to trigger policy rejection."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 2,
+      "script_output": {
+        "script": "From a low angle, we see the gleaming, angular form of a Tesla Cybertruck approaching. Its wheels steadily crunch the gravel road beneath. As it reaches a shallow puddle, it plows through, sending a spray of water droplets shimmering into the air. The Cybertruck continues on, leaving ripples in the puddle and a trail of wet gravel behind.",
+        "narration": "The Tesla Cybertruck, an epitome of futuristic design, effortlessly tackles real-world terrains, symbolizing progress and adaptability."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 7,
+          "temporal_clarity": 8,
+          "single_subject_focus": 9,
+          "camera_feasibility": 9,
+          "narration_quality": 6,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "visual_specificity: The script lacks specific details about the colors and lighting of the scene.",
+          "narration_quality: The narration exceeds the 18-word limit and does not add significant insight beyond the visual."
+        ],
+        "feedback": "The prompt is generally well-structured but could benefit from more detailed visual descriptions. The script should specify colors and lighting to enhance visual specificity, such as describing the color of the Cybertruck or the lighting conditions (e.g., sunlight reflecting off the water droplets). Additionally, the narration is slightly too long and should be concise while providing additional insight. For example, it could focus on a unique feature of the Cybertruck related to its design or performance. Adjusting these elements would improve the prompt's alignment with the scoring dimensions and increase its effectiveness for Veo 3 video generation."
+      },
+      "score": 87.22,
+      "feedback_text": "ISSUES:\n- visual_specificity: The script lacks specific details about the colors and lighting of the scene.\n- narration_quality: The narration exceeds the 18-word limit and does not add significant insight beyond the visual.\n\nFEEDBACK:\nThe prompt is generally well-structured but could benefit from more detailed visual descriptions. The script should specify colors and lighting to enhance visual specificity, such as describing the color of the Cybertruck or the lighting conditions (e.g., sunlight reflecting off the water droplets). Additionally, the narration is slightly too long and should be concise while providing additional insight. For example, it could focus on a unique feature of the Cybertruck related to its design or performance. Adjusting these elements would improve the prompt's alignment with the scoring dimensions and increase its effectiveness for Veo 3 video generation."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 2,
+      "script_output": {
+        "script": "A soft late afternoon light floods a minimalist kitchen countertop. A chilled, glistening bottle of Coca-Cola sits centrally in frame, untouched. A hand enters from the right, fingers lightly brushing over the textured surface of the bottle, condensation clinging to the fingertips. The hand firmly grasps the bottle, the muscles visibly tensing. It twists the new attached tethered cap, the familiar hiss of carbonation escaping fills the silence. The cap pops open, tether still attached, and the hand withdraws leaving the bottle in the center of the frame, open and inviting.",
+        "narration": "The new tethered cap design of Coca-Cola offers a simple and convenient twist-open experience, enhancing consumer interaction."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 7,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "visual_specificity: The prompt could specify the color of the hand or the exact texture of the bottle.",
+          "camera_feasibility: The prompt does not specify if the camera is stationary or if there is a slight movement.",
+          "narration_quality: The narration is slightly generic and could be more descriptive about the consumer interaction."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to most guidelines effectively. However, there are a few areas for improvement. In terms of visual specificity, while the prompt describes the scene well, it could benefit from additional details such as the color of the hand or the specific texture of the bottle to enhance the visual imagery. For camera feasibility, the prompt should clarify whether the camera is stationary or if there is a subtle movement, such as a slow pan, to ensure clarity in execution. Lastly, the narration, while concise, could offer more insight into the consumer interaction with the new cap design, perhaps by highlighting how it improves the user experience. Addressing these points would strengthen the prompt's effectiveness and alignment with Veo 3's capabilities."
+      },
+      "score": 96.11,
+      "feedback_text": "ISSUES:\n- visual_specificity: The prompt could specify the color of the hand or the exact texture of the bottle.\n- camera_feasibility: The prompt does not specify if the camera is stationary or if there is a slight movement.\n- narration_quality: The narration is slightly generic and could be more descriptive about the consumer interaction.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to most guidelines effectively. However, there are a few areas for improvement. In terms of visual specificity, while the prompt describes the scene well, it could benefit from additional details such as the color of the hand or the specific texture of the bottle to enhance the visual imagery. For camera feasibility, the prompt should clarify whether the camera is stationary or if there is a subtle movement, such as a slow pan, to ensure clarity in execution. Lastly, the narration, while concise, could offer more insight into the consumer interaction with the new cap design, perhaps by highlighting how it improves the user experience. Addressing these points would strengthen the prompt's effectiveness and alignment with Veo 3's capabilities."
+    },
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 3,
+      "script_output": {
+        "script": "Starts with a closed iPhone 16 Pro box in Desert Titanium on a rustic wooden table, front view. At second 4, hands gently open the box revealing the gleaming phone. By second 8, the phone is fully unveiled, reflecting the soft natural light from the room's window.",
+        "narration": "The thrill of unboxing a new iPhone ties technology with anticipation and satisfaction."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "visual_specificity: The description of 'soft natural light from the room's window' could be more specific.",
+          "temporal_clarity: The transition between seconds 4 and 8 could be more detailed.",
+          "narration_quality: The narration could provide more insight into the specific features or design of the iPhone 16 Pro."
+        ],
+        "feedback": "The prompt is well-structured and adheres to policy compliance, with a clear focus on a single subject and feasible camera setup. However, the visual specificity could be improved by detailing the quality and direction of the natural light more precisely, such as 'soft morning light casting gentle shadows.' Temporal clarity is mostly clear, but the transition between the box opening and the phone being fully unveiled could be more explicitly described to ensure smooth progression. The narration is concise but could enhance viewer engagement by mentioning a unique feature or design element of the iPhone 16 Pro, thus providing more context and insight. These adjustments would enhance the overall clarity and richness of the video prompt."
+      },
+      "score": 96.67,
+      "feedback_text": "ISSUES:\n- visual_specificity: The description of 'soft natural light from the room's window' could be more specific.\n- temporal_clarity: The transition between seconds 4 and 8 could be more detailed.\n- narration_quality: The narration could provide more insight into the specific features or design of the iPhone 16 Pro.\n\nFEEDBACK:\nThe prompt is well-structured and adheres to policy compliance, with a clear focus on a single subject and feasible camera setup. However, the visual specificity could be improved by detailing the quality and direction of the natural light more precisely, such as 'soft morning light casting gentle shadows.' Temporal clarity is mostly clear, but the transition between the box opening and the phone being fully unveiled could be more explicitly described to ensure smooth progression. The narration is concise but could enhance viewer engagement by mentioning a unique feature or design element of the iPhone 16 Pro, thus providing more context and insight. These adjustments would enhance the overall clarity and richness of the video prompt."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 3,
+      "script_output": {
+        "script": "From a low angle, the Tesla Cybertruck's silvery surface gleams in the sunlight as it drives through a large puddle at second 0. By second 4, the puddle's water splashes dramatically against the truck's angular design, creating a mesmerizing display of light and shadow. At second 8, the Cybertruck continues on, leaving the disrupted puddle in its wake, reflecting the sunlight.",
+        "narration": "The Cybertruck's design turns a simple drive into a spectacle of light, water, and power."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 7,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 8,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "visual_specificity: The script lacks detailed description of the puddle's size, the exact color of the Cybertruck, and the environment.",
+          "narration_quality: The narration is slightly vague and could provide more insight into the Cybertruck's unique features."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to policy compliance and maintaining a clear focus on the Cybertruck as the single subject. The camera angle is feasible and realistic, contributing to a coherent visual narrative. However, the visual specificity could be improved by including more details about the puddle, such as its size and the surrounding environment, as well as specifying the exact color of the Cybertruck. This would enhance the richness of the visual scene. The narration, while concise, could be more informative by highlighting specific design elements of the Cybertruck that interact with the water and light. These adjustments would provide a more vivid and engaging depiction, aligning better with the capabilities of Veo 3."
+      },
+      "score": 91.11,
+      "feedback_text": "ISSUES:\n- visual_specificity: The script lacks detailed description of the puddle's size, the exact color of the Cybertruck, and the environment.\n- narration_quality: The narration is slightly vague and could provide more insight into the Cybertruck's unique features.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to policy compliance and maintaining a clear focus on the Cybertruck as the single subject. The camera angle is feasible and realistic, contributing to a coherent visual narrative. However, the visual specificity could be improved by including more details about the puddle, such as its size and the surrounding environment, as well as specifying the exact color of the Cybertruck. This would enhance the richness of the visual scene. The narration, while concise, could be more informative by highlighting specific design elements of the Cybertruck that interact with the water and light. These adjustments would provide a more vivid and engaging depiction, aligning better with the capabilities of Veo 3."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 3,
+      "script_output": {
+        "script": "From a side angle, a hand reaches for a chilled Coca-Cola bottle on a wooden table. The hand grips the bottle and a thumb flicks the new tethered cap, popping it open. The tethered cap remains attached as the hand tilts the bottle, pouring the fizzy beverage into a waiting glass.",
+        "narration": "Coca-Cola's tethered cap design prevents plastic waste, adding to the enjoyment of the iconic beverage."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 8,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 7,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "visual_specificity: The description lacks details about lighting and the specific color of the Coca-Cola bottle.",
+          "narration_quality: The narration is slightly over the word limit and could be more concise."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to policy compliance and maintaining a single subject focus. However, it could benefit from more visual specificity, particularly regarding the lighting and color details of the Coca-Cola bottle and the setting. This would enhance the viewer's ability to visualize the scene more vividly. The narration exceeds the 18-word limit slightly and could be more concise to better fit the guidelines. Adjusting the narration to be more succinct while still conveying the environmental benefit of the tethered cap would improve its quality. Overall, the prompt is compatible with Veo 3, but these adjustments would ensure a higher likelihood of success."
+      },
+      "score": 91.67,
+      "feedback_text": "ISSUES:\n- visual_specificity: The description lacks details about lighting and the specific color of the Coca-Cola bottle.\n- narration_quality: The narration is slightly over the word limit and could be more concise.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to policy compliance and maintaining a single subject focus. However, it could benefit from more visual specificity, particularly regarding the lighting and color details of the Coca-Cola bottle and the setting. This would enhance the viewer's ability to visualize the scene more vividly. The narration exceeds the 18-word limit slightly and could be more concise to better fit the guidelines. Adjusting the narration to be more succinct while still conveying the environmental benefit of the tethered cap would improve its quality. Overall, the prompt is compatible with Veo 3, but these adjustments would ensure a higher likelihood of success."
+    },
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 4,
+      "script_output": {
+        "script": "Stationary, eye-level camera captures a person, delicately unpacking an iPhone 16 Pro in Desert Titanium on a polished wooden table. Soft, natural light from the left highlights the device's sleek design. The unboxing process is slow and precise, revealing the iPhone in the first 4 seconds. Then, the person lifts the phone, inspecting it by turning it around in the last 4 seconds.",
+        "narration": "Behold the unboxing ritual, where the allure of the latest tech meets the tangible satisfaction of the first touch."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "The visual specificity could be improved by describing the person's appearance or attire.",
+          "The narration is slightly abstract and could be more directly related to the visual action."
+        ],
+        "feedback": "The prompt is well-structured and adheres to most of the evaluation criteria effectively. It complies with policy guidelines, maintaining a single subject focus and feasible camera setup. The visual specificity is strong, detailing the iPhone's color and the lighting, but could be enhanced by describing the person unboxing the phone, which would add depth to the scene. Temporal clarity is mostly achieved, but the transition between unboxing and inspection could be more explicitly defined. The narration, while poetic, could be more directly tied to the visual action to enhance its relevance. Overall, the prompt is compatible with Veo 3, but slight adjustments in visual and narrative details could improve its effectiveness."
+      },
+      "score": 96.67,
+      "feedback_text": "ISSUES:\n- The visual specificity could be improved by describing the person's appearance or attire.\n- The narration is slightly abstract and could be more directly related to the visual action.\n\nFEEDBACK:\nThe prompt is well-structured and adheres to most of the evaluation criteria effectively. It complies with policy guidelines, maintaining a single subject focus and feasible camera setup. The visual specificity is strong, detailing the iPhone's color and the lighting, but could be enhanced by describing the person unboxing the phone, which would add depth to the scene. Temporal clarity is mostly achieved, but the transition between unboxing and inspection could be more explicitly defined. The narration, while poetic, could be more directly tied to the visual action to enhance its relevance. Overall, the prompt is compatible with Veo 3, but slight adjustments in visual and narrative details could improve its effectiveness."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 4,
+      "script_output": {
+        "script": "Low angle shot of a Tesla Cybertruck driving through a puddle on an asphalt road under the midday sun. The camera remains stationary, capturing the sunlight reflecting off the stainless steel exterior of the truck as it slowly splashes water droplets across the screen at the start. The truck then continues to drive through the puddle, leaving behind a trail of water in the middle of the shot. At the end, the Cybertruck exits the puddle, leaving the disturbed water to settle back, showing the ripple effect.",
+        "narration": "The Tesla Cybertruck's robust design makes it capable of handling all sorts of terrains and weather conditions."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 8,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 7,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "The visual specificity could be improved by detailing the color of the puddle or the road.",
+          "The narration is slightly generic and doesn't add much insight beyond the visual.",
+          "The temporal progression is mostly clear, but the exact timing of the truck exiting the puddle could be more precise."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to policy compliance and maintaining a single subject focus. The visual specificity could be enhanced by including more details about the environment, such as the color of the puddle or the road, which would provide a richer visual context. The narration, while concise, could offer more specific insights about the Cybertruck's capabilities in relation to the scene, such as mentioning its unique features that enable it to handle such conditions. Temporal clarity is mostly achieved, but specifying the timing of the truck's exit from the puddle would improve the sequence's clarity. Overall, the prompt is compatible with Veo 3, but these adjustments would enhance its effectiveness."
+      },
+      "score": 91.67,
+      "feedback_text": "ISSUES:\n- The visual specificity could be improved by detailing the color of the puddle or the road.\n- The narration is slightly generic and doesn't add much insight beyond the visual.\n- The temporal progression is mostly clear, but the exact timing of the truck exiting the puddle could be more precise.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to policy compliance and maintaining a single subject focus. The visual specificity could be enhanced by including more details about the environment, such as the color of the puddle or the road, which would provide a richer visual context. The narration, while concise, could offer more specific insights about the Cybertruck's capabilities in relation to the scene, such as mentioning its unique features that enable it to handle such conditions. Temporal clarity is mostly achieved, but specifying the timing of the truck's exit from the puddle would improve the sequence's clarity. Overall, the prompt is compatible with Veo 3, but these adjustments would enhance its effectiveness."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 4,
+      "script_output": {
+        "script": "A stationary, close-up side view of a person's hand opening a new bottle of Coca-Cola with the attached tethered cap. The bottle is on a glossy black table under natural daylight. The cap pops off and the fizz of the drink is visible at the end.",
+        "narration": "The convenience of the new tethered cap design is evident in the ease of opening."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 8,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 7,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "visual_specificity: The prompt could specify more details about the person's hand, such as skin tone or any distinctive features, to enhance visual specificity.",
+          "narration_quality: The narration is slightly generic and could provide more insight or context about the tethered cap design."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to policy compliance with no sensitive content or complex camera movements. The visual specificity could be improved by adding more details about the person's hand, such as skin tone or any distinctive features, to create a more vivid image. Temporal clarity is strong, with a clear progression from opening the bottle to the fizz being visible. The single subject focus is excellent, with no competing elements. Camera feasibility is perfect, as the stationary side view is simple and realistic. The narration quality could be enhanced by providing more specific insights or context about the tethered cap design, rather than stating the convenience in a generic way. Overall, the prompt is likely to succeed with Veo 3, but slight improvements in visual specificity and narration could enhance its effectiveness."
+      },
+      "score": 92.78,
+      "feedback_text": "ISSUES:\n- visual_specificity: The prompt could specify more details about the person's hand, such as skin tone or any distinctive features, to enhance visual specificity.\n- narration_quality: The narration is slightly generic and could provide more insight or context about the tethered cap design.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to policy compliance with no sensitive content or complex camera movements. The visual specificity could be improved by adding more details about the person's hand, such as skin tone or any distinctive features, to create a more vivid image. Temporal clarity is strong, with a clear progression from opening the bottle to the fizz being visible. The single subject focus is excellent, with no competing elements. Camera feasibility is perfect, as the stationary side view is simple and realistic. The narration quality could be enhanced by providing more specific insights or context about the tethered cap design, rather than stating the convenience in a generic way. Overall, the prompt is likely to succeed with Veo 3, but slight improvements in visual specificity and narration could enhance its effectiveness."
+    },
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 5,
+      "script_output": {
+        "script": "Shot opens on a wooden table bathed in soft natural light filtering in from a window. A pair of hands, belonging to a person wearing a black sweater, enters the frame holding the boxed iPhone 16 Pro in Desert Titanium. The person carefully peels off the outer plastic wrap, revealing the sleek box underneath. They slowly lift the lid, unveiling the iPhone resting inside. As the person gently removes the iPhone from the box, the glint of the Desert Titanium iPhone catches the light. The shot ends as the person turns the phone in their hands, capturing its shiny newness.",
+        "narration": "The iPhone 16 Pro in Desert Titanium shines with an undeniable allure, hinting at the advanced technology housed within."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 8,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 7,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "The narration is slightly abstract and doesn't add significant insight beyond what is shown.",
+          "The temporal progression could be more explicitly defined to ensure clarity over the 8-second duration."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to policy compliance with no sensitive content or prohibited elements. Visual specificity is strong, with detailed descriptions of materials and lighting, though it could be improved by specifying more about the surrounding environment. Temporal clarity is mostly present, but the script could benefit from more explicit timing cues to ensure the sequence fits within 8 seconds. The single subject focus is excellent, maintaining attention on the iPhone unboxing without distractions. Camera feasibility is high, with a simple and realistic setup. However, the narration, while concise, is somewhat abstract and doesn't provide much additional insight beyond the visual content. To improve, the narration could be more specific about the iPhone's features or design elements. Overall, the prompt is compatible with Veo 3, but refining the narration and temporal clarity would enhance its effectiveness."
+      },
+      "score": 91.67,
+      "feedback_text": "ISSUES:\n- The narration is slightly abstract and doesn't add significant insight beyond what is shown.\n- The temporal progression could be more explicitly defined to ensure clarity over the 8-second duration.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to policy compliance with no sensitive content or prohibited elements. Visual specificity is strong, with detailed descriptions of materials and lighting, though it could be improved by specifying more about the surrounding environment. Temporal clarity is mostly present, but the script could benefit from more explicit timing cues to ensure the sequence fits within 8 seconds. The single subject focus is excellent, maintaining attention on the iPhone unboxing without distractions. Camera feasibility is high, with a simple and realistic setup. However, the narration, while concise, is somewhat abstract and doesn't provide much additional insight beyond the visual content. To improve, the narration could be more specific about the iPhone's features or design elements. Overall, the prompt is compatible with Veo 3, but refining the narration and temporal clarity would enhance its effectiveness."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 5,
+      "script_output": {
+        "script": "From a low angle, we see a Tesla Cybertruck's metallic wheels roll across an asphalt road before entering a shallow puddle. Water splashes upwards, droplets catching the sunlight as they scatter, while the Cybertruck continues to advance, leaving a rippling puddle in its wake. The shot ends with the truck's departure, only moist asphalt and the slowly settling water remaining.",
+        "narration": "The Tesla Cybertruck, with its futuristic design, easily navigates through everyday obstacles, reflecting its robust and durable nature."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 8,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 7,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "visual_specificity: The prompt lacks specific details about the color and texture of the Cybertruck and the environment.",
+          "narration_quality: The narration could provide more insight or a unique perspective that isn't immediately obvious from the visuals."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to policy compliance and maintaining a clear single subject focus on the Tesla Cybertruck. The camera angle is feasible and realistic, enhancing the visual storytelling. However, the visual specificity could be improved by including more details about the Cybertruck's color and texture, as well as the environment's lighting conditions. This would help create a more vivid and immersive scene. The narration, while concise, could offer additional insight or context that enriches the viewer's understanding of the Cybertruck's capabilities beyond what is visually apparent. Enhancing these aspects would improve the overall effectiveness and compatibility of the prompt with Veo 3."
+      },
+      "score": 91.67,
+      "feedback_text": "ISSUES:\n- visual_specificity: The prompt lacks specific details about the color and texture of the Cybertruck and the environment.\n- narration_quality: The narration could provide more insight or a unique perspective that isn't immediately obvious from the visuals.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to policy compliance and maintaining a clear single subject focus on the Tesla Cybertruck. The camera angle is feasible and realistic, enhancing the visual storytelling. However, the visual specificity could be improved by including more details about the Cybertruck's color and texture, as well as the environment's lighting conditions. This would help create a more vivid and immersive scene. The narration, while concise, could offer additional insight or context that enriches the viewer's understanding of the Cybertruck's capabilities beyond what is visually apparent. Enhancing these aspects would improve the overall effectiveness and compatibility of the prompt with Veo 3."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 5,
+      "script_output": {
+        "script": "Open on an eye-level side view of a well-lit, modern kitchen countertop. A hand reaches into the frame, holding a chilled bottle of Coca-Cola, condensation dripping down its glossy red label. The hand grasps the bottle securely and begins to twist the new attached tethered cap. We hear a satisfying hiss as the pressure releases. The hand then pulls the cap off revealing the fizzy drink inside. The video ends with the bottle in the center of the frame, cap off, ready to be enjoyed.",
+        "narration": "The new tethered cap on Coca-Cola bottles enhances convenience, ensuring you never lose the cap again."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "The visual specificity could be improved by specifying the color of the kitchen countertop.",
+          "The camera feasibility score is slightly reduced due to the lack of explicit mention of camera stability.",
+          "The narration quality could be improved by making it more engaging or informative."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to policy compliance with no sensitive content or prohibited elements. The visual specificity is strong, but could be enhanced by specifying the color of the kitchen countertop to provide a more vivid image. Temporal clarity is excellent, with a clear progression from start to finish. The single subject focus is maintained well, concentrating on the action of opening the bottle. Camera feasibility is mostly good, but it would benefit from a mention of camera stability to ensure clarity. The narration is concise but could be more engaging or informative to add value beyond the visual content. Overall, the prompt is likely to succeed with Veo 3, but these minor adjustments could enhance its effectiveness."
+      },
+      "score": 96.67,
+      "feedback_text": "ISSUES:\n- The visual specificity could be improved by specifying the color of the kitchen countertop.\n- The camera feasibility score is slightly reduced due to the lack of explicit mention of camera stability.\n- The narration quality could be improved by making it more engaging or informative.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to policy compliance with no sensitive content or prohibited elements. The visual specificity is strong, but could be enhanced by specifying the color of the kitchen countertop to provide a more vivid image. Temporal clarity is excellent, with a clear progression from start to finish. The single subject focus is maintained well, concentrating on the action of opening the bottle. Camera feasibility is mostly good, but it would benefit from a mention of camera stability to ensure clarity. The narration is concise but could be more engaging or informative to add value beyond the visual content. Overall, the prompt is likely to succeed with Veo 3, but these minor adjustments could enhance its effectiveness."
+    },
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 6,
+      "script_output": {
+        "script": "From a front, eye-level view, we see a rustic wooden table bathed in soft, late afternoon sunlight. Centered on the table, a pair of hands gently lifts the sleek, Desert Titanium iPhone 16 Pro from its minimalist white box. The hands rotate the phone, glints of sunlight dancing off its polished surface. Over the 8 seconds, the hands methodically peel off the protective film, revealing the gleaming, untouched screen. The camera remains stationary, capturing every precise movement and the phone's immaculate details.",
+        "narration": "Unveiling the latest tech marvel, the iPhone 16 Pro, where innovation meets timeless design."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "visual_specificity: The description of the lighting as 'soft, late afternoon sunlight' could be more specific.",
+          "narration_quality: The narration is slightly generic and could provide more specific insight about the phone's features."
+        ],
+        "feedback": "The prompt is well-constructed with clear adherence to policy compliance, focusing on a single subject with a feasible camera setup. The visual specificity is strong, but the lighting description could be more precise, such as specifying the angle or intensity of the sunlight. The narration, while concise, lacks specific insight into the phone's unique features or design elements that aren't visually apparent. Enhancing the narration to include a specific feature or design aspect would improve its quality. Overall, the prompt is compatible with Veo 3 and should perform well without triggering policy issues."
+      },
+      "score": 97.78,
+      "feedback_text": "ISSUES:\n- visual_specificity: The description of the lighting as 'soft, late afternoon sunlight' could be more specific.\n- narration_quality: The narration is slightly generic and could provide more specific insight about the phone's features.\n\nFEEDBACK:\nThe prompt is well-constructed with clear adherence to policy compliance, focusing on a single subject with a feasible camera setup. The visual specificity is strong, but the lighting description could be more precise, such as specifying the angle or intensity of the sunlight. The narration, while concise, lacks specific insight into the phone's unique features or design elements that aren't visually apparent. Enhancing the narration to include a specific feature or design aspect would improve its quality. Overall, the prompt is compatible with Veo 3 and should perform well without triggering policy issues."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 6,
+      "script_output": {
+        "script": "From a low angle, the camera captures a gleaming, stainless steel Tesla Cybertruck, stationary at first against a cloudy sky backdrop. At second 1, the Cybertruck begins to move, its polygonal lines reflecting the soft diffused light from the overcast skies. By the 4th second, the Cybertruck approaches a puddle of water on the asphalt road, its tires crunching the tiny gravel beneath. At second 6, the Cybertruck's angular wheel arches splash through the puddle, sending a cinematic spray of droplets into the air. The shot ends with the Cybertruck continuing its journey, leaving behind rippling reflections in the disturbed puddle.",
+        "narration": "The Cybertruck, an icon of electric innovation, conquers the road one puddle at a time."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 8,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "The visual specificity could be improved by specifying more about the color and texture of the puddle.",
+          "The camera feasibility score is slightly reduced due to the potential complexity of capturing a low-angle shot with a moving vehicle.",
+          "The narration could be more insightful by providing a unique perspective or fact about the Cybertruck."
+        ],
+        "feedback": "The prompt is generally well-constructed, with clear policy compliance and a strong focus on a single subject. The visual specificity is high, but could be enhanced by detailing the puddle's appearance, such as its size or the color of the water. Temporal clarity is excellent, with a clear progression from start to finish. The camera feasibility is mostly realistic, though capturing a low-angle shot of a moving vehicle might require careful planning to ensure safety and stability. The narration is concise and relevant, but could offer more depth or a unique insight about the Cybertruck to elevate its quality. Overall, the prompt is compatible with Veo 3, but slight adjustments in visual detail and narration could improve its effectiveness."
+      },
+      "score": 94.44,
+      "feedback_text": "ISSUES:\n- The visual specificity could be improved by specifying more about the color and texture of the puddle.\n- The camera feasibility score is slightly reduced due to the potential complexity of capturing a low-angle shot with a moving vehicle.\n- The narration could be more insightful by providing a unique perspective or fact about the Cybertruck.\n\nFEEDBACK:\nThe prompt is generally well-constructed, with clear policy compliance and a strong focus on a single subject. The visual specificity is high, but could be enhanced by detailing the puddle's appearance, such as its size or the color of the water. Temporal clarity is excellent, with a clear progression from start to finish. The camera feasibility is mostly realistic, though capturing a low-angle shot of a moving vehicle might require careful planning to ensure safety and stability. The narration is concise and relevant, but could offer more depth or a unique insight about the Cybertruck to elevate its quality. Overall, the prompt is compatible with Veo 3, but slight adjustments in visual detail and narration could improve its effectiveness."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 6,
+      "script_output": {
+        "script": "From a stationary side view angle, we see a single hand with tanned skin, framed against a neutral backdrop, illuminated by soft, indirect sunlight. A cold, condensation-beaded bottle of Coca-Cola is held firmly, its vibrant red label catching the light. At the 2-second mark, the hand begins to twist the new, glossy plastic tethered cap counter-clockwise, the cap's texture contrasting with the smooth glass. Over the next 4 seconds, the cap gradually loosens, releasing an audible hiss of carbonation. The hand then lifts the cap, still attached by the tether, revealing the dark, effervescent liquid inside by the 8-second mark.",
+        "narration": "The tethered cap, a simple innovation, brings a new twist to the timeless ritual of opening a Coca-Cola."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 10,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "The narration is slightly longer than the maximum allowed word count."
+        ],
+        "feedback": "The prompt is well-constructed, adhering to most of the guidelines effectively. It provides a clear and detailed visual description, ensuring high visual specificity and temporal clarity. The single subject focus is maintained throughout, with a simple and feasible camera setup. However, the narration exceeds the 18-word limit, which slightly detracts from its quality. To improve, the narration could be shortened to fit within the word count constraint, such as: 'The tethered cap adds a new twist to opening a Coca-Cola.' This adjustment would enhance compliance with the narration quality guideline."
+      },
+      "score": 98.89,
+      "feedback_text": "ISSUES:\n- The narration is slightly longer than the maximum allowed word count.\n\nFEEDBACK:\nThe prompt is well-constructed, adhering to most of the guidelines effectively. It provides a clear and detailed visual description, ensuring high visual specificity and temporal clarity. The single subject focus is maintained throughout, with a simple and feasible camera setup. However, the narration exceeds the 18-word limit, which slightly detracts from its quality. To improve, the narration could be shortened to fit within the word count constraint, such as: 'The tethered cap adds a new twist to opening a Coca-Cola.' This adjustment would enhance compliance with the narration quality guideline."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 6,
+      "script_output": {
+        "script": "From a low angle, the camera captures a Tesla Cybertruck's matte, metallic surface glinting in the midday sun. At second 2, the angular vehicle begins to traverse through a shallow, reflective puddle, sending a spray of water droplets into the air. The ripples on the puddle's surface distort the reflection of the glistening truck. By second 6, the Cybertruck has fully passed through, leaving behind a disturbed, shimmering puddle in its wake. The final frame freezes on the settling water, the sun's rays illuminating the disturbed surface.",
+        "narration": "Even in ordinary moments, the Cybertruck redefines the perception of electric vehicles."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 7,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "visual_specificity: The description lacks specific color details for the puddle and water spray.",
+          "temporal_clarity: The script does not specify what happens between seconds 2 and 6.",
+          "camera_feasibility: The script does not specify if the camera is stationary or moving.",
+          "narration_quality: The narration is somewhat generic and does not add significant insight beyond the visual."
+        ],
+        "feedback": "The prompt is generally well-constructed, but there are areas for improvement. The visual specificity could be enhanced by including more detailed descriptions of the puddle and water spray, such as their colors or textures. Temporal clarity is mostly maintained, but the script could benefit from more detailed descriptions of the action between seconds 2 and 6 to ensure a smooth progression. Camera feasibility is slightly lacking as it does not specify whether the camera remains stationary or moves with the Cybertruck, which could affect the realism of the shot. The narration, while concise, could be more insightful by highlighting a unique feature or capability of the Cybertruck that is not immediately obvious from the visuals. Addressing these issues would improve the overall quality and compatibility of the prompt with Veo 3."
+      },
+      "score": 92.78,
+      "feedback_text": "ISSUES:\n- visual_specificity: The description lacks specific color details for the puddle and water spray.\n- temporal_clarity: The script does not specify what happens between seconds 2 and 6.\n- camera_feasibility: The script does not specify if the camera is stationary or moving.\n- narration_quality: The narration is somewhat generic and does not add significant insight beyond the visual.\n\nFEEDBACK:\nThe prompt is generally well-constructed, but there are areas for improvement. The visual specificity could be enhanced by including more detailed descriptions of the puddle and water spray, such as their colors or textures. Temporal clarity is mostly maintained, but the script could benefit from more detailed descriptions of the action between seconds 2 and 6 to ensure a smooth progression. Camera feasibility is slightly lacking as it does not specify whether the camera remains stationary or moves with the Cybertruck, which could affect the realism of the shot. The narration, while concise, could be more insightful by highlighting a unique feature or capability of the Cybertruck that is not immediately obvious from the visuals. Addressing these issues would improve the overall quality and compatibility of the prompt with Veo 3."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 6,
+      "script_output": {
+        "script": "From a side view, eye-level camera angle, a sunlit kitchen counter reveals an unopened, chilled Coca-Cola bottle. The amber countertop, speckled with gold flecks, shimmers in the afternoon sunlight streaming through the window. The bottle, its red and white label vibrant against the counter, is covered in dewy condensation. At second 2, a human hand enters the frame, fingers gently gripping the cap. The next two seconds show the cap unscrewing, a tethered plastic strip folding out neatly. From seconds 4 to 6, the hand lifts the cap, revealing the bubbly, dark cola inside. The final two seconds focus on the cap hanging from the tether, swinging slightly in the ambient light.",
+        "narration": "Every pop of a Coca-Cola cap reveals a moment of simple, fizzy indulgence."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 10,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 9,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "Narration could be more descriptive of the tethered cap feature."
+        ],
+        "feedback": "The prompt is well-constructed, adhering to all specified dimensions. It complies with policy by avoiding sensitive content and prohibited elements. The visual description is vivid, detailing the setting, materials, and lighting effectively. The temporal progression is clear, guiding the viewer through the 8-second sequence smoothly. The focus remains on the single subject of opening the Coca-Cola bottle, without distractions. The camera setup is feasible, with a stationary angle that captures the action clearly. The narration is concise and insightful, though it could enhance its description by mentioning the tethered cap feature explicitly, which is a key aspect of the video. This minor adjustment would provide additional context and align the narration more closely with the visual content."
+      },
+      "score": 99.44,
+      "feedback_text": "ISSUES:\n- Narration could be more descriptive of the tethered cap feature.\n\nFEEDBACK:\nThe prompt is well-constructed, adhering to all specified dimensions. It complies with policy by avoiding sensitive content and prohibited elements. The visual description is vivid, detailing the setting, materials, and lighting effectively. The temporal progression is clear, guiding the viewer through the 8-second sequence smoothly. The focus remains on the single subject of opening the Coca-Cola bottle, without distractions. The camera setup is feasible, with a stationary angle that captures the action clearly. The narration is concise and insightful, though it could enhance its description by mentioning the tethered cap feature explicitly, which is a key aspect of the video. This minor adjustment would provide additional context and align the narration more closely with the visual content."
+    },
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 6,
+      "script_output": {
+        "script": "From a stationary, eye-level camera angle, soft afternoon sunlight streams in, casting warm hues on a rustic wooden table. At second 1, a pair of hands enters the frame, holding a box of the latest iPhone 16 Pro in Desert Titanium. The hands gently place the box onto the table. Over the next 2 seconds, the hands expertly slice through the plastic wrap with a small knife, revealing the sleek, embossed box underneath. By the 5th second, the top lid is lifted, unveiling the shimmering Desert Titanium iPhone nestled inside, reflecting the sun's light. The last 3 seconds are spent admiring the device, untouched, resting on a bed of black satin inside the box.",
+        "narration": "Each unboxing is a journey, unveiling a blend of technology and artistry in the iPhone 16 Pro."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 7,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "visual_specificity: The description of the 'shimmering Desert Titanium iPhone' could be more detailed in terms of its color and texture.",
+          "narration_quality: The narration is slightly abstract and doesn't add significant insight beyond what is visually described."
+        ],
+        "feedback": "The prompt is well-structured and adheres to most of the evaluation criteria effectively. The visual specificity is strong, but the description of the iPhone's appearance could be enhanced by providing more detail about the Desert Titanium color and texture to create a more vivid image. The narration, while concise, is somewhat abstract and could be improved by offering a specific insight or unique feature of the iPhone 16 Pro that complements the visual experience. Overall, the prompt is likely to succeed with Veo 3, as it avoids complex setups and adheres to policy guidelines."
+      },
+      "score": 97.22,
+      "feedback_text": "ISSUES:\n- visual_specificity: The description of the 'shimmering Desert Titanium iPhone' could be more detailed in terms of its color and texture.\n- narration_quality: The narration is slightly abstract and doesn't add significant insight beyond what is visually described.\n\nFEEDBACK:\nThe prompt is well-structured and adheres to most of the evaluation criteria effectively. The visual specificity is strong, but the description of the iPhone's appearance could be enhanced by providing more detail about the Desert Titanium color and texture to create a more vivid image. The narration, while concise, is somewhat abstract and could be improved by offering a specific insight or unique feature of the iPhone 16 Pro that complements the visual experience. Overall, the prompt is likely to succeed with Veo 3, as it avoids complex setups and adheres to policy guidelines."
+    },
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 8,
+      "script_output": {
+        "script": "From a stationary, eye-level front view, the 8-second sequence begins on a rustic, weathered wooden table bathed in gentle, diffused afternoon sunlight. As the video starts, a person's hands enter the frame from above, holding the sleek, Desert Titanium iPhone 16 Pro box, its ethereal glimmer reflecting the soft light. The hands, with practiced precision, peel off the transparent plastic seal, allowing it to catch the light momentarily before it is discarded. They lift the top of the box, revealing the brand new iPhone nestled within, its Desert Titanium body gleaming with understated elegance. The sequence concludes with the hands gently lifting the iPhone, its screen catching the light, signalling unspoken promise of innovation and technology.",
+        "narration": "Witness the unboxing of Apple's latest marvel, the iPhone 16 Pro, in its sophisticated Desert Titanium guise."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 7,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "narration lacks additional insight beyond what is shown",
+          "visual specificity could include more detail on the iPhone's appearance"
+        ],
+        "feedback": "The prompt is well-structured and adheres to most of the evaluation criteria effectively. It maintains policy compliance by avoiding sensitive content and complex camera movements. The visual specificity is strong, detailing the setting and lighting, but could be improved by describing more specific features of the iPhone 16 Pro, such as its design elements or unique characteristics. Temporal clarity is excellent, with a clear progression from start to finish. The single subject focus is maintained throughout, concentrating solely on the unboxing of the iPhone. The camera feasibility is perfect, as the stationary angle is realistic and simple. However, the narration could be improved by providing more insight or context about the iPhone 16 Pro, such as highlighting a specific feature or innovation, to add value beyond the visual content. Lastly, the prompt is largely compatible with Veo 3, though ensuring more detailed visual descriptions could enhance its success rate."
+      },
+      "score": 95.0,
+      "feedback_text": "ISSUES:\n- narration lacks additional insight beyond what is shown\n- visual specificity could include more detail on the iPhone's appearance\n\nFEEDBACK:\nThe prompt is well-structured and adheres to most of the evaluation criteria effectively. It maintains policy compliance by avoiding sensitive content and complex camera movements. The visual specificity is strong, detailing the setting and lighting, but could be improved by describing more specific features of the iPhone 16 Pro, such as its design elements or unique characteristics. Temporal clarity is excellent, with a clear progression from start to finish. The single subject focus is maintained throughout, concentrating solely on the unboxing of the iPhone. The camera feasibility is perfect, as the stationary angle is realistic and simple. However, the narration could be improved by providing more insight or context about the iPhone 16 Pro, such as highlighting a specific feature or innovation, to add value beyond the visual content. Lastly, the prompt is largely compatible with Veo 3, though ensuring more detailed visual descriptions could enhance its success rate."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 8,
+      "script_output": {
+        "script": "From a low angle, the camera captures a gleaming, angular Tesla Cybertruck approaching. Its hefty, stainless steel body reflects the soft, diffused daylight. Four seconds in, the Cybertruck's aggressive tires hit a large puddle, sending a cascade of water up in a dramatic splash, mirroring the gray sky. The truck continues its journey, leaving behind a churned, wet gravel trail.",
+        "narration": "The Cybertruck, a testament to Tesla's innovation, conquers road challenges with ease."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "visual_specificity: The description could include more details about the puddle and surrounding environment.",
+          "temporal_clarity: The script does not specify the exact timing of the Cybertruck's approach before hitting the puddle.",
+          "camera_feasibility: The script does not specify if the camera is stationary or moving."
+        ],
+        "feedback": "The prompt is generally well-constructed, with clear adherence to policy compliance and a strong focus on a single subject. However, there are areas for improvement. The visual specificity could be enhanced by including more details about the puddle and the surrounding environment, such as the size of the puddle or the texture of the gravel. Temporal clarity is slightly lacking as the script does not specify the timing of the Cybertruck's approach before hitting the puddle, which could be improved by indicating how long the approach takes before the splash. Additionally, while the camera angle is specified, it would be beneficial to clarify whether the camera is stationary or if there is any movement involved, such as a slow pan. These adjustments would provide a more comprehensive and vivid depiction of the scene."
+      },
+      "score": 95.56,
+      "feedback_text": "ISSUES:\n- visual_specificity: The description could include more details about the puddle and surrounding environment.\n- temporal_clarity: The script does not specify the exact timing of the Cybertruck's approach before hitting the puddle.\n- camera_feasibility: The script does not specify if the camera is stationary or moving.\n\nFEEDBACK:\nThe prompt is generally well-constructed, with clear adherence to policy compliance and a strong focus on a single subject. However, there are areas for improvement. The visual specificity could be enhanced by including more details about the puddle and the surrounding environment, such as the size of the puddle or the texture of the gravel. Temporal clarity is slightly lacking as the script does not specify the timing of the Cybertruck's approach before hitting the puddle, which could be improved by indicating how long the approach takes before the splash. Additionally, while the camera angle is specified, it would be beneficial to clarify whether the camera is stationary or if there is any movement involved, such as a slow pan. These adjustments would provide a more comprehensive and vivid depiction of the scene."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 8,
+      "script_output": {
+        "script": "In soft, golden hour sunlight, we see a dew-kissed, red-and-white Coca-Cola bottle on a rustic wooden table, side view. The camera, placed at eye-level, remains stationary as a lightly tanned hand enters the frame from the right, fingers curling around the bottle's middle. For the first two seconds, the hand steadies the bottle. Between seconds three and five, the thumb and index finger of the same hand deftly twist the new attached tethered cap counter-clockwise; we hear the satisfying hiss of released carbonation. The cap, still attached to the bottle by a thin plastic strip, is gently pushed to one side. In the final moments, the hand lifts the bottle, tilting it slightly towards the camera in a silent toast, before exiting the frame.",
+        "narration": "Experience the refreshing simplicity of Coca-Cola's new attached tethered cap - no more lost lids."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "The narration could be more descriptive about the experience of using the tethered cap."
+        ],
+        "feedback": "The prompt performs well across most dimensions, with clear policy compliance, temporal clarity, and single subject focus. The visual specificity is strong, with detailed descriptions of the scene, but could be slightly improved by specifying more about the texture of the cap or the sound of the carbonation. The narration is concise and fits within the word limit, but it could add more descriptive insight into the experience of using the tethered cap, such as mentioning the ease or convenience it provides. This would enhance the viewer's understanding and engagement. Overall, the prompt is well-suited for Veo 3, with realistic camera instructions and a straightforward setup."
+      },
+      "score": 97.78,
+      "feedback_text": "ISSUES:\n- The narration could be more descriptive about the experience of using the tethered cap.\n\nFEEDBACK:\nThe prompt performs well across most dimensions, with clear policy compliance, temporal clarity, and single subject focus. The visual specificity is strong, with detailed descriptions of the scene, but could be slightly improved by specifying more about the texture of the cap or the sound of the carbonation. The narration is concise and fits within the word limit, but it could add more descriptive insight into the experience of using the tethered cap, such as mentioning the ease or convenience it provides. This would enhance the viewer's understanding and engagement. Overall, the prompt is well-suited for Veo 3, with realistic camera instructions and a straightforward setup."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "Under a cloudless cerulean sky, a Tesla Cybertruck approaches from a low angle. Its angular, stainless steel exterior reflects the dazzling sunlight. As the truck nears, its large, futuristic wheels gradually fill the frame. The camera is positioned at ground level, catching the intense gleam off its matte metal body. With a gentle rumble, the Cybertruck drives through a substantial puddle, sending a spectacular spray of water droplets sparkling in the sun. The vehicle continues its journey, leaving the frame to reveal the disturbed puddle, its surface shimmering with the departing reflection of the truck.",
+        "narration": "The Tesla Cybertruck, embodying a blend of raw power and sustainable technology, conquers the terrain."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 8,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 7,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "The narration exceeds the 18-word limit.",
+          "The temporal progression could be more explicitly defined to ensure clarity over the 8-second duration."
+        ],
+        "feedback": "The prompt is generally well-constructed, with strong policy compliance and a clear focus on the Tesla Cybertruck as the single subject. The visual details are specific, providing a vivid description of the scene, although the lighting and reflections could be slightly more detailed. The camera angle is feasible, capturing the action from a low angle, but the temporal clarity could be improved by specifying the timing of each action more precisely to ensure it fits within the 8-second timeframe. The narration, while insightful, exceeds the 18-word limit, which could be addressed by condensing the sentence to maintain brevity. Overall, the prompt is compatible with Veo 3, but slight adjustments in narration length and temporal detail would enhance its effectiveness."
+      },
+      "score": 91.67,
+      "feedback_text": "ISSUES:\n- The narration exceeds the 18-word limit.\n- The temporal progression could be more explicitly defined to ensure clarity over the 8-second duration.\n\nFEEDBACK:\nThe prompt is generally well-constructed, with strong policy compliance and a clear focus on the Tesla Cybertruck as the single subject. The visual details are specific, providing a vivid description of the scene, although the lighting and reflections could be slightly more detailed. The camera angle is feasible, capturing the action from a low angle, but the temporal clarity could be improved by specifying the timing of each action more precisely to ensure it fits within the 8-second timeframe. The narration, while insightful, exceeds the 18-word limit, which could be addressed by condensing the sentence to maintain brevity. Overall, the prompt is compatible with Veo 3, but slight adjustments in narration length and temporal detail would enhance its effectiveness."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "Bathed in warm, late-afternoon sunlight, a pair of hands holds a chilled Coca-Cola bottle at eye level, side view. The person's fingers, shadowed and wet with condensation, grip the bottle's signature red cap. As the 8 seconds unfold, they twist the cap steadily counterclockwise. The cap, tethered by a thin strip of plastic, breaks its initial seal with a satisfying pop, releasing a tiny cloud of carbonation that quickly dissipates. The hands then gently set the bottle back down onto a wooden table, its opened cap dangling to the side.",
+        "narration": "In a moment of simple pleasure, a Coca-Cola comes to life, ready to refresh."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 8,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "visual_specificity: The prompt could specify more about the texture of the bottle or the exact color of the condensation.",
+          "camera_feasibility: The description does not specify if the camera is stationary or if there is any slight movement.",
+          "narration_quality: The narration is slightly vague and could provide more insight into the experience of opening the bottle."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to policy compliance and maintaining a clear single subject focus. The visual specificity is strong, but could be improved by detailing the texture of the bottle or the exact appearance of the condensation. Temporal clarity is excellent, with a clear progression over 8 seconds. The camera feasibility is mostly realistic, but it would benefit from specifying whether the camera is stationary or if there is any slight movement. The narration quality is good, but it could offer more insight into the sensory experience of opening the bottle. Overall, the prompt is compatible with Veo 3, but minor adjustments in specificity and narration could enhance its effectiveness."
+      },
+      "score": 94.44,
+      "feedback_text": "ISSUES:\n- visual_specificity: The prompt could specify more about the texture of the bottle or the exact color of the condensation.\n- camera_feasibility: The description does not specify if the camera is stationary or if there is any slight movement.\n- narration_quality: The narration is slightly vague and could provide more insight into the experience of opening the bottle.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to policy compliance and maintaining a clear single subject focus. The visual specificity is strong, but could be improved by detailing the texture of the bottle or the exact appearance of the condensation. Temporal clarity is excellent, with a clear progression over 8 seconds. The camera feasibility is mostly realistic, but it would benefit from specifying whether the camera is stationary or if there is any slight movement. The narration quality is good, but it could offer more insight into the sensory experience of opening the bottle. Overall, the prompt is compatible with Veo 3, but minor adjustments in specificity and narration could enhance its effectiveness."
+    },
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "From a front view, a pair of hands delicately remove the sleek iPhone 16 Pro in Desert Titanium from its box, against the backdrop of a rich, mahogany wooden table. The light from an overhead chandelier gleams off the smartphone's metallic surface, accentuating the intricate details. As the 8 seconds elapse, the hands turn the device around, revealing its crystal clear screen and polished backside, reflecting the warm, ambient light.",
+        "narration": "Experience the unboxing of Apple's latest innovation, where technology meets elegance."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "The lighting description is slightly complex with 'overhead chandelier' and 'warm, ambient light', which might be challenging for Veo 3.",
+          "The narration is slightly abstract with 'where technology meets elegance', which may not add clear insight."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to policy compliance with no sensitive content or complex camera moves. The visual specificity is strong, detailing materials and lighting, though the lighting description could be simplified to ensure compatibility with Veo 3's capabilities. Temporal clarity is maintained with a clear progression over 8 seconds, and the focus remains on a single subject without distractions. The camera feasibility is excellent, with a simple front view. However, the narration could be improved by providing more concrete insight rather than abstract concepts like 'where technology meets elegance'. Simplifying the lighting description and refining the narration to be more descriptive of the unboxing experience would enhance compatibility with Veo 3."
+      },
+      "score": 94.44,
+      "feedback_text": "ISSUES:\n- The lighting description is slightly complex with 'overhead chandelier' and 'warm, ambient light', which might be challenging for Veo 3.\n- The narration is slightly abstract with 'where technology meets elegance', which may not add clear insight.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to policy compliance with no sensitive content or complex camera moves. The visual specificity is strong, detailing materials and lighting, though the lighting description could be simplified to ensure compatibility with Veo 3's capabilities. Temporal clarity is maintained with a clear progression over 8 seconds, and the focus remains on a single subject without distractions. The camera feasibility is excellent, with a simple front view. However, the narration could be improved by providing more concrete insight rather than abstract concepts like 'where technology meets elegance'. Simplifying the lighting description and refining the narration to be more descriptive of the unboxing experience would enhance compatibility with Veo 3."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "From a low angle, the camera captures the gleaming, angular silver body of a Tesla Cybertruck. Its futuristic design contrasts sharply with the natural setting of a dirt road, dappled with sunlight filtering through a canopy of overhead trees. As the Cybertruck begins to move, the sunlight glints off its stainless steel panels, highlighting the truck's unique, geometric design. The camera remains stationary as the Cybertruck approaches a shallow puddle. With a slow, deliberate motion, the truck drives through it, sending arcs of muddy water splashing into the air. The shot concludes as the Cybertruck, now marked with streaks of dirt and water, drives away, leaving only the settling dust and slowly sinking puddle in its wake.",
+        "narration": "Even in the raw beauty of nature, the Tesla Cybertruck asserts its technological dominance."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "visual_specificity: The description could be more specific about the color and texture of the dirt road.",
+          "temporal_clarity: The script could specify the duration of each action more clearly.",
+          "narration_quality: The narration could provide more insight or context about the Cybertruck's capabilities or relevance."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to policy compliance and maintaining a single subject focus. The visual specificity is strong, but could be enhanced by detailing the color and texture of the dirt road to provide a more vivid image. Temporal clarity is mostly achieved, but specifying the duration of each action could improve the flow and timing of the video. The narration is concise and relevant, but it could offer more insight into the Cybertruck's features or its interaction with the environment to add depth. Overall, the prompt is compatible with Veo 3, but slight adjustments in specificity and narration could enhance its effectiveness."
+      },
+      "score": 94.44,
+      "feedback_text": "ISSUES:\n- visual_specificity: The description could be more specific about the color and texture of the dirt road.\n- temporal_clarity: The script could specify the duration of each action more clearly.\n- narration_quality: The narration could provide more insight or context about the Cybertruck's capabilities or relevance.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to policy compliance and maintaining a single subject focus. The visual specificity is strong, but could be enhanced by detailing the color and texture of the dirt road to provide a more vivid image. Temporal clarity is mostly achieved, but specifying the duration of each action could improve the flow and timing of the video. The narration is concise and relevant, but it could offer more insight into the Cybertruck's features or its interaction with the environment to add depth. Overall, the prompt is compatible with Veo 3, but slight adjustments in specificity and narration could enhance its effectiveness."
+    },
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "Under the glow of soft daylight, a pair of steady hands carefully opens the sleek box of an iPhone 16 Pro in Desert Titanium. The box lid lifts, revealing the gleaming device nestled within. Its metallic hue contrasts against the rustic wooden table beneath. The hands hold it up, reflecting the light, and then set it down on the table, the Apple logo in full view as the shot draws to a close.",
+        "narration": "The unveiling of technology's latest wonder, a testament to mankind's relentless pursuit of innovation."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 8,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 7,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "The narration exceeds the 18-word limit.",
+          "The temporal progression could be more explicitly defined to ensure clarity over the 8-second duration."
+        ],
+        "feedback": "The prompt is generally well-constructed, adhering to most of the evaluation criteria. However, the narration exceeds the 18-word limit, which could be rectified by condensing the sentence to maintain brevity while still adding insight. Additionally, while the visual description is quite specific, the temporal clarity could be improved by explicitly stating the timing of each action to ensure the sequence fits within the 8-second timeframe. This would enhance the viewer's understanding of the progression from unboxing to the final shot. Overall, the prompt is likely to succeed with Veo 3, but these adjustments would ensure even greater alignment with the system's requirements."
+      },
+      "score": 91.67,
+      "feedback_text": "ISSUES:\n- The narration exceeds the 18-word limit.\n- The temporal progression could be more explicitly defined to ensure clarity over the 8-second duration.\n\nFEEDBACK:\nThe prompt is generally well-constructed, adhering to most of the evaluation criteria. However, the narration exceeds the 18-word limit, which could be rectified by condensing the sentence to maintain brevity while still adding insight. Additionally, while the visual description is quite specific, the temporal clarity could be improved by explicitly stating the timing of each action to ensure the sequence fits within the 8-second timeframe. This would enhance the viewer's understanding of the progression from unboxing to the final shot. Overall, the prompt is likely to succeed with Veo 3, but these adjustments would ensure even greater alignment with the system's requirements."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "From a side view, under soft, warm indoor lighting, a person's hand enters the frame, holding a chilled bottle of Coca-Cola with droplets of condensation on the surface. Their fingers, slick with moisture, grip the bottle's red tethered cap and, with a subtle twist, open it. The cap yields with a satisfying pop, releasing a small puff of carbonation that briefly obscures the Coca-Cola logo. The hand then lifts the open bottle slightly, angling it toward an unseen mouth, just as the shot ends.",
+        "narration": "Innovation meets tradition, as Coca-Cola's new tethered cap design enhances the simple pleasure of quenching your thirst."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "The visual description is mostly specific but could benefit from more detail about the hand's movement.",
+          "The temporal progression is clear but could be slightly more detailed about the timing of the carbonation puff.",
+          "The narration is slightly abstract and could be more directly related to the visual action."
+        ],
+        "feedback": "The prompt is well-constructed with a clear focus on a single subject and action, maintaining policy compliance and camera feasibility. The visual specificity is strong, but it could be improved by adding more details about the hand's movement and the exact moment the carbonation puff occurs. This would enhance the temporal clarity as well. The narration is concise but slightly abstract; it could be more directly tied to the visual action to enhance its quality. Adjusting these elements would improve the prompt's compatibility with Veo 3 by ensuring all aspects are as concrete and detailed as possible."
+      },
+      "score": 94.44,
+      "feedback_text": "ISSUES:\n- The visual description is mostly specific but could benefit from more detail about the hand's movement.\n- The temporal progression is clear but could be slightly more detailed about the timing of the carbonation puff.\n- The narration is slightly abstract and could be more directly related to the visual action.\n\nFEEDBACK:\nThe prompt is well-constructed with a clear focus on a single subject and action, maintaining policy compliance and camera feasibility. The visual specificity is strong, but it could be improved by adding more details about the hand's movement and the exact moment the carbonation puff occurs. This would enhance the temporal clarity as well. The narration is concise but slightly abstract; it could be more directly tied to the visual action to enhance its quality. Adjusting these elements would improve the prompt's compatibility with Veo 3 by ensuring all aspects are as concrete and detailed as possible."
+    },
+    {
+      "task_key": "0.mp4",
+      "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+      "candidate_id": 11,
+      "script_output": {
+        "script": "From an eye-level, stationary camera position, we see a sunlit wooden table radiating warm hues. A pair of hands enter the frame, holding an unopened box of the latest iPhone 16 Pro in Desert Titanium. Over the course of 3 seconds, the hands gently peel off the plastic seal, revealing the box's matte texture. The next 2 seconds feature the hands lifting the box's lid, exposing the brand new, gleaming iPhone nestled inside, its Desert Titanium color reflecting the soft sunlight. The final 3 seconds are dedicated to the hands gracefully lifting the iPhone, catching the light in a dazzling display of technology and design.",
+        "narration": "Witness the anticipation-filled reveal of technology's most recent marvel, the iPhone 16 Pro in Desert Titanium."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "The narration could provide more insight beyond what is shown."
+        ],
+        "feedback": "The prompt is well-constructed with clear policy compliance, visual specificity, and temporal clarity. The single subject focus is maintained throughout, and the camera feasibility is realistic with a stationary angle. The narration, while concise, could offer more insight or context about the iPhone 16 Pro's features or significance, rather than just describing the reveal. This would enhance the narration quality score. To improve, the narration could include a brief mention of a unique feature or the significance of the Desert Titanium color, adding depth to the visual experience."
+      },
+      "score": 97.78,
+      "feedback_text": "ISSUES:\n- The narration could provide more insight beyond what is shown.\n\nFEEDBACK:\nThe prompt is well-constructed with clear policy compliance, visual specificity, and temporal clarity. The single subject focus is maintained throughout, and the camera feasibility is realistic with a stationary angle. The narration, while concise, could offer more insight or context about the iPhone 16 Pro's features or significance, rather than just describing the reveal. This would enhance the narration quality score. To improve, the narration could include a brief mention of a unique feature or the significance of the Desert Titanium color, adding depth to the visual experience."
+    },
+    {
+      "task_key": "1.mp4",
+      "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+      "candidate_id": 11,
+      "script_output": {
+        "script": "In the soft, cool twilight, a low-angle, stationary camera captures a close-up of a gleaming Tesla Cybertruck. Over the course of 8 seconds, the Cybertruck, with its futuristic, angular design and stainless steel body, approaches and slowly drives through a puddle. As it moves, the vehicle stirs up a gentle spray of water, reflecting the light in a shimmering dance, while the sound of splash against metal punctuates the scene. The shot concludes as the Cybertruck's massive, metallic wheel emerges from the puddle, water droplets dripping off it, as it continues its journey beyond the frame.",
+        "narration": "Even in a mundane task, the Cybertruck redefines 'utility' with an air of futurism."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 9,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 9,
+          "narration_quality": 8,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "visual_specificity: The script could benefit from more specific details about the lighting and color reflections.",
+          "camera_feasibility: The description of the 'low-angle, stationary camera' is good, but could specify the exact height or angle for clarity.",
+          "narration_quality: The narration is slightly abstract and could be more directly tied to the visual elements."
+        ],
+        "feedback": "The prompt is well-constructed, adhering to policy compliance with no sensitive content or prohibited elements. The visual specificity is strong, but could be enhanced by detailing the lighting conditions and color reflections more explicitly, such as describing the twilight hues or the exact nature of the reflections on the Cybertruck's body. Temporal clarity is excellent, with a clear progression over 8 seconds. The focus on a single subject, the Cybertruck, is maintained without distraction. Camera feasibility is mostly realistic, though specifying the exact angle or height of the camera could improve clarity. The narration is concise but slightly abstract; it could be improved by directly referencing the visual elements, such as the shimmering water or the angular design. Overall, the prompt is compatible with Veo 3, but minor adjustments in specificity and narration could enhance its effectiveness."
+      },
+      "score": 94.44,
+      "feedback_text": "ISSUES:\n- visual_specificity: The script could benefit from more specific details about the lighting and color reflections.\n- camera_feasibility: The description of the 'low-angle, stationary camera' is good, but could specify the exact height or angle for clarity.\n- narration_quality: The narration is slightly abstract and could be more directly tied to the visual elements.\n\nFEEDBACK:\nThe prompt is well-constructed, adhering to policy compliance with no sensitive content or prohibited elements. The visual specificity is strong, but could be enhanced by detailing the lighting conditions and color reflections more explicitly, such as describing the twilight hues or the exact nature of the reflections on the Cybertruck's body. Temporal clarity is excellent, with a clear progression over 8 seconds. The focus on a single subject, the Cybertruck, is maintained without distraction. Camera feasibility is mostly realistic, though specifying the exact angle or height of the camera could improve clarity. The narration is concise but slightly abstract; it could be improved by directly referencing the visual elements, such as the shimmering water or the angular design. Overall, the prompt is compatible with Veo 3, but minor adjustments in specificity and narration could enhance its effectiveness."
+    },
+    {
+      "task_key": "2.mp4",
+      "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+      "candidate_id": 11,
+      "script_output": {
+        "script": "In a softly lit kitchen, a person's hand enters frame from the right, holding a chilled, condensation-dripped Coca-Cola bottle with a new tethered cap. The camera is positioned at eye-level, offering a side view of the scene. Over the first 3 seconds, the person uses their thumb and index finger to grasp the red cap, their nails lightly scratching the plastic. From seconds 3 to 6, they twist the cap slowly, the tethered connection stretching with a quiet rustle. The cap pops off at the 6-second mark, releasing a fizzy sound and a visible puff of carbonation. For the remaining 2 seconds, the hand holds the now open bottle, droplets of moisture sliding down its cold, glass surface.",
+        "narration": "A simple twist reveals the effervescence of Coca-Cola, captured in a bottle with a tethered cap."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 10,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 8,
+          "veo_compatibility": 10
+        },
+        "issues": [
+          "The narration could provide more insight beyond what is shown."
+        ],
+        "feedback": "The prompt is well-constructed, adhering to policy compliance with no sensitive content or prohibited elements. Visual specificity is strong, with detailed descriptions of materials, textures, and lighting. Temporal clarity is excellent, with a clear progression over the 8 seconds. The focus remains on a single subject and action, with no competing elements. The camera angle is feasible and clearly specified. However, the narration, while concise, could offer more insight beyond the visual description. To improve, the narration could include a brief mention of the environmental impact or convenience of the new tethered cap, enhancing the viewer's understanding and appreciation of the feature."
+      },
+      "score": 98.89,
+      "feedback_text": "ISSUES:\n- The narration could provide more insight beyond what is shown.\n\nFEEDBACK:\nThe prompt is well-constructed, adhering to policy compliance with no sensitive content or prohibited elements. Visual specificity is strong, with detailed descriptions of materials, textures, and lighting. Temporal clarity is excellent, with a clear progression over the 8 seconds. The focus remains on a single subject and action, with no competing elements. The camera angle is feasible and clearly specified. However, the narration, while concise, could offer more insight beyond the visual description. To improve, the narration could include a brief mention of the environmental impact or convenience of the new tethered cap, enhancing the viewer's understanding and appreciation of the feature."
+    }
+  ],
+  "next_id": 12,
+  "rollouts_used": 63,
+  "best_candidate_id": 0
+}
