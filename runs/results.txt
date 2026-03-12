@@ -1,0 +1,59 @@
+Initializing with bare-minimum seed prompt (generation 0)...
+Evaluating seed C0 on 6 tasks...
+
+    [C0] gen=0 avg=88.0 parent=CNone | 3.mp4: 95.0, 4.mp4: 99.44, 5.mp4: 93.33, 7.mp4: 65.0, 8.mp4: 97.22...
+
+Best after init: C0 (avg=88.0)
+
+======================================================================
+ITERATION 1 | rollouts=6 | budget=12
+======================================================================
+Selected C0 (avg=88.0) for mutation
+Evaluating C0 on minibatch of 3 tasks for feedback...
+  Parent minibatch avg: 85.7
+    5.mp4: 91.1 | cam=9 nar=9 pol=9 sin=9 tem=9 veo=9 vis=10
+    9.mp4: 80.6 | cam=9 nar=8 pol=9 sin=7 tem=4 veo=9 vis=9
+    8.mp4: 85.6 | cam=9 nar=8 pol=9 sin=10 tem=4 veo=9 vis=9
+Reflecting and proposing new prompt...
+Evaluating mutated C1 on minibatch...
+  Child minibatch avg: 83.3 (parent was 85.7)
+    5.mp4: 83.3 | cam=9 nar=9 pol=9 sin=9 tem=3 veo=9 vis=9
+    9.mp4: 82.2 | cam=8 nar=9 pol=9 sin=9 tem=3 veo=9 vis=9
+    8.mp4: 84.4 | cam=9 nar=9 pol=9 sin=9 tem=4 veo=9 vis=9
+  REJECTED (delta=-2.4, below tolerance=-2.0)
+  State saved to runs/gepa_20260312_093455.json
+
+======================================================================
+EVOLUTION COMPLETE
+======================================================================
+Total rollouts: 12
+Candidates explored: 1
+Best candidate: C0 (gen=0, avg=88.0)
+
+Best prompt:
+You are writing a prompt for Veo 3, a text-to-video AI model that generates photorealistic real-world footage.
+Your output will be fed directly to the model as its generation prompt.
+
+TOPIC: "{topic}"
+CONTEXT: {context}
+
+RULES — every output MUST satisfy all of these:
+1. SINGLE SCENE: Exactly 8 seconds of continuous, photorealistic footage. No cuts, transitions, or scene changes.
+2. ONE SUBJECT, ONE ACTION: Describe one clear subject performing one simple, observable action. No competing elements or multi-step processes.
+3. VISUAL SPECIFICITY: Name concrete materials, textures, colors, lighting source/quality, and spatial relationships. Replace vague adjectives with tangible details.
+4. TEMPORAL BEATS: Describe what the viewer sees at the start, what unfolds over the 8 seconds, and how the shot ends. Use phrases like "The shot opens with…", "Over the next few seconds…", "The clip ends as…".
+5. CAMERA: State the angle (eye-level, overhead, 45-degree, etc.) and movement (stationary, slow dolly, slow pan). No zooms, whip pans, handheld shake, rack focus, or scanning.
+6. LIGHTING: Specify the light source (soft window light, golden hour sun, overhead fluorescents, etc.).
+7. FORBIDDEN: No text overlays, graphics, animation, fantasy, abstract imagery, grid/pattern layouts, or technical measurement setups.
+8. NARRATION: One spoken sentence, MAXIMUM 18 words. Must add insight or context beyond what is visible — never just restate the visuals. Count your words.
+
+Output valid JSON only, no other text:
+{{
+    "script": "Present-tense, temporally ordered 8-second clip description with specific visual and cinematic details.",
+    "narration": "One sentence, max 18 words, adding insight beyond the visuals."
+}}
+
+Best prompt saved to: runs/best_prompt_20260312_093455.txt
+
+Leaderboard:
+  #1: avg=88.0 gen=0 C0 (seed) | 

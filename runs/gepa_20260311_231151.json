@@ -1,0 +1,285 @@
+{
+  "candidates": [
+    {
+      "id": 0,
+      "prompt": "Write a Veo 3 video prompt for the following topic.\n\nTOPIC: \"{topic}\"\nCONTEXT: {context}\n\nOutput valid JSON only:\n{{\n    \"script\": \"An 8-second video description.\",\n    \"narration\": \"A single sentence narration.\"\n}}",
+      "parent_id": null,
+      "generation": 0,
+      "scores": {
+        "3.mp4": 75.0,
+        "4.mp4": 83.89,
+        "5.mp4": 80.56,
+        "7.mp4": 78.33,
+        "8.mp4": 87.22,
+        "9.mp4": 65.56
+      },
+      "avg_score": 78.42666666666666,
+      "mutation_summary": ""
+    }
+  ],
+  "traces": [
+    {
+      "task_key": "3.mp4",
+      "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "A countertop shot shows a person preparing a French press: adding coarse coffee grounds to the carafe, pouring hot water, stirring briefly, placing the plunger, and slowly pressing down before pouring into a mug.",
+        "narration": "Correctly brewing coffee with a French press means adding coarse grounds, pouring hot water, giving a quick stir, and slowly pressing the plunger before pouring."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 6,
+          "temporal_clarity": 5,
+          "single_subject_focus": 9,
+          "camera_feasibility": 6,
+          "narration_quality": 2,
+          "veo_compatibility": 8
+        },
+        "issues": [
+          "Issue 1 (visual_specificity): Description is vague about materials, textures, colors, lighting, and spatial relationships. The prompt only says 'countertop', 'carafe', 'plunger', and 'mug' without specifying surfaces, finishes, or lighting. Change: specify materials and aesthetics, e.g., 'stainless steel French press with brushed finish, glass carafe, matte dark ceramic mug, granite countertop, warm natural light, near field shadowing, and clear spatial relationships (carafe near mug, kettle in background).'",
+          "Issue 2 (temporal_clarity): No explicit timing or shot durations. The prompt mentions steps but not an eight-second progression. Change: add per-shot timing totaling 8 seconds, e.g., 0-2s add grounds, 2-4s pour water, 4-5s stir, 5-7s place plunger, 7-8s press and pour.",
+          "Issue 3 (narration_quality): Narration text is one sentence longer than 18 words and offers no additional insight beyond the actions shown. Change: shorten to 18 words or fewer and include a brief, new insight, e.g., 'Coarse grounds and slow plunge maximize flavor and body from the oils.'",
+          "Issue 4 (camera_feasibility): Camera angle/movement are not specified beyond 'countertop shot.' Change: specify exact angle and movement, e.g., 'slightly above at 45-degree angle, stationary, with a slow lateral push-in during the press.'",
+          "Issue 5 (veo_compatibility): Potential modest risk due to long narration and multi-step actions without aligned timing. Change: ensure narration is concise and tightly synchronized with a clear shot list to reduce ambiguity for Veo 3."
+        ],
+        "feedback": "The prompt is clear in intent but falls short in several hard requirements: (1) visual specificity is too vague\u2014add explicit materials, textures, colors, lighting, and precise spatial relationships; (2) temporal clarity is missing\u2014must define an 8-second progression with per-shot durations; (3) narration exceeds the 18-word limit and adds no new insight\u2014shorten and provide a meaningful takeaway; (4) camera feasibility lacks explicit angle/movement\u2014define a concrete shot angle and any camera motion; (5) Veo compatibility could suffer from the above gaps\u2014rework to a concise, time-aligned shot list with a brief, insightful narration. Suggested instruction: provide a revised prompt including: (a) detailed visual descriptors, (b) an 8-second shot plan, (c) a concise 18-word or shorter narration that adds value, (d) specific camera angle/movement, and (e) ensure all elements align to a straightforward, single-scene workflow."
+      },
+      "score": 75.0,
+      "feedback_text": "ISSUES:\n- Issue 1 (visual_specificity): Description is vague about materials, textures, colors, lighting, and spatial relationships. The prompt only says 'countertop', 'carafe', 'plunger', and 'mug' without specifying surfaces, finishes, or lighting. Change: specify materials and aesthetics, e.g., 'stainless steel French press with brushed finish, glass carafe, matte dark ceramic mug, granite countertop, warm natural light, near field shadowing, and clear spatial relationships (carafe near mug, kettle in background).'\n- Issue 2 (temporal_clarity): No explicit timing or shot durations. The prompt mentions steps but not an eight-second progression. Change: add per-shot timing totaling 8 seconds, e.g., 0-2s add grounds, 2-4s pour water, 4-5s stir, 5-7s place plunger, 7-8s press and pour.\n- Issue 3 (narration_quality): Narration text is one sentence longer than 18 words and offers no additional insight beyond the actions shown. Change: shorten to 18 words or fewer and include a brief, new insight, e.g., 'Coarse grounds and slow plunge maximize flavor and body from the oils.'\n- Issue 4 (camera_feasibility): Camera angle/movement are not specified beyond 'countertop shot.' Change: specify exact angle and movement, e.g., 'slightly above at 45-degree angle, stationary, with a slow lateral push-in during the press.'\n- Issue 5 (veo_compatibility): Potential modest risk due to long narration and multi-step actions without aligned timing. Change: ensure narration is concise and tightly synchronized with a clear shot list to reduce ambiguity for Veo 3.\n\nFEEDBACK:\nThe prompt is clear in intent but falls short in several hard requirements: (1) visual specificity is too vague\u2014add explicit materials, textures, colors, lighting, and precise spatial relationships; (2) temporal clarity is missing\u2014must define an 8-second progression with per-shot durations; (3) narration exceeds the 18-word limit and adds no new insight\u2014shorten and provide a meaningful takeaway; (4) camera feasibility lacks explicit angle/movement\u2014define a concrete shot angle and any camera motion; (5) Veo compatibility could suffer from the above gaps\u2014rework to a concise, time-aligned shot list with a brief, insightful narration. Suggested instruction: provide a revised prompt including: (a) detailed visual descriptors, (b) an 8-second shot plan, (c) a concise 18-word or shorter narration that adds value, (d) specific camera angle/movement, and (e) ensure all elements align to a straightforward, single-scene workflow."
+    },
+    {
+      "task_key": "4.mp4",
+      "topic": "A close-up of a Newton\u2019s Cradle in motion on a desk, macro view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "An 8-second macro close-up of a Newton\u2019s Cradle on a polished wooden desk. The camera slowly zooms in to the suspended steel balls, capturing crisp collisions, bright reflections, and a shallow depth of field as the spheres swing in a smooth, rhythmic motion.",
+        "narration": "A macro close-up reveals the rhythmic momentum of a Newton\u2019s cradle as its polished balls collide on a wooden desk."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 9,
+          "visual_specificity": 6,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 8,
+          "narration_quality": 3,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "Narration exceeds 18-word limit: the line 'A macro close-up reveals the rhythmic momentum of a Newton\u2019s cradle as its polished balls collide on a wooden desk.' contains 20 words. Change to a single sentence of 18 words or fewer, e.g., 'A macro close-up reveals the cradle's rhythmic momentum as polished balls collide.'",
+          "Insufficient visual specificity: while 'polished wooden desk' and 'suspended steel balls' are mentioned, the prompt lacks explicit textures, colors, lighting, and spatial relationships. Add concrete details such as desk wood type/color and grain, ball finish (mirror-polished vs brushed), lighting direction/quality, and precise framing (e.g., ball-to-ball spacing, frame coverage)."
+        ],
+        "feedback": "The prompt is largely suitable, but two issues undermine its effectiveness for Veo 3. First, the narration violates the required constraint of one sentence with a maximum of 18 words, making the narration both too long and potentially redundant. Shorten the narration to a concise, single sentence that adds insight beyond what is visually shown. Second, visual specificity is underdeveloped: it mentions a polished wooden desk and steel balls but omits texture, color, lighting, and precise spatial relationships that help the model render a crisp macro shot. To fix, revise the narration constraint and enrich the scene description with explicit materials, colors, lighting, and composition (e.g., 'honey oak desk with pronounced grain', 'mirror-polished steel balls', 'soft directional lighting from the left creating bright reflections', and clear ball spacing within the frame). These changes align the prompt with Veo 3 expectations and reduce risk of rejection or generic output."
+      },
+      "score": 83.89,
+      "feedback_text": "ISSUES:\n- Narration exceeds 18-word limit: the line 'A macro close-up reveals the rhythmic momentum of a Newton\u2019s cradle as its polished balls collide on a wooden desk.' contains 20 words. Change to a single sentence of 18 words or fewer, e.g., 'A macro close-up reveals the cradle's rhythmic momentum as polished balls collide.'\n- Insufficient visual specificity: while 'polished wooden desk' and 'suspended steel balls' are mentioned, the prompt lacks explicit textures, colors, lighting, and spatial relationships. Add concrete details such as desk wood type/color and grain, ball finish (mirror-polished vs brushed), lighting direction/quality, and precise framing (e.g., ball-to-ball spacing, frame coverage).\n\nFEEDBACK:\nThe prompt is largely suitable, but two issues undermine its effectiveness for Veo 3. First, the narration violates the required constraint of one sentence with a maximum of 18 words, making the narration both too long and potentially redundant. Shorten the narration to a concise, single sentence that adds insight beyond what is visually shown. Second, visual specificity is underdeveloped: it mentions a polished wooden desk and steel balls but omits texture, color, lighting, and precise spatial relationships that help the model render a crisp macro shot. To fix, revise the narration constraint and enrich the scene description with explicit materials, colors, lighting, and composition (e.g., 'honey oak desk with pronounced grain', 'mirror-polished steel balls', 'soft directional lighting from the left creating bright reflections', and clear ball spacing within the frame). These changes align the prompt with Veo 3 expectations and reduce risk of rejection or generic output."
+    },
+    {
+      "task_key": "5.mp4",
+      "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "An 8-second close-up shot of hands tying a Bowline knot in a thick rope. The camera stays on the hands and rope only, from a slight top-down angle, showing the loop formation and the finished knot.",
+        "narration": "A hands-only close-up demonstrates tying a Bowline knot in a thick rope."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 9,
+          "visual_specificity": 5,
+          "temporal_clarity": 6,
+          "single_subject_focus": 9,
+          "camera_feasibility": 9,
+          "narration_quality": 6,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "Visual specificity is too vague: 'thick rope' with a 'slight top-down angle' but no details on rope material, color, diameter, texture, lighting, or background.",
+          "Narration lacks insight: it states the action without providing new information about the knot's properties or technique.",
+          "Temporal clarity could be strengthened: 8-second duration is mentioned but there is no explicit start-to-end timing for forming the loop and finishing the knot.",
+          "Subject clarity: 'a person' conflicts with 'hands-only close-up'; specify that the shot shows only hands and rope to avoid ambiguity."
+        ],
+        "feedback": "The prompt is largely feasible but could be improved for Veo 3 by increasing visual specificity (material, color, texture, lighting), sharpening narration to add knot insight within 18 words, and ensuring explicit start-to-end timing within the 8-second duration so viewers understand the sequence. The system prompt should require explicit details about materials and a clear, informative narration, plus explicit timing guidance (e.g., 0-3s form loop, 3-6s pull working end, 6-8s finish) and unambiguous subject framing (hands-only)."
+      },
+      "score": 80.56,
+      "feedback_text": "ISSUES:\n- Visual specificity is too vague: 'thick rope' with a 'slight top-down angle' but no details on rope material, color, diameter, texture, lighting, or background.\n- Narration lacks insight: it states the action without providing new information about the knot's properties or technique.\n- Temporal clarity could be strengthened: 8-second duration is mentioned but there is no explicit start-to-end timing for forming the loop and finishing the knot.\n- Subject clarity: 'a person' conflicts with 'hands-only close-up'; specify that the shot shows only hands and rope to avoid ambiguity.\n\nFEEDBACK:\nThe prompt is largely feasible but could be improved for Veo 3 by increasing visual specificity (material, color, texture, lighting), sharpening narration to add knot insight within 18 words, and ensuring explicit start-to-end timing within the 8-second duration so viewers understand the sequence. The system prompt should require explicit details about materials and a clear, informative narration, plus explicit timing guidance (e.g., 0-3s form loop, 3-6s pull working end, 6-8s finish) and unambiguous subject framing (hands-only)."
+    },
+    {
+      "task_key": "7.mp4",
+      "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "An 8-second street-level shot of a yellow New York City taxi driving through Times Square. The camera stays close to the curb, catching the taxi gliding past neon signs, flashing advertisements, and crowds of pedestrians as crosswalks light up and the city hums around it.",
+        "narration": "A yellow NYC taxi rolls through Times Square from a street-level perspective, surrounded by neon lights and busy pedestrians."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 6,
+          "temporal_clarity": 7,
+          "single_subject_focus": 7,
+          "camera_feasibility": 7,
+          "narration_quality": 4,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "Issue 1: Visual specificity is insufficient. The prompt mentions a yellow taxi and neon signs but lacks concrete textures/materials (e.g., asphalt, curb, chrome, glass storefronts) and lighting details (neon glow, reflections). Change: require explicit textures, materials, and lighting cues (e.g., asphalt street, concrete curb, chrome bumper, glass reflections, neon glow).",
+          "Issue 2: Temporal clarity is weak. The 8-second duration is stated but there is no defined start or end frame or progression across the scene. Change: specify a clear shot arc with start and end frames (e.g., taxi enters from left, glides past prominent signage, exits to the right).",
+          "Issue 3: Single_subject_focus risk. The phrase crowds of pedestrians and busy signage could compete with the taxi as the main subject. Change: designate the taxi as the primary subject with pedestrians/background elements kept secondary or out of focus.",
+          "Issue 4: Camera_feasibility ambiguity. Stating the camera stays close to the curb does not specify whether the shot is stationary or a moving track/dolly. Change: specify a camera setup such as a ground-level tracking shot along the curb at taxi speed, or a fixed curbside angle with a slight pan.",
+          "Issue 5: Narration_quality exceeds length limit and adds limited insight. The narration line appears to exceed 18 words and doesn\u2019t provide extra insight beyond visuals. Change: shorten to 18 words or fewer and ensure it adds new perspective."
+        ],
+        "feedback": "The prompt is largely compliant but misses clarity in several key areas that Veo 3 would rely on. Visual specificity is too abstract, lacking explicit textures and lighting cues that would guide realistic rendering. Temporal clarity and defined shot progression are insufficient, leaving the 8-second arc ambiguous. The instruction risks scattering focus between the taxi and dynamic pedestrians, potentially diluting the single-subject emphasis. Camera feasibility is unclear due to unspecified movement type, though the curb-level concept is plausible. Finally, the narration exceeds the 18-word limit and offers limited new insight beyond the visuals. To fix, tighten the prompt by adding concrete textures and lighting, define a clear start-to-end shot arc, enforce primary subject focus, specify the exact camera motion (tracking vs fixed), and shorten the narration to 18 words or fewer with added perspective."
+      },
+      "score": 78.33,
+      "feedback_text": "ISSUES:\n- Issue 1: Visual specificity is insufficient. The prompt mentions a yellow taxi and neon signs but lacks concrete textures/materials (e.g., asphalt, curb, chrome, glass storefronts) and lighting details (neon glow, reflections). Change: require explicit textures, materials, and lighting cues (e.g., asphalt street, concrete curb, chrome bumper, glass reflections, neon glow).\n- Issue 2: Temporal clarity is weak. The 8-second duration is stated but there is no defined start or end frame or progression across the scene. Change: specify a clear shot arc with start and end frames (e.g., taxi enters from left, glides past prominent signage, exits to the right).\n- Issue 3: Single_subject_focus risk. The phrase crowds of pedestrians and busy signage could compete with the taxi as the main subject. Change: designate the taxi as the primary subject with pedestrians/background elements kept secondary or out of focus.\n- Issue 4: Camera_feasibility ambiguity. Stating the camera stays close to the curb does not specify whether the shot is stationary or a moving track/dolly. Change: specify a camera setup such as a ground-level tracking shot along the curb at taxi speed, or a fixed curbside angle with a slight pan.\n- Issue 5: Narration_quality exceeds length limit and adds limited insight. The narration line appears to exceed 18 words and doesn\u2019t provide extra insight beyond visuals. Change: shorten to 18 words or fewer and ensure it adds new perspective.\n\nFEEDBACK:\nThe prompt is largely compliant but misses clarity in several key areas that Veo 3 would rely on. Visual specificity is too abstract, lacking explicit textures and lighting cues that would guide realistic rendering. Temporal clarity and defined shot progression are insufficient, leaving the 8-second arc ambiguous. The instruction risks scattering focus between the taxi and dynamic pedestrians, potentially diluting the single-subject emphasis. Camera feasibility is unclear due to unspecified movement type, though the curb-level concept is plausible. Finally, the narration exceeds the 18-word limit and offers limited new insight beyond the visuals. To fix, tighten the prompt by adding concrete textures and lighting, define a clear start-to-end shot arc, enforce primary subject focus, specify the exact camera motion (tracking vs fixed), and shorten the narration to 18 words or fewer with added perspective."
+    },
+    {
+      "task_key": "8.mp4",
+      "topic": "A person walking across the Abbey Road zebra crossing, eye-level view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "In an 8-second eye-level shot, a single person steps onto the Abbey Road zebra crossing and walks across, with the camera smoothly tracking along the crosswalk to keep the stripes and pedestrian in frame, ending as they approach the far curb.",
+        "narration": "A person walks across the Abbey Road zebra crossing, seen from eye level, as the iconic stripes glide beneath their feet."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 6,
+          "temporal_clarity": 10,
+          "single_subject_focus": 10,
+          "camera_feasibility": 8,
+          "narration_quality": 3,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "narration_quality_violation: The provided narration line contains more than 18 words (21 words). This violates the stated max of 18 words and adding minimal insight. Replace with a one-sentence narration of \u226418 words that adds some interpretation beyond the literal image. Example fix: \"One person crosses Abbey Road from eye level, the crosswalk\u2019s stripes guiding their path.\"",
+          "visual_specificity_improvement: The prompt lacks explicit detail on materials, textures, and lighting (e.g., asphalt texture, stripe paint finish, time of day, shadows). This reduces visual specificity. Add explicit descriptors such as: dry glossy asphalt, high-contrast white stripes, midday sunlight, and curb texture.",
+          "camera_feasibility_clarification: The instruction to have a \"smoothly tracking along the crosswalk to keep the stripes and pedestrian in frame\" could imply a long tracking shot that may be technically demanding. Consider clarifying a simpler approach (e.g., stationary camera with a slow dolly or a parallel tracking shot at a steady pace) to ensure feasibility."
+        ],
+        "feedback": "The prompt is largely compliant but contains a key issue: the narration line exceeds the 18-word limit, violating the system rule for narration length. To fix, rewrite the narration to a single sentence with 18 words or fewer that still provides slight interpretive value beyond the literal action. Additionally, the visual specificity could be improved by explicitly naming textures, colors, and lighting (e.g., asphalt texture, stripe paint finish, time of day). Finally, the requested camera movement, a tracking shot along the crosswalk, may be technically demanding; clarify or simplify to a slow dolly or parallel tracking with the subject to ensure practical viability."
+      },
+      "score": 87.22,
+      "feedback_text": "ISSUES:\n- narration_quality_violation: The provided narration line contains more than 18 words (21 words). This violates the stated max of 18 words and adding minimal insight. Replace with a one-sentence narration of \u226418 words that adds some interpretation beyond the literal image. Example fix: \"One person crosses Abbey Road from eye level, the crosswalk\u2019s stripes guiding their path.\"\n- visual_specificity_improvement: The prompt lacks explicit detail on materials, textures, and lighting (e.g., asphalt texture, stripe paint finish, time of day, shadows). This reduces visual specificity. Add explicit descriptors such as: dry glossy asphalt, high-contrast white stripes, midday sunlight, and curb texture.\n- camera_feasibility_clarification: The instruction to have a \"smoothly tracking along the crosswalk to keep the stripes and pedestrian in frame\" could imply a long tracking shot that may be technically demanding. Consider clarifying a simpler approach (e.g., stationary camera with a slow dolly or a parallel tracking shot at a steady pace) to ensure feasibility.\n\nFEEDBACK:\nThe prompt is largely compliant but contains a key issue: the narration line exceeds the 18-word limit, violating the system rule for narration length. To fix, rewrite the narration to a single sentence with 18 words or fewer that still provides slight interpretive value beyond the literal action. Additionally, the visual specificity could be improved by explicitly naming textures, colors, and lighting (e.g., asphalt texture, stripe paint finish, time of day). Finally, the requested camera movement, a tracking shot along the crosswalk, may be technically demanding; clarify or simplify to a slow dolly or parallel tracking with the subject to ensure practical viability."
+    },
+    {
+      "task_key": "9.mp4",
+      "topic": "A Mongolian horseman using an Uurga to catch a wild horse, wide landscape shot.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "Wide landscape of the Mongolian steppe under a pale blue sky. A lone horseman in traditional gear rides toward a wild horse on the horizon. In a single fluid motion he uses an Uurga, looping the rope to secure the animal, as the camera sweeps from the expansive terrain to a close-up of the lasso catching and the horses settling.",
+        "narration": "On the Mongolian steppe, a skilled horseman uses an Uurga to calmly catch a wild horse as the vast landscape unfolds around them."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 9,
+          "visual_specificity": 6,
+          "temporal_clarity": 4,
+          "single_subject_focus": 3,
+          "camera_feasibility": 7,
+          "narration_quality": 3,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "Single_subject_focus: The scene presents two subjects (the horseman and a wild horse) which violates the 'one subject, one action' guideline. Replace with a focus on the horseman performing the catch, with the horse as the target but not a separate subject.",
+          "Temporal_clarity: The script implies progression but provides no explicit 8-second timeline or beat structure. Add an 8-second beat breakdown (0-2s wide landscape, 2-4s approach, 4-6s lasso loop, 6-8s close-up of catch).",
+          "Visual_specificity: Lacks concrete materials, textures, and color details beyond 'pale blue sky'. Add explicit textures and materials (leather saddle and gear, wool clothing, fiber rope, horse fur, earth-toned ground colors) and lighting cues.",
+          "Narration_quality: The narration exceeds the 18-word limit (23 words) and doesn't clearly add insight. Shorten to one sentence \u226418 words that adds value, e.g., 'A Mongolian horseman masters the Uurga to calm a wild horse on the open steppe.'"
+        ],
+        "feedback": "The prompt largely adheres to the theme but fails several criteria. The main issue is the presence of two subjects (the horseman and the wild horse), which conflicts with single_subject_focus. It also lacks an explicit 8-second timeline, harming temporal_clarity. Visual specificity is insufficient for vivid rendering, and the narration is too long and not offering extra insight. To fix, rewrite to center on a single subject performing the action against the context (the wild horse) with a clear 8-second shot progression, enrich visual details (materials, textures, colors, lighting), and condense narration to a concise, insightful line of 18 words or fewer."
+      },
+      "score": 65.56,
+      "feedback_text": "ISSUES:\n- Single_subject_focus: The scene presents two subjects (the horseman and a wild horse) which violates the 'one subject, one action' guideline. Replace with a focus on the horseman performing the catch, with the horse as the target but not a separate subject.\n- Temporal_clarity: The script implies progression but provides no explicit 8-second timeline or beat structure. Add an 8-second beat breakdown (0-2s wide landscape, 2-4s approach, 4-6s lasso loop, 6-8s close-up of catch).\n- Visual_specificity: Lacks concrete materials, textures, and color details beyond 'pale blue sky'. Add explicit textures and materials (leather saddle and gear, wool clothing, fiber rope, horse fur, earth-toned ground colors) and lighting cues.\n- Narration_quality: The narration exceeds the 18-word limit (23 words) and doesn't clearly add insight. Shorten to one sentence \u226418 words that adds value, e.g., 'A Mongolian horseman masters the Uurga to calm a wild horse on the open steppe.'\n\nFEEDBACK:\nThe prompt largely adheres to the theme but fails several criteria. The main issue is the presence of two subjects (the horseman and the wild horse), which conflicts with single_subject_focus. It also lacks an explicit 8-second timeline, harming temporal_clarity. Visual specificity is insufficient for vivid rendering, and the narration is too long and not offering extra insight. To fix, rewrite to center on a single subject performing the action against the context (the wild horse) with a clear 8-second shot progression, enrich visual details (materials, textures, colors, lighting), and condense narration to a concise, insightful line of 18 words or fewer."
+    },
+    {
+      "task_key": "8.mp4",
+      "topic": "A person walking across the Abbey Road zebra crossing, eye-level view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "An eye-level, 8-second clip of a person walking across the famous Abbey Road zebra crossing. The camera sits at pedestrian height on the near sidewalk as the subject enters from frame left, walks steadily across the crosswalk, passes the central white stripes, and exits at the far curb, with the iconic white lines and the surrounding London street environment visible throughout.",
+        "narration": "At eye level, a person crosses the famous Abbey Road zebra crossing from left to right, moving steadily across the white stripes as the street and surrounding buildings frame the scene."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 6,
+          "temporal_clarity": 9,
+          "single_subject_focus": 8,
+          "camera_feasibility": 9,
+          "narration_quality": 2,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "visual_specificity: prompt lacks concrete materials, textures, lighting, and color palette (e.g., asphalt, crosswalk paint finish, shadows, time of day). Cause: vague description; fix: specify materials and lighting, e.g., 'black asphalt, white painted stripes, dawn light'.",
+          "narration_quality: narration exceeds 18-word limit and offers little insight. Cause: instruction demands a single sentence <=18 words; fix: rewrite to a single, informative sentence (<=18 words).",
+          "single_subject_focus: background elements ('surrounding London street environment') risk distracting from a single subject. Cause: phrase implies environment; fix: specify 'background is visible but non-distracting' or remove extraneous elements.",
+          "camera_feasibility: describes frame entry from left and exit right but does not state if camera is stationary or moving; risk of misinterpretation. Cause: ambiguity; fix: declare stationary camera at sidewalk height or specify a simple slow pan to keep subject in frame."
+        ],
+        "feedback": "The prompt largely aligns with Veo 3 requirements but has four issues: (1) narration length violates the 18-word limit and lacks insightful value; (2) visual specificity is insufficient, lacking explicit materials, textures, and lighting; (3) the mention of a visible but potentially distracting background could conflict with strict single-subject focus; (4) camera movement is ambiguously described, leaving ambiguity between stationary vs. moving framing. The system prompt requires concise, insightful narration, explicit visual details, minimal distracting background, and clear camera setup. To fix, rewrite narration to a single <=18-word sentence that adds value; add explicit visual cues (materials, textures, lighting, time of day); clarify that the background is present but non-distracting; specify a clear camera setup (stationary at sidewalk height or a simple slow pan). Also consider adding a precise 0\u20138s timeline (e.g., 0s entry, 3s center stripes, 8s exit) to improve temporal clarity."
+      },
+      "score": 83.33,
+      "feedback_text": "ISSUES:\n- visual_specificity: prompt lacks concrete materials, textures, lighting, and color palette (e.g., asphalt, crosswalk paint finish, shadows, time of day). Cause: vague description; fix: specify materials and lighting, e.g., 'black asphalt, white painted stripes, dawn light'.\n- narration_quality: narration exceeds 18-word limit and offers little insight. Cause: instruction demands a single sentence <=18 words; fix: rewrite to a single, informative sentence (<=18 words).\n- single_subject_focus: background elements ('surrounding London street environment') risk distracting from a single subject. Cause: phrase implies environment; fix: specify 'background is visible but non-distracting' or remove extraneous elements.\n- camera_feasibility: describes frame entry from left and exit right but does not state if camera is stationary or moving; risk of misinterpretation. Cause: ambiguity; fix: declare stationary camera at sidewalk height or specify a simple slow pan to keep subject in frame.\n\nFEEDBACK:\nThe prompt largely aligns with Veo 3 requirements but has four issues: (1) narration length violates the 18-word limit and lacks insightful value; (2) visual specificity is insufficient, lacking explicit materials, textures, and lighting; (3) the mention of a visible but potentially distracting background could conflict with strict single-subject focus; (4) camera movement is ambiguously described, leaving ambiguity between stationary vs. moving framing. The system prompt requires concise, insightful narration, explicit visual details, minimal distracting background, and clear camera setup. To fix, rewrite narration to a single <=18-word sentence that adds value; add explicit visual cues (materials, textures, lighting, time of day); clarify that the background is present but non-distracting; specify a clear camera setup (stationary at sidewalk height or a simple slow pan). Also consider adding a precise 0\u20138s timeline (e.g., 0s entry, 3s center stripes, 8s exit) to improve temporal clarity."
+    },
+    {
+      "task_key": "5.mp4",
+      "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "An 8-second hands-only close-up of a person tying a Bowline knot with a thick rope. The camera stays at hand level, focusing on rough rope fibers as fingers form the loop, pass the standing part through, and tighten the knot, with soft, neutral lighting and shallow depth of field to emphasize texture.",
+        "narration": "A tight hands-only close-up shows a Bowline knot being formed with a thick rope, the loop and tail coming together as the knot tightens."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 7,
+          "temporal_clarity": 9,
+          "single_subject_focus": 10,
+          "camera_feasibility": 10,
+          "narration_quality": 4,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "Narration length exceeds 18 words: the provided narration contains 24 words, violating the 'one sentence, max 18 words' rule.",
+          "Narration provides no extra insight beyond what's shown: it describes events instead of offering a takeaway.",
+          "Visual specificity lacks explicit rope material and color: specify rope material, color, and texture (e.g., Manila hemp, natural tan, twisted)."
+        ],
+        "feedback": "The prompt mostly aligns with Veo 3 requirements, but the narration constraint is violated and lacks an added insight. To fix, rewrite narration as a single <=18-word sentence that offers a takeaway (e.g., noting how tension tightens the knot). Also improve visual specificity by naming rope material and color. Consider updating the system prompt to enforce: 1) narration <=18 words with an extra insight, 2) explicit naming of rope material, color, and texture in visuals."
+      },
+      "score": 90.0,
+      "feedback_text": "ISSUES:\n- Narration length exceeds 18 words: the provided narration contains 24 words, violating the 'one sentence, max 18 words' rule.\n- Narration provides no extra insight beyond what's shown: it describes events instead of offering a takeaway.\n- Visual specificity lacks explicit rope material and color: specify rope material, color, and texture (e.g., Manila hemp, natural tan, twisted).\n\nFEEDBACK:\nThe prompt mostly aligns with Veo 3 requirements, but the narration constraint is violated and lacks an added insight. To fix, rewrite narration as a single <=18-word sentence that offers a takeaway (e.g., noting how tension tightens the knot). Also improve visual specificity by naming rope material and color. Consider updating the system prompt to enforce: 1) narration <=18 words with an extra insight, 2) explicit naming of rope material, color, and texture in visuals."
+    },
+    {
+      "task_key": "3.mp4",
+      "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "On a clean kitchen countertop, a person measures coffee grounds into a French press, pours hot water, stirs briefly, then presses the plunger to complete the brew.",
+        "narration": "A concise demonstration of a proper French press brew on the countertop."
+      },
+      "critique": {
+        "scores": {
+          "policy_compliance": 10,
+          "visual_specificity": 4,
+          "temporal_clarity": 6,
+          "single_subject_focus": 9,
+          "camera_feasibility": 6,
+          "narration_quality": 4,
+          "veo_compatibility": 9
+        },
+        "issues": [
+          "visual_specificity: The prompt lacks explicit materials, textures, colors, lighting, and spatial relationships; only mentions 'clean kitchen countertop' and 'French press'. Add concrete descriptors like stainless steel press, glass carafe, ceramic mug, brushed metal textures, warm lighting, and relative distances.",
+          "temporal_clarity: No timing or pacing is specified, making an 8-second progression ambiguous. Add timing markers and shot durations (e.g., 0-2s measure, 2-4s pour, 4-6s stir, 6-8s press).",
+          "single_subject_focus: The sequence includes multiple actions; ensure focus remains on a single primary action per shot or segment the actions into discrete shots to avoid perceived competing elements.",
+          "camera_feasibility: Camera angle is under-specified; 'countertop view' is vague. Specify a concrete shot type (e.g., fixed overhead close to the counter or a slight side angle) and whether any movement (stationary or slow pan) is used.",
+          "narration_quality: The narration is generic and doesn\u2019t add insight beyond the visuals. Use a single sentence under 18 words that provides a practical tip (e.g., 1:15 coffee-to-water ratio) to add value."
+        ],
+        "feedback": "The prompt is generally compliant but lacks visual specificity, explicit timing, and deeper narration insight. To improve Veo 3 compatibility and clarity, add concrete materials, textures, and lighting details; specify an 8-second pacing with defined shot beats; refine the shot structure to keep focus on the primary action; provide a concrete camera setup (angle and movement); and craft a concise, informative narration under 18 words that adds actionable insight. These changes reduce ambiguity and better align with Veo 3\u2019s generation constraints."
+      },
+      "score": 77.22,
+      "feedback_text": "ISSUES:\n- visual_specificity: The prompt lacks explicit materials, textures, colors, lighting, and spatial relationships; only mentions 'clean kitchen countertop' and 'French press'. Add concrete descriptors like stainless steel press, glass carafe, ceramic mug, brushed metal textures, warm lighting, and relative distances.\n- temporal_clarity: No timing or pacing is specified, making an 8-second progression ambiguous. Add timing markers and shot durations (e.g., 0-2s measure, 2-4s pour, 4-6s stir, 6-8s press).\n- single_subject_focus: The sequence includes multiple actions; ensure focus remains on a single primary action per shot or segment the actions into discrete shots to avoid perceived competing elements.\n- camera_feasibility: Camera angle is under-specified; 'countertop view' is vague. Specify a concrete shot type (e.g., fixed overhead close to the counter or a slight side angle) and whether any movement (stationary or slow pan) is used.\n- narration_quality: The narration is generic and doesn\u2019t add insight beyond the visuals. Use a single sentence under 18 words that provides a practical tip (e.g., 1:15 coffee-to-water ratio) to add value.\n\nFEEDBACK:\nThe prompt is generally compliant but lacks visual specificity, explicit timing, and deeper narration insight. To improve Veo 3 compatibility and clarity, add concrete materials, textures, and lighting details; specify an 8-second pacing with defined shot beats; refine the shot structure to keep focus on the primary action; provide a concrete camera setup (angle and movement); and craft a concise, informative narration under 18 words that adds actionable insight. These changes reduce ambiguity and better align with Veo 3\u2019s generation constraints."
+    }
+  ],
+  "next_id": 2,
+  "rollouts_used": 12,
+  "best_candidate_id": 0
+}

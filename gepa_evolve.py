@@ -26,19 +26,14 @@ from dotenv import load_dotenv
 load_dotenv()
 client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# ---------------------------------------------------------------------------
-# Domain constants
-# ---------------------------------------------------------------------------
 PROMPTS_FILE = "prompts.json"
 EVAL_MODEL = "gpt-5-nano"
 MUTATION_MODEL = "gpt-5-nano"
 SCRIPT_GEN_MODEL = "gpt-5-nano"
-MINIBATCH_SIZE = 3       # tasks per evaluation round (paper uses b=3)
-PARETO_SET_SIZE = None    # None = use all tasks for Pareto scoring
+MINIBATCH_SIZE = 4      
+PARETO_SET_SIZE = None    
+ACCEPT_TOLERANCE = 2.0  
 
-# ---------------------------------------------------------------------------
-# Data structures
-# ---------------------------------------------------------------------------
 @dataclass
 class Candidate:
     id: int
@@ -59,7 +54,6 @@ class Candidate:
         c.mutation_summary = ""
         return c
 
-
 @dataclass
 class EvalTrace:
     task_key: str
@@ -69,7 +63,6 @@ class EvalTrace:
     critique: Dict[str, Any]
     score: float
     feedback_text: str
-
 
 @dataclass
 class RunState:
@@ -84,30 +77,28 @@ class RunState:
         self.next_id += 1
         return cid
 
+SEED_PROMPT = """You are writing a prompt for Veo 3, a text-to-video AI model that generates photorealistic real-world footage.
+                Your output will be fed directly to the model as its generation prompt.
 
-# ---------------------------------------------------------------------------
-# Seed prompt — bare minimum starting point (GEPA paper style)
-#
-# The paper initializes with a single minimal instruction that only states
-# the task and output format.  All quality-improving knowledge (camera
-# rules, Veo constraints, etc.) is discovered through evolutionary
-# mutation, not front-loaded by the engineer.
-# ---------------------------------------------------------------------------
-SEED_PROMPT = """Write a Veo 3 video prompt for the following topic.
+                TOPIC: "{topic}"
+                CONTEXT: {context}
 
-TOPIC: "{topic}"
-CONTEXT: {context}
+                RULES — every output MUST satisfy all of these:
+                1. SINGLE SCENE: Exactly 8 seconds of continuous, photorealistic footage. No cuts, transitions, or scene changes.
+                2. ONE SUBJECT, ONE ACTION: Describe one clear subject performing one simple, observable action. No competing elements or multi-step processes.
+                3. VISUAL SPECIFICITY: Name concrete materials, textures, colors, lighting source/quality, and spatial relationships. Replace vague adjectives with tangible details.
+                4. TEMPORAL BEATS: Describe what the viewer sees at the start, what unfolds over the 8 seconds, and how the shot ends. Use phrases like "The shot opens with…", "Over the next few seconds…", "The clip ends as…".
+                5. CAMERA: State the angle (eye-level, overhead, 45-degree, etc.) and movement (stationary, slow dolly, slow pan). No zooms, whip pans, handheld shake, rack focus, or scanning.
+                6. LIGHTING: Specify the light source (soft window light, golden hour sun, overhead fluorescents, etc.).
+                7. FORBIDDEN: No text overlays, graphics, animation, fantasy, abstract imagery, grid/pattern layouts, or technical measurement setups.
+                8. NARRATION: One spoken sentence, MAXIMUM 18 words. Must add insight or context beyond what is visible — never just restate the visuals. Count your words.
 
-Output valid JSON only:
-{{
-    "script": "An 8-second video description.",
-    "narration": "A single sentence narration."
-}}"""
+                Output valid JSON only, no other text:
+                {{
+                    "script": "Present-tense, temporally ordered 8-second clip description with specific visual and cinematic details.",
+                    "narration": "One sentence, max 18 words, adding insight beyond the visuals."
+                }}"""
 
-
-# ---------------------------------------------------------------------------
-# Evaluation: generate script + critique it
-# ---------------------------------------------------------------------------
 def generate_script(prompt_template: str, topic: str, context: str = "None provided.") -> Dict[str, str]:
     """Run the script generator with a given system prompt template."""
     filled = prompt_template.replace("{topic}", topic).replace("{context}", context)
@@ -115,60 +106,72 @@ def generate_script(prompt_template: str, topic: str, context: str = "None provi
     r = client.chat.completions.create(
         model=SCRIPT_GEN_MODEL,
         messages=[{"role": "user", "content": filled}],
-        max_tokens=1200,
-        temperature=0.7,
     )
-    raw = r.choices[0].message.content.strip()
-    raw = _clean_json(raw)
-    return json.loads(raw)
-
+    choice = r.choices[0]
+    raw = choice.message.content or ""
+    raw = raw.strip()
+    if not raw:
+        raise ValueError(f"Empty response from {SCRIPT_GEN_MODEL} (finish_reason={choice.finish_reason})")
+    try:
+        return json.loads(_clean_json(raw))
+    except (json.JSONDecodeError, ValueError) as e:
+        print(f"    [generate_script] JSON parse failed: {e}")
+        print(f"    [generate_script] finish_reason={choice.finish_reason}")
+        print(f"    [generate_script] Raw ({len(raw)} chars): {raw[:300]}")
+        raise
 
 def critique_script(script_data: Dict[str, str], topic: str) -> Dict[str, Any]:
     """Run the critique evaluator. Returns structured feedback + numeric score."""
     critique_prompt = f"""You are a strict evaluator for Veo 3 video generation prompts.
 
-TOPIC: {topic}
-VIDEO SCRIPT: {script_data.get("script", "")}
-NARRATION: {script_data.get("narration", "")}
+    TOPIC: {topic}
+    VIDEO SCRIPT: {script_data.get("script", "")}
+    NARRATION: {script_data.get("narration", "")}
 
-Score this prompt on each dimension (0-10) and list any issues found.
+    Score this prompt on each dimension (0-10) and list any issues found.
 
-SCORING DIMENSIONS:
-1. policy_compliance: No sensitive content, text overlays, graphics, animation, fantasy, or prohibited camera moves.
-2. visual_specificity: Concrete materials, textures, colors, lighting, spatial relationships named explicitly.
-3. temporal_clarity: Clear start-to-end progression across 8 seconds.
-4. single_subject_focus: One subject, one action, no competing elements.
-5. camera_feasibility: Camera angle and movement are specified, realistic, and simple (stationary or slow pan/dolly).
-6. narration_quality: One sentence, max 18 words, adds insight beyond what is shown.
-7. veo_compatibility: Likely to succeed with Veo 3 without triggering policy rejection. Penalize abstract, multi-step, grid, scanning, technical setups.
+    SCORING DIMENSIONS:
+    1. policy_compliance: No sensitive content, text overlays, graphics, animation, fantasy, or prohibited camera moves.
+    2. visual_specificity: Concrete materials, textures, colors, lighting, spatial relationships named explicitly.
+    3. temporal_clarity: Clear start-to-end progression across 8 seconds.
+    4. single_subject_focus: One subject, one action, no competing elements.
+    5. camera_feasibility: Camera angle and movement are specified, realistic, and simple (stationary or slow pan/dolly).
+    6. narration_quality: One sentence, max 18 words, adds insight beyond what is shown.
+    7. veo_compatibility: Likely to succeed with Veo 3 without triggering policy rejection. Penalize abstract, multi-step, grid, scanning, technical setups.
 
-For each issue found, explain what part of the prompt caused it and what instruction change would prevent it.
+    For each issue found, explain what part of the prompt caused it and what instruction change would prevent it.
 
-Respond with ONLY valid JSON:
-{{
-    "scores": {{
-        "policy_compliance": 0-10,
-        "visual_specificity": 0-10,
-        "temporal_clarity": 0-10,
-        "single_subject_focus": 0-10,
-        "camera_feasibility": 0-10,
-        "narration_quality": 0-10,
-        "veo_compatibility": 0-10
-    }},
-    "issues": ["issue 1 description", "..."],
-    "feedback": "Detailed paragraph: what went wrong, what instruction in the system prompt was insufficient, and what change would fix it."
-}}"""
+    Respond with ONLY valid JSON:
+    {{
+        "scores": {{
+            "policy_compliance": 0-10,
+            "visual_specificity": 0-10,
+            "temporal_clarity": 0-10,
+            "single_subject_focus": 0-10,
+            "camera_feasibility": 0-10,
+            "narration_quality": 0-10,
+            "veo_compatibility": 0-10
+        }},
+        "issues": ["issue 1 description", "..."],
+        "feedback": "Detailed paragraph: what went wrong, what instruction in the system prompt was insufficient, and what change would fix it."
+    }}"""
 
     r = client.chat.completions.create(
         model=EVAL_MODEL,
         messages=[{"role": "user", "content": critique_prompt}],
-        max_tokens=800,
-        temperature=0.2,
     )
-    raw = r.choices[0].message.content.strip()
-    raw = _clean_json(raw)
-    return json.loads(raw)
-
+    choice = r.choices[0]
+    raw = choice.message.content or ""
+    raw = raw.strip()
+    if not raw:
+        raise ValueError(f"Empty response from {EVAL_MODEL} (finish_reason={choice.finish_reason})")
+    try:
+        return json.loads(_clean_json(raw))
+    except (json.JSONDecodeError, ValueError) as e:
+        print(f"    [critique_script] JSON parse failed: {e}")
+        print(f"    [critique_script] finish_reason={choice.finish_reason}")
+        print(f"    [critique_script] Raw ({len(raw)} chars): {raw[:300]}")
+        raise
 
 def compute_score(critique: Dict[str, Any]) -> float:
     """Aggregate critique sub-scores into a single 0-100 fitness value."""
@@ -188,7 +191,6 @@ def compute_score(critique: Dict[str, Any]) -> float:
     weighted = sum(scores.get(k, 0) * weights.get(k, 1.0) for k in scores)
     return round((weighted / total_w) * 10, 2)  # scale to 0-100
 
-
 def evaluate_candidate(candidate: Candidate, tasks: List[Dict[str, str]]) -> List[EvalTrace]:
     """Evaluate a candidate prompt on a list of (key, topic) tasks."""
     traces = []
@@ -203,6 +205,7 @@ def evaluate_candidate(candidate: Candidate, tasks: List[Dict[str, str]]) -> Lis
         try:
             critique = critique_script(script_data, topic)
         except Exception as e:
+            print(f"    [eval C{candidate.id} / {key}] critique failed: {e}")
             critique = {"scores": {}, "issues": [str(e)], "feedback": str(e)}
 
         score = compute_score(critique)
@@ -223,73 +226,86 @@ def evaluate_candidate(candidate: Candidate, tasks: List[Dict[str, str]]) -> Lis
         traces.append(trace)
     return traces
 
-
-# ---------------------------------------------------------------------------
-# Reflective prompt mutation (GEPA Appendix C meta-prompt)
-# ---------------------------------------------------------------------------
 def reflective_mutate(candidate: Candidate, traces: List[EvalTrace]) -> str:
     """
     Use the GEPA reflection meta-prompt to propose an improved system prompt
     based on the candidate's current prompt and its evaluation traces.
     """
     examples_block = ""
+    all_dim_scores: Dict[str, List[float]] = {}
     for t in traces:
+        dim_scores = t.critique.get("scores", {})
+        dim_lines = ""
+        for dim, val in sorted(dim_scores.items()):
+            dim_lines += f"      {dim}: {val}/10\n"
+            all_dim_scores.setdefault(dim, []).append(val)
         examples_block += f"""
----
-Task topic: {t.topic}
-Assistant output:
-  script: {t.script_output.get("script", "N/A")}
-  narration: {t.script_output.get("narration", "N/A")}
-Score: {t.score}/100
-Feedback: {t.feedback_text}
----
-"""
+        ---
+        Task topic: {t.topic}
+        Assistant output:
+        script: {t.script_output.get("script", "N/A")}
+        narration: {t.script_output.get("narration", "N/A")}
+        Per-dimension scores:
+        {dim_lines}Overall score: {t.score}/100
+        Feedback: {t.feedback_text}
+        ---
+        """
+
+    # Identify weakest dimensions to focus on
+    dim_avgs = {dim: sum(vals) / len(vals) for dim, vals in all_dim_scores.items() if vals}
+    sorted_dims = sorted(dim_avgs.items(), key=lambda x: x[1])
+    weakest = [f"  - {dim}: avg {avg:.1f}/10" for dim, avg in sorted_dims[:3]]
+    weakest_block = "\n".join(weakest)
 
     meta_prompt = f"""I provided an assistant with the following instructions to perform a task for me:
-```
-{candidate.prompt}
-```
+    ```
+    {candidate.prompt}
+    ```
 
-The following are examples of different task inputs provided to the assistant along with the assistant's response for each of them, and some feedback on how the assistant's response could be better:
-```
-{examples_block}
-```
+    The following are examples of different task inputs provided to the assistant along with the assistant's response for each of them, and some feedback on how the assistant's response could be better:
+    ```
+    {examples_block}
+    ```
 
-Your task is to write a new instruction for the assistant.
+    WEAKEST SCORING DIMENSIONS (focus your improvements here):
+    {weakest_block}
 
-Read the inputs carefully and identify the input format and infer detailed task description about the task I wish to solve with the assistant.
+    Your task is to write an improved instruction for the assistant. Follow these guidelines:
 
-Read all the assistant responses and the corresponding feedback. Identify all niche and domain specific factual information about the task and include it in the instruction, as a lot of it may not be available to the assistant in the future. The assistant may have utilized a generalizable strategy to solve the task, if so, include that in the instruction as well.
+    1. STRUCTURE: The instruction MUST contain explicit numbered rules that the assistant can check against. Do not write vague prose — write concrete, testable constraints.
 
-Important domain knowledge for this task:
-- The assistant writes prompts for Veo 3, a text-to-video AI that generates photorealistic real-world footage.
-- Output must be valid JSON with "script" and "narration" keys.
-- Veo 3 rejects: text overlays, graphics, animation, fantasy, zooms, whip pans, rack focus, scanning motions, grid layouts, multi-step processes, abstract imagery, multiple competing subjects.
-- Camera must be stationary or slow dolly/pan. Angle must be specified.
-- The clip is exactly 8 seconds of continuous footage with no cuts.
-- Narration is one sentence, max 18 words, adding insight beyond the visuals.
+    2. FOCUS ON WEAK DIMENSIONS: The scores above reveal which dimensions are consistently low. Add or strengthen rules that directly address those weaknesses. For example:
+    - Low narration_quality → add a rule like "Narration must be one sentence, max 18 words. It must teach or contextualize, never restate visuals. Count your words before outputting."
+    - Low visual_specificity → add a rule requiring explicit materials, textures, colors, and lighting source in every script.
+    - Low temporal_clarity → add a rule requiring temporal beat markers ("The shot opens with…", "Over the next few seconds…", "The clip ends as…").
+    - Low camera_feasibility → add a rule stating the camera angle and movement type explicitly.
 
-Focus your improvements on the specific issues identified in the feedback. Make targeted changes rather than rewriting from scratch. Preserve what works well and fix what doesn't.
+    3. PRESERVE WHAT WORKS: Keep rules and language from the current instruction that score well. Only modify or add rules targeting the weak dimensions.
 
-Provide the new instructions within ``` blocks."""
+    4. INCLUDE A WORKED EXAMPLE: After the rules, include one brief example of a good output so the assistant has a concrete reference for quality.
+
+    5. DOMAIN KNOWLEDGE: The assistant writes prompts for Veo 3, a text-to-video AI that generates photorealistic 8-second real-world footage. Keep these hard constraints:
+    - Output must be valid JSON with "script" and "narration" keys only.
+    - Veo 3 rejects: text overlays, graphics, animation, fantasy, zooms, whip pans, rack focus, scanning motions, grid layouts, multi-step processes, abstract imagery, multiple competing subjects.
+    - Camera must be stationary or slow dolly/pan. Angle must be specified (eye-level, overhead, 45-degree, etc.).
+    - The clip is exactly 8 seconds of continuous footage with no cuts.
+    - Narration is one sentence, max 18 words, adding insight beyond the visuals.
+
+    Provide the new instructions within ``` blocks."""
 
     r = client.chat.completions.create(
         model=MUTATION_MODEL,
         messages=[{"role": "user", "content": meta_prompt}],
-        max_tokens=2000,
-        temperature=0.8,
     )
-    response = r.choices[0].message.content.strip()
+    response = (r.choices[0].message.content or "").strip()
+    if not response:
+        raise ValueError(f"Empty mutation response from {MUTATION_MODEL} (finish_reason={r.choices[0].finish_reason})")
 
     match = re.search(r"```(?:\w*\n)?(.*?)```", response, re.DOTALL)
     if match:
         return match.group(1).strip()
     return response
 
-
-# ---------------------------------------------------------------------------
-# Pareto-based candidate selection (Algorithm 2 from the paper)
-# ---------------------------------------------------------------------------
 def select_candidate_pareto(candidates: List[Candidate], task_keys: List[str]) -> Candidate:
     """
     Pareto-based selection: find candidates that are best on at least one task,
@@ -341,10 +357,6 @@ def select_candidate_pareto(candidates: List[Candidate], task_keys: List[str]) -
     weights = [freq[c.id] / total for c in non_dominated]
     return random.choices(non_dominated, weights=weights, k=1)[0]
 
-
-# ---------------------------------------------------------------------------
-# Persistence
-# ---------------------------------------------------------------------------
 def save_state(state: RunState, path: Path):
     data = {
         "candidates": [asdict(c) for c in state.candidates],
@@ -356,7 +368,6 @@ def save_state(state: RunState, path: Path):
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w") as f:
         json.dump(data, f, indent=2, default=str)
-
 
 def load_state(path: Path) -> RunState:
     with open(path) as f:
@@ -371,10 +382,6 @@ def load_state(path: Path) -> RunState:
         best_candidate_id=data["best_candidate_id"],
     )
 
-
-# ---------------------------------------------------------------------------
-# Task loading
-# ---------------------------------------------------------------------------
 def load_tasks(path: str = PROMPTS_FILE) -> List[Dict[str, str]]:
     with open(path) as f:
         raw = json.load(f)
@@ -387,37 +394,40 @@ def load_tasks(path: str = PROMPTS_FILE) -> List[Dict[str, str]]:
 def sample_minibatch(tasks: List[Dict[str, str]], size: int) -> List[Dict[str, str]]:
     return random.sample(tasks, min(size, len(tasks)))
 
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
 def _clean_json(s: str) -> str:
+    """Extract a JSON object from model output, tolerating markdown fences and prose."""
     s = s.strip()
-    if s.startswith("```"):
-        s = re.sub(r"^```(?:json)?\n?", "", s)
-        s = re.sub(r"\n?```$", "", s)
-    return s.strip()
+    if not s:
+        raise ValueError("Model returned empty response")
 
+    # Strip markdown fences
+    s = re.sub(r"^```(?:json)?\s*\n?", "", s)
+    s = re.sub(r"\n?\s*```\s*$", "", s)
+    s = s.strip()
+
+    # If the result already looks like JSON, return it
+    if s.startswith("{"):
+        return s
+
+    # Try to extract the first JSON object from surrounding prose
+    match = re.search(r"\{.*\}", s, re.DOTALL)
+    if match:
+        return match.group(0)
+
+    raise ValueError(f"No JSON object found in model response: {s[:200]}")
 
 def print_candidate_summary(c: Candidate, prefix: str = ""):
     task_scores = ", ".join(f"{k}: {v}" for k, v in sorted(c.scores.items())[:5])
     print(f"{prefix}[C{c.id}] gen={c.generation} avg={c.avg_score:.1f} parent=C{c.parent_id} | {task_scores}...")
-
 
 def summarize_mutation(old_prompt: str, new_prompt: str) -> str:
     """Ask the LLM for a one-line diff summary."""
     r = client.chat.completions.create(
         model="gpt-5-nano",
         messages=[{"role": "user", "content": f"In one sentence, what changed between these two prompts?\n\nOLD:\n{old_prompt[:1500]}\n\nNEW:\n{new_prompt[:1500]}"}],
-        max_tokens=100,
-        temperature=0.2,
     )
-    return r.choices[0].message.content.strip()
+    return (r.choices[0].message.content or "(empty response)").strip()
 
-
-# ---------------------------------------------------------------------------
-# Main evolution loop
-# ---------------------------------------------------------------------------
 def run_gepa(
     budget: int = 20,
     minibatch_size: int = MINIBATCH_SIZE,
@@ -477,7 +487,11 @@ def run_gepa(
         state.rollouts_used += len(mb_traces)
 
         mb_avg = sum(t.score for t in mb_traces) / len(mb_traces)
-        print(f"  Minibatch avg score: {mb_avg:.1f}")
+        print(f"  Parent minibatch avg: {mb_avg:.1f}")
+        for t in mb_traces:
+            dims = t.critique.get("scores", {})
+            dim_str = " ".join(f"{k[:3]}={v}" for k, v in sorted(dims.items()))
+            print(f"    {t.task_key}: {t.score:.1f} | {dim_str}")
 
         # 3. Reflective mutation
         print(f"Reflecting and proposing new prompt...")
@@ -491,11 +505,17 @@ def run_gepa(
         state.rollouts_used += len(child_mb_traces)
 
         child_mb_avg = sum(t.score for t in child_mb_traces) / len(child_mb_traces)
-        print(f"  Mutated minibatch avg: {child_mb_avg:.1f} (parent was {mb_avg:.1f})")
+        print(f"  Child minibatch avg: {child_mb_avg:.1f} (parent was {mb_avg:.1f})")
+        for t in child_mb_traces:
+            dims = t.critique.get("scores", {})
+            dim_str = " ".join(f"{k[:3]}={v}" for k, v in sorted(dims.items()))
+            print(f"    {t.task_key}: {t.score:.1f} | {dim_str}")
 
-        # 5. Accept if improved on minibatch
-        if child_mb_avg > mb_avg:
-            print(f"  IMPROVED +{child_mb_avg - mb_avg:.1f} — evaluating on full Pareto set...")
+        # 5. Accept if improved or within tolerance (allows lateral exploration)
+        delta = child_mb_avg - mb_avg
+        if delta >= -ACCEPT_TOLERANCE:
+            label = f"IMPROVED +{delta:.1f}" if delta > 0 else f"LATERAL {delta:+.1f} (within tolerance)"
+            print(f"  {label} — evaluating on full Pareto set...")
 
             full_traces = evaluate_candidate(child, tasks)
             state.traces.extend(full_traces)
@@ -514,7 +534,7 @@ def run_gepa(
                 state.best_candidate_id = best.id
                 print(f"    *** NEW BEST: C{best.id} (avg={best.avg_score:.1f}) ***")
         else:
-            print(f"  REJECTED (no improvement on minibatch)")
+            print(f"  REJECTED (delta={delta:+.1f}, below tolerance={-ACCEPT_TOLERANCE:.1f})")
             state.traces.extend(mb_traces)
 
         save_state(state, save_path)
@@ -544,14 +564,10 @@ def run_gepa(
 
     save_state(state, save_path)
     return best
-
-
-# ---------------------------------------------------------------------------
-# CLI
-# ---------------------------------------------------------------------------
+    
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="GEPA prompt evolution for Veo 3 script generator")
-    parser.add_argument("--budget", type=int, default=20,
+    parser.add_argument("--budget", type=int, default=40,
                         help="Max iterations of the evolution loop (each uses ~2 minibatch + 1 full eval)")
     parser.add_argument("--minibatch", type=int, default=MINIBATCH_SIZE,
                         help="Tasks per minibatch evaluation")

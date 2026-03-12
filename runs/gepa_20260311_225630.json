@@ -1,0 +1,187 @@
+{
+  "candidates": [
+    {
+      "id": 0,
+      "prompt": "Write a Veo 3 video prompt for the following topic.\n\nTOPIC: \"{topic}\"\nCONTEXT: {context}\n\nOutput valid JSON only:\n{{\n    \"script\": \"An 8-second video description.\",\n    \"narration\": \"A single sentence narration.\"\n}}",
+      "parent_id": null,
+      "generation": 0,
+      "scores": {
+        "3.mp4": 0.0,
+        "4.mp4": 0.0,
+        "5.mp4": 0.0,
+        "7.mp4": 0.0,
+        "8.mp4": 0.0,
+        "9.mp4": 0.0
+      },
+      "avg_score": 0.0,
+      "mutation_summary": ""
+    }
+  ],
+  "traces": [
+    {
+      "task_key": "3.mp4",
+      "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "scores": {},
+        "issues": [
+          "Expecting value: line 1 column 1 (char 0)"
+        ],
+        "feedback": "Expecting value: line 1 column 1 (char 0)"
+      },
+      "score": 0.0,
+      "feedback_text": "ISSUES:\n- Expecting value: line 1 column 1 (char 0)\n\nFEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "4.mp4",
+      "topic": "A close-up of a Newton\u2019s Cradle in motion on a desk, macro view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "scores": {},
+        "issues": [
+          "Expecting value: line 1 column 1 (char 0)"
+        ],
+        "feedback": "Expecting value: line 1 column 1 (char 0)"
+      },
+      "score": 0.0,
+      "feedback_text": "ISSUES:\n- Expecting value: line 1 column 1 (char 0)\n\nFEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "5.mp4",
+      "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "scores": {},
+        "issues": [
+          "Expecting value: line 1 column 1 (char 0)"
+        ],
+        "feedback": "Expecting value: line 1 column 1 (char 0)"
+      },
+      "score": 0.0,
+      "feedback_text": "ISSUES:\n- Expecting value: line 1 column 1 (char 0)\n\nFEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "7.mp4",
+      "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "An 8-second street-level shot of a bright yellow NYC taxi driving through Times Square: the taxi rolls past flashing billboards, pedestrians blur, and neon reflections ripple on its glossy surface as traffic moves along Broadway.",
+        "narration": "A yellow New York City taxi moves through Times Square, seen from street level with neon lights and crowds all around."
+      },
+      "critique": {
+        "scores": {},
+        "issues": [
+          "Expecting value: line 1 column 1 (char 0)"
+        ],
+        "feedback": "Expecting value: line 1 column 1 (char 0)"
+      },
+      "score": 0.0,
+      "feedback_text": "ISSUES:\n- Expecting value: line 1 column 1 (char 0)\n\nFEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "8.mp4",
+      "topic": "A person walking across the Abbey Road zebra crossing, eye-level view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "scores": {},
+        "issues": [
+          "Expecting value: line 1 column 1 (char 0)"
+        ],
+        "feedback": "Expecting value: line 1 column 1 (char 0)"
+      },
+      "score": 0.0,
+      "feedback_text": "ISSUES:\n- Expecting value: line 1 column 1 (char 0)\n\nFEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "9.mp4",
+      "topic": "A Mongolian horseman using an Uurga to catch a wild horse, wide landscape shot.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "scores": {},
+        "issues": [
+          "Expecting value: line 1 column 1 (char 0)"
+        ],
+        "feedback": "Expecting value: line 1 column 1 (char 0)"
+      },
+      "score": 0.0,
+      "feedback_text": "ISSUES:\n- Expecting value: line 1 column 1 (char 0)\n\nFEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "8.mp4",
+      "topic": "A person walking across the Abbey Road zebra crossing, eye-level view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "scores": {},
+        "issues": [
+          "Expecting value: line 1 column 1 (char 0)"
+        ],
+        "feedback": "Expecting value: line 1 column 1 (char 0)"
+      },
+      "score": 0.0,
+      "feedback_text": "ISSUES:\n- Expecting value: line 1 column 1 (char 0)\n\nFEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "3.mp4",
+      "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "scores": {},
+        "issues": [
+          "Expecting value: line 1 column 1 (char 0)"
+        ],
+        "feedback": "Expecting value: line 1 column 1 (char 0)"
+      },
+      "score": 0.0,
+      "feedback_text": "ISSUES:\n- Expecting value: line 1 column 1 (char 0)\n\nFEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "task_key": "5.mp4",
+      "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+      "candidate_id": 0,
+      "script_output": {
+        "script": "GENERATION_ERROR: Expecting value: line 1 column 1 (char 0)",
+        "narration": ""
+      },
+      "critique": {
+        "scores": {},
+        "issues": [
+          "Expecting value: line 1 column 1 (char 0)"
+        ],
+        "feedback": "Expecting value: line 1 column 1 (char 0)"
+      },
+      "score": 0.0,
+      "feedback_text": "ISSUES:\n- Expecting value: line 1 column 1 (char 0)\n\nFEEDBACK:\nExpecting value: line 1 column 1 (char 0)"
+    }
+  ],
+  "next_id": 2,
+  "rollouts_used": 12,
+  "best_candidate_id": 0
+}

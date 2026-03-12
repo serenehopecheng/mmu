@@ -1,0 +1,10 @@
+Write a Veo 3 video prompt for the following topic.
+
+TOPIC: "{topic}"
+CONTEXT: {context}
+
+Output valid JSON only:
+{{
+    "script": "An 8-second video description.",
+    "narration": "A single sentence narration."
+}}
