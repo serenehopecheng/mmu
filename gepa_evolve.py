@@ -36,6 +36,12 @@ SCRIPT_GEN_MODEL = "gpt-5-nano"
 MINIBATCH_SIZE = 3       # tasks per evaluation round (paper uses b=3)
 PARETO_SET_SIZE = None    # None = use all tasks for Pareto scoring
 
+# GEPA paper hyperparameters (Appendix E.2, E.4)
+INFERENCE_TEMPERATURE = 0.7   # Paper uses 0.6-1.0; lower = more reliable JSON
+MUTATION_TEMPERATURE = 0.9    # Slightly higher for creative mutations
+MAX_RETRIES = 3               # Retry failed LLM calls
+MERGE_INTERVAL = 5            # Invoke merge every N iterations (paper: up to 5 per run)
+
 # ---------------------------------------------------------------------------
 # Data structures
 # ---------------------------------------------------------------------------
@@ -86,10 +92,10 @@ class RunState:
 
 
 # ---------------------------------------------------------------------------
-# Seed prompts — diverse initial population
+# Seed prompts — diverse initial population (GEPA requires diversity!)
 # ---------------------------------------------------------------------------
 SEED_PROMPTS = [
-    # 0 — Original prompt from deep.py (baseline)
+    # 0 — Original baseline (cinematography-focused)
     """You are writing a prompt for Veo 3, a text-to-video AI model that generates photorealistic real-world footage. 
 Your output will be fed directly to the model as its generation prompt, so write in vivid, descriptive, present-tense language—as if narrating what the camera sees moment by moment.
 
@@ -114,33 +120,207 @@ OUTPUT (valid JSON only, no other text):
 {{
     "script": "Present-tense, temporally ordered description of the 8-second clip with specific visual and cinematic details.",
     "narration": "A single conversational sentence adding insight to the visuals (max 18 words)."
-}}"""
+}}""",
+
+    # 1 — Temporal structure emphasis (different strategy: explicit beat breakdown)
+    """You generate Veo 3 video prompts. Veo 3 creates photorealistic 8-second video clips.
+
+TOPIC: "{topic}"
+CONTEXT: {context}
+
+STRUCTURE YOUR SCRIPT IN THREE BEATS:
+- BEAT 1 (0-2s): Establish the scene. Name the setting, lighting, and introduce the subject at rest or mid-action.
+- BEAT 2 (3-6s): The core action unfolds. Describe the single continuous motion with physical details.
+- BEAT 3 (7-8s): Resolution. The action completes or reaches a natural pause.
+
+TECHNICAL CONSTRAINTS:
+- Camera: State angle (eye-level/overhead/low-angle/45-degree) and movement (stationary OR slow dolly/pan only).
+- Lighting: Name the source (sunlight, window light, fluorescent, golden hour, etc.).
+- Materials: Use specific terms (brushed steel, oak grain, matte ceramic) not generic (metal, wood, cup).
+- FORBIDDEN: cuts, zooms, rack focus, text overlays, graphics, animation, fantasy, multiple subjects.
+
+NARRATION: One sentence (max 18 words) that teaches something or provides context the visuals cannot show.
+
+Return ONLY valid JSON:
+{{"script": "...", "narration": "..."}}""",
+
+    # 2 — Minimalist/constraint-focused (different strategy: what NOT to do)
+    """Write a Veo 3 video generation prompt for an 8-second photorealistic clip.
+
+TOPIC: "{topic}"
+RESEARCH: {context}
+
+GOLDEN RULES:
+1. ONE subject, ONE action, ONE continuous shot.
+2. Camera angle MUST be stated (eye-level, overhead, 45-degree, low-angle).
+3. Camera movement: stationary or slow dolly/pan ONLY. No zoom, no rack focus, no handheld.
+4. Light source MUST be named (e.g., "soft daylight from left," "overhead fluorescent").
+5. Use 3+ specific material/texture words (e.g., "polished granite," "brushed aluminum," "worn leather").
+6. Temporal flow: describe start → middle → end of the 8 seconds.
+
+ABSOLUTE BANS (Veo will reject):
+- Text, labels, captions, watermarks, infographics
+- Animation, CGI, fantasy, surreal imagery
+- Multiple sequential actions ("first... then... finally...")
+- Grid layouts, measurement setups, scanning motions
+
+NARRATION: One sentence, ≤18 words, adds insight (a fact, measurement, or context) beyond what's visible.
+
+Output JSON only: {{"script": "...", "narration": "..."}}""",
+
+    # 3 — Sensory immersion (different strategy: texture/atmosphere first)
+    """You are a cinematographer writing a shot description for Veo 3's AI video generator.
+
+TOPIC: "{topic}"
+BACKGROUND: {context}
+
+START WITH ATMOSPHERE:
+First, establish the sensory environment: What does the light feel like? What textures dominate? What's the ambient mood? Then introduce your subject within this environment.
+
+DESCRIBE THE MOTION:
+A single subject performs one fluid action across 8 seconds. Capture the physics: weight, momentum, resistance. Use verbs that imply duration (glides, settles, presses, unfurls) not instant actions (snaps, flashes, pops).
+
+CAMERA RULES:
+- Angle: explicitly state (eye-level, overhead, low-angle, 45-degree, macro close-up)
+- Movement: stationary OR slow dolly/pan. Nothing else.
+- Veo rejects: zooms, whip pans, rack focus, handheld, drone shots, tracking shots.
+
+FORBIDDEN CONTENT: text overlays, graphics, animation, CGI, fantasy, multiple subjects, multi-step sequences.
+
+NARRATION: A single sentence (max 18 words) that reveals something the image alone cannot tell.
+
+JSON output only: {{"script": "...", "narration": "..."}}""",
+
+    # 4 — Checklist-driven (different strategy: explicit verification steps)
+    """Generate a Veo 3 prompt for the topic below. Before outputting, verify each checklist item.
+
+TOPIC: "{topic}"
+CONTEXT: {context}
+
+PRE-OUTPUT CHECKLIST (verify each before writing):
+□ Single subject identified? (one person, animal, or object)
+□ Single continuous action? (not multi-step: avoid "first X, then Y")
+□ Camera angle named? (eye-level / overhead / low-angle / 45-degree / macro)
+□ Camera movement valid? (stationary OR slow dolly/pan — NO zoom, rack focus, handheld)
+□ Light source specified? (natural/artificial, direction)
+□ 3+ material/texture descriptors? (specific: "walnut," "chrome," "linen" — not "wood," "metal," "cloth")
+□ Temporal arc present? (beginning state → action → end state over 8 seconds)
+□ No banned elements? (text, graphics, animation, fantasy, multiple subjects)
+
+NARRATION CHECKLIST:
+□ One sentence only?
+□ ≤18 words?
+□ Adds information beyond visuals? (a fact, measurement, or insight)
+
+Output valid JSON only:
+{{"script": "...", "narration": "..."}}""",
+
+    # 5 — Example-anchored (different strategy: show before tell)
+    """You write Veo 3 video prompts. Study this example of a GOOD prompt:
+
+EXAMPLE (score 92/100):
+Topic: "French Press coffee brewing"
+Script: "On a sunlit granite countertop, a pair of hands grips a glass-bodied French Press filled with dark, blooming coffee grounds. Warm morning light from a nearby window catches the amber liquid. The hands slowly press the stainless-steel plunger downward at a steady pace, the mesh filter pushing grounds to the bottom. By the final second the plunger reaches the base."
+Narration: "Four minutes of patience turns coarse grounds into a full-bodied brew."
+
+WHY IT WORKS: Specific materials (granite, glass, stainless steel). Single subject/action. Named light source. Clear temporal arc. Narration adds brewing time fact.
+
+---
+
+NOW WRITE FOR:
+TOPIC: "{topic}"
+CONTEXT: {context}
+
+REQUIREMENTS:
+- 8-second continuous photorealistic footage, no cuts
+- One subject, one action
+- Camera: state angle + movement (stationary or slow dolly/pan only)
+- Light source named
+- 3+ specific materials/textures
+- Temporal flow (start → middle → end)
+- No text/graphics/animation/fantasy
+- Narration: 1 sentence, ≤18 words, adds insight
+
+JSON only: {{"script": "...", "narration": "..."}}\n"""
 ]
 
 
 # ---------------------------------------------------------------------------
 # Evaluation: two-stage (hard checks → calibrated quality)
 # ---------------------------------------------------------------------------
+def _llm_call_with_retry(
+    model: str,
+    messages: List[Dict[str, str]],
+    temperature: float,
+    max_tokens: int = 4000,
+    parse_json: bool = True,
+    label: str = "llm_call",
+) -> Any:
+    """
+    Robust LLM call with retry logic for JSON parsing failures.
+    GEPA paper emphasizes reliability of evaluation - retries are essential.
+    """
+    last_error = None
+    # Some OpenAI models (including gpt-5-nano) only support the default temperature.
+    include_temperature = not model.startswith("gpt-5")
+    current_max_tokens = max_tokens
+    for attempt in range(MAX_RETRIES):
+        try:
+            request_kwargs = dict(
+                model=model,
+                messages=messages,
+                max_completion_tokens=current_max_tokens,
+            )
+            if include_temperature:
+                request_kwargs["temperature"] = temperature
+            if parse_json:
+                request_kwargs["response_format"] = {"type": "json_object"}
+
+            r = client.chat.completions.create(**request_kwargs)
+            finish_reason = r.choices[0].finish_reason
+            content = r.choices[0].message.content
+            if finish_reason == "length" and not content:
+                raise ValueError(f"Empty response. Finish reason: {finish_reason}")
+            if not content:
+                raise ValueError(f"Empty response. Finish reason: {finish_reason}")
+            
+            raw = content.strip()
+            if parse_json:
+                raw = _clean_json(raw)
+                return json.loads(raw)
+            return raw
+        except json.JSONDecodeError as e:
+            last_error = e
+            # Lower temperature on retry for more deterministic output
+            temperature = max(0.3, temperature - 0.2)
+            if attempt < MAX_RETRIES - 1:
+                print(f"    [RETRY {attempt+1}/{MAX_RETRIES}] JSON parse failed, retrying with temp={temperature:.1f}")
+                time.sleep(0.5)  # Brief backoff
+        except Exception as e:
+            last_error = e
+            if "temperature' does not support" in str(e):
+                include_temperature = False
+            if "Finish reason: length" in str(e):
+                current_max_tokens = min(current_max_tokens * 2, 8000)
+            if attempt < MAX_RETRIES - 1:
+                print(f"    [RETRY {attempt+1}/{MAX_RETRIES}] {label}: {e}")
+                time.sleep(1.0)
+    
+    raise last_error
+
+
 def generate_script(prompt_template: str, topic: str, context: str = "None provided.") -> Dict[str, str]:
     """Run the script generator with a given system prompt template."""
     filled = prompt_template.replace("{topic}", topic).replace("{context}", context)
 
-    r = client.chat.completions.create(
+    return _llm_call_with_retry(
         model=SCRIPT_GEN_MODEL,
         messages=[{"role": "user", "content": filled}],
-        # max_completion_tokens=1200,
-        temperature=1,
+        temperature=INFERENCE_TEMPERATURE,
+        max_tokens=4000,
+        parse_json=True,
+        label="generate_script",
     )
-    content = r.choices[0].message.content
-    if not content:
-        raise ValueError(f"Empty response from model. Finish reason: {r.choices[0].finish_reason}")
-    raw = content.strip()
-    raw = _clean_json(raw)
-    try:
-        return json.loads(raw)
-    except json.JSONDecodeError as e:
-        print(f"  [DEBUG] JSON parse failed. Raw content ({len(raw)} chars):\n{raw[:500]}")
-        raise
 
 
 # ---- Stage 1: deterministic hard-constraint checks ----
@@ -154,11 +334,8 @@ def stage1_hard_checks(script_data: Dict[str, str], topic: str) -> Dict[str, Any
     script = script_data.get("script", "")
     narration = script_data.get("narration", "")
 
-    prompt = f"""You are a QA tester for Veo 3 video prompts. Your job is to run hard-constraint checks.
-For EACH check below, you MUST:
-  (a) quote the specific words from the script that are relevant,
-  (b) give a verdict of PASS or FAIL,
-  (c) if FAIL, state exactly what is wrong.
+    prompt = f"""You are a QA tester for Veo 3 video prompts. Run compact hard-constraint checks.
+Be brief. Only give reasons for failed checks. Keep each reason under 12 words.
 
 SCRIPT: "{script}"
 NARRATION: "{narration}"
@@ -193,33 +370,35 @@ C12_TOPIC_FIDELITY: Does the script depict the specific subject/action/setting d
 Respond with ONLY valid JSON:
 {{
     "checks": {{
-        "C1_JSON_VALID": {{"verdict": "PASS or FAIL", "evidence": "quoted text", "reason": "..."}},
-        "C2_SINGLE_SUBJECT": {{"verdict": "...", "evidence": "...", "reason": "..."}},
-        "C3_SINGLE_ACTION": {{"verdict": "...", "evidence": "...", "reason": "..."}},
-        "C4_CAMERA_SPECIFIED": {{"verdict": "...", "evidence": "...", "reason": "..."}},
-        "C5_CAMERA_LEGAL": {{"verdict": "...", "evidence": "...", "reason": "..."}},
-        "C6_NO_TEXT_OVERLAYS": {{"verdict": "...", "evidence": "...", "reason": "..."}},
-        "C7_NO_FANTASY": {{"verdict": "...", "evidence": "...", "reason": "..."}},
-        "C8_LIGHTING_SPECIFIED": {{"verdict": "...", "evidence": "...", "reason": "..."}},
-        "C9_NARRATION_WORD_COUNT": {{"verdict": "...", "evidence": "word count: N", "reason": "..."}},
-        "C10_NARRATION_IS_ONE_SENTENCE": {{"verdict": "...", "evidence": "...", "reason": "..."}},
-        "C11_TEMPORAL_ORDER": {{"verdict": "...", "evidence": "...", "reason": "..."}},
-        "C12_TOPIC_FIDELITY": {{"verdict": "...", "evidence": "...", "reason": "..."}}
+        "C1_JSON_VALID": "PASS or FAIL",
+        "C2_SINGLE_SUBJECT": "PASS or FAIL",
+        "C3_SINGLE_ACTION": "PASS or FAIL",
+        "C4_CAMERA_SPECIFIED": "PASS or FAIL",
+        "C5_CAMERA_LEGAL": "PASS or FAIL",
+        "C6_NO_TEXT_OVERLAYS": "PASS or FAIL",
+        "C7_NO_FANTASY": "PASS or FAIL",
+        "C8_LIGHTING_SPECIFIED": "PASS or FAIL",
+        "C9_NARRATION_WORD_COUNT": "PASS or FAIL",
+        "C10_NARRATION_IS_ONE_SENTENCE": "PASS or FAIL",
+        "C11_TEMPORAL_ORDER": "PASS or FAIL",
+        "C12_TOPIC_FIDELITY": "PASS or FAIL"
     }},
     "pass_count": 0,
     "fail_count": 0,
-    "failed_checks": ["C1_JSON_VALID", "..."]
+    "failed_checks": ["C1_JSON_VALID", "..."],
+    "reasons": {{
+        "C1_JSON_VALID": "reason only if failed"
+    }}
 }}"""
 
-    r = client.chat.completions.create(
+    return _llm_call_with_retry(
         model=EVAL_MODEL,
         messages=[{"role": "user", "content": prompt}],
-        max_completion_tokens=1500,
-        temperature=1,  
+        temperature=INFERENCE_TEMPERATURE,
+        max_tokens=1200,
+        parse_json=True,
+        label="stage1_hard_checks",
     )
-    raw = r.choices[0].message.content.strip()
-    raw = _clean_json(raw)
-    return json.loads(raw)
 
 
 # ---- Stage 2: calibrated quality scoring with exemplars ----
@@ -259,11 +438,12 @@ def stage2_quality_scoring(script_data: Dict[str, str], topic: str, stage1_resul
     narration = script_data.get("narration", "")
     failed_checks = stage1_result.get("failed_checks", [])
     checks = stage1_result.get("checks", {})
+    reasons = stage1_result.get("reasons", {})
 
     stage1_summary = ""
     for name, check in checks.items():
-        verdict = check.get("verdict", "?")
-        reason = check.get("reason", "")
+        verdict = check if isinstance(check, str) else check.get("verdict", "?")
+        reason = reasons.get(name, "") if isinstance(check, str) else check.get("reason", "")
         if verdict == "FAIL":
             stage1_summary += f"  FAILED {name}: {reason}\n"
 
@@ -326,15 +506,14 @@ Respond with ONLY valid JSON:
     "feedback": "2-3 sentences: what specific instruction changes in the system prompt would improve this output? Focus on the weakest dimension."
 }}"""
 
-    r = client.chat.completions.create(
+    return _llm_call_with_retry(
         model=EVAL_MODEL,
         messages=[{"role": "user", "content": prompt}],
-        max_completion_tokens=1000,
-        temperature=1, 
+        temperature=INFERENCE_TEMPERATURE,
+        max_tokens=1800,
+        parse_json=True,
+        label="stage2_quality_scoring",
     )
-    raw = r.choices[0].message.content.strip()
-    raw = _clean_json(raw)
-    return json.loads(raw)
 
 
 def compute_score(stage1: Dict[str, Any], stage2: Dict[str, Any]) -> float:
@@ -344,7 +523,11 @@ def compute_score(stage1: Dict[str, Any], stage2: Dict[str, Any]) -> float:
     """
     checks = stage1.get("checks", {})
     num_checks = len(checks)
-    fail_count = sum(1 for c in checks.values() if c.get("verdict") == "FAIL")
+    fail_count = sum(
+        1
+        for c in checks.values()
+        if (c == "FAIL") or (isinstance(c, dict) and c.get("verdict") == "FAIL")
+    )
     pass_rate = (num_checks - fail_count) / num_checks if num_checks else 0
 
     q_scores = stage2.get("quality_scores", {})
@@ -430,60 +613,225 @@ def reflective_mutate(candidate: Candidate, traces: List[EvalTrace]) -> str:
     """
     Use the GEPA reflection meta-prompt to propose an improved system prompt
     based on the candidate's current prompt and its evaluation traces.
+    
+    Key insight from GEPA paper: The reflection prompt should:
+    1. Present execution traces (what the LLM produced)
+    2. Present evaluation traces (scores + textual feedback)
+    3. Ask for targeted improvements based on failure patterns
     """
+    # Separate successful vs failed traces for better signal
+    failed_traces = [t for t in traces if t.score < 60]
+    good_traces = [t for t in traces if t.score >= 60]
+    
     examples_block = ""
-    for t in traces:
-        examples_block += f"""
+    
+    # Show failures first with detailed feedback
+    if failed_traces:
+        examples_block += "\n=== CASES NEEDING IMPROVEMENT ===\n"
+        for t in failed_traces:
+            examples_block += f"""
 ---
-Task topic: {t.topic}
-Assistant output:
-  script: {t.script_output.get("script", "N/A")}
+Topic: {t.topic}
+Output:
+  script: {t.script_output.get("script", "N/A")[:500]}
   narration: {t.script_output.get("narration", "N/A")}
 Score: {t.score}/100
 Feedback: {t.feedback_text}
 ---
 """
+    
+    # Show successes to preserve what works
+    if good_traces:
+        examples_block += "\n=== SUCCESSFUL CASES (preserve these patterns) ===\n"
+        for t in good_traces:
+            examples_block += f"""
+---
+Topic: {t.topic}
+Score: {t.score}/100
+Key strengths from feedback: {t.feedback_text[:200] if t.feedback_text else "Good overall"}
+---
+"""
+
+    # Analyze failure patterns
+    failure_patterns = {}
+    for t in traces:
+        critique = t.critique.get("stage1", {})
+        for check_name, check_data in critique.get("checks", {}).items():
+            if check_data == "FAIL" or (isinstance(check_data, dict) and check_data.get("verdict") == "FAIL"):
+                failure_patterns[check_name] = failure_patterns.get(check_name, 0) + 1
+    
+    pattern_summary = ""
+    if failure_patterns:
+        sorted_failures = sorted(failure_patterns.items(), key=lambda x: -x[1])
+        pattern_summary = "Most common failures: " + ", ".join(f"{k}({v}x)" for k, v in sorted_failures[:5])
 
     meta_prompt = f"""I provided an assistant with the following instructions to perform a task for me:
 ```
 {candidate.prompt}
 ```
 
-The following are examples of different task inputs provided to the assistant along with the assistant's response for each of them, and some feedback on how the assistant's response could be better:
+The following are examples of different task inputs provided to the assistant along with the assistant's response for each of them, and evaluation feedback:
 ```
 {examples_block}
 ```
 
-Your task is to write a new instruction for the assistant.
+{pattern_summary}
 
-Read the inputs carefully and identify the input format and infer detailed task description about the task I wish to solve with the assistant.
+Your task is to write an IMPROVED version of the instruction that addresses the failures while preserving successful patterns.
 
-Read all the assistant responses and the corresponding feedback. Identify all niche and domain specific factual information about the task and include it in the instruction, as a lot of it may not be available to the assistant in the future. The assistant may have utilized a generalizable strategy to solve the task, if so, include that in the instruction as well.
+ANALYSIS STEPS:
+1. Identify the specific failure modes from the feedback (e.g., missing camera angle, multi-step actions, word count violations).
+2. For each failure mode, determine what instruction change would prevent it.
+3. Check what patterns appear in successful outputs and ensure they are reinforced.
+4. Extract any domain-specific knowledge from the feedback that should be codified.
 
-Important domain knowledge for this task:
-- The assistant writes prompts for Veo 3, a text-to-video AI that generates photorealistic real-world footage.
-- Output must be valid JSON with "script" and "narration" keys.
-- Veo 3 rejects: text overlays, graphics, animation, fantasy, zooms, whip pans, rack focus, scanning motions, grid layouts, multi-step processes, abstract imagery, multiple competing subjects.
-- Camera must be stationary or slow dolly/pan. Angle must be specified.
-- The clip is exactly 8 seconds of continuous footage with no cuts.
-- Narration is one sentence, max 18 words, adding insight beyond the visuals.
+DOMAIN KNOWLEDGE (must be incorporated):
+- Veo 3 generates 8-second photorealistic video clips with no cuts.
+- Output format: JSON with exactly "script" and "narration" keys.
+- Camera: MUST state angle (eye-level/overhead/low-angle/45-degree) and movement (stationary OR slow dolly/pan).
+- Veo 3 REJECTS: text overlays, graphics, animation, fantasy, zooms, whip pans, rack focus, handheld, tracking shots, crane, drone.
+- Single subject performing single continuous action (no "first X, then Y, finally Z").
+- Light source MUST be named explicitly.
+- Narration: exactly one sentence, maximum 18 words, adds insight beyond visuals.
 
-Focus your improvements on the specific issues identified in the feedback. Make targeted changes rather than rewriting from scratch. Preserve what works well and fix what doesn't.
+MUTATION GUIDELINES:
+- Make TARGETED changes to fix specific failures. Do not rewrite from scratch.
+- If the prompt already has a strength (e.g., good structure), preserve it.
+- Add explicit examples or counter-examples for common failure modes.
+- Consider adding a brief checklist or verification step if failures are systematic.
 
-Provide the new instructions within ``` blocks."""
+Provide the complete new instruction within ``` blocks."""
 
-    r = client.chat.completions.create(
+    response = _llm_call_with_retry(
         model=MUTATION_MODEL,
         messages=[{"role": "user", "content": meta_prompt}],
-        max_completion_tokens=2000,
-        temperature=1, 
+        temperature=MUTATION_TEMPERATURE,
+        max_tokens=2500,
+        parse_json=False,
     )
-    response = r.choices[0].message.content.strip()
 
     match = re.search(r"```(?:\w*\n)?(.*?)```", response, re.DOTALL)
     if match:
         return match.group(1).strip()
     return response
+
+
+# ---------------------------------------------------------------------------
+# System-Aware Crossover / Merge (GEPA Algorithm 3-4)
+# ---------------------------------------------------------------------------
+def find_merge_candidates(candidates: List[Candidate], min_generation: int = 2) -> List[tuple]:
+    """
+    Find pairs of candidates suitable for merging (Algorithm 3: Desirable).
+    
+    Criteria from paper:
+    - Both candidates should have evolved (generation >= min_generation)
+    - They should have different strengths (complementary on different tasks)
+    - They should not be direct parent-child
+    """
+    merge_pairs = []
+    
+    for i, c1 in enumerate(candidates):
+        if c1.generation < min_generation:
+            continue
+        for c2 in candidates[i+1:]:
+            if c2.generation < min_generation:
+                continue
+            # Skip if direct parent-child relationship
+            if c1.parent_id == c2.id or c2.parent_id == c1.id:
+                continue
+            
+            # Check for complementary strengths: each is best on different tasks
+            c1_best_tasks = set()
+            c2_best_tasks = set()
+            
+            common_tasks = set(c1.scores.keys()) & set(c2.scores.keys())
+            for task in common_tasks:
+                if c1.scores.get(task, 0) > c2.scores.get(task, 0):
+                    c1_best_tasks.add(task)
+                elif c2.scores.get(task, 0) > c1.scores.get(task, 0):
+                    c2_best_tasks.add(task)
+            
+            # Both should have some tasks where they excel
+            if c1_best_tasks and c2_best_tasks:
+                complementarity = len(c1_best_tasks) + len(c2_best_tasks)
+                merge_pairs.append((c1, c2, complementarity))
+    
+    # Sort by complementarity (higher is better)
+    merge_pairs.sort(key=lambda x: -x[2])
+    return merge_pairs
+
+
+def merge_candidates(c1: Candidate, c2: Candidate, state: "RunState") -> Candidate:
+    """
+    Merge two candidates by combining their instruction strategies (Algorithm 4).
+    
+    The paper describes module-level merging, but since we have a single prompt,
+    we use LLM to intelligently combine the best aspects of both prompts.
+    """
+    # Identify which tasks each excels at
+    c1_strengths = []
+    c2_strengths = []
+    
+    common_tasks = set(c1.scores.keys()) & set(c2.scores.keys())
+    for task in common_tasks:
+        s1, s2 = c1.scores.get(task, 0), c2.scores.get(task, 0)
+        if s1 > s2:
+            c1_strengths.append(f"{task}: {s1:.0f} vs {s2:.0f}")
+        elif s2 > s1:
+            c2_strengths.append(f"{task}: {s2:.0f} vs {s1:.0f}")
+    
+    merge_prompt = f"""You are merging two evolved prompt strategies that each excel at different tasks.
+
+=== PROMPT A (excels at: {', '.join(c1_strengths[:3]) or 'general'}) ===
+```
+{c1.prompt}
+```
+
+=== PROMPT B (excels at: {', '.join(c2_strengths[:3]) or 'general'}) ===
+```
+{c2.prompt}
+```
+
+Your task: Create a MERGED prompt that combines the best strategies from both.
+
+GUIDELINES:
+1. Identify what makes each prompt successful on its strong tasks.
+2. Combine complementary strategies (e.g., if A has better structure and B has better examples, use both).
+3. Resolve conflicts by keeping the more specific/detailed instruction.
+4. Preserve all critical constraints (camera rules, narration limits, JSON format).
+5. The merged prompt should be coherent, not a simple concatenation.
+
+DOMAIN REQUIREMENTS (must all be present):
+- 8-second photorealistic video, no cuts
+- Single subject, single action
+- Camera angle stated + movement (stationary or slow dolly/pan)
+- Light source named
+- JSON output with "script" and "narration" keys
+- Narration: 1 sentence, ≤18 words
+
+Output the merged prompt within ``` blocks."""
+
+    response = _llm_call_with_retry(
+        model=MUTATION_MODEL,
+        messages=[{"role": "user", "content": merge_prompt}],
+        temperature=MUTATION_TEMPERATURE,
+        max_tokens=2500,
+        parse_json=False,
+    )
+
+    match = re.search(r"```(?:\w*\n)?(.*?)```", response, re.DOTALL)
+    merged_prompt = match.group(1).strip() if match else response
+    
+    # Create new candidate
+    child = Candidate(
+        id=state.new_id(),
+        prompt=merged_prompt,
+        parent_id=c1.id,  # Primary parent
+        generation=max(c1.generation, c2.generation) + 1,
+        mutation_summary=f"Merged C{c1.id}+C{c2.id}",
+    )
+    
+    return child
 
 
 # ---------------------------------------------------------------------------
@@ -605,13 +953,16 @@ def print_candidate_summary(c: Candidate, prefix: str = ""):
 
 def summarize_mutation(old_prompt: str, new_prompt: str) -> str:
     """Ask the LLM for a one-line diff summary."""
-    r = client.chat.completions.create(
-        model="gpt-5-nano",
-        messages=[{"role": "user", "content": f"In one sentence, what changed between these two prompts?\n\nOLD:\n{old_prompt[:1500]}\n\nNEW:\n{new_prompt[:1500]}"}],
-        max_completion_tokens=100,
-        temperature=1,  
-    )
-    return r.choices[0].message.content.strip()
+    try:
+        return _llm_call_with_retry(
+            model="gpt-5-nano",
+            messages=[{"role": "user", "content": f"In one sentence, what changed between these two prompts?\n\nOLD:\n{old_prompt[:1500]}\n\nNEW:\n{new_prompt[:1500]}"}],
+            temperature=INFERENCE_TEMPERATURE,
+            max_tokens=100,
+            parse_json=False,
+        )
+    except Exception:
+        return "Mutation applied"
 
 
 # ---------------------------------------------------------------------------
@@ -663,11 +1014,52 @@ def run_gepa(
 
     # --- Evolution loop ---
     iteration = 0
+    merges_performed = 0
+    max_merges = 5  # Paper suggests up to 5 merges per run
+    
     while state.rollouts_used < budget * len(tasks):
         iteration += 1
         print(f"\n{'='*70}")
         print(f"ITERATION {iteration} | rollouts={state.rollouts_used} | budget={budget * len(tasks)}")
         print(f"{'='*70}")
+
+        # --- MERGE CHECK (GEPA Algorithm 3-4) ---
+        # Attempt merge every MERGE_INTERVAL iterations if we have enough evolved candidates
+        if iteration % MERGE_INTERVAL == 0 and merges_performed < max_merges:
+            merge_pairs = find_merge_candidates(state.candidates, min_generation=1)
+            if merge_pairs:
+                c1, c2, complementarity = merge_pairs[0]
+                print(f"MERGE: Combining C{c1.id} (avg={c1.avg_score:.1f}) + C{c2.id} (avg={c2.avg_score:.1f})")
+                print(f"  Complementarity score: {complementarity}")
+                
+                merged_child = merge_candidates(c1, c2, state)
+                
+                # Evaluate merged candidate on full task set
+                print(f"  Evaluating merged C{merged_child.id}...")
+                merged_traces = evaluate_candidate(merged_child, tasks)
+                state.traces.extend(merged_traces)
+                state.rollouts_used += len(merged_traces)
+                
+                for t in merged_traces:
+                    merged_child.scores[t.task_key] = t.score
+                merged_child.avg_score = sum(merged_child.scores.values()) / len(merged_child.scores) if merged_child.scores else 0
+                
+                # Accept if it's competitive
+                parent_avg = (c1.avg_score + c2.avg_score) / 2
+                if merged_child.avg_score >= parent_avg * 0.95:  # Accept if within 5% of parent average
+                    state.candidates.append(merged_child)
+                    merges_performed += 1
+                    print_candidate_summary(merged_child, prefix="    MERGE ACCEPTED: ")
+                    
+                    if merged_child.avg_score > best.avg_score:
+                        best = merged_child
+                        state.best_candidate_id = best.id
+                        print(f"    *** NEW BEST FROM MERGE: C{best.id} (avg={best.avg_score:.1f}) ***")
+                else:
+                    print(f"    MERGE REJECTED: {merged_child.avg_score:.1f} < {parent_avg * 0.95:.1f}")
+                
+                save_state(state, save_path)
+                continue  # Skip regular mutation this iteration
 
         # 1. Select candidate via Pareto sampling
         parent = select_candidate_pareto(state.candidates, all_task_keys)
@@ -697,11 +1089,11 @@ def run_gepa(
         print(f"  Mutated minibatch avg: {child_mb_avg:.1f} (parent was {mb_avg:.1f})")
 
         if child_mb_avg <= 0:
-            print("  EARLY STOP: iteration returned 0.0, exiting search.")
+            print("  WARNING: Zero score, but continuing search...")
+            # Don't early stop - try to recover with more iterations
             state.traces.extend(mb_traces)
             save_state(state, save_path)
-            print(f"  State saved to {save_path}")
-            break
+            continue
 
         # 5. Accept if improved on minibatch
         if child_mb_avg > mb_avg:
