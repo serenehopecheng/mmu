@@ -128,7 +128,7 @@ def generate_script(prompt_template: str, topic: str, context: str = "None provi
     r = client.chat.completions.create(
         model=SCRIPT_GEN_MODEL,
         messages=[{"role": "user", "content": filled}],
-        max_completion_tokens=1200,
+        # max_completion_tokens=1200,
         temperature=1,
     )
     content = r.choices[0].message.content
