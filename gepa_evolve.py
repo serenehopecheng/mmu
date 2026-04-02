@@ -1,16 +1,7 @@
 """
-GEPA-style prompt evolution for the Veo 3 ScriptGeneratorTool.
-
-Implements the core GEPA algorithm (Genetic-Pareto, ICLR 2026 Oral):
-  1. Maintain a population of candidate system prompts
-  2. Evaluate each on a minibatch from prompts.json via critique-based scoring
-  3. Reflectively mutate prompts using LLM feedback on failures
-  4. Select next candidates via Pareto-based sampling
-  5. Persist the full search tree for inspection
-
 Usage:
-    python gepa_evolve.py                          # defaults
-    python gepa_evolve.py --budget 30              # custom budget
+    python gepa_evolve.py                           # defaults
+    python gepa_evolve.py --budget 30               # custom budget
     python gepa_evolve.py --resume runs/gepa_*.json # resume from a prior run
 """
 
@@ -30,7 +21,7 @@ PROMPTS_FILE = "prompts.json"
 EVAL_MODEL = "gpt-5-nano"
 MUTATION_MODEL = "gpt-5-nano"
 SCRIPT_GEN_MODEL = "gpt-5-nano"
-MINIBATCH_SIZE = 4      
+MINIBATCH_SIZE = 3   
 PARETO_SET_SIZE = None    
 ACCEPT_TOLERANCE = 2.0  
 
@@ -110,6 +101,15 @@ def generate_script(prompt_template: str, topic: str, context: str = "None provi
     choice = r.choices[0]
     raw = choice.message.content or ""
     raw = raw.strip()
+    if raw:
+        output_dir = Path("runs") / "generate_script"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        filename = output_dir / f"{topic[:20]}_{prompt_template[:20]}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(f"=== SYSTEM PROMPT ===\n{prompt_template}\n\n")
+            f.write(f"=== TOPIC ===\n{topic}\n\n")
+            f.write("=== MODEL OUTPUT ===\n")
+            f.write(raw)
     if not raw:
         raise ValueError(f"Empty response from {SCRIPT_GEN_MODEL} (finish_reason={choice.finish_reason})")
     try:
@@ -163,6 +163,17 @@ def critique_script(script_data: Dict[str, str], topic: str) -> Dict[str, Any]:
     choice = r.choices[0]
     raw = choice.message.content or ""
     raw = raw.strip()
+    if raw:
+        output_dir = Path("runs") / "critique_script"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        filename = output_dir / f"{topic[:20]}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(f"=== TOPIC ===\n{topic}\n\n")
+            f.write("=== SCRIPT DATA ===\n")
+            f.write(f"{json.dumps(script_data, indent=2)}\n\n")
+            f.write("=== CRITIQUE PROMPT ===\n{json.dumps(critique_prompt, indent=2)}\n\n")
+            f.write("=== MODEL OUTPUT ===\n")
+            f.write(raw)
     if not raw:
         raise ValueError(f"Empty response from {EVAL_MODEL} (finish_reason={choice.finish_reason})")
     try:
@@ -224,6 +235,16 @@ def evaluate_candidate(candidate: Candidate, tasks: List[Dict[str, str]]) -> Lis
             feedback_text=feedback,
         )
         traces.append(trace)
+        filename = Path("runs") / "traces" / f"{key}_{topic}_{candidate.id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(f"=== TASK KEY ===\n{key}\n\n")
+            f.write(f"=== TASK TOPIC ===\n{topic}\n\n")
+            f.write(f"=== CANDIDATE ID ===\n{candidate.id}\n\n")
+            f.write(f"=== SCRIPT OUTPUT ===\n{json.dumps(script_data, indent=2)}\n\n")
+            f.write(f"=== CRITIQUE ===\n{json.dumps(critique, indent=2)}\n\n")
+            f.write(f"=== SCORE ===\n{score}\n\n")
+            f.write(f"=== FEEDBACK TEXT ===\n{feedback}\n\n")
+
     return traces
 
 def reflective_mutate(candidate: Candidate, traces: List[EvalTrace]) -> str:
@@ -390,7 +411,6 @@ def load_tasks(path: str = PROMPTS_FILE) -> List[Dict[str, str]]:
         tasks.append({"key": key, "topic": topic})
     return tasks
 
-
 def sample_minibatch(tasks: List[Dict[str, str]], size: int) -> List[Dict[str, str]]:
     return random.sample(tasks, min(size, len(tasks)))
 
@@ -429,11 +449,11 @@ def summarize_mutation(old_prompt: str, new_prompt: str) -> str:
     return (r.choices[0].message.content or "(empty response)").strip()
 
 def run_gepa(
-    budget: int = 20,
+    budget: int = 2,
     minibatch_size: int = MINIBATCH_SIZE,
     resume_path: Optional[str] = None,
     output_dir: str = "runs",
-):
+    ):
     tasks = load_tasks()
     all_task_keys = [t["key"] for t in tasks]
 
@@ -443,13 +463,11 @@ def run_gepa(
     else:
         state = RunState(candidates=[], traces=[], next_id=0, rollouts_used=0)
 
-        # --- Initialize with a single bare-minimum seed (GEPA paper style) ---
         print("Initializing with bare-minimum seed prompt (generation 0)...")
         cid = state.new_id()
         seed = Candidate(id=cid, prompt=SEED_PROMPT, generation=0)
         state.candidates.append(seed)
 
-        # --- Evaluate seed on full task set ---
         print(f"Evaluating seed C{seed.id} on {len(tasks)} tasks...")
         traces = evaluate_candidate(seed, tasks)
         state.traces.extend(traces)
@@ -459,7 +477,6 @@ def run_gepa(
         state.rollouts_used += len(traces)
         print_candidate_summary(seed, prefix="    ")
 
-    # --- Find best so far ---
     best = max(state.candidates, key=lambda c: c.avg_score)
     state.best_candidate_id = best.id
     print(f"\nBest after init: C{best.id} (avg={best.avg_score:.1f})")
@@ -468,7 +485,6 @@ def run_gepa(
     save_path = Path(output_dir) / f"gepa_{timestamp}.json"
     save_state(state, save_path)
 
-    # --- Evolution loop ---
     iteration = 0
     while state.rollouts_used < budget * len(tasks):
         iteration += 1
@@ -564,7 +580,7 @@ def run_gepa(
 
     save_state(state, save_path)
     return best
-    
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="GEPA prompt evolution for Veo 3 script generator")
     parser.add_argument("--budget", type=int, default=40,
