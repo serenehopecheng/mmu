@@ -7,7 +7,7 @@ Usage:
 
 import os, re, json, time, copy, random, asyncio, argparse
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Any, Callable, Dict, List, Optional, TextIO
 from datetime import datetime
 from dataclasses import dataclass, field, asdict
 
@@ -21,7 +21,7 @@ PROMPTS_FILE = "prompts.json"
 EVAL_MODEL = "gpt-5-nano"
 MUTATION_MODEL = "gpt-5-nano"
 SCRIPT_GEN_MODEL = "gpt-5-nano"
-MINIBATCH_SIZE = 3   
+MINIBATCH_SIZE = 4
 PARETO_SET_SIZE = None    
 ACCEPT_TOLERANCE = 2.0  
 
@@ -68,27 +68,8 @@ class RunState:
         self.next_id += 1
         return cid
 
-SEED_PROMPT = """You are writing a prompt for Veo 3, a text-to-video AI model that generates photorealistic real-world footage.
-                Your output will be fed directly to the model as its generation prompt.
-
-                TOPIC: "{topic}"
-                CONTEXT: {context}
-
-                RULES — every output MUST satisfy all of these:
-                1. SINGLE SCENE: Exactly 8 seconds of continuous, photorealistic footage. No cuts, transitions, or scene changes.
-                2. ONE SUBJECT, ONE ACTION: Describe one clear subject performing one simple, observable action. No competing elements or multi-step processes.
-                3. VISUAL SPECIFICITY: Name concrete materials, textures, colors, lighting source/quality, and spatial relationships. Replace vague adjectives with tangible details.
-                4. TEMPORAL BEATS: Describe what the viewer sees at the start, what unfolds over the 8 seconds, and how the shot ends. Use phrases like "The shot opens with…", "Over the next few seconds…", "The clip ends as…".
-                5. CAMERA: State the angle (eye-level, overhead, 45-degree, etc.) and movement (stationary, slow dolly, slow pan). No zooms, whip pans, handheld shake, rack focus, or scanning.
-                6. LIGHTING: Specify the light source (soft window light, golden hour sun, overhead fluorescents, etc.).
-                7. FORBIDDEN: No text overlays, graphics, animation, fantasy, abstract imagery, grid/pattern layouts, or technical measurement setups.
-                8. NARRATION: One spoken sentence, MAXIMUM 18 words. Must add insight or context beyond what is visible — never just restate the visuals. Count your words.
-
-                Output valid JSON only, no other text:
-                {{
-                    "script": "Present-tense, temporally ordered 8-second clip description with specific visual and cinematic details.",
-                    "narration": "One sentence, max 18 words, adding insight beyond the visuals."
-                }}"""
+SEED_PROMPT = """Given the topic, generate a video script. Output valid JSON: {"script": "...", "narration": "..."}
+Topic: {topic}"""
 
 def generate_script(prompt_template: str, topic: str, context: str = "None provided.") -> Dict[str, str]:
     """Run the script generator with a given system prompt template."""
@@ -122,7 +103,7 @@ def generate_script(prompt_template: str, topic: str, context: str = "None provi
 
 def critique_script(script_data: Dict[str, str], topic: str) -> Dict[str, Any]:
     """Run the critique evaluator. Returns structured feedback + numeric score."""
-    critique_prompt = f"""You are a strict evaluator for Veo 3 video generation prompts.
+    critique_prompt = f"""You are an evaluator for a script that will be fed to Veo 3, a video generator.
 
     TOPIC: {topic}
     VIDEO SCRIPT: {script_data.get("script", "")}
@@ -132,25 +113,23 @@ def critique_script(script_data: Dict[str, str], topic: str) -> Dict[str, Any]:
 
     SCORING DIMENSIONS:
     1. policy_compliance: No sensitive content, text overlays, graphics, animation, fantasy, or prohibited camera moves.
-    2. visual_specificity: Concrete materials, textures, colors, lighting, spatial relationships named explicitly.
-    3. temporal_clarity: Clear start-to-end progression across 8 seconds.
-    4. single_subject_focus: One subject, one action, no competing elements.
-    5. camera_feasibility: Camera angle and movement are specified, realistic, and simple (stationary or slow pan/dolly).
-    6. narration_quality: One sentence, max 18 words, adds insight beyond what is shown.
-    7. veo_compatibility: Likely to succeed with Veo 3 without triggering policy rejection. Penalize abstract, multi-step, grid, scanning, technical setups.
+    2. single_subject_focus: One subject, one action, no competing elements.
+    3. camera_feasibility: Camera angle and movement are specified, realistic, and simple (stationary or slow pan/dolly).
+    4. narration_quality: One sentence, less than 18 words, adds insight beyond what is shown.
+    5. veo_compatibility: Likely to succeed with Veo 3 without triggering policy rejection. Penalize abstract, multi-step, grid, scanning, technical setups.
+    6. simplicity: The script is simple and easy to understand.
 
     For each issue found, explain what part of the prompt caused it and what instruction change would prevent it.
 
     Respond with ONLY valid JSON:
     {{
         "scores": {{
-            "policy_compliance": 0-10,
-            "visual_specificity": 0-10,
-            "temporal_clarity": 0-10,
-            "single_subject_focus": 0-10,
-            "camera_feasibility": 0-10,
-            "narration_quality": 0-10,
-            "veo_compatibility": 0-10
+           "policy_compliance": 0-10,
+           "single_subject_focus": 0-10,
+           "camera_feasibility": 0-10,
+           "narration_quality": 0-10,
+           "veo_compatibility": 0-10,
+           "simplicity": 0-10
         }},
         "issues": ["issue 1 description", "..."],
         "feedback": "Detailed paragraph: what went wrong, what instruction in the system prompt was insufficient, and what change would fix it."
@@ -190,21 +169,27 @@ def compute_score(critique: Dict[str, Any]) -> float:
     if not scores:
         return 0.0
     weights = {
-        "policy_compliance": 2.0,
-        "veo_compatibility": 2.0,
-        "visual_specificity": 1.0,
-        "temporal_clarity": 1.0,
-        "single_subject_focus": 1.5,
-        "camera_feasibility": 1.0,
-        "narration_quality": 0.5,
+       "policy_compliance": 2.0,
+       "single_subject_focus": 1.5,
+       "camera_feasibility": 1.0,
+       "narration_quality": 0.5,
+       "veo_compatibility": 2.0,
+       "simplicity": 2.0
     }
     total_w = sum(weights.get(k, 1.0) for k in scores)
     weighted = sum(scores.get(k, 0) * weights.get(k, 1.0) for k in scores)
     return round((weighted / total_w) * 10, 2)  # scale to 0-100
 
-def evaluate_candidate(candidate: Candidate, tasks: List[Dict[str, str]]) -> List[EvalTrace]:
+def evaluate_candidate(
+    candidate: Candidate,
+    tasks: List[Dict[str, str]],
+    *,
+    trace_file: Optional[TextIO] = None,
+    phase: str = "",
+) -> List[EvalTrace]:
     """Evaluate a candidate prompt on a list of (key, topic) tasks."""
     traces = []
+    label = phase or "eval"
     for task in tasks:
         key = task["key"]
         topic = task["topic"]
@@ -216,7 +201,11 @@ def evaluate_candidate(candidate: Candidate, tasks: List[Dict[str, str]]) -> Lis
         try:
             critique = critique_script(script_data, topic)
         except Exception as e:
-            print(f"    [eval C{candidate.id} / {key}] critique failed: {e}")
+            err = f"    [eval C{candidate.id} / {key}] critique failed: {e}"
+            print(err)
+            if trace_file:
+                trace_file.write(err + "\n")
+                trace_file.flush()
             critique = {"scores": {}, "issues": [str(e)], "feedback": str(e)}
 
         score = compute_score(critique)
@@ -235,15 +224,24 @@ def evaluate_candidate(candidate: Candidate, tasks: List[Dict[str, str]]) -> Lis
             feedback_text=feedback,
         )
         traces.append(trace)
+        body = (
+            f"=== TASK KEY ===\n{key}\n\n"
+            f"=== TASK TOPIC ===\n{topic}\n\n"
+            f"=== CANDIDATE ID ===\n{candidate.id}\n\n"
+            f"=== SCRIPT OUTPUT ===\n{json.dumps(script_data, indent=2)}\n\n"
+            f"=== CRITIQUE ===\n{json.dumps(critique, indent=2)}\n\n"
+            f"=== SCORE ===\n{score}\n\n"
+            f"=== FEEDBACK TEXT ===\n{feedback}\n\n"
+        )
         filename = Path("runs") / "traces" / f"{key}_{topic}_{candidate.id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+        filename.parent.mkdir(parents=True, exist_ok=True)
         with open(filename, "w", encoding="utf-8") as f:
-            f.write(f"=== TASK KEY ===\n{key}\n\n")
-            f.write(f"=== TASK TOPIC ===\n{topic}\n\n")
-            f.write(f"=== CANDIDATE ID ===\n{candidate.id}\n\n")
-            f.write(f"=== SCRIPT OUTPUT ===\n{json.dumps(script_data, indent=2)}\n\n")
-            f.write(f"=== CRITIQUE ===\n{json.dumps(critique, indent=2)}\n\n")
-            f.write(f"=== SCORE ===\n{score}\n\n")
-            f.write(f"=== FEEDBACK TEXT ===\n{feedback}\n\n")
+            f.write(body)
+        if trace_file:
+            trace_file.write(f"\n{'─'*72}\n{label} | C{candidate.id} | {key}\n{'─'*72}\n")
+            trace_file.write(body)
+            trace_file.flush()
+        print(f"    [{label}] C{candidate.id} {key} score={score:.1f}")
 
     return traces
 
@@ -278,41 +276,25 @@ def reflective_mutate(candidate: Candidate, traces: List[EvalTrace]) -> str:
     weakest = [f"  - {dim}: avg {avg:.1f}/10" for dim, avg in sorted_dims[:3]]
     weakest_block = "\n".join(weakest)
 
-    meta_prompt = f"""I provided an assistant with the following instructions to perform a task for me:
+    meta_prompt = f"""Current assistant instructions:
     ```
     {candidate.prompt}
     ```
 
-    The following are examples of different task inputs provided to the assistant along with the assistant's response for each of them, and some feedback on how the assistant's response could be better:
+    Evaluated examples (topic, output, per-dimension scores, feedback):
     ```
     {examples_block}
     ```
 
-    WEAKEST SCORING DIMENSIONS (focus your improvements here):
+    Weakest dimensions (prioritize fixes):
     {weakest_block}
 
-    Your task is to write an improved instruction for the assistant. Follow these guidelines:
+    Write a better instruction. Requirements:
+    - Numbered, testable rules only; no vague prose.
+    - Target the weak dimensions above; keep what already scores well.
+    - End with one short good JSON example.
 
-    1. STRUCTURE: The instruction MUST contain explicit numbered rules that the assistant can check against. Do not write vague prose — write concrete, testable constraints.
-
-    2. FOCUS ON WEAK DIMENSIONS: The scores above reveal which dimensions are consistently low. Add or strengthen rules that directly address those weaknesses. For example:
-    - Low narration_quality → add a rule like "Narration must be one sentence, max 18 words. It must teach or contextualize, never restate visuals. Count your words before outputting."
-    - Low visual_specificity → add a rule requiring explicit materials, textures, colors, and lighting source in every script.
-    - Low temporal_clarity → add a rule requiring temporal beat markers ("The shot opens with…", "Over the next few seconds…", "The clip ends as…").
-    - Low camera_feasibility → add a rule stating the camera angle and movement type explicitly.
-
-    3. PRESERVE WHAT WORKS: Keep rules and language from the current instruction that score well. Only modify or add rules targeting the weak dimensions.
-
-    4. INCLUDE A WORKED EXAMPLE: After the rules, include one brief example of a good output so the assistant has a concrete reference for quality.
-
-    5. DOMAIN KNOWLEDGE: The assistant writes prompts for Veo 3, a text-to-video AI that generates photorealistic 8-second real-world footage. Keep these hard constraints:
-    - Output must be valid JSON with "script" and "narration" keys only.
-    - Veo 3 rejects: text overlays, graphics, animation, fantasy, zooms, whip pans, rack focus, scanning motions, grid layouts, multi-step processes, abstract imagery, multiple competing subjects.
-    - Camera must be stationary or slow dolly/pan. Angle must be specified (eye-level, overhead, 45-degree, etc.).
-    - The clip is exactly 8 seconds of continuous footage with no cuts.
-    - Narration is one sentence, max 18 words, adding insight beyond the visuals.
-
-    Provide the new instructions within ``` blocks."""
+    Output the new instruction inside ``` blocks."""
 
     r = client.chat.completions.create(
         model=MUTATION_MODEL,
@@ -436,9 +418,13 @@ def _clean_json(s: str) -> str:
 
     raise ValueError(f"No JSON object found in model response: {s[:200]}")
 
-def print_candidate_summary(c: Candidate, prefix: str = ""):
+def print_candidate_summary(
+    c: Candidate,
+    prefix: str = "",
+    log: Callable[[str], None] = print,
+):
     task_scores = ", ".join(f"{k}: {v}" for k, v in sorted(c.scores.items())[:5])
-    print(f"{prefix}[C{c.id}] gen={c.generation} avg={c.avg_score:.1f} parent=C{c.parent_id} | {task_scores}...")
+    log(f"{prefix}[C{c.id}] gen={c.generation} avg={c.avg_score:.1f} parent=C{c.parent_id} | {task_scores}...")
 
 def summarize_mutation(old_prompt: str, new_prompt: str) -> str:
     """Ask the LLM for a one-line diff summary."""
@@ -457,129 +443,168 @@ def run_gepa(
     tasks = load_tasks()
     all_task_keys = [t["key"] for t in tasks]
 
-    if resume_path:
-        print(f"Resuming from {resume_path}")
-        state = load_state(Path(resume_path))
-    else:
-        state = RunState(candidates=[], traces=[], next_id=0, rollouts_used=0)
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    run_ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    trace_path = Path(output_dir) / f"gepa_run_trace_{run_ts}.txt"
+    trace_f = trace_path.open("w", encoding="utf-8")
 
-        print("Initializing with bare-minimum seed prompt (generation 0)...")
-        cid = state.new_id()
-        seed = Candidate(id=cid, prompt=SEED_PROMPT, generation=0)
-        state.candidates.append(seed)
+    def tee(line: str = "") -> None:
+        print(line)
+        trace_f.write(line + "\n")
+        trace_f.flush()
 
-        print(f"Evaluating seed C{seed.id} on {len(tasks)} tasks...")
-        traces = evaluate_candidate(seed, tasks)
-        state.traces.extend(traces)
-        for t in traces:
-            seed.scores[t.task_key] = t.score
-        seed.avg_score = sum(seed.scores.values()) / len(seed.scores) if seed.scores else 0
-        state.rollouts_used += len(traces)
-        print_candidate_summary(seed, prefix="    ")
+    try:
+        tee(f"GEPA — started {datetime.now().isoformat(timespec='seconds')}")
+        tee(f"Live trace (stdout + file): {trace_path.resolve()}")
+        tee(f"tasks={len(tasks)} rollout_budget={budget * len(tasks)} minibatch_size={minibatch_size}")
 
-    best = max(state.candidates, key=lambda c: c.avg_score)
-    state.best_candidate_id = best.id
-    print(f"\nBest after init: C{best.id} (avg={best.avg_score:.1f})")
-
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    save_path = Path(output_dir) / f"gepa_{timestamp}.json"
-    save_state(state, save_path)
-
-    iteration = 0
-    while state.rollouts_used < budget * len(tasks):
-        iteration += 1
-        print(f"\n{'='*70}")
-        print(f"ITERATION {iteration} | rollouts={state.rollouts_used} | budget={budget * len(tasks)}")
-        print(f"{'='*70}")
-
-        # 1. Select candidate via Pareto sampling
-        parent = select_candidate_pareto(state.candidates, all_task_keys)
-        print(f"Selected C{parent.id} (avg={parent.avg_score:.1f}) for mutation")
-
-        # 2. Sample minibatch and gather feedback
-        minibatch = sample_minibatch(tasks, minibatch_size)
-        print(f"Evaluating C{parent.id} on minibatch of {len(minibatch)} tasks for feedback...")
-        mb_traces = evaluate_candidate(parent, minibatch)
-        state.rollouts_used += len(mb_traces)
-
-        mb_avg = sum(t.score for t in mb_traces) / len(mb_traces)
-        print(f"  Parent minibatch avg: {mb_avg:.1f}")
-        for t in mb_traces:
-            dims = t.critique.get("scores", {})
-            dim_str = " ".join(f"{k[:3]}={v}" for k, v in sorted(dims.items()))
-            print(f"    {t.task_key}: {t.score:.1f} | {dim_str}")
-
-        # 3. Reflective mutation
-        print(f"Reflecting and proposing new prompt...")
-        new_prompt = reflective_mutate(parent, mb_traces)
-        child = parent.copy_with_new_id(state.new_id())
-        child.prompt = new_prompt
-
-        # 4. Evaluate child on same minibatch
-        print(f"Evaluating mutated C{child.id} on minibatch...")
-        child_mb_traces = evaluate_candidate(child, minibatch)
-        state.rollouts_used += len(child_mb_traces)
-
-        child_mb_avg = sum(t.score for t in child_mb_traces) / len(child_mb_traces)
-        print(f"  Child minibatch avg: {child_mb_avg:.1f} (parent was {mb_avg:.1f})")
-        for t in child_mb_traces:
-            dims = t.critique.get("scores", {})
-            dim_str = " ".join(f"{k[:3]}={v}" for k, v in sorted(dims.items()))
-            print(f"    {t.task_key}: {t.score:.1f} | {dim_str}")
-
-        # 5. Accept if improved or within tolerance (allows lateral exploration)
-        delta = child_mb_avg - mb_avg
-        if delta >= -ACCEPT_TOLERANCE:
-            label = f"IMPROVED +{delta:.1f}" if delta > 0 else f"LATERAL {delta:+.1f} (within tolerance)"
-            print(f"  {label} — evaluating on full Pareto set...")
-
-            full_traces = evaluate_candidate(child, tasks)
-            state.traces.extend(full_traces)
-            state.rollouts_used += len(full_traces)
-            for t in full_traces:
-                child.scores[t.task_key] = t.score
-            child.avg_score = sum(child.scores.values()) / len(child.scores) if child.scores else 0
-
-            child.mutation_summary = summarize_mutation(parent.prompt, child.prompt)
-            state.candidates.append(child)
-            print_candidate_summary(child, prefix="    ACCEPTED: ")
-            print(f"    Mutation: {child.mutation_summary}")
-
-            if child.avg_score > best.avg_score:
-                best = child
-                state.best_candidate_id = best.id
-                print(f"    *** NEW BEST: C{best.id} (avg={best.avg_score:.1f}) ***")
+        if resume_path:
+            tee(f"Resuming from {resume_path}")
+            state = load_state(Path(resume_path))
         else:
-            print(f"  REJECTED (delta={delta:+.1f}, below tolerance={-ACCEPT_TOLERANCE:.1f})")
-            state.traces.extend(mb_traces)
+            state = RunState(candidates=[], traces=[], next_id=0, rollouts_used=0)
+
+            tee("Initializing with bare-minimum seed prompt (generation 0)...")
+            cid = state.new_id()
+            seed = Candidate(id=cid, prompt=SEED_PROMPT, generation=0)
+            state.candidates.append(seed)
+
+            tee(f"Evaluating seed C{seed.id} on {len(tasks)} tasks (each line below as it finishes)...")
+            traces = evaluate_candidate(seed, tasks, trace_file=trace_f, phase="seed_full")
+            state.traces.extend(traces)
+            for t in traces:
+                seed.scores[t.task_key] = t.score
+            seed.avg_score = sum(seed.scores.values()) / len(seed.scores) if seed.scores else 0
+            state.rollouts_used += len(traces)
+            print_candidate_summary(seed, prefix="    ", log=tee)
+
+        best = max(state.candidates, key=lambda c: c.avg_score)
+        state.best_candidate_id = best.id
+        tee("")
+        tee(f"Best after init: C{best.id} (avg={best.avg_score:.1f})")
+
+        save_path = Path(output_dir) / f"gepa_{run_ts}.json"
+        save_state(state, save_path)
+        tee(f"Checkpoint: {save_path}")
+
+        iteration = 0
+        while state.rollouts_used < budget * len(tasks):
+            iteration += 1
+            tee("")
+            tee("=" * 70)
+            tee(f"ITERATION {iteration} | rollouts={state.rollouts_used} | budget={budget * len(tasks)}")
+            tee("=" * 70)
+
+            # 1. Select candidate via Pareto sampling
+            parent = select_candidate_pareto(state.candidates, all_task_keys)
+            tee(f"Selected C{parent.id} (avg={parent.avg_score:.1f}) for mutation")
+
+            # 2. Sample minibatch and gather feedback
+            minibatch = sample_minibatch(tasks, minibatch_size)
+            tee(f"Evaluating C{parent.id} on minibatch of {len(minibatch)} tasks for feedback...")
+            mb_traces = evaluate_candidate(
+                parent,
+                minibatch,
+                trace_file=trace_f,
+                phase=f"iter{iteration}_parent_mb",
+            )
+            state.rollouts_used += len(mb_traces)
+
+            mb_avg = sum(t.score for t in mb_traces) / len(mb_traces)
+            tee(f"  Parent minibatch avg: {mb_avg:.1f}")
+            for t in mb_traces:
+                dims = t.critique.get("scores", {})
+                dim_str = " ".join(f"{k[:3]}={v}" for k, v in sorted(dims.items()))
+                tee(f"    {t.task_key}: {t.score:.1f} | {dim_str}")
+
+            # 3. Reflective mutation
+            tee("Reflecting and proposing new prompt...")
+            new_prompt = reflective_mutate(parent, mb_traces)
+            child = parent.copy_with_new_id(state.new_id())
+            child.prompt = new_prompt
+
+            # 4. Evaluate child on same minibatch
+            tee(f"Evaluating mutated C{child.id} on minibatch...")
+            child_mb_traces = evaluate_candidate(
+                child,
+                minibatch,
+                trace_file=trace_f,
+                phase=f"iter{iteration}_child_mb",
+            )
+            state.rollouts_used += len(child_mb_traces)
+
+            child_mb_avg = sum(t.score for t in child_mb_traces) / len(child_mb_traces)
+            tee(f"  Child minibatch avg: {child_mb_avg:.1f} (parent was {mb_avg:.1f})")
+            for t in child_mb_traces:
+                dims = t.critique.get("scores", {})
+                dim_str = " ".join(f"{k[:3]}={v}" for k, v in sorted(dims.items()))
+                tee(f"    {t.task_key}: {t.score:.1f} | {dim_str}")
+
+            # 5. Accept if improved or within tolerance (allows lateral exploration)
+            delta = child_mb_avg - mb_avg
+            if delta >= -ACCEPT_TOLERANCE:
+                label = f"IMPROVED +{delta:.1f}" if delta > 0 else f"LATERAL {delta:+.1f} (within tolerance)"
+                tee(f"  {label} — evaluating on full Pareto set...")
+
+                full_traces = evaluate_candidate(
+                    child,
+                    tasks,
+                    trace_file=trace_f,
+                    phase=f"iter{iteration}_child_full",
+                )
+                state.traces.extend(full_traces)
+                state.rollouts_used += len(full_traces)
+                for t in full_traces:
+                    child.scores[t.task_key] = t.score
+                child.avg_score = sum(child.scores.values()) / len(child.scores) if child.scores else 0
+
+                child.mutation_summary = summarize_mutation(parent.prompt, child.prompt)
+                state.candidates.append(child)
+                print_candidate_summary(child, prefix="    ACCEPTED: ", log=tee)
+                tee(f"    Mutation: {child.mutation_summary}")
+
+                if child.avg_score > best.avg_score:
+                    best = child
+                    state.best_candidate_id = best.id
+                    tee(f"    *** NEW BEST: C{best.id} (avg={best.avg_score:.1f}) ***")
+            else:
+                tee(f"  REJECTED (delta={delta:+.1f}, below tolerance={-ACCEPT_TOLERANCE:.1f})")
+                state.traces.extend(mb_traces)
+
+            save_state(state, save_path)
+            tee(f"  State saved to {save_path}")
+
+        # --- Final report ---
+        tee("")
+        tee("=" * 70)
+        tee("EVOLUTION COMPLETE")
+        tee("=" * 70)
+        tee(f"Total rollouts: {state.rollouts_used}")
+        tee(f"Candidates explored: {len(state.candidates)}")
+        tee(f"Best candidate: C{best.id} (gen={best.generation}, avg={best.avg_score:.1f})")
+        tee("")
+        tee("Best prompt:")
+        tee(best.prompt)
+
+        # Write best prompt to a standalone file
+        best_path = Path(output_dir) / f"best_prompt_{run_ts}.txt"
+        with open(best_path, "w") as f:
+            f.write(best.prompt)
+        tee("")
+        tee(f"Best prompt saved to: {best_path}")
+
+        # Write leaderboard
+        sorted_candidates = sorted(state.candidates, key=lambda c: c.avg_score, reverse=True)
+        tee("")
+        tee("Leaderboard:")
+        for rank, c in enumerate(sorted_candidates, 1):
+            lineage = f"C{c.parent_id}→C{c.id}" if c.parent_id is not None else f"C{c.id} (seed)"
+            tee(f"  #{rank}: avg={c.avg_score:.1f} gen={c.generation} {lineage} | {c.mutation_summary[:80]}")
 
         save_state(state, save_path)
-        print(f"  State saved to {save_path}")
-
-    # --- Final report ---
-    print(f"\n{'='*70}")
-    print(f"EVOLUTION COMPLETE")
-    print(f"{'='*70}")
-    print(f"Total rollouts: {state.rollouts_used}")
-    print(f"Candidates explored: {len(state.candidates)}")
-    print(f"Best candidate: C{best.id} (gen={best.generation}, avg={best.avg_score:.1f})")
-    print(f"\nBest prompt:\n{best.prompt}")
-
-    # Write best prompt to a standalone file
-    best_path = Path(output_dir) / f"best_prompt_{timestamp}.txt"
-    with open(best_path, "w") as f:
-        f.write(best.prompt)
-    print(f"\nBest prompt saved to: {best_path}")
-
-    # Write leaderboard
-    sorted_candidates = sorted(state.candidates, key=lambda c: c.avg_score, reverse=True)
-    print(f"\nLeaderboard:")
-    for rank, c in enumerate(sorted_candidates, 1):
-        lineage = f"C{c.parent_id}→C{c.id}" if c.parent_id is not None else f"C{c.id} (seed)"
-        print(f"  #{rank}: avg={c.avg_score:.1f} gen={c.generation} {lineage} | {c.mutation_summary[:80]}")
-
-    save_state(state, save_path)
-    return best
+        return best
+    finally:
+        trace_f.close()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="GEPA prompt evolution for Veo 3 script generator")

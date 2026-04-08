@@ -1,0 +1,12 @@
+=== SYSTEM PROMPT ===
+Given the topic, generate a video script. Output valid JSON: {"script": "...", "narration": "..."}
+Topic: {topic}
+
+=== TOPIC ===
+A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.
+
+=== MODEL OUTPUT ===
+{
+  "script": "INT. KITCHEN - DAY\nSIDE VIEW: A hand reaches for a chilled Coca-Cola bottle on the counter. The bottle features a new attached tethered cap, connected to the neck by a short, clear tether.\nCLOSE UP: Condensation beads on the glass as the hand grips the bottle. The thumb lifts the tethered cap; the other hand twists the cap counterclockwise.\nSFX: a soft pop as the cap loosens from the bottle while still attached to the tether.\nCUT TO SIDE VIEW: The cap remains connected by the tether, swinging slightly as it comes free from the neck but stays tethered.\nThe bottle tilts and pours into a glass with a satisfying glug. The tethered cap hangs to the side, never far from the bottle.\nSFX: fizz and clink of glass.\nThe person lifts the glass, takes a sip, and smiles. The tethered cap settles back near the neck, ready for the next pour.",
+  "narration": "This is a side view demonstration of Coca Cola with a new attached tethered cap. Watch as the cap is loosened, yet remains connected by a tether to the bottle. With one hand you twist, the cap pops free but does not come away. It swings to the side as the bottle is tilted to pour, delivering the familiar fizz into the glass. The tethered cap keeps the cap from getting lost and makes opening quick and simple."
+}

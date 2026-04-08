@@ -1,11 +1,10 @@
 import json
-import logging
 import os
 import random
 import re
-import sys
 import textwrap
 from dataclasses import dataclass, field
+from datetime import datetime
 from pathlib import Path
 from statistics import mean
 from typing import Any, Dict, List, Optional, Tuple
@@ -20,40 +19,55 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # ============================================================
 # Configuration
 # ============================================================
-GENERATION_MODEL = "gpt-4o-mini"
-EVALUATION_MODEL = "gpt-4o-mini"
-REFLECTION_MODEL = "gpt-4o-mini"
+GENERATION_MODEL = "gpt-4o"
+EVALUATION_MODEL = "gpt-4o"
+REFLECTION_MODEL = "gpt-4o"
 
-MAX_ITERS = 3
+MAX_ITERS = 12
 FEEDBACK_MINIBATCH_SIZE = 2
 ACCEPT_MARGIN = 0.15
 RANDOM_SEED = 42
 OUTPUT_DIR = Path("gepa_lite_runs")
+TRACE_FILENAME = "gepa_lite_run_trace.txt"
 
 TASKS: Dict[str, str] = {
-    "3.mp4": "A person correctly using a French Press to brew coffee, countertop view.",
-    "4.mp4": "A close-up of a Newton’s Cradle in motion on a desk, macro view.",
-    "5.mp4": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
-}
+  "0.mp4": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+  "1.mp4": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+  "2.mp4": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+  "3.mp4": "A person correctly using a French Press to brew coffee, countertop view.",
+  "4.mp4": "A close-up of a Newton's Cradle in motion on a desk, macro view.",
+ 
+  "5.mp4": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+  "7.mp4": "A yellow New York City taxi driving through Times Square, street-level view.",
+  "8.mp4": "A person walking across the Abbey Road zebra crossing, eye-level view.",
+  "9.mp4": "A Mongolian horseman using an Uurga to catch a wild horse, wide landscape shot.",
+ 
+  "10.mp4": "A samurai practicing with a nodachi.",
+  "11.mp4": "The lifecycle of a Monarch butterfly: the chrysalis stage.",
+  "12.mp4": "A chef preparing Hand-Pulled Lanzhou Ramen (Lamian).",
+  "13.mp4": "A person playing a game of 'Jenga' and pulling out a middle block.",
+  "14.mp4": "A chemist performing a 'Titration' until the exact 'End Point' is reached.",
+ 
+  "15.mp4": "A person using a 'Self-Checkout' machine at a grocery store.",
+  "16.mp4": "A close-up of a 'Vinyl Record Player' being started.",
+  "17.mp4": "A person changing a flat tire on a car.",
+  "18.mp4": "A dancer performing the 'Haka' with correct 'Pukana' facial expressions.",
+  "19.mp4": "A person wearing a 'Hennin' headdress walking through a 15th-century court.",
+ 
+  "20.mp4": "A close-up of a 'Mantis Shrimp' punching a glass tank.",
+  "21.mp4": "A person making a peanut butter and jelly sandwich.",
+  "22.mp4": "A person mailing a letter at a blue USPS mailbox.",
+  "23.mp4": "A technician performing a 'Three-Point Bend' test on a carbon fiber sample.",
+  "24.mp4": "A barista preparing a traditional Turkish coffee using a cezve in hot sand.",
+ 
+  "25.mp4": "An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view.",
+  "26.mp4": "An artisan practicing Kintsugi on a broken ceramic bowl, soft-lit tabletop scene."
+ }
 
-SEED_PROMPT = """Write an 8-second video prompt for Veo 3.
-Rules:
-1. Output valid JSON: {"script": "...", "narration": "..."}.
-2. One continuous shot, no cuts.
-3. Specify camera angle and lighting.
-4. Narration must be under 18 words and provide context not seen on screen.
-Topic: {topic}"""
 
-# Optional local heuristics to cheaply enforce obvious constraints.
-CAMERA_HINTS = [
-    "close-up", "macro", "wide shot", "overhead", "low angle", "high angle",
-    "eye-level", "countertop view", "hands-only", "tracking shot", "medium shot"
-]
-LIGHTING_HINTS = [
-    "lighting", "lit", "backlit", "soft light", "daylight", "warm light",
-    "cool light", "natural light", "studio light", "diffused light"
-]
-CUT_HINTS = ["cut to", "cuts to", "scene 1", "scene 2", "montage", "jump cut", "crossfade"]
+SEED_PROMPT = """Given the topic, background_info, generate a video script. Output valid JSON: {"script": "...", "narration": "..."}
+Topic: {topic}
+Background info: {background_info}"""
 
 
 # ============================================================
@@ -151,55 +165,11 @@ def safe_json_loads(text: str) -> Optional[Dict[str, Any]]:
 
 
 
-def word_count(text: str) -> int:
-    return len(re.findall(r"\b\w+(?:[-']\w+)?\b", text))
-
-
-
-def local_hard_checks(raw_generation: str, parsed: Optional[Dict[str, Any]]) -> Tuple[Dict[str, bool], List[str]]:
-    failures: List[str] = []
-    script = ""
-    narration = ""
-
+def local_hard_checks(_raw_generation: str, parsed: Optional[Dict[str, Any]]) -> Tuple[Dict[str, bool], List[str]]:
     valid_json = parsed is not None and isinstance(parsed.get("script"), str) and isinstance(parsed.get("narration"), str)
     if not valid_json:
-        checks = {
-            "valid_json": False,
-            "single_shot": False,
-            "camera_angle": False,
-            "lighting": False,
-            "narration_under_18": False,
-        }
-        failures.append("Output is not valid JSON with string fields script and narration.")
-        return checks, failures
-
-    script = parsed["script"].strip()
-    narration = parsed["narration"].strip()
-    script_l = script.lower()
-
-    single_shot = not any(hint in script_l for hint in CUT_HINTS)
-    camera_angle = any(hint in script_l for hint in CAMERA_HINTS)
-    lighting = any(hint in script_l for hint in LIGHTING_HINTS)
-    narration_under_18 = word_count(narration) <= 18
-
-    checks = {
-        "valid_json": True,
-        "single_shot": single_shot,
-        "camera_angle": camera_angle,
-        "lighting": lighting,
-        "narration_under_18": narration_under_18,
-    }
-
-    if not single_shot:
-        failures.append("Script implies multiple shots or editing instead of one continuous shot.")
-    if not camera_angle:
-        failures.append("Script does not clearly specify a camera angle or viewpoint.")
-    if not lighting:
-        failures.append("Script does not clearly specify lighting.")
-    if not narration_under_18:
-        failures.append("Narration exceeds 18 words.")
-
-    return checks, failures
+        return {"valid_json": False}, ["Output is not valid JSON with string fields script and narration."]
+    return {"valid_json": True}, []
 
 
 
@@ -446,7 +416,7 @@ def choose_feedback_topics(task_items: List[Tuple[str, str]]) -> List[Tuple[str,
 def write_run_artifacts(candidates: List[Candidate], best_candidate: Candidate) -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    (OUTPUT_DIR / "best_prompt_.txt").write_text(best_candidate.prompt, encoding="utf-8")
+    (OUTPUT_DIR / "best_prompt.txt").write_text(best_candidate.prompt, encoding="utf-8")
 
     history = []
     for c in candidates:
@@ -488,95 +458,185 @@ def write_run_artifacts(candidates: List[Candidate], best_candidate: Candidate) 
 
 
 
+def _trace_banner(title: str) -> str:
+    line = "=" * 72
+    return f"\n{line}\n{title}\n{line}\n"
+
+
+def format_topic_eval_block(te: TopicEval) -> str:
+    gen = te.parsed_generation if te.parsed_generation else te.raw_generation
+    if isinstance(gen, dict):
+        gen_text = json.dumps(gen, ensure_ascii=False, indent=2)
+    else:
+        gen_text = str(gen)
+    parts = [
+        f"task_id: {te.task_id}",
+        f"final_score: {te.final_score}  (base_quality: {te.base_quality_score})",
+        f"hard_checks: {json.dumps(te.hard_checks, ensure_ascii=False)}",
+        f"quality_scores: {json.dumps(te.quality_scores, ensure_ascii=False)}",
+        "generated (script/narration or raw):",
+        textwrap.indent(gen_text.strip(), "  "),
+        "feedback:",
+        textwrap.indent(te.feedback.strip() or "(none)", "  "),
+    ]
+    if te.strengths:
+        parts.append("strengths: " + "; ".join(te.strengths))
+    if te.fixes:
+        parts.append("fixes: " + "; ".join(te.fixes))
+    return "\n".join(parts)
+
+
+def format_results_block(results: Dict[str, TopicEval]) -> str:
+    blocks = [format_topic_eval_block(te) for te in results.values()]
+    return "\n\n---\n\n".join(blocks)
+
+
 def run_gepa_lite() -> None:
     random.seed(RANDOM_SEED)
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    log_file = OUTPUT_DIR / "run_trace.log"
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(message)s',
-        handlers=[
-            logging.FileHandler(log_file),
-            logging.StreamHandler()
-        ]
-    )
     task_items = list(TASKS.items())
     task_ids = [task_id for task_id, _ in task_items]
 
-    logging.info(f"Running GEPA-lite for {MAX_ITERS} iterations on {len(task_items)} tasks...")
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    trace_path = OUTPUT_DIR / TRACE_FILENAME
 
-    # Seed candidate evaluated on full Pareto set.
-    seed_results = evaluate_candidate_on_topics(SEED_PROMPT, task_items)
-    seed_candidate = Candidate(
-        cid=0,
-        prompt=SEED_PROMPT,
-        parent_id=None,
-        topic_results=seed_results,
-        pareto_avg=average_score(seed_results),
-    )
+    print(f"Running GEPA-lite for {MAX_ITERS} iterations on {len(task_items)} tasks...")
+    print(f"Trace log: {trace_path.resolve()}")
 
-    candidates: List[Candidate] = [seed_candidate]
-    best_candidate = seed_candidate
-    next_id = 1
+    with trace_path.open("w", encoding="utf-8") as tf:
 
-    logging.info(f"Seed candidate average score: {seed_candidate.pareto_avg:.2f}")
+        def log_trace(text: str) -> None:
+            tf.write(text)
+            tf.flush()
 
-    for step in range(1, MAX_ITERS + 1):
-        parent = sample_parent_from_frontier(candidates, task_ids)
-        minibatch = choose_feedback_topics(task_items)
-        minibatch_ids = [task_id for task_id, _ in minibatch]
-
-        logging.info("-" * 60)
-        logging.info(f"Iteration {step}")
-        logging.info(f"Selected parent: C{parent.cid} | full avg = {parent.pareto_avg:.2f} | minibatch = {minibatch_ids}")
-
-        # Reuse parent scores on the minibatch from the cached full evaluation.
-        parent_minibatch_results = {task_id: parent.topic_results[task_id] for task_id in minibatch_ids}
-        parent_minibatch_avg = average_score(parent_minibatch_results)
-
-        child_prompt = reflective_mutate(parent.prompt, parent_minibatch_results)
-        child_minibatch_results = evaluate_candidate_on_topics(child_prompt, minibatch)
-        child_minibatch_avg = average_score(child_minibatch_results)
-
-        logging.info(f"Parent minibatch avg: {parent_minibatch_avg:.2f}")
-        logging.info(f"Child  minibatch avg: {child_minibatch_avg:.2f}")
-
-        if child_minibatch_avg <= parent_minibatch_avg + ACCEPT_MARGIN:
-            logging.info("Rejected child on minibatch gate.")
-            continue
-
-        # Accepted on minibatch. Evaluate on full Pareto set before adding.
-        full_child_results = evaluate_candidate_on_topics(child_prompt, task_items)
-        full_child_avg = average_score(full_child_results)
-
-        child = Candidate(
-            cid=next_id,
-            prompt=child_prompt,
-            parent_id=parent.cid,
-            accepted_from_minibatch=child_minibatch_avg,
-            minibatch_topics=minibatch_ids,
-            topic_results=full_child_results,
-            pareto_avg=full_child_avg,
+        log_trace(
+            _trace_banner("GEPA-lite run")
+            + f"started_at: {datetime.now().isoformat(timespec='seconds')}\n"
+            + f"MAX_ITERS={MAX_ITERS}  FEEDBACK_MINIBATCH_SIZE={FEEDBACK_MINIBATCH_SIZE}  "
+            + f"ACCEPT_MARGIN={ACCEPT_MARGIN}  RANDOM_SEED={RANDOM_SEED}\n"
+            + f"tasks: {len(task_items)}\n"
+            + f"models: gen={GENERATION_MODEL} eval={EVALUATION_MODEL} reflect={REFLECTION_MODEL}\n"
         )
-        next_id += 1
-        candidates.append(child)
 
-        logging.info(f"Accepted child C{child.cid} | full avg = {child.pareto_avg:.2f}")
+        # Seed candidate evaluated on full Pareto set.
+        seed_results = evaluate_candidate_on_topics(SEED_PROMPT, task_items)
+        seed_candidate = Candidate(
+            cid=0,
+            prompt=SEED_PROMPT,
+            parent_id=None,
+            topic_results=seed_results,
+            pareto_avg=average_score(seed_results),
+        )
 
-        if child.pareto_avg > best_candidate.pareto_avg:
-            best_candidate = child
-            logging.info(f"New best candidate: C{child.cid}")
+        candidates: List[Candidate] = [seed_candidate]
+        best_candidate = seed_candidate
+        next_id = 1
 
-    logging.info("=" * 60)
-    logging.info(f"Search complete. Best candidate: C{best_candidate.cid}")
-    logging.info(f"Best average score: {best_candidate.pareto_avg:.2f}")
+        print(f"Seed candidate average score: {seed_candidate.pareto_avg:.2f}")
+        log_trace(
+            _trace_banner("Seed candidate C0 (full task evaluation)")
+            + f"pareto_avg (mean final_score): {seed_candidate.pareto_avg:.2f}\n\n"
+            + "SEED_PROMPT:\n"
+            + textwrap.indent(seed_candidate.prompt.rstrip(), "  ")
+            + "\n\n"
+            + format_results_block(seed_results)
+            + "\n"
+        )
 
-    write_run_artifacts(candidates, best_candidate)
-    logging.info(f"Artifacts written to: {OUTPUT_DIR.resolve()}")
+        for step in range(1, MAX_ITERS + 1):
+            parent = sample_parent_from_frontier(candidates, task_ids)
+            minibatch = choose_feedback_topics(task_items)
+            minibatch_ids = [task_id for task_id, _ in minibatch]
+
+            print("-" * 60)
+            print(f"Iteration {step}")
+            print(f"Selected parent: C{parent.cid} | full avg = {parent.pareto_avg:.2f} | minibatch = {minibatch_ids}")
+
+            # Reuse parent scores on the minibatch from the cached full evaluation.
+            parent_minibatch_results = {task_id: parent.topic_results[task_id] for task_id in minibatch_ids}
+            parent_minibatch_avg = average_score(parent_minibatch_results)
+
+            child_prompt = reflective_mutate(parent.prompt, parent_minibatch_results)
+            child_minibatch_results = evaluate_candidate_on_topics(child_prompt, minibatch)
+            child_minibatch_avg = average_score(child_minibatch_results)
+
+            print(f"Parent minibatch avg: {parent_minibatch_avg:.2f}")
+            print(f"Child  minibatch avg: {child_minibatch_avg:.2f}")
+
+            iter_head = (
+                _trace_banner(f"Iteration {step}/{MAX_ITERS}")
+                + f"parent: C{parent.cid}  parent_full_avg={parent.pareto_avg:.2f}\n"
+                + f"minibatch task_ids: {minibatch_ids}\n"
+                + f"parent_minibatch_avg: {parent_minibatch_avg:.2f}  "
+                + f"child_minibatch_avg: {child_minibatch_avg:.2f}  "
+                + f"gate: child > parent + {ACCEPT_MARGIN}\n\n"
+                + "Parent prompt (excerpt):\n"
+                + textwrap.indent(parent.prompt[:1200] + ("..." if len(parent.prompt) > 1200 else ""), "  ")
+                + "\n\n"
+                + "Proposed child prompt (excerpt):\n"
+                + textwrap.indent(child_prompt[:1200] + ("..." if len(child_prompt) > 1200 else ""), "  ")
+                + "\n\n"
+                + "--- Minibatch: parent topic results ---\n"
+                + format_results_block(parent_minibatch_results)
+                + "\n\n"
+                + "--- Minibatch: child topic results ---\n"
+                + format_results_block(child_minibatch_results)
+                + "\n"
+            )
+
+            if child_minibatch_avg <= parent_minibatch_avg + ACCEPT_MARGIN:
+                print("Rejected child on minibatch gate.")
+                log_trace(iter_head + "RESULT: rejected (minibatch gate)\n")
+                continue
+
+            # Accepted on minibatch. Evaluate on full Pareto set before adding.
+            full_child_results = evaluate_candidate_on_topics(child_prompt, task_items)
+            full_child_avg = average_score(full_child_results)
+
+            child = Candidate(
+                cid=next_id,
+                prompt=child_prompt,
+                parent_id=parent.cid,
+                accepted_from_minibatch=child_minibatch_avg,
+                minibatch_topics=minibatch_ids,
+                topic_results=full_child_results,
+                pareto_avg=full_child_avg,
+            )
+            next_id += 1
+            candidates.append(child)
+
+            print(f"Accepted child C{child.cid} | full avg = {child.pareto_avg:.2f}")
+
+            accepted_tail = (
+                f"RESULT: accepted as C{child.cid}\n"
+                f"full_child_avg: {child.pareto_avg:.2f}\n\n"
+                + "--- Full task evaluation (accepted child) ---\n"
+                + format_results_block(full_child_results)
+                + "\n"
+            )
+            log_trace(iter_head + accepted_tail)
+
+            if child.pareto_avg > best_candidate.pareto_avg:
+                best_candidate = child
+                print(f"New best candidate: C{child.cid}")
+
+        print("=" * 60)
+        print(f"Search complete. Best candidate: C{best_candidate.cid}")
+        print(f"Best average score: {best_candidate.pareto_avg:.2f}")
+
+        write_run_artifacts(candidates, best_candidate)
+        print(f"Artifacts written to: {OUTPUT_DIR.resolve()}")
+
+        log_trace(
+            _trace_banner("Run complete")
+            + f"finished_at: {datetime.now().isoformat(timespec='seconds')}\n"
+            + f"best_candidate: C{best_candidate.cid}  best_avg: {best_candidate.pareto_avg:.2f}\n"
+            + f"total_candidates: {len(candidates)}\n"
+            + "Also written: best_prompt.txt, search_history.json, detailed_evaluations.json\n"
+        )
 
 
 if __name__ == "__main__":
     try:
         run_gepa_lite()
     except KeyboardInterrupt:
-        logging.info("Interrupted by user.")
+        print("Interrupted by user.")

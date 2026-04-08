@@ -1,0 +1,8 @@
+
+========================================================================
+GEPA-lite run
+========================================================================
+started_at: 2026-04-03T14:05:27
+MAX_ITERS=12  FEEDBACK_MINIBATCH_SIZE=2  ACCEPT_MARGIN=0.15  RANDOM_SEED=42
+tasks: 26
+models: gen=gpt-4o eval=gpt-4o reflect=gpt-4o
