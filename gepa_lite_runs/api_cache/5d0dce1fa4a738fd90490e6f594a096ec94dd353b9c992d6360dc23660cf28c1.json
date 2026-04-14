@@ -1,0 +1,34 @@
+{
+  "task_id": "7.mp4",
+  "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+  "raw_generation": "{\"script\":\"EXT. TIMES SQUARE - DAY\\nBeat 1: Street-level camera rests on the curb, inches from the asphalt. A bright yellow NYC taxi appears and rolls into frame, its chrome bumper catching reflections of neon signs.\\nBeat 2: The taxi glides past a sea of pedestrians. A street performer spins a baton; a hot dog cart hisses steam; banners flap overhead.\\nBeat 3: The camera tracks along the taxi's passenger-side door as billboards blur in a kaleidoscope of color, reflected in the taxi's polished surface.\\nBeat 4: CUT TO: Inside the taxi for a brief moment: the driver's hands on the wheel; the meter ticks; a radio crackles with city voices.\\nBeat 5: The taxi turns onto Broadway; the street lights and vertical signs sweep past as the city hum deepens.\\nBeat 6: The taxi moves toward the frame edge and disappears into the crowd, neon glow lingering on wet pavement.\",\"narration\":\"Times Square in daylight is a pulse. A yellow taxi becomes a moving beacon, threading through a living mural of billboards and people. From a street-level vantage, you feel the city breathe—the engine, conversations, footsteps, the steam from a street vendor, and neon reflected in glass. Every second is a rush of color, every turn a moment of motion, with the yellow cab guiding you through New York's busiest crossroads.\"}",
+  "parsed_generation": {
+    "script": "EXT. TIMES SQUARE - DAY\nBeat 1: Street-level camera rests on the curb, inches from the asphalt. A bright yellow NYC taxi appears and rolls into frame, its chrome bumper catching reflections of neon signs.\nBeat 2: The taxi glides past a sea of pedestrians. A street performer spins a baton; a hot dog cart hisses steam; banners flap overhead.\nBeat 3: The camera tracks along the taxi's passenger-side door as billboards blur in a kaleidoscope of color, reflected in the taxi's polished surface.\nBeat 4: CUT TO: Inside the taxi for a brief moment: the driver's hands on the wheel; the meter ticks; a radio crackles with city voices.\nBeat 5: The taxi turns onto Broadway; the street lights and vertical signs sweep past as the city hum deepens.\nBeat 6: The taxi moves toward the frame edge and disappears into the crowd, neon glow lingering on wet pavement.",
+    "narration": "Times Square in daylight is a pulse. A yellow taxi becomes a moving beacon, threading through a living mural of billboards and people. From a street-level vantage, you feel the city breathe—the engine, conversations, footsteps, the steam from a street vendor, and neon reflected in glass. Every second is a rush of color, every turn a moment of motion, with the yellow cab guiding you through New York's busiest crossroads."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 8.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 7.2,
+  "final_score": 7.2,
+  "feedback": "The prompt remains true to the topic and adds sensory narration. To better align with the reference style, tighten the focus on the taxi as the central subject by minimizing foreground/background actions, and aim for more concise, action-first beats. Consider sharpening visuals with crisper, concrete details and reducing extraneous secondary subjects in frame.",
+  "strengths": [
+    "Clear central subject (the yellow taxi) traversing Times Square",
+    "Strong street-level ambiance with reflections and motion"
+  ],
+  "fixes": [
+    "Limit background subjects to enhance single-subject focus",
+    "Adopt a more concise, action-first beat structure similar to the references"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "task_id": "24.mp4",
+  "topic": "A barista preparing a traditional Turkish coffee using a cezve in hot sand.",
+  "raw_generation": "```\n{\"script\": \"SCENE 1 — FRONT VIEW: A barista preparing a traditional Turkish coffee using a cezve in hot sand. (8s, Veo 3 shot)\\nThe barista steadies a copper cezve nestled in glowing hot sand, slowly stirring as steam curls and the foam begins to form.\", \"narration\": \"Traditional Turkish coffee, brewed slowly in hot sand.\\nA copper cezve absorbs the heat, releasing a rich, smoky aroma.\\nFoam crowns the brew, signaling readiness to pour.\"}\n```",
+  "parsed_generation": {},
+  "hard_checks": {
+    "valid_json": false,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 4.6,
+  "feedback": "Local hard-check failures: Output is not valid JSON with string fields script and narration.\nThe output is presented inside a code block and is not valid JSON for the required fields. Provide plain JSON with string fields only (script and narration if included) and escape newlines properly. The content is already aligned with the topic and action-first style, but tighten the wording to resemble the concise prompts in the references and ensure exact JSON formatting.\nFailed checks: valid_json",
+  "strengths": [
+    "Clear topic alignment with Turkish coffee, cezve, and hot sand",
+    "Front-view, action-first framing similar to reference prompts"
+  ],
+  "fixes": [
+    "Remove code block wrappers; deliver valid JSON with properly escaped strings",
+    "Adopt the concise, concrete phrasing seen in references (e.g., 'A barista brewing Turkish coffee in hot sand, front view.')"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "task_id": "19.mp4",
+  "topic": "A person wearing a 'Hennin' headdress walking through a 15th-century court.",
+  "raw_generation": "{\n  \"script\": \"SHOT 1: WIDE ESTABLISHING VIEW - SINGLE FIGURE IN A HENNIN WALKS THE 15TH-CENTURY COURT; ARCHED WINDOWS, TAPESTRIES, STONE FLOORS.\\nSHOT 2: MEDIUM SHOT - FOCUSES ON ACTION - HENNIN-HEADED FIGURE ADVANCES; VEIL DRAGS, HANDS REST AT BELT, COURT ARCHES BLUR.\\nSHOT 3: CLOSE-UP - DETAIL - JEWEL-ENCRUSTED PIN GLINTS AT HENNIN RIM; VEIL FIBERS TWITCH, EYE UNDER SHADOW\",\n  \"narration\": \"A solitary noble in a tall hennin glides through a 15th-century court; the camera moves from a wide hall to a close-up on the headdress and veil.\"\n}",
+  "parsed_generation": {
+    "script": "SHOT 1: WIDE ESTABLISHING VIEW - SINGLE FIGURE IN A HENNIN WALKS THE 15TH-CENTURY COURT; ARCHED WINDOWS, TAPESTRIES, STONE FLOORS.\nSHOT 2: MEDIUM SHOT - FOCUSES ON ACTION - HENNIN-HEADED FIGURE ADVANCES; VEIL DRAGS, HANDS REST AT BELT, COURT ARCHES BLUR.\nSHOT 3: CLOSE-UP - DETAIL - JEWEL-ENCRUSTED PIN GLINTS AT HENNIN RIM; VEIL FIBERS TWITCH, EYE UNDER SHADOW",
+    "narration": "A solitary noble in a tall hennin glides through a 15th-century court; the camera moves from a wide hall to a close-up on the headdress and veil."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.6,
+  "final_score": 6.6,
+  "feedback": "The piece adheres to the topic and presents a clear shot sequence focused on the hennin-wearer. Narration is functional but largely reiterates visuals; tighten it to add new context such as movement dynamics or mood. Align the style with the reference by keeping lines concise and action-forward, and ensure each shot line drives the action with minimal extra detail.",
+  "strengths": [
+    "Clear shot progression from wide to close-up",
+    "Specific hennin/veil details"
+  ],
+  "fixes": [
+    "Make narration more concise and action-oriented rather than descriptive",
+    "Refine shot captions to match the concise, action-first style (e.g., start with a verb and omit redundant phrasing)"
+  ]
+}

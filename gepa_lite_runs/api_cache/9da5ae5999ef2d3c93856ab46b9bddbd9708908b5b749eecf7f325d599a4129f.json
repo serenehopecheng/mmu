@@ -1,0 +1,34 @@
+{
+  "task_id": "13.mp4",
+  "topic": "A person playing a game of 'Jenga' and pulling out a middle block.",
+  "raw_generation": "{\n  \"script\": \"INT. LIVING ROOM - DAY\\nA wooden coffee table supports a Jenga tower. A PLAYER stands on one side, calm but focused.\\n[CUT TO: close-up of the tower; the middle block is highlighted with a soft glow]\\nPLAYER: Here goes nothing. One careful pull...\\n[SFX: wood creaks as fingers slide under a block]\\n[Camera: slow-motion as the block slides free]\\n[BLOCK IS REMOVED; tower sways slightly, audience holds breath]\\nPLAYER: Phew! That was close. Your turn, I think.\\n[ACTION: PLAYER places the block on top, tower settles]\\n[FADE OUT]\",\n  \"narration\": \"VO: In a game like Jenga, the middle blocks are the heart of the tower. A single precise pull can topple the whole structure, or keep the game alive. Watch as patience, pressure, and a steady hand guide this moment of tension, then relief as the tower remains standing.\"\n}",
+  "parsed_generation": {
+    "script": "INT. LIVING ROOM - DAY\nA wooden coffee table supports a Jenga tower. A PLAYER stands on one side, calm but focused.\n[CUT TO: close-up of the tower; the middle block is highlighted with a soft glow]\nPLAYER: Here goes nothing. One careful pull...\n[SFX: wood creaks as fingers slide under a block]\n[Camera: slow-motion as the block slides free]\n[BLOCK IS REMOVED; tower sways slightly, audience holds breath]\nPLAYER: Phew! That was close. Your turn, I think.\n[ACTION: PLAYER places the block on top, tower settles]\n[FADE OUT]",
+    "narration": "VO: In a game like Jenga, the middle blocks are the heart of the tower. A single precise pull can topple the whole structure, or keep the game alive. Watch as patience, pressure, and a steady hand guide this moment of tension, then relief as the tower remains standing."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 6.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.4,
+  "final_score": 6.4,
+  "feedback": "The piece stays on the Jenga middle-block pull and uses visuals like close-ups and slow motion to convey tension. Consider tightening focus by removing the implied audience and aligning more strictly with the concise, action-first style of the references. Shorten and sharpen narration to emphasize the turning point of the middle block and the immediate consequence.",
+  "strengths": [
+    "Clear focus on the middle-block moment.",
+    "Use of close-up, slow-motion, and SFX to heighten tension."
+  ],
+  "fixes": [
+    "Remove or minimize the 'audience holds breath' element to maintain single-subject focus.",
+    "Tighten formatting and narration to match the concise, action-first style of the references."
+  ]
+}

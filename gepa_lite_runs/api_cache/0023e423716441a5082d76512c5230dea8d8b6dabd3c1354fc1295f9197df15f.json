@@ -1,0 +1,34 @@
+{
+  "task_id": "0.mp4",
+  "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+  "raw_generation": "{\n  \"script\": \"SCENE 1: FRONT VIEW ESTABLISHING SHOT\\nA person sits at a warm wooden table. The iPhone 16 Pro Desert Titanium box sits centered, its front facing the camera.\\nSFX: soft room ambience.\\n\\nSCENE 2: BOX OPENING\\nThe lid is opened to reveal the phone in a white foam insert, the front of the device toward the lens.\\nSFX: light cardboard rustle.\\n\\nSCENE 3: UNBOXING ACTION\\nThe presenter lifts the phone by its sides, keeping the display toward the camera. The Desert Titanium finish catches the light along the edges.\\n\\nSCENE 4: POWER ON AND FRONT DISPLAY\\nA quick press on the side button powers on. The screen lights up to show a clean home screen with minimal wallpaper.\\n\\nSCENE 5: DETAIL SHOT\\nCamera glides along the front of the device, highlighting the display, the front camera cutout, and the titanium edge.\\n\\nSCENE 6: WRAP\\nPhone rests back on the wooden table. A final hold and light spin to showcase the front view as the video transitions to a closing card.\\n\\nSCENE 7: BACKGROUND INFO\\nOn-screen lower third reads Background info: {background_info}\\n\",\n  \"narration\": \"Today we unbox the iPhone 16 Pro in Desert Titanium, placed on a warm wooden table, with the camera kept in a front view to highlight the display and the premium finish. We start with the sealed box, lift the lid to reveal the phone nestled in its foam cradle, and bring the device toward the lens while keeping the screen off. A quick press powers the phone on, revealing a clean iOS home screen. We then move in for a front-focused tour of the display and the Desert Titanium frame, noting the color and edge detail. The video ends with the device resting on the table and a final on-screen card presenting the product name and finish. Background info: {background_info}\"\n}",
+  "parsed_generation": {
+    "script": "SCENE 1: FRONT VIEW ESTABLISHING SHOT\nA person sits at a warm wooden table. The iPhone 16 Pro Desert Titanium box sits centered, its front facing the camera.\nSFX: soft room ambience.\n\nSCENE 2: BOX OPENING\nThe lid is opened to reveal the phone in a white foam insert, the front of the device toward the lens.\nSFX: light cardboard rustle.\n\nSCENE 3: UNBOXING ACTION\nThe presenter lifts the phone by its sides, keeping the display toward the camera. The Desert Titanium finish catches the light along the edges.\n\nSCENE 4: POWER ON AND FRONT DISPLAY\nA quick press on the side button powers on. The screen lights up to show a clean home screen with minimal wallpaper.\n\nSCENE 5: DETAIL SHOT\nCamera glides along the front of the device, highlighting the display, the front camera cutout, and the titanium edge.\n\nSCENE 6: WRAP\nPhone rests back on the wooden table. A final hold and light spin to showcase the front view as the video transitions to a closing card.\n\nSCENE 7: BACKGROUND INFO\nOn-screen lower third reads Background info: {background_info}\n",
+    "narration": "Today we unbox the iPhone 16 Pro in Desert Titanium, placed on a warm wooden table, with the camera kept in a front view to highlight the display and the premium finish. We start with the sealed box, lift the lid to reveal the phone nestled in its foam cradle, and bring the device toward the lens while keeping the screen off. A quick press powers the phone on, revealing a clean iOS home screen. We then move in for a front-focused tour of the display and the Desert Titanium frame, noting the color and edge detail. The video ends with the device resting on the table and a final on-screen card presenting the product name and finish. Background info: {background_info}"
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.8,
+  "final_score": 6.8,
+  "feedback": "The prompt stays on topic and follows a clear unboxing sequence with a front-view emphasis. Improve alignment with the concise, action-first style of the references by tightening scene descriptions and avoiding overly descriptive prose; ensure the narration stays tightly coupled to the visuals and eliminates placeholder text. Replace the {background_info} placeholders with concrete details or remove the field, and consider including final on-screen product labeling earlier in the sequence.",
+  "strengths": [
+    "Clear front-view unboxing progression",
+    "Consistent Desert Titanium focus and finish details"
+  ],
+  "fixes": [
+    "Adopt a concise, action-first prompt style closer to references",
+    "Fill in or remove placeholders like {background_info} to ensure completeness"
+  ]
+}

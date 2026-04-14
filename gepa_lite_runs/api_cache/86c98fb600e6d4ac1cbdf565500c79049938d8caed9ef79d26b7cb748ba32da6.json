@@ -1,0 +1,36 @@
+{
+  "task_id": "5.mp4",
+  "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+  "raw_generation": "{\n  \"script\": \"Shot 1: Close-up of a thick rope lying on a rough surface. Hands enter from the sides; the camera stays on hands and rope only, no face is shown.\\\\nShot 2: Form a small loop in the standing part, with the working end pointing toward you.\\\\nShot 3: Bring the working end up through the loop from underneath (the rabbit emerges from the hole).\\\\nShot 4: Wrap the working end around the standing part (around the tree) from left to right.\\\\nShot 5: Tuck the working end back down through the loop (the rabbit goes back into the hole).\\\\nShot 6: Hold the standing part and pull on the working end to snug the knot; keep gentle tension on the standing part while guiding the end.\\\\nShot 7: Dress the knot by tightening and aligning the tail along the standing part; adjust as needed for a clean finish.\",\n  \"narration\": \"Today we demonstrate tying a Bowline knot using a thick rope, shown in a hands-only close-up. Step by step: 1) Make a small loop in the standing part with the working end ready to pass through. 2) Bring the working end up through the loop from underneath. 3) Wrap the end around the standing part, around the tree. 4) Bring the end back down through the loop. 5) Hold the standing part and pull the end to snug the knot. 6) Dress the knot by tightening and aligning the tail along the standing part. Practice several times to build familiarity. Note: use in safe, non-load bearing practice; Bowline is reliable for many applications but test before use in any critical load.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1: Close-up of a thick rope lying on a rough surface. Hands enter from the sides; the camera stays on hands and rope only, no face is shown.\\nShot 2: Form a small loop in the standing part, with the working end pointing toward you.\\nShot 3: Bring the working end up through the loop from underneath (the rabbit emerges from the hole).\\nShot 4: Wrap the working end around the standing part (around the tree) from left to right.\\nShot 5: Tuck the working end back down through the loop (the rabbit goes back into the hole).\\nShot 6: Hold the standing part and pull on the working end to snug the knot; keep gentle tension on the standing part while guiding the end.\\nShot 7: Dress the knot by tightening and aligning the tail along the standing part; adjust as needed for a clean finish.",
+    "narration": "Today we demonstrate tying a Bowline knot using a thick rope, shown in a hands-only close-up. Step by step: 1) Make a small loop in the standing part with the working end ready to pass through. 2) Bring the working end up through the loop from underneath. 3) Wrap the end around the standing part, around the tree. 4) Bring the end back down through the loop. 5) Hold the standing part and pull the end to snug the knot. 6) Dress the knot by tightening and aligning the tail along the standing part. Practice several times to build familiarity. Note: use in safe, non-load bearing practice; Bowline is reliable for many applications but test before use in any critical load."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.4,
+  "final_score": 6.4,
+  "feedback": "The sequence stays focused on hands and thick rope with a clear Bowline progression, and the narration adds practical context and safety note. To improve, tighten steps for a more concise, action-first style; ensure terminology and shot descriptions consistently reflect standard knot-tying terms; and consider moving safety guidance to an overlay or closing line to reduce clutter. Also, enhance visual clarity of loop orientation and the distinction between standing part and working end.",
+  "strengths": [
+    "Concise, hands-only framing with clear shot sequencing",
+    "Accurate Bowline steps and realistic safety notes"
+  ],
+  "fixes": [
+    "Condense the script to direct, imperative lines per shot; minimize redundancy.",
+    "Clarify rope thickness and camera angles to better capture loop formation and knot dress.",
+    "Use standard knot-tying terminology (standing part, working end) consistently and avoid introducing new actions outside the knot sequence.",
+    "Place safety advice as an overlay or closing line to prevent distracting from the procedural steps."
+  ]
+}

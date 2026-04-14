@@ -1,0 +1,35 @@
+{
+  "task_id": "13.mp4",
+  "topic": "A person playing a game of 'Jenga' and pulling out a middle block.",
+  "raw_generation": "{\n  \"script\": \"INT. LIVING ROOM - DAY\\\\n\\\\nCamera slowly pans over a tense Jenga tower on a coffee table. ALEX, in his mid-20s, focused and a little competitive, sizes up the blocks.\\\\n\\\\nCamera: close-up on the middle block in the second layer from the bottom.\\\\n\\\\nALEX: Here goes nothing.\\\\n\\\\nHe breathes in, steadies his hand, and gently slides the middle block out with a careful twist. The wood rasp sounds as the piece leaves its snug spot.\\\\n\\\\nThe tower wobbles slightly. The other players lean in, eyes tracking the movement.\\\\n\\\\nALEX: Phew, that was close.\\\\n\\\\nCut to a wider shot as the tower breathes, balancing on a single thread of gravity.\\\\n\\\\nThe next player prepares, but the moment lingers on the cleared middle block and the precarious top.\",\n  \"narration\": \"Voiceover: The room falls quiet for a heartbeat as the middle block is chosen. A test of nerve and precision, not force. Our mover slides the center piece free with a patient twist. The tower shudders, trembles, and then settles, hanging by a thread of balance. Will it stay upright or cascade into chaos? In Jenga, the space between success and collapse is measured in careful breaths, slow movements, and a steady hand.\"\n}",
+  "parsed_generation": {
+    "script": "INT. LIVING ROOM - DAY\\n\\nCamera slowly pans over a tense Jenga tower on a coffee table. ALEX, in his mid-20s, focused and a little competitive, sizes up the blocks.\\n\\nCamera: close-up on the middle block in the second layer from the bottom.\\n\\nALEX: Here goes nothing.\\n\\nHe breathes in, steadies his hand, and gently slides the middle block out with a careful twist. The wood rasp sounds as the piece leaves its snug spot.\\n\\nThe tower wobbles slightly. The other players lean in, eyes tracking the movement.\\n\\nALEX: Phew, that was close.\\n\\nCut to a wider shot as the tower breathes, balancing on a single thread of gravity.\\n\\nThe next player prepares, but the moment lingers on the cleared middle block and the precarious top.",
+    "narration": "Voiceover: The room falls quiet for a heartbeat as the middle block is chosen. A test of nerve and precision, not force. Our mover slides the center piece free with a patient twist. The tower shudders, trembles, and then settles, hanging by a thread of balance. Will it stay upright or cascade into chaos? In Jenga, the space between success and collapse is measured in careful breaths, slow movements, and a steady hand."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 6.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 7.0,
+  "final_score": 7.0,
+  "feedback": "The piece stays true to the Jenga middle-block moment and uses explicit camera cues, but it leans into broader narration and multiple players, which slightly dilutes the single-subject focus. Tighten the shot-to-subject focus and align more with the concise, action-first style of the references.",
+  "strengths": [
+    "Clear focus on the Jenga action and the middle block.",
+    "Effective use of camera cues to visualize the pull and wobble."
+  ],
+  "fixes": [
+    "Reduce ancillary actions (e.g., minimize or streamline other players' involvement) to tighten single-subject focus.",
+    "Trim narration to be more concise and aligned with the action-first style of the references.",
+    "Consider prioritizing a single primary angle to reinforce visual clarity."
+  ]
+}

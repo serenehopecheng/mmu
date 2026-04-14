@@ -1,0 +1,34 @@
+{
+  "task_id": "0.mp4",
+  "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+  "raw_generation": "{\n  \"script\": \"SCENE 1 — FRONT VIEW: WOODEN TABLE, DAY. The host sits facing the camera with a Desert Titanium iPhone 16 Pro box centered on a polished wooden table. The shot is a clean front view, no other props in frame.\\nHOST: Hey everyone, today we’re unboxing the iPhone 16 Pro in Desert Titanium.\\nSCENE 2 — BOX LID REMOVED: The hands slowly lift the lid. The box opens to reveal the phone nestled in its form-fit tray. CLOSE UP on the underside of the lid showing minimal branding.\\nHOST: Let’s see what’s inside.\\nSCENE 3 — UNBOXING: The phone is gently lifted from the tray, Desert Titanium catching the light. The front of the device faces the camera as it’s removed from the packaging.\\nSCENE 4 — FRONT VIEW ON TABLE: The phone is placed flat on the wooden table with the screen still off. The camera remains a direct front view, clearly displaying the device’s front silhouette and color.\\nHOST: First impressions — premium feel, clean lines, and that distinctive Desert Titanium hue.\\nSCENE 5 — FIRST POWER-UP: The power button is pressed; the screen lights up with the boot animation. The device settles on the home screen.\\nHOST: Powering it up now to show the setup flow.\\nSCENE 6 — CLOSING SHOT: The phone remains centered on the table as the host faces the camera.\\nHOST: Thanks for watching. Don’t forget to like and subscribe for more unboxings.\",\n  \"narration\": \"Opening shot: a Desert Titanium iPhone 16 Pro rests on a warm wooden table, captured in a clean front view.\\nVoiceover: Today we unbox the iPhone 16 Pro in Desert Titanium, shown head-on on a simple wooden surface.\\nVoiceover: The box opens from the top, revealing the phone securely nestled in its tray.\\nVoiceover: The front of the device is shown—nearly edge-to-edge display, precise bezels, and that Desert Titanium finish catching the light.\\nVoiceover: We power the phone on to reveal the boot animation and first setup screen.\\nVoiceover: A simple, centered shot of the device on the table completes the unboxing, inviting viewers to subscribe for more content.\"\n}",
+  "parsed_generation": {
+    "script": "SCENE 1 — FRONT VIEW: WOODEN TABLE, DAY. The host sits facing the camera with a Desert Titanium iPhone 16 Pro box centered on a polished wooden table. The shot is a clean front view, no other props in frame.\nHOST: Hey everyone, today we’re unboxing the iPhone 16 Pro in Desert Titanium.\nSCENE 2 — BOX LID REMOVED: The hands slowly lift the lid. The box opens to reveal the phone nestled in its form-fit tray. CLOSE UP on the underside of the lid showing minimal branding.\nHOST: Let’s see what’s inside.\nSCENE 3 — UNBOXING: The phone is gently lifted from the tray, Desert Titanium catching the light. The front of the device faces the camera as it’s removed from the packaging.\nSCENE 4 — FRONT VIEW ON TABLE: The phone is placed flat on the wooden table with the screen still off. The camera remains a direct front view, clearly displaying the device’s front silhouette and color.\nHOST: First impressions — premium feel, clean lines, and that distinctive Desert Titanium hue.\nSCENE 5 — FIRST POWER-UP: The power button is pressed; the screen lights up with the boot animation. The device settles on the home screen.\nHOST: Powering it up now to show the setup flow.\nSCENE 6 — CLOSING SHOT: The phone remains centered on the table as the host faces the camera.\nHOST: Thanks for watching. Don’t forget to like and subscribe for more unboxings.",
+    "narration": "Opening shot: a Desert Titanium iPhone 16 Pro rests on a warm wooden table, captured in a clean front view.\nVoiceover: Today we unbox the iPhone 16 Pro in Desert Titanium, shown head-on on a simple wooden surface.\nVoiceover: The box opens from the top, revealing the phone securely nestled in its tray.\nVoiceover: The front of the device is shown—nearly edge-to-edge display, precise bezels, and that Desert Titanium finish catching the light.\nVoiceover: We power the phone on to reveal the boot animation and first setup screen.\nVoiceover: A simple, centered shot of the device on the table completes the unboxing, inviting viewers to subscribe for more content."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.6,
+  "final_score": 6.6,
+  "feedback": "The sequence stays on topic and maintains a single subject with a clear front-view unboxing flow. The narration often repeats visible actions; add subtle product cues and unique setup context to enhance value, and tighten to a concise, action-first style similar to the references.",
+  "strengths": [
+    "Clear front-view framing on a wooden surface with Desert Titanium emphasis",
+    "Structured scenes covering unboxing steps from lid removal to first power-up"
+  ],
+  "fixes": [
+    "Reduce repetition in narration and inject lightweight product-context (spec highlights, design notes) without drifting from visuals",
+    "Align formatting more closely with the reference by using concise action-focused scene cues and fewer meta descriptions"
+  ]
+}

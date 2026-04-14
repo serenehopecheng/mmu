@@ -1,0 +1,35 @@
+{
+  "task_id": "17.mp4",
+  "topic": "A person changing a flat tire on a car.",
+  "raw_generation": "{\n  \"script\": \"VEO 3 Shot — 8s: A person changes a flat tire on a car in a three-panel frame; left panel shows loosening lug nuts with a wrench, center panel shows the jack lifting the car, right panel shows the flat tire removed and the spare ready to mount.\",\n  \"narration\": \"The person loosens lug nuts with a wrench, the car is lifted by a jack, the flat tire is removed, and a spare tire is readied to mount.\"\n}",
+  "parsed_generation": {
+    "script": "VEO 3 Shot — 8s: A person changes a flat tire on a car in a three-panel frame; left panel shows loosening lug nuts with a wrench, center panel shows the jack lifting the car, right panel shows the flat tire removed and the spare ready to mount.",
+    "narration": "The person loosens lug nuts with a wrench, the car is lifted by a jack, the flat tire is removed, and a spare tire is readied to mount."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 3.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.0,
+  "final_score": 6.0,
+  "feedback": "The output meets the topic and sequence but could better align with the reference style. Specify per-panel camera angles and shot types (e.g., left panel: close-up of lug nuts; center panel: low-angle jack shot) to enhance visual specificity. Consider enriching narration with context beyond the obvious actions (e.g., safety steps or timing cues) and use per-panel labels rather than generic left/center/right to mirror the reference format.",
+  "strengths": [
+    "Clear three-panel sequence with distinct actions",
+    "Concise, action-first phrasing"
+  ],
+  "fixes": [
+    "Add explicit per-panel camera angles to match reference style",
+    "Enhance narration with contextual details beyond the visible actions",
+    "Label panels with descriptive shot names instead of relative positions (left/center/right)"
+  ]
+}

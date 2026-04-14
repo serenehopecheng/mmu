@@ -1,0 +1,35 @@
+{
+  "task_id": "25.mp4",
+  "topic": "An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view.",
+  "raw_generation": "{\n  \"script\": \"Scene 1 — Setup (0-2s): Side view of a lone archer, bow drawn, string taut; calm focus on grip and alignment.\\nScene 2 — Release (2-5s): Slow-motion side view; archer executes the Khatra technique, fingers release, arrow shoots forward in a precise arc.\\nScene 3 — Flight (5-8s): Side tracking shot follows the arrow in flight; archer remains still, posture reaffirmed, gaze locked on target.\",\n  \"narration\": \"The Khatra technique blends breath, tension, and release for precision. Slow-motion makes the subtle timing of fingers, string, and spine visible. Centered on a single archer, the sequence highlights how posture and timing shape the arrow's path.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1 — Setup (0-2s): Side view of a lone archer, bow drawn, string taut; calm focus on grip and alignment.\nScene 2 — Release (2-5s): Slow-motion side view; archer executes the Khatra technique, fingers release, arrow shoots forward in a precise arc.\nScene 3 — Flight (5-8s): Side tracking shot follows the arrow in flight; archer remains still, posture reaffirmed, gaze locked on target.",
+    "narration": "The Khatra technique blends breath, tension, and release for precision. Slow-motion makes the subtle timing of fingers, string, and spine visible. Centered on a single archer, the sequence highlights how posture and timing shape the arrow's path."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 6.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.6,
+  "final_score": 6.6,
+  "feedback": "The evaluation shows solid topic adherence and a clear archer-centric arc. To strengthen it, define the Khatra mechanics more explicitly with on-screen cues (finger placement, string tension, and breath). Consider broader camera coverage beyond the side view (e.g., close-ups of the fingers and face during release) and ensure the slow-motion emphasizes release timing without redundant narration.",
+  "strengths": [
+    "Clear, concise archer-centered focus",
+    "Explicit slow-motion release emphasis"
+  ],
+  "fixes": [
+    "Define Khatra mechanics with on-screen cues (finger placement, string tension, breath cycle)",
+    "Add close-ups of fingers, grip, and face during release to enhance clarity",
+    "Incorporate additional camera angles or shots to show posture alignment"
+  ]
+}

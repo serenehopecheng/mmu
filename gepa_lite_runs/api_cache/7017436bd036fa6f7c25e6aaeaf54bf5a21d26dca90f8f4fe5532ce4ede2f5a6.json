@@ -1,0 +1,34 @@
+{
+  "task_id": "7.mp4",
+  "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+  "raw_generation": "{\n  \"script\": \"SCENE 1: Street-level curb. A yellow NYC taxi idles in the glare of Times Square. Neon reflections shimmer on chrome. Pedestrians, vendors, and performers create a living frame around the car.\\\\n\\\\nSCENE 2: The taxi pulls away. The camera rides along the side, catching towering billboards and the blur of people. The street hums with engines, footsteps, and a distant horn.\\\\n\\\\nSCENE 3: INTERIOR CAB. The meter ticks. The driver casts a quick glance in the mirror and nods to the passenger. Through the windshield, the city rushes by like a moving mural.\\\\n\\\\nSCENE 4: A wider shot shows the taxi threading through crosswalks, lights flashing, screens blazing, and taxis and buses weaving in a synchronized city dance.\\\\n\\\\nSCENE 5: The ride ends with a brief stop at a curb. The camera lingers on the taxi's license plate and the smiling skyline before fading to black.\",\n  \"narration\": \"On a street-level ride through New York City's pulse, a yellow taxi makes its way through Times Square. Neon signs, giant screens, and a sea of pedestrians set the stage as the car glides along Broadway. The medallion-yellow cab is more than transportation—it's a moving snapshot of this iconic crossroads. Feel the rhythm: the meter ticking, the windows framing the crowd, the driver's watchful glance in the mirror. Watch as the city breathes—hum and hustle in every turn. Background info: {background_info}. End of ride.\"\n}",
+  "parsed_generation": {
+    "script": "SCENE 1: Street-level curb. A yellow NYC taxi idles in the glare of Times Square. Neon reflections shimmer on chrome. Pedestrians, vendors, and performers create a living frame around the car.\\n\\nSCENE 2: The taxi pulls away. The camera rides along the side, catching towering billboards and the blur of people. The street hums with engines, footsteps, and a distant horn.\\n\\nSCENE 3: INTERIOR CAB. The meter ticks. The driver casts a quick glance in the mirror and nods to the passenger. Through the windshield, the city rushes by like a moving mural.\\n\\nSCENE 4: A wider shot shows the taxi threading through crosswalks, lights flashing, screens blazing, and taxis and buses weaving in a synchronized city dance.\\n\\nSCENE 5: The ride ends with a brief stop at a curb. The camera lingers on the taxi's license plate and the smiling skyline before fading to black.",
+    "narration": "On a street-level ride through New York City's pulse, a yellow taxi makes its way through Times Square. Neon signs, giant screens, and a sea of pedestrians set the stage as the car glides along Broadway. The medallion-yellow cab is more than transportation—it's a moving snapshot of this iconic crossroads. Feel the rhythm: the meter ticking, the windows framing the crowd, the driver's watchful glance in the mirror. Watch as the city breathes—hum and hustle in every turn. Background info: {background_info}. End of ride."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.6,
+  "final_score": 5.4,
+  "feedback": "The output stays anchored to a yellow NYC taxi in Times Square and includes street-level framing, but the style diverges from the concise, action-first prompts in the references. It adds evocative detail and multiple scenes, yet uses placeholder text and extraneous narration that weakens prompt precision. To improve: keep to a tight, action-first structure; remove the placeholder 'Background info' and ensure each scene clearly centers on the taxi with minimal secondary subjects.\nFailed checks: example_alignment",
+  "strengths": [
+    "Strong sense of place with neon, crowds, and moving taxi visuals.",
+    "Clear multi-scene progression showing the taxi from curb to interior to wider shots."
+  ],
+  "fixes": [
+    "Adopt the concise, action-first prompt style used in the references (short, concrete prompts per shot).",
+    "Remove placeholders like {background_info} and tighten narration to stay taxi-centric."
+  ]
+}

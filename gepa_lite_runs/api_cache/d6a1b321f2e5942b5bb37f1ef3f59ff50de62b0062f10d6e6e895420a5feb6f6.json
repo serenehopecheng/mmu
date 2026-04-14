@@ -1,0 +1,34 @@
+{
+  "task_id": "4.mp4",
+  "topic": "A close-up of a Newton's Cradle in motion on a desk, macro view.",
+  "raw_generation": "{\n  \"script\": \"SHOT 1 — 0:00-0:02 macro close-up on Newton's Cradle at a desk, single ball pulled back, macro focus on suspended spheres and taut strings (0:00-0:02).\\nSHOT 2 — 0:02-0:05 macro close-up on the central collision, two spheres in motion, reflected chrome and clean desk surface (0:02-0:05).\\nSHOT 3 — 0:05-0:08 macro close-up as the opposite ball swings outward, symmetrical layout, fine detail on chains and beads (0:05-0:08).\",\n  \"narration\": \"Shot 1: A macro, eye-level close-up reveals the chrome spheres and taut strings; a single ball pulled back sets the quiet drama on a clean desk, establishing scale and texture.\\n\\nShot 2: The impact travels through the row; reflections wink along the polished metal as motion blur hints at speed, while the uncluttered desk keeps the focus on momentum.\\n\\nShot 3: The sequence repeats as the opposite ball swings outward; symmetry, chain details, and the desk's grain anchor the kinetic rhythm in a tight macro frame.\"\n}",
+  "parsed_generation": {
+    "script": "SHOT 1 — 0:00-0:02 macro close-up on Newton's Cradle at a desk, single ball pulled back, macro focus on suspended spheres and taut strings (0:00-0:02).\nSHOT 2 — 0:02-0:05 macro close-up on the central collision, two spheres in motion, reflected chrome and clean desk surface (0:02-0:05).\nSHOT 3 — 0:05-0:08 macro close-up as the opposite ball swings outward, symmetrical layout, fine detail on chains and beads (0:05-0:08).",
+    "narration": "Shot 1: A macro, eye-level close-up reveals the chrome spheres and taut strings; a single ball pulled back sets the quiet drama on a clean desk, establishing scale and texture.\n\nShot 2: The impact travels through the row; reflections wink along the polished metal as motion blur hints at speed, while the uncluttered desk keeps the focus on momentum.\n\nShot 3: The sequence repeats as the opposite ball swings outward; symmetry, chain details, and the desk's grain anchor the kinetic rhythm in a tight macro frame."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 6.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.4,
+  "final_score": 6.4,
+  "feedback": "The prompt stays tightly on the Newton's Cradle and delivers a concise macro sequence; to improve, specify lighting and camera parameters, and tighten the narration to be more objective and action-first. Consider expanding the sequence to include additional moments (impact, pause, rebound) while preserving macro focus. Ensure the prompt structure mirrors the reference style with concise shot descriptors.",
+  "strengths": [
+    "Clear topic focus and macro framing",
+    "Action-first shot structure with time stamps"
+  ],
+  "fixes": [
+    "Add lighting, lens, and depth-of-field details to enhance visual richness (e.g., macro lens specs, f-stop, lighting direction).",
+    "Streamline narration to concise, observable details and align more closely with the reference's style."
+  ]
+}

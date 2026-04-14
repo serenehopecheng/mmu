@@ -1,0 +1,34 @@
+{
+  "task_id": "1.mp4",
+  "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+  "raw_generation": "{\"script\": \"Shot 1: EXT. RAIN-SOAKED STREET - NIGHT. CLOSE-UP: LOW-ANGLE on the Cybertruck's front-left corner. Water beads on the steel; reflections of neon signs ripple in the puddle.\\nShot 2: The tire touches the water; a spray erupts as the wheel bites into the surface. The camera stays tight, catching droplets mid-air.\\nShot 3: CUT to a SLIM CLOSE-UP of the front LED headlight turning on, slicing through the mist.\\nShot 4: The camera tilts upward along the body; the iconic angular profile and blade-like edges are mirrored in the wet road.\\nShot 5: The puddle ripples as the Cybertruck powers through; spray fans outward, then settles as it passes.\\nShot 6: Final: the camera settles into a true low-angle shot behind the vehicle, then fades to black.\", \"narration\": \"Through the rain-soaked street, a low, unstoppable silhouette moves. The close-up catches the tire as it breaks the surface, sending a curtain of water into the air. The Cybertruck’s stainless skin reflects neon, while the headlights cut a harsh line through the mist. The camera climbs the side, tracing the angular geometry, then follows the arc of the spray as the vehicle streams toward the horizon. This is engineering meeting weather, precision meeting power, a moment of motion captured in steel and rain.\"}",
+  "parsed_generation": {
+    "script": "Shot 1: EXT. RAIN-SOAKED STREET - NIGHT. CLOSE-UP: LOW-ANGLE on the Cybertruck's front-left corner. Water beads on the steel; reflections of neon signs ripple in the puddle.\nShot 2: The tire touches the water; a spray erupts as the wheel bites into the surface. The camera stays tight, catching droplets mid-air.\nShot 3: CUT to a SLIM CLOSE-UP of the front LED headlight turning on, slicing through the mist.\nShot 4: The camera tilts upward along the body; the iconic angular profile and blade-like edges are mirrored in the wet road.\nShot 5: The puddle ripples as the Cybertruck powers through; spray fans outward, then settles as it passes.\nShot 6: Final: the camera settles into a true low-angle shot behind the vehicle, then fades to black.",
+    "narration": "Through the rain-soaked street, a low, unstoppable silhouette moves. The close-up catches the tire as it breaks the surface, sending a curtain of water into the air. The Cybertruck’s stainless skin reflects neon, while the headlights cut a harsh line through the mist. The camera climbs the side, tracing the angular geometry, then follows the arc of the spray as the vehicle streams toward the horizon. This is engineering meeting weather, precision meeting power, a moment of motion captured in steel and rain."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.0,
+  "final_score": 6.0,
+  "feedback": "Consolidate the shot sequence to emphasize a single continuous low-angle pass through the puddle and reduce extraneous macro moments unless intentional. Tighten the narration to align with an action-first cadence and avoid overly abstract phrasing. Adopt a uniform, concise shot-label format to mirror the reference style.",
+  "strengths": [
+    "Strong low-angle framing highlighting the Cybertruck silhouette.",
+    "Dynamic puddle spray and reflections add motion and mood."
+  ],
+  "fixes": [
+    "Streamline shots to a tighter sequence focused on continuous drive through the puddle; avoid extra macro close-ups unless purposeful.",
+    "Align with reference style by using concise, action-first descriptors and uniform shot labeling (e.g., 'Shot 1: EXT...') to improve readability."
+  ]
+}

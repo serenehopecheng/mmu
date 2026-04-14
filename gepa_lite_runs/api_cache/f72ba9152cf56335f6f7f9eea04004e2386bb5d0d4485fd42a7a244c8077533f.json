@@ -1,0 +1,36 @@
+{
+  "task_id": "2.mp4",
+  "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+  "raw_generation": "{\n  \"script\": \"Scene 1 — Opening: Side view of a person at a bright kitchen counter, holding a Coca-Cola bottle with the new attached tethered cap. The tether is clearly visible, connected from the cap to the bottle neck.\\nScene 2 — Close-up: The camera shifts to a close-up along the side of the bottle. The tethered cap swings slightly as you can see the cap and tether in detail.\\nScene 3 — Opening: The person twists the cap counterclockwise with a smooth motion. The tether keeps the cap near the neck as it unscrews, and the cap remains attached by the tether.\\nScene 4 — Pour: The bottle is tilted just enough to pour a small stream into a glass. Fizz rises, bubbles cling to the lip, and the tethered cap remains attached to the bottle neck.\\nScene 5 — Finish: The person takes a sip, the camera pulls back to a wider shot showing the full bottle and label. On-screen text: New attached tethered cap for easier, spill-free opening. End with Coca-Cola logo.\",\n  \"narration\": \"Introducing Coca-Cola with the new attached tethered cap.\\nWatch the side view as the cap stays attached to the bottle after opening.\\nTwist, and the cap is released but remains tethered, preventing cap loss and spills.\\nPour a refreshing sip and enjoy the fizz.\\nCoca-Cola: new tethered cap for easier, spill-free opening.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1 — Opening: Side view of a person at a bright kitchen counter, holding a Coca-Cola bottle with the new attached tethered cap. The tether is clearly visible, connected from the cap to the bottle neck.\nScene 2 — Close-up: The camera shifts to a close-up along the side of the bottle. The tethered cap swings slightly as you can see the cap and tether in detail.\nScene 3 — Opening: The person twists the cap counterclockwise with a smooth motion. The tether keeps the cap near the neck as it unscrews, and the cap remains attached by the tether.\nScene 4 — Pour: The bottle is tilted just enough to pour a small stream into a glass. Fizz rises, bubbles cling to the lip, and the tethered cap remains attached to the bottle neck.\nScene 5 — Finish: The person takes a sip, the camera pulls back to a wider shot showing the full bottle and label. On-screen text: New attached tethered cap for easier, spill-free opening. End with Coca-Cola logo.",
+    "narration": "Introducing Coca-Cola with the new attached tethered cap.\nWatch the side view as the cap stays attached to the bottle after opening.\nTwist, and the cap is released but remains tethered, preventing cap loss and spills.\nPour a refreshing sip and enjoy the fizz.\nCoca-Cola: new tethered cap for easier, spill-free opening."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 6.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 7.2,
+  "final_score": 7.2,
+  "feedback": "The sequence stays on topic and presents a clear side-view to action progression with the tethered cap. Narration adds value by clarifying the benefit (spill-free operation). To tighten further, shorten some scenes for a more concise, action-first feel and reduce reliance on on-screen text.",
+  "strengths": [
+    "Clear topic adherence with tethered cap and Coca-Cola bottle.",
+    "Sequential shot progression from opening to pouring to tasting.",
+    "Narration reinforces product benefit."
+  ],
+  "fixes": [
+    "Reduce narration length; rely more on visuals to convey the action.",
+    "Adopt a more concise, action-first phrasing to mirror reference prompts.",
+    "Consider an explicit macro shot of the tether attachment to emphasize 'attached cap' feature."
+  ]
+}

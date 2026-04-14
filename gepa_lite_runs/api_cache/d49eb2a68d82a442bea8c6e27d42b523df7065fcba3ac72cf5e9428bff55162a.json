@@ -1,0 +1,34 @@
+{
+  "task_id": "7.mp4",
+  "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+  "raw_generation": "{\n  \"script\": \"Scene 1 — Opening (0-2s): Street-level side view of a yellow NYC taxi at curb; low camera angle; neon billboards rise behind the vehicle.\\nScene 2 — Through the glow (2-5s): Tracking shot from behind the taxi; headlights slice through neon; camera stays low and centered as the taxi rolls through Times Square, street-level.\\nScene 3 — Pass and settle (5-8s): Taxi passes under a marquee and continues; camera pulls back to reveal the illuminated street; On-screen text: 'Times Square in motion'\",\n  \"narration\": \"A single yellow taxi carves through the neon heartbeat of Times Square. The street-level, low-angle framing makes the city feel expansive around a single vehicle. Muted city sounds are implied by the rhythm of the visuals.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1 — Opening (0-2s): Street-level side view of a yellow NYC taxi at curb; low camera angle; neon billboards rise behind the vehicle.\nScene 2 — Through the glow (2-5s): Tracking shot from behind the taxi; headlights slice through neon; camera stays low and centered as the taxi rolls through Times Square, street-level.\nScene 3 — Pass and settle (5-8s): Taxi passes under a marquee and continues; camera pulls back to reveal the illuminated street; On-screen text: 'Times Square in motion'",
+    "narration": "A single yellow taxi carves through the neon heartbeat of Times Square. The street-level, low-angle framing makes the city feel expansive around a single vehicle. Muted city sounds are implied by the rhythm of the visuals."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.6,
+  "final_score": 6.6,
+  "feedback": "The output stays true to the topic with a clear taxi-focused, street-level Times Square sequence, and the narration adds mood. To align with the concise, action-first reference style, tighten phrasing and keep the focus strictly on the taxi and its movement with explicit camera actions per shot. Reduce metaphor and ensure each scene remains a single subject while providing precise transitions and cues for on-screen text.",
+  "strengths": [
+    "Clear hero subject (yellow taxi) and street-level framing.",
+    "Sequential timing cues (0-2s, 2-5s, 5-8s) provided."
+  ],
+  "fixes": [
+    "Adopt terse, action-first wording; specify concrete camera moves for each shot (e.g., 'low-angle curbside', 'tracking behind taxi').",
+    "Increase environmental specificity (pedestrians at mid-distance, reflections on storefronts) without adding extra subjects."
+  ]
+}

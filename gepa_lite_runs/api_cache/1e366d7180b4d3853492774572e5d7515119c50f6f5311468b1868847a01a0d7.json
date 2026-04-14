@@ -1,0 +1,35 @@
+{
+  "task_id": "11.mp4",
+  "topic": "The lifecycle of a Monarch butterfly: the chrysalis stage.",
+  "raw_generation": "{\n  \"script\": \"Scene 1 — Suspension (0-2s): macro close-up on a monarch chrysalis hanging from a slender twig\\nScene 2 — Reveal (2-5s): focus pull along the chrysalis shell to reveal faint wing veining behind the translucent surface; side view\\nScene 3 — Detail (5-8s): macro tilt/zoom on the chrysalis surface to capture texture and subtle color shift as it matures\",\n  \"narration\": \"In this chrysalis stage, the monarch caterpillar is transformed within a protective shell. Inside, tissues break down and reorganize into the butterfly's wings, body, and organs. From the outside, the shell's color and clarity foreshadow the monarch's upcoming wings and patterns.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1 — Suspension (0-2s): macro close-up on a monarch chrysalis hanging from a slender twig\nScene 2 — Reveal (2-5s): focus pull along the chrysalis shell to reveal faint wing veining behind the translucent surface; side view\nScene 3 — Detail (5-8s): macro tilt/zoom on the chrysalis surface to capture texture and subtle color shift as it matures",
+    "narration": "In this chrysalis stage, the monarch caterpillar is transformed within a protective shell. Inside, tissues break down and reorganize into the butterfly's wings, body, and organs. From the outside, the shell's color and clarity foreshadow the monarch's upcoming wings and patterns."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 6.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 7.0,
+  "final_score": 7.0,
+  "feedback": "The sequence stays focused on the monarch chrysalis and uses concise, action-first framing, but the narration could more clearly align with the visuals by avoiding references to the caterpillar's transformation outside the shell and by sharpening the color/wing-vein details for the chrysalis. Consider tightening the narration to emphasize the chrysalis stage and its visible cues, and ensure the timecodes directly map to the described shots.",
+  "strengths": [
+    "Action-first scene structure with clear time stamps",
+    "Concise, camera-driven prompts aligned to reference style"
+  ],
+  "fixes": [
+    "Limit narration to chrysalis visuals (avoid broader caterpillar transformation unless clearly tied to the scene)",
+    "Increase explicit visual cues (wing veining, color clarity) and maybe a concluding frame showing adult butterfly emergence",
+    "Keep timecodes and scene labels tightly synchronized with each shot"
+  ]
+}

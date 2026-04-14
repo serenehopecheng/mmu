@@ -1,0 +1,35 @@
+{
+  "task_id": "21.mp4",
+  "topic": "A person making a peanut butter and jelly sandwich.",
+  "raw_generation": "{\n  \"script\": \"INT. KITCHEN - DAY\\nA cozy kitchen. A person named Maya stands at the counter with bread, peanut butter, jelly, a knife, and a plate.\\nMAYA: Hi everyone! Today we're making a quick peanut butter and jelly sandwich.\\nAction: Maya opens the bread bag and lays two slices on a plate.\\nMAYA: Step one: lay out two slices of bread.\\nAction: Maya opens the peanut butter and uses a knife to spread a smooth layer on one slice.\\nMAYA: Step two: spread peanut butter on one slice.\\nAction: Maya wipes the knife and spreads jelly on the other slice.\\nMAYA: Step three: spread jelly on the other slice.\\nAction: Maya places the two slices together and presses gently.\\nMAYA: Step four: put the slices together. If you like, cut the sandwich in half.\\nAction: Maya cuts diagonally and places the halves on the plate.\\nMAYA: And that's it—PB&J ready to enjoy!\\n\",\n  \"narration\": \"Narrator: Welcome to a quick kitchen classic. Here, Maya shows four simple steps to a peanut butter and jelly sandwich. Step one: lay out two slices of bread. Step two: spread peanut butter on one slice. Step three: spread jelly on the other slice. Step four: press the slices together and, if you like, cut the sandwich in half. Tip: choose creamy or chunky peanut butter, grape or strawberry jelly, and you can add banana for extra flavor. Enjoy!\"\n}",
+  "parsed_generation": {
+    "script": "INT. KITCHEN - DAY\nA cozy kitchen. A person named Maya stands at the counter with bread, peanut butter, jelly, a knife, and a plate.\nMAYA: Hi everyone! Today we're making a quick peanut butter and jelly sandwich.\nAction: Maya opens the bread bag and lays two slices on a plate.\nMAYA: Step one: lay out two slices of bread.\nAction: Maya opens the peanut butter and uses a knife to spread a smooth layer on one slice.\nMAYA: Step two: spread peanut butter on one slice.\nAction: Maya wipes the knife and spreads jelly on the other slice.\nMAYA: Step three: spread jelly on the other slice.\nAction: Maya places the two slices together and presses gently.\nMAYA: Step four: put the slices together. If you like, cut the sandwich in half.\nAction: Maya cuts diagonally and places the halves on the plate.\nMAYA: And that's it—PB&J ready to enjoy!\n",
+    "narration": "Narrator: Welcome to a quick kitchen classic. Here, Maya shows four simple steps to a peanut butter and jelly sandwich. Step one: lay out two slices of bread. Step two: spread peanut butter on one slice. Step three: spread jelly on the other slice. Step four: press the slices together and, if you like, cut the sandwich in half. Tip: choose creamy or chunky peanut butter, grape or strawberry jelly, and you can add banana for extra flavor. Enjoy!"
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 7.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.2,
+  "final_score": 6.2,
+  "feedback": "The output adheres to the topic and keeps Maya as the central actor with a clear PB&J workflow. Narration adds practical tips beyond the visuals. To better align with the concise, action-first style in the references, tighten the script by reducing explanatory narration and standardizing on direct on-screen actions.",
+  "strengths": [
+    "Clear step-by-step PB&J process",
+    "Single subject remains foreground throughout"
+  ],
+  "fixes": [
+    "Adopt a tighter, action-first prompt style (minimize descriptive narration in favor of on-screen actions)",
+    "Standardize shot cues (e.g., INT. KITCHEN - DAY, close-ups of bread and spreads), reducing meta-narrative lines",
+    "Limit extra tips in narration to keep focus on concrete steps while preserving helpful guidance"
+  ]
+}

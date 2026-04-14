@@ -1,0 +1,35 @@
+{
+  "task_id": "22.mp4",
+  "topic": "A person mailing a letter at a blue USPS mailbox.",
+  "raw_generation": "{\n  \"script\": \"EXT. SUBURBAN STREET - DAY\\nA blue USPS mailbox stands on the sidewalk. A person approaches, holding a sealed letter.\\n\\nPERSON: Just need to drop this in the right place.\\n\\nCLOSE-UP: The envelope -- stamped, addressed, and ready -- is gripped in the hand.\\n\\nThe person lifts the small red flag on the side.\\n\\nWIDE SHOT: They insert the letter into the slot, and the lid closes with a soft clack.\\n\\nThe person steps back, nods to themselves, and walks away as a passerby waves.\\n\\nFADE OUT.\",\n  \"narration\": \"Voiceover: On a quiet street, a small ritual unfolds. A person approaches the blue USPS mailbox with a sealed letter in hand. They raise the red flag, slide the letter into the slot, and watch as it settles inside. It is a tiny act of connection, a moment that moves the mail from one doorstep to another and keeps people in touch.\"\n}",
+  "parsed_generation": {
+    "script": "EXT. SUBURBAN STREET - DAY\nA blue USPS mailbox stands on the sidewalk. A person approaches, holding a sealed letter.\n\nPERSON: Just need to drop this in the right place.\n\nCLOSE-UP: The envelope -- stamped, addressed, and ready -- is gripped in the hand.\n\nThe person lifts the small red flag on the side.\n\nWIDE SHOT: They insert the letter into the slot, and the lid closes with a soft clack.\n\nThe person steps back, nods to themselves, and walks away as a passerby waves.\n\nFADE OUT.",
+    "narration": "Voiceover: On a quiet street, a small ritual unfolds. A person approaches the blue USPS mailbox with a sealed letter in hand. They raise the red flag, slide the letter into the slot, and watch as it settles inside. It is a tiny act of connection, a moment that moves the mail from one doorstep to another and keeps people in touch."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": false,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 4.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 6.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.6,
+  "final_score": 4.4,
+  "feedback": "Stage 1: The piece mostly adheres to the topic of mailing a letter at a blue USPS mailbox, and the narration adds context. However, a passerby introduces a second subject, which weakens single-subject focus, and the style is more cinematic than the concise, action-first prompt style in the references. To improve, remove secondary characters, tighten dialogue, and align phrasing with the reference's terse, task-oriented prompts.\nFailed checks: single_subject_focus",
+  "strengths": [
+    "Clear setting with a recognizable USPS mailbox",
+    "Direct, action-oriented sequence of the letter being mailed"
+  ],
+  "fixes": [
+    "Eliminate the passerby to maintain single-subject focus",
+    "Adopt the concise, action-first style used in the references (e.g., 'A person mails a letter at a blue USPS mailbox, side view')",
+    "Limit narration to visuals or a minimal purpose-line rather than internal commentary"
+  ]
+}

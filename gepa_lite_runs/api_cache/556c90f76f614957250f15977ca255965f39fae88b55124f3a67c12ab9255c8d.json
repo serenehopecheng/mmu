@@ -1,0 +1,35 @@
+{
+  "task_id": "19.mp4",
+  "topic": "A person wearing a 'Hennin' headdress walking through a 15th-century court.",
+  "raw_generation": "{\n  \"script\":\"Scene 1 — Opening (0-2s): Side view, tracking a solitary figure in a hennin through a stone court corridor; background arches and tapestries kept non-distracting.\\nScene 2 — Movement (2-5s): Slight tilt up to reveal the hennin's height; profile shot as the subject walks, archway blurred in the background; steady, measured pace.\\nScene 3 — Close (5-8s): Low-angle close on the hennin brim and gown folds as the figure passes a gilded doorway, silhouette framed by stone and banners in the court.\",\n  \"narration\":\"This sequence centers a single figure in a hennin moving through a 15th-century court. The height and silhouette of the hennin signal status and formality, while the camera stays tight on the subject. Textures of stone, tapestry, and light convey era and atmosphere without dialogue. The result is a restrained, cinematic glimpse of presence within historical space.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1 — Opening (0-2s): Side view, tracking a solitary figure in a hennin through a stone court corridor; background arches and tapestries kept non-distracting.\nScene 2 — Movement (2-5s): Slight tilt up to reveal the hennin's height; profile shot as the subject walks, archway blurred in the background; steady, measured pace.\nScene 3 — Close (5-8s): Low-angle close on the hennin brim and gown folds as the figure passes a gilded doorway, silhouette framed by stone and banners in the court.",
+    "narration": "This sequence centers a single figure in a hennin moving through a 15th-century court. The height and silhouette of the hennin signal status and formality, while the camera stays tight on the subject. Textures of stone, tapestry, and light convey era and atmosphere without dialogue. The result is a restrained, cinematic glimpse of presence within historical space."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 7.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 7.0,
+  "final_score": 7.0,
+  "feedback": "Overall solid adherence to the topic with a clear single subject and scene progression. To improve, tighten to a more concise, action-first style like the references, and explicitly anchor the setting as a 15th-century court within the prompt and narration. Consider richer, concrete camera and prop cues (specific banners, torches, floor textures) to heighten visual cues without adding extraneous elements.",
+  "strengths": [
+    "Clear single subject focus and a scene-based breakdown.",
+    "Explicit emphasis on the hennin height and silhouette to convey status."
+  ],
+  "fixes": [
+    "Adopt a more concise, action-first prompt style similar to the reference examples.",
+    "Explicitly state the 15th-century court setting (e.g., throne hall) in both script and narration.",
+    "Enhance visual cues with precise props or architectural details without introducing extra subjects."
+  ]
+}

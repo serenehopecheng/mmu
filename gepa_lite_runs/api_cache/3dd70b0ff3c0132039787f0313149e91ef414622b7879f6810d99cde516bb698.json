@@ -1,0 +1,35 @@
+{
+  "task_id": "4.mp4",
+  "topic": "A close-up of a Newton's Cradle in motion on a desk, macro view.",
+  "raw_generation": "{\n  \"script\": \"SHOT 1 — Macro close-up: five steel spheres suspended from a chrome frame; shallow depth of field; warm desk lamp; the near ball is in focus, others blur behind. The desk surface is textured wood. Camera is set to macro, 100mm, f/2.8, 1/120, ISO 400. The frame tilts slightly to reveal the line of spheres.\\n\\nSHOT 2 — The near ball is pulled back and released; energy travels through the row; the far end ball swings outward with a crisp arc. The reflections ripple across polished metal as the chain remains in a straight line.\\n\\nSHOT 3 — Fast micro-movements: the moment of impact between two balls; a tiny flicker of light travels along the links; the central balls respond, transferring momentum to the end ball.\\n\\nSHOT 4 — Slow-motion montage: the cradle continues to swing; the motion damps gradually due to friction and air resistance. The rhythm persists, each collision precise and choreographed.\\n\\nSHOT 5 — Closing: the camera pulls back slightly for a wider view as the motion slows; fade out with a whisper of desk ambience; text overlay: Conservation of momentum and energy.\",\n  \"narration\": \"This macro shot reveals a Newton's cradle in motion. Five balls hang in perfect alignment, their reflections dancing on polished metal. When one ball is pulled back and released, energy travels through the line, and the opposite ball swings out with a crisp, audible click. In an ideal cradle, momentum and energy pass from ball to ball with minimal loss, producing a mesmerizing, repeating rhythm that slowly fades away. Look closely at the surfaces: micro-scratches catch the light and the fine wires barely tremble as each collision occurs. The macro perspective exposes the geometry—the straight strings, equal spacing, and the momentary pause at the instant of contact before the motion continues.\"\n}",
+  "parsed_generation": {
+    "script": "SHOT 1 — Macro close-up: five steel spheres suspended from a chrome frame; shallow depth of field; warm desk lamp; the near ball is in focus, others blur behind. The desk surface is textured wood. Camera is set to macro, 100mm, f/2.8, 1/120, ISO 400. The frame tilts slightly to reveal the line of spheres.\n\nSHOT 2 — The near ball is pulled back and released; energy travels through the row; the far end ball swings outward with a crisp arc. The reflections ripple across polished metal as the chain remains in a straight line.\n\nSHOT 3 — Fast micro-movements: the moment of impact between two balls; a tiny flicker of light travels along the links; the central balls respond, transferring momentum to the end ball.\n\nSHOT 4 — Slow-motion montage: the cradle continues to swing; the motion damps gradually due to friction and air resistance. The rhythm persists, each collision precise and choreographed.\n\nSHOT 5 — Closing: the camera pulls back slightly for a wider view as the motion slows; fade out with a whisper of desk ambience; text overlay: Conservation of momentum and energy.",
+    "narration": "This macro shot reveals a Newton's cradle in motion. Five balls hang in perfect alignment, their reflections dancing on polished metal. When one ball is pulled back and released, energy travels through the line, and the opposite ball swings out with a crisp, audible click. In an ideal cradle, momentum and energy pass from ball to ball with minimal loss, producing a mesmerizing, repeating rhythm that slowly fades away. Look closely at the surfaces: micro-scratches catch the light and the fine wires barely tremble as each collision occurs. The macro perspective exposes the geometry—the straight strings, equal spacing, and the momentary pause at the instant of contact before the motion continues."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 8.0,
+    "veo_prompt_craft": 8.0,
+    "narration_insight": 6.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 7.6,
+  "final_score": 7.6,
+  "feedback": "Overall, the output adheres to the topic with a clear macro close-up of a Newton's cradle on a desk and a cohesive shot progression. To improve, tighten the narration to match exactly what's visible, trim background details that don’t serve the cradle, and keep shots strictly action-first with explicit momentum-transfer cues.",
+  "strengths": [
+    "Clear macro shot sequence with motion cues",
+    "Includes camera settings and lighting notes"
+  ],
+  "fixes": [
+    "Align narration more tightly with visible actions, adding explicit moment-to-moment momentum-transfer cues",
+    "Minimize non-cradle background elements on the desk unless they are functionally shown",
+    "Maintain a concise, action-first phrasing throughout to match the reference style"
+  ]
+}

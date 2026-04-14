@@ -1,0 +1,35 @@
+{
+  "task_id": "19.mp4",
+  "topic": "A person wearing a 'Hennin' headdress walking through a 15th-century court.",
+  "raw_generation": "{\"script\": \"INT. ROYAL COURT HALL - DAY\\nThe great hall hums with murmurs as courtiers adjust banners and whisper about etiquette. Sunlight slides through tall windows, catching on gilded moldings.\\nA figure steps into the light wearing a hennin: a tall, conical crown of velvet or brocade, pinned with pearls, with a delicate veil that trails along the marble floor.\\nThe veil moves with the pace of the wearer, a calm, deliberate glide that commands attention without shouting.\\nNOBLE 1: A silhouette of stature and grace, the hennin makes the watcher look twice.\\nNOBLE 2: The veil hides the eyes, inviting speculation while revealing nothing.\\nThe wearer bows toward the Queen on the dais. The crowd parts, the hennin catching the glow of torches as it tilts to greet the sovereign.\\nA page steps forward with the seal box, a herald announces the moment. The wearer moves to the dais, veil brushing the steps, and the hall holds its breath.\", \"narration\": \"On screen, a 15th century court breathes to life. The hennin, tall and ceremonial, signals rank and lineage. The veil frames the face and lengthens the walk, turning every gesture into a statement. Costume design uses velvet, silk, pearls, and stiff materials to hold the cone shape. The camera follows the wearer from hall to dais, letting the audience notice how the courtiers shift and bend to fit the newcomer's silhouette. This is a portrait of power, restraint, and ritual in a world where appearances matter as much as deeds.\"}",
+  "parsed_generation": {
+    "script": "INT. ROYAL COURT HALL - DAY\nThe great hall hums with murmurs as courtiers adjust banners and whisper about etiquette. Sunlight slides through tall windows, catching on gilded moldings.\nA figure steps into the light wearing a hennin: a tall, conical crown of velvet or brocade, pinned with pearls, with a delicate veil that trails along the marble floor.\nThe veil moves with the pace of the wearer, a calm, deliberate glide that commands attention without shouting.\nNOBLE 1: A silhouette of stature and grace, the hennin makes the watcher look twice.\nNOBLE 2: The veil hides the eyes, inviting speculation while revealing nothing.\nThe wearer bows toward the Queen on the dais. The crowd parts, the hennin catching the glow of torches as it tilts to greet the sovereign.\nA page steps forward with the seal box, a herald announces the moment. The wearer moves to the dais, veil brushing the steps, and the hall holds its breath.",
+    "narration": "On screen, a 15th century court breathes to life. The hennin, tall and ceremonial, signals rank and lineage. The veil frames the face and lengthens the walk, turning every gesture into a statement. Costume design uses velvet, silk, pearls, and stiff materials to hold the cone shape. The camera follows the wearer from hall to dais, letting the audience notice how the courtiers shift and bend to fit the newcomer's silhouette. This is a portrait of power, restraint, and ritual in a world where appearances matter as much as deeds."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": false,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.2,
+  "final_score": 3.8,
+  "feedback": "The scene convincingly places a wearer in a 15th-century hennin; however, the presence of multiple courtiers and a page dilutes the single-subject focus. To align with the reference style, tighten to an action-first shot focused on the wearer, and reduce dialogue to minimal lines or integrate into stage directions. Consider a more concise prompt-like description for consistency with the examples.\nFailed checks: single_subject_focus, example_alignment",
+  "strengths": [
+    "Clear depiction of hennin and veil details",
+    "Strong court ambiance and ritual cues"
+  ],
+  "fixes": [
+    "Limit extraneous characters or explicitly justify their necessity",
+    "Adopt a concise, action-first prompt style (short lines, fewer dialogues)",
+    "Integrate narration into the action description or remove the separate narration field"
+  ]
+}

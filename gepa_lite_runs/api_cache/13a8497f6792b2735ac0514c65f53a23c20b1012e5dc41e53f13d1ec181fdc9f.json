@@ -1,0 +1,35 @@
+{
+  "task_id": "5.mp4",
+  "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 - Setup: Close-up on a thick rope coiled on a work surface. Hands enter from the lower edge; the rope is the focus. Soft, even lighting. On-screen title: Bowline Knot — Hands-Only Close-Up.\\nShot 2 - Step 1: Form a small loop near the rope's end, with the standing part to the left and the working end to the right.\\nShot 3 - Step 2: Take the working end and pass it up through the loop from underneath, as the rabbit would emerge from the hole.\\nShot 4 - Step 3: Wrap the working end around the standing part (the 'tree') from the front to the back.\\nShot 5 - Step 4: Bring the working end back down through the loop.\\nShot 6 - Step 5: Hold the standing part and pull to snug the knot, keeping the loop intact.\\nShot 7 - Final: Show the finished bowline with the standing part exiting on the left and the free end on the right; lift slightly to demonstrate security.\\nShot 8 - Tips: For thick rope, keep the loop a bit larger and avoid overtightening; check the knot visually to ensure a single turn around the standing part.\",\n  \"narration\": \"This hands-only close-up demonstrates tying a Bowline knot with a thick rope. Start by forming a small loop near the end of the rope, with the standing part on your left and the working end on your right. The loop is the hole the rabbit will pass through. Next, pass the working end up through the loop from underneath. Then wrap the working end around the standing part, the 'tree', from front to back. Finally, tuck the working end back down through the loop. Hold the standing part and pull to snug the knot. Check that you have a single turn around the standing part and that the loop remains stable. For thick rope, leave a larger loop and avoid overtightening. A Bowline knot should hold under load and be easy to untie when needed.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 - Setup: Close-up on a thick rope coiled on a work surface. Hands enter from the lower edge; the rope is the focus. Soft, even lighting. On-screen title: Bowline Knot — Hands-Only Close-Up.\nShot 2 - Step 1: Form a small loop near the rope's end, with the standing part to the left and the working end to the right.\nShot 3 - Step 2: Take the working end and pass it up through the loop from underneath, as the rabbit would emerge from the hole.\nShot 4 - Step 3: Wrap the working end around the standing part (the 'tree') from the front to the back.\nShot 5 - Step 4: Bring the working end back down through the loop.\nShot 6 - Step 5: Hold the standing part and pull to snug the knot, keeping the loop intact.\nShot 7 - Final: Show the finished bowline with the standing part exiting on the left and the free end on the right; lift slightly to demonstrate security.\nShot 8 - Tips: For thick rope, keep the loop a bit larger and avoid overtightening; check the knot visually to ensure a single turn around the standing part.",
+    "narration": "This hands-only close-up demonstrates tying a Bowline knot with a thick rope. Start by forming a small loop near the end of the rope, with the standing part on your left and the working end on your right. The loop is the hole the rabbit will pass through. Next, pass the working end up through the loop from underneath. Then wrap the working end around the standing part, the 'tree', from front to back. Finally, tuck the working end back down through the loop. Hold the standing part and pull to snug the knot. Check that you have a single turn around the standing part and that the loop remains stable. For thick rope, leave a larger loop and avoid overtightening. A Bowline knot should hold under load and be easy to untie when needed."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 8.0,
+    "narration_insight": 7.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 7.4,
+  "final_score": 7.4,
+  "feedback": "The output stays tightly focused on tying a Bowline with a thick rope and follows a clear step-by-step progression. To improve, add more camera variety: close-ups of the loop formation, the tree-wrapping around the standing part, and a final shot under light load to demonstrate security. Also consider reducing on-screen text to keep attention on the hands and knot action.",
+  "strengths": [
+    "Clear, step-by-step shot structure",
+    "Hands-only close-up emphasis on thick rope"
+  ],
+  "fixes": [
+    "Incorporate additional close-ups of the loop formation and the 'tree' wrap from multiple angles for clarity.",
+    "Add a brief under-load or tension shot to demonstrate the final knot's security.",
+    "Reduce on-screen titles or split them into a single intro card to maintain viewer focus on hands."
+  ]
+}

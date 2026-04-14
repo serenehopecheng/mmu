@@ -1,0 +1,34 @@
+{
+  "task_id": "10.mp4",
+  "topic": "A samurai practicing with a nodachi.",
+  "raw_generation": "{\n  \"script\": \"SCENE 1: DAWN DOJO\\\\nAction: A quiet dojo at dawn. A samurai in deep blue hakama stands center, a nodachi sheathed at his side.\\\\nCAMERA: WIDE SHOT captures the calm space; light filters through shoji panels.\\\\nON-SCREEN TEXT: Background info not provided\\\\n\\\\nSCENE 2: WARM-UP\\\\nAction: He loosens his neck, rolls his shoulders, stretches his hips and wrists.\\\\nCAMERA: CLOSE-UP on hands gripping the tsuka, the blade catching the light.\\\\n\\\\nSCENE 3: DRAW AND STANCE\\\\nAction: He draws the nodachi with controlled breath and steps into a balanced stance, feet planted, hands ready.\\\\nCAMERA: SLOW MOTION as the blade clears the scabbard, steel singing softly.\\\\n\\\\nSCENE 4: CUTS SEQUENCE\\\\nAction: A sequence of measured cuts: horizontal sweep, vertical chop, and an overhead strike, all performed with calm, deliberate timing.\\\\nCAMERA: MULTI-ANGLE shots; blade edge, grip, and footing in frame.\\\\n\\\\nSCENE 5: BREATH AND BOW\\\\nAction: He returns the blade to its scabbard, lowers it, and bows to the dojo, ending with a quiet breath.\\\\nCAMERA: WIDE SHOT FADES TO BLACK\\\\n\\\\nSAFETY NOTE: This is a depiction of training with a nodachi. In real practice use appropriate training blades, protective gear, and supervision.\\\\n\",\n  \"narration\": \"At dawn, a lone samurai steps into a quiet dojo to work with the nodachi, a blade long enough to demand both patience and balance. Each motion is a measured conversation between breath, stance, and steel. The blade gleams as the samurai draws it, the world narrowing to the feel of the grip and the rhythm of the cuts. He moves with restraint rather than force, flowing from one pose to the next, letting the sword's weight guide his body. The sound of air parting, the wooden floor beneath, the soft whisper of sunlight through paper screens—these are the cues of discipline. This scene is less about conquest and more about listening: to the blade, to the breath, to the quiet integrity of a craftsman's practice. Note: Background info not provided for this prompt; the narration emphasizes atmosphere, form, and respect in traditional sword training.\"\n}",
+  "parsed_generation": {
+    "script": "SCENE 1: DAWN DOJO\\nAction: A quiet dojo at dawn. A samurai in deep blue hakama stands center, a nodachi sheathed at his side.\\nCAMERA: WIDE SHOT captures the calm space; light filters through shoji panels.\\nON-SCREEN TEXT: Background info not provided\\n\\nSCENE 2: WARM-UP\\nAction: He loosens his neck, rolls his shoulders, stretches his hips and wrists.\\nCAMERA: CLOSE-UP on hands gripping the tsuka, the blade catching the light.\\n\\nSCENE 3: DRAW AND STANCE\\nAction: He draws the nodachi with controlled breath and steps into a balanced stance, feet planted, hands ready.\\nCAMERA: SLOW MOTION as the blade clears the scabbard, steel singing softly.\\n\\nSCENE 4: CUTS SEQUENCE\\nAction: A sequence of measured cuts: horizontal sweep, vertical chop, and an overhead strike, all performed with calm, deliberate timing.\\nCAMERA: MULTI-ANGLE shots; blade edge, grip, and footing in frame.\\n\\nSCENE 5: BREATH AND BOW\\nAction: He returns the blade to its scabbard, lowers it, and bows to the dojo, ending with a quiet breath.\\nCAMERA: WIDE SHOT FADES TO BLACK\\n\\nSAFETY NOTE: This is a depiction of training with a nodachi. In real practice use appropriate training blades, protective gear, and supervision.\\n",
+    "narration": "At dawn, a lone samurai steps into a quiet dojo to work with the nodachi, a blade long enough to demand both patience and balance. Each motion is a measured conversation between breath, stance, and steel. The blade gleams as the samurai draws it, the world narrowing to the feel of the grip and the rhythm of the cuts. He moves with restraint rather than force, flowing from one pose to the next, letting the sword's weight guide his body. The sound of air parting, the wooden floor beneath, the soft whisper of sunlight through paper screens—these are the cues of discipline. This scene is less about conquest and more about listening: to the blade, to the breath, to the quiet integrity of a craftsman's practice. Note: Background info not provided for this prompt; the narration emphasizes atmosphere, form, and respect in traditional sword training."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 8.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 8.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 7.8,
+  "final_score": 7.8,
+  "feedback": "The piece stays true to the topic and uses clear action cues, but remove the meta note 'Background info not provided' from on-screen text and tighten the format to a more concise, one-scene-per-line style like the references. Increase alignment with the reference’s concise, action-first phrasing by reducing longer multi-angle descriptors to focused shots per scene. Consider adding a dedicated close-up of key nodachi details (tsuka, edge) while maintaining single-subject focus.",
+  "strengths": [
+    "Clear, stage-by-stage structure from dawn to bow.",
+    "Strong emphasis on camera work (wide, close-up, slow motion) and weapon handling."
+  ],
+  "fixes": [
+    "Remove or fill in on-screen meta-text such as 'Background info not provided' to avoid distracting realism.",
+    "Adopt the reference’s concise style: craft each shot as a single, action-first line per scene and limit multi-angle descriptors unless essential."
+  ]
+}

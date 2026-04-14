@@ -1,0 +1,34 @@
+{
+  "task_id": "12.mp4",
+  "topic": "A chef preparing Hand-Pulled Lanzhou Ramen (Lamian).",
+  "raw_generation": "{\"script\": \"OPENING SHOT: A bustling Lanzhou lamian shop. A master chef stands at a stainless steel workstation, a mound of flour, a barrel of broth, and steam rising from the pot.\\nMASTER WEI greets the camera and says: Welcome to our kitchen. Today we make hand-pulled lamian—the noodles you see pulled from a single strand into dozens of silky strands.\\n\\nSCENE 1: DOUGH PREP\\nWeigh flour into a trough, sprinkle salt, and gradually add water. The chef kneads with a firm rhythm until the dough becomes smooth and elastic.\\n\\nSCENE 2: RESTING\\nThe dough rests under a damp cloth for 20 to 30 minutes, letting gluten relax.\\n\\nSCENE 3: HAND-PULLING DEMO\\nAfter resting, the dough is rolled into a long cylinder. The chef demonstrates a basic pull: fold, twist, and whip the dough into long strands, then coax them into thinner threads. The noodles are shaped into a nest of elastic strands.\\n\\nSCENE 4: BROTH PREPARATION\\nA separate pot simmers with beef bones, aromatics, and water. The broth clarifies as impurities rise to the top. The chef skims and seasons to a bright, clear stock.\\n\\nSCENE 5: COOKING NOODLES\\nFresh lamian are boiled quickly in salted water until al dente. The chef scoops the noodles into a warm bowl.\\n\\nSCENE 6: ASSEMBLY\\nThinly sliced beef, radish, cilantro, and scallions are arranged over the noodles. A ladle of hot broth is poured in, and a spoonful of chili oil crowns the surface.\\n\\nSCENE 7: TASTE AND CLOSING\\nSteam rises as the guest tests the first bite. Master Wei smiles and explains that lamian is a balance of dough, broth, and craft.\", \"narration\": \"Today we meet a master of hand-pulled lamian. In this video you will see how a simple dough becomes an orchestra of noodles, how a clear beef broth brings depth, and how the chef pulls, folds, and swirls to create thousands of silky strands. The film begins with the dough, continues with rest, then the dramatic hand-pulling technique. The broth simmers in a quiet, patient boil, and finally the noodles are plated with beef, radish, cilantro, and chili oil. The aroma invites you to taste and appreciate craft over speed. Lamian is about balance and control, and it starts with flour, water, salt, patience, and a pair of skilled hands.\"}",
+  "parsed_generation": {
+    "script": "OPENING SHOT: A bustling Lanzhou lamian shop. A master chef stands at a stainless steel workstation, a mound of flour, a barrel of broth, and steam rising from the pot.\nMASTER WEI greets the camera and says: Welcome to our kitchen. Today we make hand-pulled lamian—the noodles you see pulled from a single strand into dozens of silky strands.\n\nSCENE 1: DOUGH PREP\nWeigh flour into a trough, sprinkle salt, and gradually add water. The chef kneads with a firm rhythm until the dough becomes smooth and elastic.\n\nSCENE 2: RESTING\nThe dough rests under a damp cloth for 20 to 30 minutes, letting gluten relax.\n\nSCENE 3: HAND-PULLING DEMO\nAfter resting, the dough is rolled into a long cylinder. The chef demonstrates a basic pull: fold, twist, and whip the dough into long strands, then coax them into thinner threads. The noodles are shaped into a nest of elastic strands.\n\nSCENE 4: BROTH PREPARATION\nA separate pot simmers with beef bones, aromatics, and water. The broth clarifies as impurities rise to the top. The chef skims and seasons to a bright, clear stock.\n\nSCENE 5: COOKING NOODLES\nFresh lamian are boiled quickly in salted water until al dente. The chef scoops the noodles into a warm bowl.\n\nSCENE 6: ASSEMBLY\nThinly sliced beef, radish, cilantro, and scallions are arranged over the noodles. A ladle of hot broth is poured in, and a spoonful of chili oil crowns the surface.\n\nSCENE 7: TASTE AND CLOSING\nSteam rises as the guest tests the first bite. Master Wei smiles and explains that lamian is a balance of dough, broth, and craft.",
+    "narration": "Today we meet a master of hand-pulled lamian. In this video you will see how a simple dough becomes an orchestra of noodles, how a clear beef broth brings depth, and how the chef pulls, folds, and swirls to create thousands of silky strands. The film begins with the dough, continues with rest, then the dramatic hand-pulling technique. The broth simmers in a quiet, patient boil, and finally the noodles are plated with beef, radish, cilantro, and chili oil. The aroma invites you to taste and appreciate craft over speed. Lamian is about balance and control, and it starts with flour, water, salt, patience, and a pair of skilled hands."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 8.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 6.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 7.4,
+  "final_score": 7.4,
+  "feedback": "The piece adheres to the topic and presents clear, action-driven scenes. To tighten alignment with the reference style, trim narrational passages to concise, objective descriptions, emphasize camera-ready moments (pulling, broth clarification) with explicit shot directions, and keep the focus on lamian craft as the primary subject. Consider consistent terminology (lamian vs. la mian) and limit secondary characters unless essential to the action.",
+  "strengths": [
+    "Clear, structured scene breakdown",
+    "Strong focus on hand-pulled lamian process"
+  ],
+  "fixes": [
+    "Add tighter, shot-based prompts (angles, durations) to improve Veo prompt quality",
+    "Standardize terminology and ensure each scene is action-first"
+  ]
+}

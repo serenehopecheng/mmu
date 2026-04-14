@@ -1,0 +1,34 @@
+{
+  "task_id": "3.mp4",
+  "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+  "raw_generation": "{\n  \"script\": \"INT. KITCHEN - COUNTERTOP - DAY\\nThe camera sits at a countertop-level, showing a French press, a kettle, a grinder, a digital scale, and a mug. A calm person stands ready to brew.\\n1. Weigh and grind: The person measures coffee beans on the scale and grinds to a medium-coarse texture; the grounds drop into the French press.\\n2. Heat water: The kettle heats water to just off the boil, about 200°F (93°C).\\n3. Preheat and rinse: The person rinses the French press with hot water, swirls, and discards the rinse water.\\n4. Add grounds: Ground coffee is added to the empty French press.\\n5. Bloom: A small amount of hot water is poured to saturate the grounds; a moment to bloom is observed.\\n6. Pour rest of water: The rest of the hot water is poured evenly over the bed; the lid is placed on top with the plunger up; a timer is set for about 4 minutes.\\n7. Plunge: After the timer, the plunger is pressed down slowly and steadily.\\n8. Serve: Coffee is poured into a mug; the camera captures steam and crema.\\n9. Close: The person inhales the aroma, takes a sip, and smiles. A quick overlay reminds viewers of key tips: medium coarse grind, even pour, proper steep time.\",\n  \"narration\": \"Welcome to a calm countertop brew. Today we show how to correctly use a French press. First, start with fresh beans and grind to a medium coarse size. The grounds should resemble sea salt. Weigh your coffee for accuracy, then heat water to about 200 degrees Fahrenheit. Preheat the press by rinsing with hot water, which warms the metal and helps maintain temperature. Add the grounds to the press. Pour a small amount of hot water to saturate the bed, then stir gently to ensure even wetting. Pour the remaining water evenly over the grounds and place the lid on top with the plunger up. Let it steep for about four minutes. Slowly depress the plunger with steady pressure. Pour and enjoy the aroma and flavor of a well-brewed cup. Tip: keep a clean technique, use a timer, and avoid pressing too hard or too fast.\"\n}",
+  "parsed_generation": {
+    "script": "INT. KITCHEN - COUNTERTOP - DAY\nThe camera sits at a countertop-level, showing a French press, a kettle, a grinder, a digital scale, and a mug. A calm person stands ready to brew.\n1. Weigh and grind: The person measures coffee beans on the scale and grinds to a medium-coarse texture; the grounds drop into the French press.\n2. Heat water: The kettle heats water to just off the boil, about 200°F (93°C).\n3. Preheat and rinse: The person rinses the French press with hot water, swirls, and discards the rinse water.\n4. Add grounds: Ground coffee is added to the empty French press.\n5. Bloom: A small amount of hot water is poured to saturate the grounds; a moment to bloom is observed.\n6. Pour rest of water: The rest of the hot water is poured evenly over the bed; the lid is placed on top with the plunger up; a timer is set for about 4 minutes.\n7. Plunge: After the timer, the plunger is pressed down slowly and steadily.\n8. Serve: Coffee is poured into a mug; the camera captures steam and crema.\n9. Close: The person inhales the aroma, takes a sip, and smiles. A quick overlay reminds viewers of key tips: medium coarse grind, even pour, proper steep time.",
+    "narration": "Welcome to a calm countertop brew. Today we show how to correctly use a French press. First, start with fresh beans and grind to a medium coarse size. The grounds should resemble sea salt. Weigh your coffee for accuracy, then heat water to about 200 degrees Fahrenheit. Preheat the press by rinsing with hot water, which warms the metal and helps maintain temperature. Add the grounds to the press. Pour a small amount of hot water to saturate the bed, then stir gently to ensure even wetting. Pour the remaining water evenly over the grounds and place the lid on top with the plunger up. Let it steep for about four minutes. Slowly depress the plunger with steady pressure. Pour and enjoy the aroma and flavor of a well-brewed cup. Tip: keep a clean technique, use a timer, and avoid pressing too hard or too fast."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 6.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.8,
+  "final_score": 6.8,
+  "feedback": "The output stays on-topic and presents clear, actionable steps. Tighten the narration to avoid redundant or overly explanatory lines, and align the visuals more strictly with a single-shot progression of the French press brew. Consider adding a brief close-up moment for key actions (grind, pour, plunge) to boost visual emphasis.",
+  "strengths": [
+    "Clear, step-by-step workflow for brewing with a French press",
+    "Countertop-view, includes essential gear and a consistent shot setup"
+  ],
+  "fixes": [
+    "Reduce redundancy in narration and caption text; ensure overlay tips do not repeat what's obvious from visuals",
+    "Add explicit shot cues for close-ups of grounds, bloom, and plunger to enhance visual storytelling"
+  ]
+}

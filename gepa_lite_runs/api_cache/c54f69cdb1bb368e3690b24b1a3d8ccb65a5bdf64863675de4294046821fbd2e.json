@@ -1,0 +1,34 @@
+{
+  "task_id": "15.mp4",
+  "topic": "A person using a 'Self-Checkout' machine at a grocery store.",
+  "raw_generation": "{\"script\": \"INT. GROCERY STORE - SELF-CHECKOUT AREA - DAY\\n\\nScene 1: Approach the kiosk\\nA shopper approaches a self-checkout machine labeled SELF-CHECKOUT. The screen glows with a welcome message. The shopper taps the screen to begin.\\n\\nScene 2: Scanning items\\nThe shopper picks up a bottle and scans the barcode. The machine beeps and shows the item name and price on the display. The shopper places each scanned item into the bagging area as the running total updates.\\n\\nScene 3: Bagging and safety reminders\\nThe bagging area provides a clear space for items. The display reminds the shopper to bag items securely and not overload the weighing scale.\\n\\nScene 4: Payment\\nThe payment screen appears. The shopper taps a card or uses a mobile wallet. The screen confirms payment and prints a receipt.\\n\\nScene 5: Completion\\nThe shopper takes the receipt, smiles, and exits with groceries while the machine displays a friendly thank you.\", \"narration\": \"NARRATOR: This video follows a shopper using a self checkout kiosk at a grocery store. We show the key steps: starting the session, scanning each item, bagging them, paying, and collecting the receipt. The machine provides live totals, bagging reminders, and a clear help option if needed. By keeping the flow simple, viewers learn how to use self checkout quickly and confidently.\"}",
+  "parsed_generation": {
+    "script": "INT. GROCERY STORE - SELF-CHECKOUT AREA - DAY\n\nScene 1: Approach the kiosk\nA shopper approaches a self-checkout machine labeled SELF-CHECKOUT. The screen glows with a welcome message. The shopper taps the screen to begin.\n\nScene 2: Scanning items\nThe shopper picks up a bottle and scans the barcode. The machine beeps and shows the item name and price on the display. The shopper places each scanned item into the bagging area as the running total updates.\n\nScene 3: Bagging and safety reminders\nThe bagging area provides a clear space for items. The display reminds the shopper to bag items securely and not overload the weighing scale.\n\nScene 4: Payment\nThe payment screen appears. The shopper taps a card or uses a mobile wallet. The screen confirms payment and prints a receipt.\n\nScene 5: Completion\nThe shopper takes the receipt, smiles, and exits with groceries while the machine displays a friendly thank you.",
+    "narration": "NARRATOR: This video follows a shopper using a self checkout kiosk at a grocery store. We show the key steps: starting the session, scanning each item, bagging them, paying, and collecting the receipt. The machine provides live totals, bagging reminders, and a clear help option if needed. By keeping the flow simple, viewers learn how to use self checkout quickly and confidently."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 5.8,
+  "feedback": "The piece adheres to the topic with a clear self-checkout flow. However, it could tighten the narration to emphasize actions over ambience, and it would benefit from more concrete, camera-ready beats (e.g., close-ups of scanning, bagging, payment). Also ensure alignment with the concise, action-first style of the references by reducing non-essential details and standardizing scene labels.",
+  "strengths": [
+    "Clear, step-by-step self-checkout flow.",
+    "Concise, action-first shot progression that matches reference style."
+  ],
+  "fixes": [
+    "Incorporate more camera-ready shots: close-ups of scanning, bagging, and the payment step.",
+    "Tighten narration to emphasize actions rather than ambience and align wording with the concise reference style."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "task_id": "24.mp4",
+  "topic": "A barista preparing a traditional Turkish coffee using a cezve in hot sand.",
+  "raw_generation": "{\n  \"script\": \"Scene 1 — Setup (0-2s): Side view; hands place cezve into hot sand in a shallow tray.\\nScene 2 — Brewing (2-5s): Macro close-up; sand surrounds cezve; foam forms as water heats; a wooden stirrer gently rotates inside cezve.\\nScene 3 — Pour (5-8s): Top-down tilt; the cezve is lifted from sand and pours dark brew into a small cup; steam wisps rise.\",\n  \"narration\": \"Hot sand provides even, gentle heat that prevents scorching and preserves the coffee's delicate oils. The cezve brews slowly, building a foamy crest as flavors mingle. The pour into a tiny cup delivers a rich aroma and lingering spice, a ritual rooted in tradition.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1 — Setup (0-2s): Side view; hands place cezve into hot sand in a shallow tray.\nScene 2 — Brewing (2-5s): Macro close-up; sand surrounds cezve; foam forms as water heats; a wooden stirrer gently rotates inside cezve.\nScene 3 — Pour (5-8s): Top-down tilt; the cezve is lifted from sand and pours dark brew into a small cup; steam wisps rise.",
+    "narration": "Hot sand provides even, gentle heat that prevents scorching and preserves the coffee's delicate oils. The cezve brews slowly, building a foamy crest as flavors mingle. The pour into a tiny cup delivers a rich aroma and lingering spice, a ritual rooted in tradition."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.2,
+  "final_score": 6.2,
+  "feedback": "The output adheres to a clear three-scene structure and stays centered on the cezve-in-sand brewing. To improve, tighten the Turkish-coffee specificity (grind size, foam characteristics) and reduce narration repetition of on-screen actions. Consider naming a barista or human action to reinforce the topic and ensure every cue ties directly to Turkish coffee traditions.",
+  "strengths": [
+    "Clear three-scene structure with timing",
+    "Explicit hot-sand use and cezve interaction"
+  ],
+  "fixes": [
+    "Include explicit Turkish coffee details (fine grind, traditional foam/crema cues) to strengthen topic precision",
+    "Add a clear human element (the barista or hands) performing actions to reinforce the topic and avoid ambiguity"
+  ]
+}

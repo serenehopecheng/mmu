@@ -1,0 +1,34 @@
+{
+  "task_id": "17.mp4",
+  "topic": "A person changing a flat tire on a car.",
+  "raw_generation": "{\n  \"script\": \"Scene 1 — Establishing shot: A car sits on the roadside with hazard lights blinking. The driver steps out and notices a flat tire. Scene 2 — Safety prep: The driver engages the parking brake, turns on hazard lights, and places a reflective warning triangle behind the car. They grab a spare tire, jack, and lug wrench from the trunk. Scene 3 — Loosen lug nuts: The driver uses the lug wrench to loosen the lug nuts a few turns while the car remains on the ground. Scene 4 — Lift the car: The driver positions the jack at the correct jacking point and raises the car until the flat tire is off the road. Scene 5 — Remove tire: The lug nuts are removed completely; the flat tire is taken off and set aside. Scene 6 — Mount spare: The spare is aligned with the studs and the lug nuts are threaded on by hand. Scene 7 — Lower and tighten: The car is lowered slightly, and the lug nuts are tightened in a star pattern to snug, then final torque. Scene 8 — Finish: The car is lowered fully, the jack and tools are stored, and the spare tire’s pressure is checked. Scene 9 — Safety wrap-up: If using a donut spare, drive at reduced speed and distance and replace the full tire as soon as possible; if unsure, call roadside assistance.\",\n  \"narration\": \"On the shoulder of the road, safety comes first. Your tire is flat. Turn on your hazard lights, apply the parking brake, and place a reflective triangle if you have one. Retrieve your spare, jack, and lug wrench from the trunk. With the car still on the ground, loosen the lug nuts a few turns so they’re ready to come off. Position the jack at the manufacturer’s jacking point and lift the car until the flat tire is off the ground. Remove the lug nuts completely and slide the flat tire off. Align the spare with the studs and thread the lug nuts on by hand. Lower the car a little, then tighten the lug nuts in a star pattern to snug fit, followed by a final torque. Lower the car fully, store the jack and tools, and check the spare’s pressure. If you’re using a donut spare, drive at reduced speed and distance and replace the full tire as soon as possible. If you’re not comfortable performing these steps, don’t hesitate to call roadside assistance.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1 — Establishing shot: A car sits on the roadside with hazard lights blinking. The driver steps out and notices a flat tire. Scene 2 — Safety prep: The driver engages the parking brake, turns on hazard lights, and places a reflective warning triangle behind the car. They grab a spare tire, jack, and lug wrench from the trunk. Scene 3 — Loosen lug nuts: The driver uses the lug wrench to loosen the lug nuts a few turns while the car remains on the ground. Scene 4 — Lift the car: The driver positions the jack at the correct jacking point and raises the car until the flat tire is off the road. Scene 5 — Remove tire: The lug nuts are removed completely; the flat tire is taken off and set aside. Scene 6 — Mount spare: The spare is aligned with the studs and the lug nuts are threaded on by hand. Scene 7 — Lower and tighten: The car is lowered slightly, and the lug nuts are tightened in a star pattern to snug, then final torque. Scene 8 — Finish: The car is lowered fully, the jack and tools are stored, and the spare tire’s pressure is checked. Scene 9 — Safety wrap-up: If using a donut spare, drive at reduced speed and distance and replace the full tire as soon as possible; if unsure, call roadside assistance.",
+    "narration": "On the shoulder of the road, safety comes first. Your tire is flat. Turn on your hazard lights, apply the parking brake, and place a reflective triangle if you have one. Retrieve your spare, jack, and lug wrench from the trunk. With the car still on the ground, loosen the lug nuts a few turns so they’re ready to come off. Position the jack at the manufacturer’s jacking point and lift the car until the flat tire is off the ground. Remove the lug nuts completely and slide the flat tire off. Align the spare with the studs and thread the lug nuts on by hand. Lower the car a little, then tighten the lug nuts in a star pattern to snug fit, followed by a final torque. Lower the car fully, store the jack and tools, and check the spare’s pressure. If you’re using a donut spare, drive at reduced speed and distance and replace the full tire as soon as possible. If you’re not comfortable performing these steps, don’t hesitate to call roadside assistance."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 7.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.6,
+  "final_score": 6.6,
+  "feedback": "The output stays on topic and presents a clear, stepwise tire-change sequence with safety notes. To better align with the concise, action-first style of the references, tighten phrasing, ensure consistent camera-ready shot labels (e.g., establishing shot, close-up on lug nuts), and optionally include a concrete torque value or spec. Consider placing a brief on-screen reminder for donut-spare limits and a primary callout to roadside assistance if the task feels unsafe.",
+  "strengths": [
+    "Clear, sequential steps for changing a tire.",
+    "Safety-conscious narration and reminders."
+  ],
+  "fixes": [
+    "Adopt a more terse, action-first sentence style and add explicit shot directions (establishing shot, close-ups).",
+    "Include or reference a concrete torque target or policy (e.g., torque to manufacturer spec) and a final verification check after lowering."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "task_id": "7.mp4",
+  "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+  "raw_generation": "{\n  \"script\": \"SHOT 1: EXT. TIMES SQUARE – STREET LEVEL – DAY. A yellow NYC taxi enters from the left, moving toward the camera at street level.\\nSHOT 2: EXT. TIMES SQUARE – STREET LEVEL – DAY. A yellow NYC taxi glides through the frame, centered, with neon signs blurred in the background.\\nSHOT 3: EXT. TIMES SQUARE – STREET LEVEL – DAY. A yellow NYC taxi continues down the avenue, the city lights streaking past along the frame edge.\",\n  \"narration\": \"In the neon heartbeat of Times Square, a yellow taxi cuts a single bright line through the street-level view. The city blurs around it as signs blaze and traffic murmurs, yet the cab remains the focal point—shiny, constant motion in a kaleidoscope of color.\"\n}",
+  "parsed_generation": {
+    "script": "SHOT 1: EXT. TIMES SQUARE – STREET LEVEL – DAY. A yellow NYC taxi enters from the left, moving toward the camera at street level.\nSHOT 2: EXT. TIMES SQUARE – STREET LEVEL – DAY. A yellow NYC taxi glides through the frame, centered, with neon signs blurred in the background.\nSHOT 3: EXT. TIMES SQUARE – STREET LEVEL – DAY. A yellow NYC taxi continues down the avenue, the city lights streaking past along the frame edge.",
+    "narration": "In the neon heartbeat of Times Square, a yellow taxi cuts a single bright line through the street-level view. The city blurs around it as signs blaze and traffic murmurs, yet the cab remains the focal point—shiny, constant motion in a kaleidoscope of color."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 6.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.2,
+  "final_score": 6.2,
+  "feedback": "The result largely adheres to the brief, delivering a street-level Times Square taxi sequence with a clear focal subject. To improve, add more vivid sensory details and sharper camera variations to boost visual richness, and tighten the narration to align with the visuals without over-describing. Consider ensuring the time of day remains consistent across shots and perhaps add a subtle motion cue between shots.",
+  "strengths": [
+    "Clear, shot-by-shot structure that mirrors prompt style",
+    "Maintains single subject (taxi) as focus"
+  ],
+  "fixes": [
+    "Increase visual detail (signs, reflections, pedestrians) to raise richness",
+    "Add a brief motion cue or transition between shots to emphasize movement",
+    "Ensure consistent lighting/time-of-day and avoid over-qualitative narration"
+  ]
+}

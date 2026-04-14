@@ -1,0 +1,34 @@
+{
+  "task_id": "3.mp4",
+  "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+  "raw_generation": "{\n  \"script\": \"Scene 1: Countertop setup. A person stands at a tidy kitchen counter with a French press, an electric kettle, a digital scale, and a jar of freshly roasted coffee beans.\\nScene 2: Grind and measure. They weigh about 28 grams of coffee and grind to a medium coarse texture, then transfer the grounds to the bottom of the press.\\nScene 3: Heat water. The kettle boils and the water settles to about 93 C (200 F).\\nScene 4: Bloom and first pour. They pour a small amount of hot water over the grounds to saturate them, start a timer for 30 seconds, and stir gently with a spoon.\\nScene 5: Add remaining water. They pour the rest of the water to reach the full batch, place the lid on with the plunger up, and wait.\\nScene 6: Steep. A four minute timer is started as the coffee steeps.\\nScene 7: Press. They slowly press the plunger down, separating the grounds from the brew.\\nScene 8: Pour and enjoy. They pour into a mug, steam rising, and take a first sip.\\nScene 9: Quick tip. A clean rinse of the press between uses helps maintain flavor.\",\n  \"narration\": \"On the countertop, a person demonstrates a classic French press brew. Start by heating water to just below a boil and grinding coffee to a medium coarse texture. Place the grounds in the carafe, then pour a small amount of hot water to bloom the coffee, letting it sit for about 30 seconds. Stir gently, then add the remaining water to the carafe. Put the lid on with the plunger up and let the coffee steep for four minutes. Finally, press the plunger down slowly and evenly, pour into a mug, and enjoy the rich, clean aroma and flavor of a well made French press coffee.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1: Countertop setup. A person stands at a tidy kitchen counter with a French press, an electric kettle, a digital scale, and a jar of freshly roasted coffee beans.\nScene 2: Grind and measure. They weigh about 28 grams of coffee and grind to a medium coarse texture, then transfer the grounds to the bottom of the press.\nScene 3: Heat water. The kettle boils and the water settles to about 93 C (200 F).\nScene 4: Bloom and first pour. They pour a small amount of hot water over the grounds to saturate them, start a timer for 30 seconds, and stir gently with a spoon.\nScene 5: Add remaining water. They pour the rest of the water to reach the full batch, place the lid on with the plunger up, and wait.\nScene 6: Steep. A four minute timer is started as the coffee steeps.\nScene 7: Press. They slowly press the plunger down, separating the grounds from the brew.\nScene 8: Pour and enjoy. They pour into a mug, steam rising, and take a first sip.\nScene 9: Quick tip. A clean rinse of the press between uses helps maintain flavor.",
+    "narration": "On the countertop, a person demonstrates a classic French press brew. Start by heating water to just below a boil and grinding coffee to a medium coarse texture. Place the grounds in the carafe, then pour a small amount of hot water to bloom the coffee, letting it sit for about 30 seconds. Stir gently, then add the remaining water to the carafe. Put the lid on with the plunger up and let the coffee steep for four minutes. Finally, press the plunger down slowly and evenly, pour into a mug, and enjoy the rich, clean aroma and flavor of a well made French press coffee."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.8,
+  "final_score": 6.8,
+  "feedback": "Strong topic fidelity and a clear, step-by-step sequence. To improve, tighten the narration to minimize redundancy with visible actions and add more varied visual cues (shots/angles) to increase visual richness without changing the core steps.",
+  "strengths": [
+    "Clear, step-by-step structure on a countertop setup.",
+    "Consistent scene progression with actionable brewing steps."
+  ],
+  "fixes": [
+    "Reduce overlap between script visuals and narration; ensure each line adds new context.",
+    "Introduce more visual variety (close-ups, different angles) to enhance visual richness while preserving the action-first flow."
+  ]
+}

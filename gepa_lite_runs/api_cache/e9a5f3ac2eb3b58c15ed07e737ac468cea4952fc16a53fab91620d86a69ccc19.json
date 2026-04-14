@@ -1,0 +1,34 @@
+{
+  "task_id": "23.mp4",
+  "topic": "A technician performing a 'Three-Point Bend' test on a carbon fiber sample.",
+  "raw_generation": "{\n  \"script\": \"SHOT 1: INT. LAB BENCH – DAY. A technician positions a carbon fiber sample on a three-point bending fixture.\\nTEXT ON SCREEN: L, b\\nSHOT 2: INT. LAB BENCH – DAY. The technician centers the indenter on the sample and aligns the fixture with precision.\\nTEXT ON SCREEN: d\\nSHOT 3: INT. LAB BENCH – DAY. The indenter loads the span, bending the sample while a readout captures Pmax.\\nTEXT ON SCREEN: Pmax\",\n  \"narration\": \"In a controlled laboratory setting, a technician performs a meticulous three-point bend test on a carbon fiber specimen. The camera isolates the technician as steady hands operate the fixture, align the indenter, and monitor a quiet readout that records how the material deflects under load. The scene emphasizes precision and the material’s stiffness and failure behavior, conveyed through calm focus, clean geometry, and a data-driven mood.\"\n}",
+  "parsed_generation": {
+    "script": "SHOT 1: INT. LAB BENCH – DAY. A technician positions a carbon fiber sample on a three-point bending fixture.\nTEXT ON SCREEN: L, b\nSHOT 2: INT. LAB BENCH – DAY. The technician centers the indenter on the sample and aligns the fixture with precision.\nTEXT ON SCREEN: d\nSHOT 3: INT. LAB BENCH – DAY. The indenter loads the span, bending the sample while a readout captures Pmax.\nTEXT ON SCREEN: Pmax",
+    "narration": "In a controlled laboratory setting, a technician performs a meticulous three-point bend test on a carbon fiber specimen. The camera isolates the technician as steady hands operate the fixture, align the indenter, and monitor a quiet readout that records how the material deflects under load. The scene emphasizes precision and the material’s stiffness and failure behavior, conveyed through calm focus, clean geometry, and a data-driven mood."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.6,
+  "final_score": 5.6,
+  "feedback": "The script sticks to the technician performing a three-point bend on a carbon fiber sample and presents clear procedural shots. To improve, tighten the narration to emphasize explicit test steps and specimen orientation, and add a couple of varied camera angles to convey scale and deformation. Also streamline on-screen text to be concise and match the action-first style of the references.",
+  "strengths": [
+    "Clear, action-first shot sequence",
+    "Strong focus on instrumentation and data capture"
+  ],
+  "fixes": [
+    "Add an establishing wide shot of the fixture and sample for orientation",
+    "Use more explicit, concise on-screen labels for dimensions/load stages to align with reference style"
+  ]
+}

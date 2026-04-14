@@ -1,0 +1,31 @@
+{
+  "task_id": "0.mp4",
+  "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+  "raw_generation": "```json\n{\"script\": \"SCENE 1 — FRONT VIEW: A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view. (8s, Veo 3 shot)\\nWith a steady hand, they flip open the box lid in one smooth motion, revealing the Desert Titanium iPhone 16 Pro resting on the wooden table.\", \"narration\": \"Desert Titanium finishes whisper of luxury with a subtle, sand-toned sheen.\\nThe box communicates premium craft—glass, metal, and precise engineering.\\nA ritual moment before powering on a new device.\"}\n```",
+  "parsed_generation": {},
+  "hard_checks": {
+    "valid_json": false,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 4.6,
+  "feedback": "Local hard-check failures: Output is not valid JSON with string fields script and narration.\nOutput should be a valid JSON object, not wrapped in a code block; ensure only the fields 'script' and 'narration' exist. Use concise, action-first phrasing like the reference prompts (no meta labels such as 'SCENE' or shot-length annotations in the main text). Maintain a single-subject focus and, when possible, enrich narration with context that is not obvious from visuals but stays concise.\nFailed checks: valid_json",
+  "strengths": [
+    "Clear action-first description of unboxing",
+    "Explicit reference to Desert Titanium finish and wooden table"
+  ],
+  "fixes": [
+    "Return strictly valid JSON (no code fences) and keep to the simple schema used in references (script and narration only).",
+    "Adopt the reference style by trimming meta-scene labels and focusing on a concise, concrete forward-motion description."
+  ]
+}

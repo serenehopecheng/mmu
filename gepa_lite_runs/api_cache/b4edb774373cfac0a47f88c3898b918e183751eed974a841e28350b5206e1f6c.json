@@ -1,0 +1,35 @@
+{
+  "task_id": "8.mp4",
+  "topic": "A person walking across the Abbey Road zebra crossing, eye-level view.",
+  "raw_generation": "{\n  \"script\": \"Scene 1: Exterior — Abbey Road crossing, eye-level view. The camera is positioned at pedestrian height on the near curb. Soft morning light, brick façades, and a quiet street frame the crossing. A lone person approaches the curb and pauses at the edge.\\nScene 2: Beginning to cross. The walker steps onto the zebra crossing. The camera begins a smooth parallel tracking shot, staying at eye level. The white stripes create a rhythmic visual as shoes touch the ground one step after another.\\nScene 3: Mid-crossing. The subject advances along the centerline of the crosswalk. Other pedestrians, a cyclist, or distant vehicles pass by out of focus in the background. The camera glides smoothly, capturing subtle motion blur in the surroundings while the walker remains crisp in focus.\\nScene 4: Approach to the far curb. The walker nears the opposite curb; the crosswalk ends and the camera slowly shifts to a slight downwards angle, framing the finish line at the edge of the frame. The pedestrian steps onto the sidewalk and exits the crossing.\\nScene 5: Outro. The shot fades to ambient street sound and a soft visual fade to black. Background info: {background_info}\",\n  \"narration\": \"NARRATOR: A quiet moment on an iconic crossing. The camera sits at eye level, keeping the walker in the center of the frame as the zebra stripes march forward.\\nNARRATOR: The rhythm of each step mirrors the lines that guide the eye along the crosswalk.\\nNARRATOR: Abbey Road is a place where everyday life brushes against a hint of music history, and today it’s just you and the street moving in time.\\nNARRATOR: Watch as the city breathes around you—the distant hum of traffic, a soft breeze, and the rhythm of footsteps fading into the distance.\\nNARRATOR: End of crosswalk, end of shot; the city continues, and so does the journey.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1: Exterior — Abbey Road crossing, eye-level view. The camera is positioned at pedestrian height on the near curb. Soft morning light, brick façades, and a quiet street frame the crossing. A lone person approaches the curb and pauses at the edge.\nScene 2: Beginning to cross. The walker steps onto the zebra crossing. The camera begins a smooth parallel tracking shot, staying at eye level. The white stripes create a rhythmic visual as shoes touch the ground one step after another.\nScene 3: Mid-crossing. The subject advances along the centerline of the crosswalk. Other pedestrians, a cyclist, or distant vehicles pass by out of focus in the background. The camera glides smoothly, capturing subtle motion blur in the surroundings while the walker remains crisp in focus.\nScene 4: Approach to the far curb. The walker nears the opposite curb; the crosswalk ends and the camera slowly shifts to a slight downwards angle, framing the finish line at the edge of the frame. The pedestrian steps onto the sidewalk and exits the crossing.\nScene 5: Outro. The shot fades to ambient street sound and a soft visual fade to black. Background info: {background_info}",
+    "narration": "NARRATOR: A quiet moment on an iconic crossing. The camera sits at eye level, keeping the walker in the center of the frame as the zebra stripes march forward.\nNARRATOR: The rhythm of each step mirrors the lines that guide the eye along the crosswalk.\nNARRATOR: Abbey Road is a place where everyday life brushes against a hint of music history, and today it’s just you and the street moving in time.\nNARRATOR: Watch as the city breathes around you—the distant hum of traffic, a soft breeze, and the rhythm of footsteps fading into the distance.\nNARRATOR: End of crosswalk, end of shot; the city continues, and so does the journey."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": false,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.6,
+  "final_score": 5.4,
+  "feedback": "The concept stays on Abbey Road with an eye-level walker, but Scene 3 introduces other background subjects which breaks single-subject focus. The narration could more tightly reflect on the crossing itself rather than generic city ambiance. Consider aligning the visual beats with a concise, action-first prompt style.\nFailed checks: single_subject_focus",
+  "strengths": [
+    "Clear eye-level framing and shot progression",
+    "Concise, action-first scene outline"
+  ],
+  "fixes": [
+    "Remove or minimize background subjects to preserve single-subject focus, or constrain them to be out of frame",
+    "Tighten narration to emphasize the crossing and the walker over ambient city details",
+    "Ensure consistent Abbey Road-specific cues (crosswalk texture, nearby storefronts) without introducing additional actions"
+  ]
+}

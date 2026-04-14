@@ -1,0 +1,35 @@
+{
+  "task_id": "2.mp4",
+  "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+  "raw_generation": "{\n  \"script\": \"SHOT: Veo 3, 8s — SIDE VIEW: A person opening a bottle of Coca-Cola with the new attached tethered cap, side view. on a clean surface.\",\n  \"narration\": \"Voiceover: One-handed twist with the tethered cap keeps the cap nearby.\\nVoiceover: The Coca-Cola red label pops with a polished finish for a premium feel.\\nVoiceover: The attached cap stays tethered for spill-free, convenient pouring.\"\n}",
+  "parsed_generation": {
+    "script": "SHOT: Veo 3, 8s — SIDE VIEW: A person opening a bottle of Coca-Cola with the new attached tethered cap, side view. on a clean surface.",
+    "narration": "Voiceover: One-handed twist with the tethered cap keeps the cap nearby.\nVoiceover: The Coca-Cola red label pops with a polished finish for a premium feel.\nVoiceover: The attached cap stays tethered for spill-free, convenient pouring."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 3.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 4.8,
+  "final_score": 4.8,
+  "feedback": "The scene stays on a single subject and covers the tethered cap feature, but the visuals are not richly described. Consider tightening the prompt structure for consistency and removing redundant phrasing. Improve narration to tightly reflect the on-screen action with concrete cues (e.g., cap stays tethered as pouring begins).",
+  "strengths": [
+    "Clear side-view framing and action",
+    "Explicit tethered-cap feature highlighted"
+  ],
+  "fixes": [
+    "Eliminate duplicated wording (e.g., remove the second 'side view' reference)",
+    "Evaluate removing or reconciling the 'on a clean surface' descriptor to avoid unnecessary detail",
+    "Align narration with the exact action (opening, pouring) and include brand cues succinctly"
+  ]
+}

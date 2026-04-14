@@ -1,0 +1,34 @@
+{
+  "task_id": "9.mp4",
+  "topic": "A Mongolian horseman using an Uurga to catch a wild horse, wide landscape shot.",
+  "raw_generation": "{\n  \"script\": \"EXT. MONGOLIAN STEPPE - DAWN\\\\n\\\\nWIDE SHOT: The endless grasslands roll toward distant mountains. The wind moves the blades in slow, brown-green waves. The air is cold and clear.\\\\n\\\\nCut to a weathered Mongolian horseman on a sturdy brown horse. He wears a deel and fur hat; in his hand, the Uurga — a traditional rope tool with a wooden handle and a long looping cord.\\\\n\\\\nThe rider rides toward a free-roaming wild horse in the distance. Hooves beat a rhythm on the hard ground; the mare snorts, ears flicking.\\\\n\\\\nThe rider dismounts, secures his own horse. He calmly uncoils the Uurga, the rope catching the light as it arcs through the air.\\\\n\\\\nWIDE SHOT: The Uurga rope sails, the wind whipping around them; the wild horse shies yet slows as the rider watches with quiet, patient signals.\\\\n\\\\nCLOSE-UP: The horse's eyes, the rider's hands steady but gentle, the Uurga’s rope gleaming. A moment of tension, then the horse yields to the restraint, the bond formed through trust.\\\\n\\\\nThe rider leads the captive horse away toward the herd's safety; the steppe stretches to the horizon as the sun climbs higher.\\\\n\\\\nFADE OUT.\",\n  \"narration\": \"On the Mongolian steppe, the wide landscape teaches patience and balance. Here, a skilled horseman carries an Uurga, a traditional tool used to calm and guide a wild horse. The scene unfolds in wind and grass, as man and horse form a quiet partnership. The Uurga’s rope sails through the air, not with force, but with timing and respect. As the wild horse slows and yields, the rider’s breath and heartbeat synchronize with the land. This is a practice rooted in heritage, a testament to the bond between rider and animal, and the endless horizon that calls them forward.\"\n}",
+  "parsed_generation": {
+    "script": "EXT. MONGOLIAN STEPPE - DAWN\\n\\nWIDE SHOT: The endless grasslands roll toward distant mountains. The wind moves the blades in slow, brown-green waves. The air is cold and clear.\\n\\nCut to a weathered Mongolian horseman on a sturdy brown horse. He wears a deel and fur hat; in his hand, the Uurga — a traditional rope tool with a wooden handle and a long looping cord.\\n\\nThe rider rides toward a free-roaming wild horse in the distance. Hooves beat a rhythm on the hard ground; the mare snorts, ears flicking.\\n\\nThe rider dismounts, secures his own horse. He calmly uncoils the Uurga, the rope catching the light as it arcs through the air.\\n\\nWIDE SHOT: The Uurga rope sails, the wind whipping around them; the wild horse shies yet slows as the rider watches with quiet, patient signals.\\n\\nCLOSE-UP: The horse's eyes, the rider's hands steady but gentle, the Uurga’s rope gleaming. A moment of tension, then the horse yields to the restraint, the bond formed through trust.\\n\\nThe rider leads the captive horse away toward the herd's safety; the steppe stretches to the horizon as the sun climbs higher.\\n\\nFADE OUT.",
+    "narration": "On the Mongolian steppe, the wide landscape teaches patience and balance. Here, a skilled horseman carries an Uurga, a traditional tool used to calm and guide a wild horse. The scene unfolds in wind and grass, as man and horse form a quiet partnership. The Uurga’s rope sails through the air, not with force, but with timing and respect. As the wild horse slows and yields, the rider’s breath and heartbeat synchronize with the land. This is a practice rooted in heritage, a testament to the bond between rider and animal, and the endless horizon that calls them forward."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 6.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.8,
+  "final_score": 6.8,
+  "feedback": "Overall aligns with the topic and action-first style, with clear wide-to-close sequence and cultural context. To strengthen alignment with the references, tighten the focus on the rider and the target wild horse, and minimize or remove herd-related elements that could dilute the single-subject focus. Consider merging narration more tightly with on-screen actions or presenting it as concise captions, to match the concise prompt style demonstrated in the references.",
+  "strengths": [
+    "Clear sense of place with wide landscape leading to close-up action",
+    "Consistent use of traditional gear (Uurga, deel) and cultural context"
+  ],
+  "fixes": [
+    "Limit emphasis to the rider and one wild horse to maintain single-subject focus",
+    "Adopt a stricter, concise action-first line style similar to the reference prompts"
+  ]
+}

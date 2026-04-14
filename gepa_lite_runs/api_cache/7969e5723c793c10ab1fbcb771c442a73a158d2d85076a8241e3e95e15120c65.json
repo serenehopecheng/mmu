@@ -1,0 +1,34 @@
+{
+  "task_id": "24.mp4",
+  "topic": "A barista preparing a traditional Turkish coffee using a cezve in hot sand.",
+  "raw_generation": "{\n  \"script\": \"SHOT 1: The barista lowers a cezve into hot sand.\\nSHOT 2: The barista stirs the cezve as the sand heats around.\\nSHOT 3: The barista pours the Turkish coffee into a cup.\",\n  \"narration\": \"A focused barista demonstrates traditional Turkish coffee preparation using a cezve in hot sand.\"\n}",
+  "parsed_generation": {
+    "script": "SHOT 1: The barista lowers a cezve into hot sand.\nSHOT 2: The barista stirs the cezve as the sand heats around.\nSHOT 3: The barista pours the Turkish coffee into a cup.",
+    "narration": "A focused barista demonstrates traditional Turkish coffee preparation using a cezve in hot sand."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 4.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 3.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 5.0,
+  "final_score": 5.0,
+  "feedback": "Topic fidelity is solid and the shot sequence is on point, but the prompt could be more visually rich. Add closer, tactile details (sand texture, steam, cup presentation) and varied angles; refine narration to provide context without restating visible actions.",
+  "strengths": [
+    "Clear, concise shot-driven structure.",
+    "Keeps focus on the barista and the core action."
+  ],
+  "fixes": [
+    "Increase visual richness with close-ups of the cezve, sand texture, steam, and the coffee cup.",
+    "Enhance narration with contextual or sensory cues (history, aroma) without repeating what's shown on screen."
+  ]
+}
