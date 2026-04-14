@@ -1,8 +1,0 @@
-Write an 8-second video prompt for Veo 3.
-Rules:
-1. Output valid JSON: {"script": "...", "narration": "..."}.
-2. Ensure proper JSON formatting with quotation marks around keys and values.
-3. One continuous shot, no cuts.
-4. Specify camera angle (e.g., close-up, overhead) and lighting (e.g., natural light, soft light).
-5. Narration must be under 18 words and provide context not visible on screen.
-6. Focus on a single subject relevant to the topic: {topic}.
