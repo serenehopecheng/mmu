@@ -1,0 +1,35 @@
+{
+  "task_id": "11.mp4",
+  "topic": "The lifecycle of a Monarch butterfly: the chrysalis stage.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: [Monarch chrysalis hanging from a leaf in morning light] - Camera: Eye-level, Framing: wide, Movement: Static, Subject: Chrysalis.\\n[00:02-00:05] Shot 2: [Macro close-up of chrysalis surface with faint wing outlines] - Camera: Macro, Framing: close, Movement: Slow tracking, Subject: Chrysalis.\\n[00:05-00:08] Shot 3: [Chrysalis in a mid-distance view on its leaf, still and attached, with soft background] - Camera: Eye-level, Framing: medium, Movement: Static, Subject: Chrysalis.\",\n  \"narration\": \"In Shot 1, a Monarch chrysalis hangs from a leaf in morning light, its smooth jade shell attached by a fine silk pad. This is the chrysalis stage, a quiet bridge in the lifecycle where the caterpillar reorganizes its tissues in preparation for metamorphosis. In Shot 2, the camera moves to a macro close-up of the chrysalis surface, where the faint outlines of developing wings glow beneath the shell. The close-up reveals the internal changes that occur during the chrysalis stage while the exterior stays still. In Shot 3, a mid-distance view shows the chrysalis securely on the leaf with a soft background, emphasizing the stillness and protection of this stage as the Monarch completes its transformation toward adulthood.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: [Monarch chrysalis hanging from a leaf in morning light] - Camera: Eye-level, Framing: wide, Movement: Static, Subject: Chrysalis.\n[00:02-00:05] Shot 2: [Macro close-up of chrysalis surface with faint wing outlines] - Camera: Macro, Framing: close, Movement: Slow tracking, Subject: Chrysalis.\n[00:05-00:08] Shot 3: [Chrysalis in a mid-distance view on its leaf, still and attached, with soft background] - Camera: Eye-level, Framing: medium, Movement: Static, Subject: Chrysalis.",
+    "narration": "In Shot 1, a Monarch chrysalis hangs from a leaf in morning light, its smooth jade shell attached by a fine silk pad. This is the chrysalis stage, a quiet bridge in the lifecycle where the caterpillar reorganizes its tissues in preparation for metamorphosis. In Shot 2, the camera moves to a macro close-up of the chrysalis surface, where the faint outlines of developing wings glow beneath the shell. The close-up reveals the internal changes that occur during the chrysalis stage while the exterior stays still. In Shot 3, a mid-distance view shows the chrysalis securely on the leaf with a soft background, emphasizing the stillness and protection of this stage as the Monarch completes its transformation toward adulthood."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 7.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.4,
+  "final_score": 5.2,
+  "feedback": "The concept stays on the chrysalis stage, and the narration adds context about metamorphosis. However, the format diverges from the gold standard by using three short shots and extra meta labels (Shot 1/2/3) instead of a two-shot, tightly defined sequence. To align with the gold standard, reduce to two timestamped lines, clearly show the shell turning translucent and the wing patterns, and drop the meta-shot labeling to tighten the cinematic prompt.\nFailed checks: example_alignment",
+  "strengths": [
+    "Macro close-up and wide/mid shots establish visual variety within the chrysalis subject.",
+    "Timestamps provide a clear, though slightly granular, temporal progression."
+  ],
+  "fixes": [
+    "Reduce to two timestamped segments (e.g., [00:00-00:04], [00:04-00:08]) focusing on the shell translucence and the revealed wing patterns.",
+    "Eliminate explicit 'Shot 1/2/3' labels and avoid extra fields like 'Camera' and 'Framing' in the prose; adopt concise, action-first descriptors consistent with the gold standard.",
+    "Ensure color and texture cues are explicit (green chrysalis, shell turning transparent, orange/black wing patterns visible) and emphasize the final transformation cue."
+  ]
+}

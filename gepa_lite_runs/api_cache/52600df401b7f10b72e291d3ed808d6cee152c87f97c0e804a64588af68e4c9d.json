@@ -1,0 +1,35 @@
+{
+  "task_id": "7.mp4",
+  "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view of a yellow NYC taxi entering the frame along a Times Square street.\\nShot 2 [00:02-00:05]: Side-angle tracking of the taxi as it glides past neon Times Square signs.\\nShot 3 [00:05-00:08]: Close-up on the taxi's chrome grille and bright yellow paint reflecting the lights.\",\n  \"narration\": \"A yellow NYC taxi enters Times Square in a front view, rolling along the neon-lit street. It continues with a side-angle pass past the signs and finishes with a close-up of the taxi's grille and reflective paint as it drives through the scene.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view of a yellow NYC taxi entering the frame along a Times Square street.\nShot 2 [00:02-00:05]: Side-angle tracking of the taxi as it glides past neon Times Square signs.\nShot 3 [00:05-00:08]: Close-up on the taxi's chrome grille and bright yellow paint reflecting the lights.",
+    "narration": "A yellow NYC taxi enters Times Square in a front view, rolling along the neon-lit street. It continues with a side-angle pass past the signs and finishes with a close-up of the taxi's grille and reflective paint as it drives through the scene."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": false,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 4.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 4.6,
+  "feedback": "The output centers on a yellow NYC taxi in Times Square, but the gold standard calls for an establishing wide shot of neon Times Square at night followed by a street-level tracking shot. The current script uses three shots and omits the LED billboards reflecting on the taxi hood. To tighten alignment: use [00:00-00:04] for a wide establishing shot and [00:04-00:08] for street-level tracking, explicitly note neon/LED signage reflections, and consider matching the two-shot cadence unless a three-shot arc is desired. The narration would benefit from adding context such as ambient neon colors or crowd movement rather than restating the visuals.\nFailed checks: narration_adds_context",
+  "strengths": [
+    "Clear subject focus on the taxi throughout",
+    "Distinct camera angles (front view, tracking, close-up)"
+  ],
+  "fixes": [
+    "Adopt gold-standard timestamp structure (e.g., two shots with [00:00-00:04] and [00:04-00:08])",
+    "Incorporate neon signage reflections and high-contrast lighting in the first shot",
+    "Use explicit wide establishing shot to set the Times Square context"
+  ]
+}

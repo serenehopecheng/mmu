@@ -1,0 +1,34 @@
+{
+  "task_id": "3.mp4",
+  "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: Person at countertop adds ground coffee into the French press - Camera: Eye-level, Framing: Wide, Movement: Static, Subject: Person.\\n[00:02-00:05] Shot 2: Person pours hot water into the French press over the grounds - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: Person.\\n[00:05-00:08] Shot 3: Person presses the plunger and pours coffee into a cup - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: Person.\",\n  \"narration\": \"Shot 1 shows the person at the countertop adding ground coffee into the French press, establishing the correct ratio and grind for a balanced brew. Shot 2 captures the pour as hot water saturates the grounds, enabling bloom and aroma release for proper flavor extraction. Shot 3 reveals the person slowly pressing the plunger and pouring the coffee into a cup, demonstrating the correct French Press technique on the countertop.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: Person at countertop adds ground coffee into the French press - Camera: Eye-level, Framing: Wide, Movement: Static, Subject: Person.\n[00:02-00:05] Shot 2: Person pours hot water into the French press over the grounds - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: Person.\n[00:05-00:08] Shot 3: Person presses the plunger and pours coffee into a cup - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: Person.",
+    "narration": "Shot 1 shows the person at the countertop adding ground coffee into the French press, establishing the correct ratio and grind for a balanced brew. Shot 2 captures the pour as hot water saturates the grounds, enabling bloom and aroma release for proper flavor extraction. Shot 3 reveals the person slowly pressing the plunger and pouring the coffee into a cup, demonstrating the correct French Press technique on the countertop."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 4.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 7.0,
+    "topic_precision": 6.0
+  },
+  "base_quality_score": 5.2,
+  "final_score": 4.0,
+  "feedback": "The output stays on-topic and uses narration to add context about bloom and grind ratio, but it diverges from the gold standard by using only three shots and omitting key steps (bloom/steam, stirring, a formal wait, and the lid/plunger placement). While the timestamped structure and camera cues are present, the pacing and shot variety don’t fully align with the gold standard’s four-shot sequence. To improve alignment, add a fourth shot that mirrors the wait and press sequence and include closer, macro, or steam-focused visuals.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear countertop setup with explicit shot labels and camera level framing.",
+    "Narration provides actionable context beyond basic visuals."
+  ],
+  "fixes": [
+    "Add a fourth shot mirroring the gold standard (including a 4-minute or equivalent wait, a stir if appropriate, and a slow plunging action), and rotate through closer and macro angles (grounds, steam, plunger) to increase visual richness and alignment.",
+    "Adopt the exact timestamp cadence and four-segment structure (e.g., [00:00-00:02], [00:02-00:04], [00:04-00:07], [00:07-00:08]) to match the gold standard format."
+  ]
+}

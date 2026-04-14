@@ -1,0 +1,36 @@
+{
+  "task_id": "0.mp4",
+  "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: [scene/context referencing A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.] - Camera: Front, Framing: Wide, Movement: Static, Subject: single.\\n[00:02-00:05] Shot 2: [scene/context referencing A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.] - Camera: Front, Framing: Medium, Movement: Slow push-in, Subject: single.\\n[00:05-00:08] Shot 3: [scene/context referencing A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.] - Camera: Front, Framing: Close, Movement: Pan, Subject: single.\",\n  \"narration\": \"Shot 1 shows a person at a wooden table, front view, starting the unboxing of the latest iPhone 16 Pro in Desert Titanium. The box is still closed, establishing the ritual of the unboxing. Shot 2 lifts the lid to reveal the Desert Titanium iPhone 16 Pro, held toward the camera to emphasize color and form. Shot 3 moves in closer, keeping the subject single as the phone rests in the hand, its Desert Titanium finish catching the light. This concise sequence presents a front-view unboxing of the latest iPhone 16 Pro in Desert Titanium on a wooden table, highlighting the premium finish and design as the action unfolds.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: [scene/context referencing A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.] - Camera: Front, Framing: Wide, Movement: Static, Subject: single.\n[00:02-00:05] Shot 2: [scene/context referencing A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.] - Camera: Front, Framing: Medium, Movement: Slow push-in, Subject: single.\n[00:05-00:08] Shot 3: [scene/context referencing A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.] - Camera: Front, Framing: Close, Movement: Pan, Subject: single.",
+    "narration": "Shot 1 shows a person at a wooden table, front view, starting the unboxing of the latest iPhone 16 Pro in Desert Titanium. The box is still closed, establishing the ritual of the unboxing. Shot 2 lifts the lid to reveal the Desert Titanium iPhone 16 Pro, held toward the camera to emphasize color and form. Shot 3 moves in closer, keeping the subject single as the phone rests in the hand, its Desert Titanium finish catching the light. This concise sequence presents a front-view unboxing of the latest iPhone 16 Pro in Desert Titanium on a wooden table, highlighting the premium finish and design as the action unfolds."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 6.0
+  },
+  "base_quality_score": 5.0,
+  "final_score": 3.8,
+  "feedback": "The sequence centers on unboxing the iPhone 16 Pro in Desert Titanium on a wooden table with a front-view angle, but it does not follow the gold standard’s timestamp cadence or top-down, multi-shot progression. Narration adds useful context about the box and color, yet the visuals could better emphasize the two-hand interaction, the sealed box opening, and the phone’s camera bump. To align, adopt a four-shot sequence with 2-second intervals, begin with a top-down view of a sealed box, show lid lifting, reveal the Desert Titanium phone face-down, then lift for a side/macro view of the finish and camera module, and optionally add a peel macro with SFX cues.\nFailed checks: example_alignment",
+  "strengths": [
+    "Maintains topic focus on iPhone unboxing in Desert Titanium",
+    "Uses front-view framing and mentions Desert Titanium in narration"
+  ],
+  "fixes": [
+    "Adopt the gold-standard timestamp cadence and structure, e.g., [00:00-00:02], [00:02-00:04], [00:04-00:06], [00:06-00:08]",
+    "Introduce a top-down opening shot of a sealed Apple box with two hands lifting the lid",
+    "Include a clear reveal of the phone’s face-down position and then a lift to show the camera bump and thin profile",
+    "Add a macro shot of the protective film peel and consider including SFX for tactile feedback"
+  ]
+}

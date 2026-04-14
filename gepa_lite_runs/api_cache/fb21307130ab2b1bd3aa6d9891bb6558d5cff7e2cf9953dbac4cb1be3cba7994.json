@@ -1,0 +1,35 @@
+{
+  "task_id": "10.mp4",
+  "topic": "A samurai practicing with a nodachi.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view of a samurai in a grounded stance, nodachi raised.\\nShot 2 [00:02-00:05]: Close-up of the nodachi blade sweeping through the air as hands grip the hilt.\\nShot 3 [00:05-00:08]: Side-angle tracking of a full-body arc, the samurai executing a practiced nodachi swing.\",\n  \"narration\": \"Across eight seconds, a samurai practices with a nodachi: the sequence opens in a front view, moves to a close-up of blade motion, and closes with a side-angle full swing. The visuals stay tightly on the practitioner, emphasizing precision and discipline.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view of a samurai in a grounded stance, nodachi raised.\nShot 2 [00:02-00:05]: Close-up of the nodachi blade sweeping through the air as hands grip the hilt.\nShot 3 [00:05-00:08]: Side-angle tracking of a full-body arc, the samurai executing a practiced nodachi swing.",
+    "narration": "Across eight seconds, a samurai practices with a nodachi: the sequence opens in a front view, moves to a close-up of blade motion, and closes with a side-angle full swing. The visuals stay tightly on the practitioner, emphasizing precision and discipline."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 4.0,
+    "narration_insight": 4.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 4.8,
+  "final_score": 3.6,
+  "feedback": "The concept stays on topic—a samurai with a nodachi and visible blade motion—but the cadence and actions differ from the gold standard. To improve alignment, adopt a four-second cadence like [00:00-00:04] and [00:04-00:08], depict an opening draw and a decisive overhead nodachi swing, and specify camera angles (wide establishing shot, medium, close-up, and tracking) rather than only front/side views.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear focus on the nodachi action",
+    "Shot progression centers on the practitioner"
+  ],
+  "fixes": [
+    "Adopt the gold-standard timestamp blocks (e.g., [00:00-00:04], [00:04-00:08])",
+    "Introduce a clear opening draw from sheath and a powerful overhead swing",
+    "Incorporate required camera angles: wide establishing shot, macro or close-up, tracking, and medium shots"
+  ]
+}

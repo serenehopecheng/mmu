@@ -1,0 +1,36 @@
+{
+  "task_id": "17.mp4",
+  "topic": "A person changing a flat tire on a car.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: The person loosens lug nuts with a wrench — front view\\nShot 2 [00:02-00:05]: The person lifts the car with a jack and slides the wheel free — side-angle\\nShot 3 [00:05-00:08]: The person installs the spare wheel, tightens lug nuts, and lowers the car — top-down\",\n  \"narration\": \"Across eight seconds, a single person changes a flat tire on a car. The sequence moves from loosening lug nuts, to lifting and removing the wheel, then installing the spare and lowering the car.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: The person loosens lug nuts with a wrench — front view\nShot 2 [00:02-00:05]: The person lifts the car with a jack and slides the wheel free — side-angle\nShot 3 [00:05-00:08]: The person installs the spare wheel, tightens lug nuts, and lowers the car — top-down",
+    "narration": "Across eight seconds, a single person changes a flat tire on a car. The sequence moves from loosening lug nuts, to lifting and removing the wheel, then installing the spare and lowering the car."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 3.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.2,
+  "final_score": 5.2,
+  "feedback": "The script maintains a clear, topic-appropriate sequence with defined camera angles. To better match the gold standard, tighten the timing to the standard three-shot structure and explicitly describe the tire removal and star-pattern lug-nut tightening. Also explicitly mention replacing the tire with a spare and the final tightening action for parity with the reference.",
+  "strengths": [
+    "Clear shot-by-shot progression with distinct camera angles",
+    "Concise, action-first descriptions that stay on topic"
+  ],
+  "fixes": [
+    "Align timestamps to three consecutive segments [00:00-00:03], [00:03-00:06], [00:06-00:08] to mirror the gold standard",
+    "Explicitly depict removing the flat tire and replacing it with a spare",
+    "Mention hand-tightening lug nuts in a star pattern and the final tightening",
+    "Maintain cinematic, action-first language while ensuring each shot targets a single, specific action"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "task_id": "0.mp4",
+  "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: Front view: A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table - Camera: Front, Angle: Eye-level, Framing: Medium, Movement: Static, Subject: single.\\n[00:02-00:05] Shot 2: Front view: The person opens the box, lifting the lid to begin revealing the Desert Titanium iPhone 16 Pro - Camera: Front, Angle: Eye-level, Framing: Medium, Movement: Slow push-in, Subject: single.\\n[00:05-00:08] Shot 3: Front view: The person presents the Desert Titanium iPhone 16 Pro in their hand, facing the camera with the wooden table in frame - Camera: Front, Angle: Eye-level, Framing: Medium close-up, Movement: Static, Subject: single.\",\n  \"narration\": \"Shot 1 shows a person in a front-facing position at a wooden table, starting the unboxing of the Desert Titanium iPhone 16 Pro, establishing a direct, personal connection with the viewer. Shot 2 captures the moment the lid lifts, signaling the product emerging from its packaging and building anticipation while keeping the focus on the single subject. Shot 3 frames the reveal as the device rests in the person's hand, the Desert Titanium finish catching light, and the front-view setup keeps the audience engaged with the person rather than a distant shot. Together, the three shots present a concise, authentic unboxing moment of the latest iPhone 16 Pro in Desert Titanium on a wooden table.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: Front view: A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table - Camera: Front, Angle: Eye-level, Framing: Medium, Movement: Static, Subject: single.\n[00:02-00:05] Shot 2: Front view: The person opens the box, lifting the lid to begin revealing the Desert Titanium iPhone 16 Pro - Camera: Front, Angle: Eye-level, Framing: Medium, Movement: Slow push-in, Subject: single.\n[00:05-00:08] Shot 3: Front view: The person presents the Desert Titanium iPhone 16 Pro in their hand, facing the camera with the wooden table in frame - Camera: Front, Angle: Eye-level, Framing: Medium close-up, Movement: Static, Subject: single.",
+    "narration": "Shot 1 shows a person in a front-facing position at a wooden table, starting the unboxing of the Desert Titanium iPhone 16 Pro, establishing a direct, personal connection with the viewer. Shot 2 captures the moment the lid lifts, signaling the product emerging from its packaging and building anticipation while keeping the focus on the single subject. Shot 3 frames the reveal as the device rests in the person's hand, the Desert Titanium finish catching light, and the front-view setup keeps the audience engaged with the person rather than a distant shot. Together, the three shots present a concise, authentic unboxing moment of the latest iPhone 16 Pro in Desert Titanium on a wooden table."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 4.0,
+    "veo_prompt_craft": 4.0,
+    "narration_insight": 5.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.0,
+  "final_score": 5.0,
+  "feedback": "The script stays on topic (unboxing an iPhone 16 Pro in Desert Titanium on a wooden table) and uses timestamped shots with clear front-view framing. However, it diverges from the gold standard by not adopting the top-down box reveal and macro/detail shots. To better align, adopt a four-shot sequence that mirrors the gold standard (top-down sealed box, lid lift revealing the phone face-down, side-angle lift showing the phone with cables/docs, macro peel of the screen), incorporate varied angles, and add tactile SFX cues for a richer unboxing rhythm.",
+  "strengths": [
+    "Clear, timestamped structure with a focused subject",
+    "Explicit mention of Desert Titanium color and wooden table setting"
+  ],
+  "fixes": [
+    "Adopt the four-shot progression from the gold standard (top-down seal, lid removal reveal, side lift, macro peel)",
+    "Use varied camera angles (top-down, side-angle, macro) and explicit close-ups; avoid over-reliance on front-eye-level framing",
+    "Enhance visual detail with lighting cues, reflections on Desert Titanium, and visible packaging elements; consider adding SFX cues"
+  ]
+}

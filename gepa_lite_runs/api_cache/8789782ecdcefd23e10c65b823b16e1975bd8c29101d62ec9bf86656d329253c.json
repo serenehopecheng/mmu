@@ -1,0 +1,34 @@
+{
+  "task_id": "8.mp4",
+  "topic": "A person walking across the Abbey Road zebra crossing, eye-level view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Person begins crossing the Abbey Road zebra crossing; eye-level front view.\\nShot 2 [00:02-00:05]: The walker continues across the zebra crossing; eye-level side-angle tracking.\\nShot 3 [00:05-00:08]: The walker completes the crossing; eye-level close-up of the feet stepping on the stripes.\",\n  \"narration\": \"An eye-level sequence follows a single subject crossing the Abbey Road zebra crossing from start to finish. The three shots move from a front view to a side-angle and finally a close-up of the feet as the crossing completes.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Person begins crossing the Abbey Road zebra crossing; eye-level front view.\nShot 2 [00:02-00:05]: The walker continues across the zebra crossing; eye-level side-angle tracking.\nShot 3 [00:05-00:08]: The walker completes the crossing; eye-level close-up of the feet stepping on the stripes.",
+    "narration": "An eye-level sequence follows a single subject crossing the Abbey Road zebra crossing from start to finish. The three shots move from a front view to a side-angle and finally a close-up of the feet as the crossing completes."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 5.8,
+  "feedback": "The output accurately captures an eye-level crossing across the Abbey Road zebra crossing with a clear subject and camera angles. However, it diverges from the gold standard by using three shots with staggered timings instead of two 4-second segments and by not emphasizing the iconic background elements or strong perspective lines as prominently. To tighten alignment, reduce to two 4-second shots, explicitly highlight the crossing’s perspective lines and stopped background traffic in the first shot, and show the subject stepping onto the white stripes toward the center in the second shot, with richer environmental detail.",
+  "strengths": [
+    "Clear, concise shot-by-shot descriptions with eye-level framing.",
+    "Uses action-first cinematic language and includes tracking/close-up cues."
+  ],
+  "fixes": [
+    "Align to the gold standard’s two-shot, 00:00-00:04 and 00:04-00:08 structure for times and cadence.",
+    "Improve environmental specificity (e.g., strong perspective lines, background cars stopped) and crosswalk texture to boost topic fidelity."
+  ]
+}

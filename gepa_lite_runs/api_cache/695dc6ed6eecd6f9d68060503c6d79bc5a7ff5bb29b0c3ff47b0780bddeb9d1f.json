@@ -1,0 +1,34 @@
+{
+  "task_id": "5.mp4",
+  "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Form the initial loop in the standing part of the rope — close-up of hands\\nShot 2 [00:02-00:05]: Bring the working end up through the loop, around the back of the standing part, and down toward the loop — side-angle\\nShot 3 [00:05-00:08]: Tighten the knot, seating the bowline with the tail through the loop — top-down\",\n  \"narration\": \"Across eight seconds, hands form a Bowline in three steps: forming the loop, threading the working end through and around, and tightening the knot. The sequence stays strictly hands-only with a thick rope, guiding the viewer from initial loop to final secure bowline.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Form the initial loop in the standing part of the rope — close-up of hands\nShot 2 [00:02-00:05]: Bring the working end up through the loop, around the back of the standing part, and down toward the loop — side-angle\nShot 3 [00:05-00:08]: Tighten the knot, seating the bowline with the tail through the loop — top-down",
+    "narration": "Across eight seconds, hands form a Bowline in three steps: forming the loop, threading the working end through and around, and tightening the knot. The sequence stays strictly hands-only with a thick rope, guiding the viewer from initial loop to final secure bowline."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 5.8,
+  "feedback": "The sequence stays on topic with hands-only Bowline on a thick rope and uses three clear shots with defined camera angles. To more closely match the gold standard, tighten the cadence to the exact three-second blocks and enrich the visuals with rope texture and lighting cues; also align the bowline step wording (loop, pass through, around the standing part, tighten) to mirror the canonical description. Consider including canonical terminology (rabbit hole/tree) to enhance cinematic accuracy.",
+  "strengths": [
+    "Clear three-shot structure with distinct camera angles (close-up, side-angle, top-down)",
+    "Maintains hands-only focus on the Bowline with a thick rope"
+  ],
+  "fixes": [
+    "Increase visual richness with texture and lighting details",
+    "Harmonize step language with canonical Bowline terminology and cadence"
+  ]
+}

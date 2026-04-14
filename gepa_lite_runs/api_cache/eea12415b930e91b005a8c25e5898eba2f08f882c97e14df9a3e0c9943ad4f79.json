@@ -1,0 +1,34 @@
+{
+  "task_id": "7.mp4",
+  "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+  "raw_generation": "{\"script\": \"[00:00-00:02] Shot 1: The taxi, a yellow New York City taxi, begins to move from the curb into Times Square, street-level view. - Camera: Eye-level, Framing: Medium, Movement: Slow Tracking, Subject: taxi.\\n[00:02-00:05] Shot 2: Macro close-up of chrome trim and paint texture as the taxi pushes in toward the frame. - Camera: Macro, Framing: Close, Movement: Push-in, Subject: taxi.\\n[00:05-00:08] Shot 3: The taxi travels through Times Square in a wide, street-level view, with neon signs towering overhead as a light track keeps pace along the curb. - Camera: Eye-level, Framing: Wide, Movement: Light Track, Subject: taxi.\", \"narration\": \"A yellow New York City taxi driving through Times Square, street-level view. In Shot 1, the taxi begins to move from the curb into Times Square, captured at eye-level with a medium framing as the camera slowly tracks its first deliberate motion. In Shot 2, a macro close-up reveals chrome trim and paint texture as the taxi pushes in toward the frame. In Shot 3, the taxi travels through Times Square in a wide, street-level view, with neon signs towering overhead as a light track keeps pace along the curb. Together, the sequence offers a focused, temporal view of the topic, highlighting how a yellow taxi navigates Times Square from street level.\"}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: The taxi, a yellow New York City taxi, begins to move from the curb into Times Square, street-level view. - Camera: Eye-level, Framing: Medium, Movement: Slow Tracking, Subject: taxi.\n[00:02-00:05] Shot 2: Macro close-up of chrome trim and paint texture as the taxi pushes in toward the frame. - Camera: Macro, Framing: Close, Movement: Push-in, Subject: taxi.\n[00:05-00:08] Shot 3: The taxi travels through Times Square in a wide, street-level view, with neon signs towering overhead as a light track keeps pace along the curb. - Camera: Eye-level, Framing: Wide, Movement: Light Track, Subject: taxi.",
+    "narration": "A yellow New York City taxi driving through Times Square, street-level view. In Shot 1, the taxi begins to move from the curb into Times Square, captured at eye-level with a medium framing as the camera slowly tracks its first deliberate motion. In Shot 2, a macro close-up reveals chrome trim and paint texture as the taxi pushes in toward the frame. In Shot 3, the taxi travels through Times Square in a wide, street-level view, with neon signs towering overhead as a light track keeps pace along the curb. Together, the sequence offers a focused, temporal view of the topic, highlighting how a yellow taxi navigates Times Square from street level."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 6.2,
+  "final_score": 6.2,
+  "feedback": "The sequence stays centered on a yellow NYC taxi in Times Square and uses timestamped shots with camera-angle detail. However, the gold standard emphasizes two brief, high-contrast moments (wide Times Square and street-level tracking) and is more concise; the generated three-shot sequence introduces a macro close-up that diverges from this concise style. To align, trim extraneous shots and foreground a bold wide shot followed by street-level tracking, with tighter, more topic-focused narration that mirrors the gold standard’s framing and timing.",
+  "strengths": [
+    "Clear, timestamped structure",
+    "Cinematic camera-angle variety (eye-level, macro)"
+  ],
+  "fixes": [
+    "Reduce to two essential shots (wide Times Square, street-level tracking) to match gold standard",
+    "Keep narration succinct and focused on the taxi's movement through Times Square, avoiding extra meta-commentary unless required"
+  ]
+}

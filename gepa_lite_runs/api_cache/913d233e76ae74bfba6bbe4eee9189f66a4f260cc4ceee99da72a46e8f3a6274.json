@@ -1,0 +1,35 @@
+{
+  "task_id": "4.mp4",
+  "topic": "A close-up of a Newton's Cradle in motion on a desk, macro view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: The cradle begins to sway on the desk, captured in a macro close-up from a side-angle.\\nShot 2 [00:02-00:05]: Spheres collide in mid-motion on the desk, shown in a tight top-down view.\\nShot 3 [00:05-00:08]: The end ball swings and returns in slow motion on the desk, captured from a front view macro perspective.\",\n  \"narration\": \"An intimate macro sequence follows a Newton's Cradle in motion. From a side-angle macro close-up to a top-down collision and finally a front-view slow-motion swing, the eight seconds stay focused on the cradle.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: The cradle begins to sway on the desk, captured in a macro close-up from a side-angle.\nShot 2 [00:02-00:05]: Spheres collide in mid-motion on the desk, shown in a tight top-down view.\nShot 3 [00:05-00:08]: The end ball swings and returns in slow motion on the desk, captured from a front view macro perspective.",
+    "narration": "An intimate macro sequence follows a Newton's Cradle in motion. From a side-angle macro close-up to a top-down collision and finally a front-view slow-motion swing, the eight seconds stay focused on the cradle."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.2,
+  "final_score": 5.0,
+  "feedback": "The sequence stays focused on a Newton's Cradle in macro close-ups and uses clear shot prompts, but it diverges from the gold standard by starting with motion rather than a static setup with a hand lifting a ball. To better align, begin with a static five-ball shot, then show the hand lifting the outer ball, followed by energy transfer and broad oscillation. Use consistent 2–3 second segments and explicit camera angles comparable to the gold standard (e.g., static, close-up, top-down, slow-motion).\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear macro/angle labeling in each shot",
+    "Keeps focus on the cradle and its motion"
+  ],
+  "fixes": [
+    "Match the gold standard shot order (static setup with hand interaction first)",
+    "Adopt the same timestamp cadence and segment lengths",
+    "Describe energy transfer and rhythmic oscillation with corresponding camera angles (e.g., top-down, macro close-up)"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "task_id": "2.mp4",
+  "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+  "raw_generation": "{\n  \"script\": \"INT. KITCHEN - DAY\\nSIDE VIEW: A Coca-Cola bottle sits on a clean countertop. The new tethered cap is clearly attached to the neck by a short tether.\\nA person steps into frame from the side, holding the bottle upright with one hand.\\nCLOSE-UP: The tether and cap in crisp focus as fingers prepare to twist.\\nThe person twists the cap counterclockwise. The cap unlatches but stays connected to the bottle by its tether, flapping slightly as it frees.\\nThe cap rests momentarily against the tether, still attached, while the bottle mouth opens and a fizz escapes.\\nThe bottle is tilted to pour a small stream into a glass. The tethered cap remains attached at the top, swinging gently with the pour.\\nThe person places the bottle down, the side view ends with a smile and a satisfied nod.\",\n  \"narration\": \"VO: Meet the new Coca-Cola bottle with an attached tethered cap. Seen from the side, you can watch the cap stay connected by a short tether as you open and pour. To open, twist the cap counterclockwise; the cap detaches but remains tethered to the bottle. Pour smoothly—the cap stays attached, keeping your counter clean and your cap within reach for the next sip. Coca-Cola. Refreshment, reimagined.\"\n}",
+  "parsed_generation": {
+    "script": "INT. KITCHEN - DAY\nSIDE VIEW: A Coca-Cola bottle sits on a clean countertop. The new tethered cap is clearly attached to the neck by a short tether.\nA person steps into frame from the side, holding the bottle upright with one hand.\nCLOSE-UP: The tether and cap in crisp focus as fingers prepare to twist.\nThe person twists the cap counterclockwise. The cap unlatches but stays connected to the bottle by its tether, flapping slightly as it frees.\nThe cap rests momentarily against the tether, still attached, while the bottle mouth opens and a fizz escapes.\nThe bottle is tilted to pour a small stream into a glass. The tethered cap remains attached at the top, swinging gently with the pour.\nThe person places the bottle down, the side view ends with a smile and a satisfied nod.",
+    "narration": "VO: Meet the new Coca-Cola bottle with an attached tethered cap. Seen from the side, you can watch the cap stay connected by a short tether as you open and pour. To open, twist the cap counterclockwise; the cap detaches but remains tethered to the bottle. Pour smoothly—the cap stays attached, keeping your counter clean and your cap within reach for the next sip. Coca-Cola. Refreshment, reimagined."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.2,
+  "final_score": 4.0,
+  "feedback": "The concept of a Coca-Cola bottle with an attached tethered cap and a side-view opening is present, and close-ups emphasize the cap mechanism. However, the output fails the timestamping requirement and the exact three-shot cadence of the gold standard. To fix, adopt bracketed timestamps in the [mm:ss-mm:ss] format, structure the sequence into three distinct shots (side-view medium shot; close-up on the cap with hinge; tilt-to-drink), and tighten the narration to explicitly describe the hinge/tether behavior and its effect on the cap during pouring.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear focus on the tethered cap concept and the bottle being opened.",
+    "Incorporates close-up and side-view elements to highlight the mechanism."
+  ],
+  "fixes": [
+    "Use exact bracketed timestamps [00:00-00:03], [00:03-00:05], [00:05-00:08].",
+    "Define camera angles precisely: side-view medium shot, macro/close-up on cap with hinge, side-angle tilt to pour; describe the hinge/tether behavior explicitly."
+  ]
+}

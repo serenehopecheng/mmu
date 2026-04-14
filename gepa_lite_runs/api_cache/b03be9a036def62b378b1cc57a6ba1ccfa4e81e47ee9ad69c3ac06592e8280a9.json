@@ -1,0 +1,34 @@
+{
+  "task_id": "2.mp4",
+  "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: A person opening a bottle of Coca-Cola with the new attached tethered cap, side view. - Camera: Side view, Framing: Medium shot, Movement: Static, Subject: single.\\n[00:02-00:05] Shot 2: A person continues to twist the tethered cap on the Coca-Cola bottle, cap remains tethered. - Camera: Side view, Framing: Close-up, Movement: Static, Subject: single.\\n[00:05-00:08] Shot 3: The bottle is opened; the tethered cap swings slightly as the person holds the opened Coca-Cola bottle, side view. - Camera: Side view, Framing: Medium close-up, Movement: Static, Subject: single.\",\n  \"narration\": \"A person opening a bottle of Coca-Cola with the new attached tethered cap, side view. In Shot 1, we see the person from the side as they grasp the Coca-Cola bottle and align the tethered cap for action. In Shot 2, a close-up captures the hand twisting the tethered cap while the cap remains attached to the bottle. In Shot 3, the bottle opens and the tethered cap swings slightly, the subject still in frame, showing the completed action and the ease of access the tethered design provides.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: A person opening a bottle of Coca-Cola with the new attached tethered cap, side view. - Camera: Side view, Framing: Medium shot, Movement: Static, Subject: single.\n[00:02-00:05] Shot 2: A person continues to twist the tethered cap on the Coca-Cola bottle, cap remains tethered. - Camera: Side view, Framing: Close-up, Movement: Static, Subject: single.\n[00:05-00:08] Shot 3: The bottle is opened; the tethered cap swings slightly as the person holds the opened Coca-Cola bottle, side view. - Camera: Side view, Framing: Medium close-up, Movement: Static, Subject: single.",
+    "narration": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view. In Shot 1, we see the person from the side as they grasp the Coca-Cola bottle and align the tethered cap for action. In Shot 2, a close-up captures the hand twisting the tethered cap while the cap remains attached to the bottle. In Shot 3, the bottle opens and the tethered cap swings slightly, the subject still in frame, showing the completed action and the ease of access the tethered design provides."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 4.0,
+    "narration_insight": 4.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.0,
+  "final_score": 5.0,
+  "feedback": "Compared to the gold standard, the script stays on topic and uses clear timestamped shots with defined camera angles, but the pacing and end action differ. To better align, adjust the three-shot sequence to mirror the gold standard's pacing ([00:00-00:03] side-view medium shot, [00:03-00:05] close-up on the cap hinge, [00:05-00:08] tilt to drink) and explicitly show the cap detaching from the ring while tethered. Consider tightening narration to emphasize the hinge/tether mechanism rather than general action.",
+  "strengths": [
+    "Clear, consistent subject focus and side-view framing",
+    "Timestamped shots with distinct camera angles and concise action cues"
+  ],
+  "fixes": [
+    "Align shot timing and sequence exactly with the gold standard (00:00-00:03, 00:03-00:05, 00:05-00:08) and depict the cap detaching from the ring while remaining tethered",
+    "Refine narration to highlight the hinge/attachment mechanism and its benefit rather than broad action"
+  ]
+}

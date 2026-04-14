@@ -1,0 +1,35 @@
+{
+  "task_id": "3.mp4",
+  "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: front view: The person adds ground coffee to the French Press.\\nShot 2 [00:02-00:05]: close-up: The person pours hot water over the grounds, saturating them.\\nShot 3 [00:05-00:08]: top-down: The person presses the plunger to brew the coffee.\",\n  \"narration\": \"Three tight beats unfold on a countertop: add ground coffee to the French Press, pour hot water to bloom, then press the plunger to finish the brew. The sequence is concise, cinematic, and focused on the single subject throughout the process.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: front view: The person adds ground coffee to the French Press.\nShot 2 [00:02-00:05]: close-up: The person pours hot water over the grounds, saturating them.\nShot 3 [00:05-00:08]: top-down: The person presses the plunger to brew the coffee.",
+    "narration": "Three tight beats unfold on a countertop: add ground coffee to the French Press, pour hot water to bloom, then press the plunger to finish the brew. The sequence is concise, cinematic, and focused on the single subject throughout the process."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.6,
+  "final_score": 5.6,
+  "feedback": "The generated prompt adheres to the topic with a clear countertop setup and camera angles, but it omits key steps (stirring, wait time, pouring into a cup) found in the gold standard. To improve, add a fourth shot showing the bloom and wait, include glass carafe to reflect the setup, and describe a pour into a cup with a side view. Consider including a time-lapse for the 4-minute wait and potential SFX hints.",
+  "strengths": [
+    "Clear three-shot progression with distinct angles",
+    "Focus on core actions (grounds, water, plunge)"
+  ],
+  "fixes": [
+    "Add a stir shot and a wait/bloom step to match gold standard",
+    "Describe more visual details (steam, glass carafe, color) and include pour into cup in final shot",
+    "Consider time-lapse for the waiting period and optional SFX"
+  ]
+}

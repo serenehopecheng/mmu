@@ -1,0 +1,34 @@
+{
+  "task_id": "16.mp4",
+  "topic": "A close-up of a 'Vinyl Record Player' being started.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Power on the turntable — front view\\nShot 2 [00:02-00:05]: Platter spins up with the record — close-up\\nShot 3 [00:05-00:08]: Tonearm lowers and playback begins — side-angle\",\n  \"narration\": \"The sequence follows a vinyl record player as it powers up, the platter begins to spin with the record in motion, and the tonearm lowers to start playback.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Power on the turntable — front view\nShot 2 [00:02-00:05]: Platter spins up with the record — close-up\nShot 3 [00:05-00:08]: Tonearm lowers and playback begins — side-angle",
+    "narration": "The sequence follows a vinyl record player as it powers up, the platter begins to spin with the record in motion, and the tonearm lowers to start playback."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": false,
+    "narration_adds_context": false,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 3.0,
+    "topic_precision": 5.0
+  },
+  "base_quality_score": 4.6,
+  "final_score": 2.2,
+  "feedback": "Compared to the gold standard, the sequence should begin with a macro close-up of the record on the platter and a hand lowering the tonearm, followed by the needle entering the groove and a brief crackle. The current output starts with a front-view power-on shot and lacks the key close-up hand action and groove-contact moment. To fix, reframe as [00:00-00:04] macro shot of the record on the platter as it begins to spin, [00:04-00:08] show the tonearm lowering into the groove with the needle contacting the record (and a subtle crackle SFX) before the music starts.\nFailed checks: topic_fidelity, narration_adds_context",
+  "strengths": [
+    "- Clear three-shot structure with time stamps",
+    "- Action-forward, concise language"
+  ],
+  "fixes": [
+    "- Replace the opening with a macro close-up of the record on the platter",
+    "- Add a shot of the tonearm lowering and the needle contacting the groove, including a crackle/scratch sound cue"
+  ]
+}

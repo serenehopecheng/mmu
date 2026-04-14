@@ -1,0 +1,34 @@
+{
+  "task_id": "3.mp4",
+  "topic": "A person correctly using a French Press to brew coffee, countertop view.",
+  "raw_generation": "{\n  \"script\": \"Scene 1: Countertop wide shot. A person stands behind a tidy kitchen counter with a French press, a gooseneck kettle, a digital scale, and a mug. On-screen text: How to use a French Press.\\\\nScene 2: Close-up of the kettle heating; steam rises as the target temperature reaches about 200°F (93°C).\\\\nScene 3: The person rinses the French press with hot water to warm the carafe, then discards the rinse water.\\\\nScene 4: Grinding and measuring. A hand adds coarse ground coffee to the carafe, about 22 g for 330 ml of water. The scale shows the weight.\\\\nScene 5: Bloom phase. The person pours a small amount of hot water to saturate the grounds; a gentle bloom forms; a timer starts at 30 seconds.\\\\nScene 6: Pour and saturate. The person pours the remaining hot water slowly, ensuring even saturation.\\\\nScene 7: Stir and steep. The person gives a gentle stir, places the plunger on top (lid up, not pressed), and waits about 4 minutes.\\\\nScene 8: Plunge and pour. The person presses the plunger down slowly and pours the coffee into a mug.\\\\nScene 9: Clean up and enjoy. The person rinses the press and towels the counter; a final shot of the steaming cup.\",\n  \"narration\": \"Welcome to a quick countertop tutorial on using a French press. We'll walk you through each step for a great cup of coffee. First, preheat the press by rinsing it with hot water to warm the carafe. This helps maintain temperature through extraction. Then grind your coffee to a coarse, even consistency. For about 330 milliliters of water, use roughly 22 grams of coffee. Add the grounds to the carafe, then bloom by pouring a small amount of hot water to saturate them; wait about 30 seconds and let the coffee release its aroma. Pour in the remaining hot water slowly to ensure even saturation. Give a gentle stir to mix, place the plunger on top (lid up, not pressed), and let it steep for about four minutes. Finally, press the plunger down steadily and pour the coffee immediately. Clean your equipment after enjoying your brew. Enjoy the ritual of a well-made French press coffee.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1: Countertop wide shot. A person stands behind a tidy kitchen counter with a French press, a gooseneck kettle, a digital scale, and a mug. On-screen text: How to use a French Press.\\nScene 2: Close-up of the kettle heating; steam rises as the target temperature reaches about 200°F (93°C).\\nScene 3: The person rinses the French press with hot water to warm the carafe, then discards the rinse water.\\nScene 4: Grinding and measuring. A hand adds coarse ground coffee to the carafe, about 22 g for 330 ml of water. The scale shows the weight.\\nScene 5: Bloom phase. The person pours a small amount of hot water to saturate the grounds; a gentle bloom forms; a timer starts at 30 seconds.\\nScene 6: Pour and saturate. The person pours the remaining hot water slowly, ensuring even saturation.\\nScene 7: Stir and steep. The person gives a gentle stir, places the plunger on top (lid up, not pressed), and waits about 4 minutes.\\nScene 8: Plunge and pour. The person presses the plunger down slowly and pours the coffee into a mug.\\nScene 9: Clean up and enjoy. The person rinses the press and towels the counter; a final shot of the steaming cup.",
+    "narration": "Welcome to a quick countertop tutorial on using a French press. We'll walk you through each step for a great cup of coffee. First, preheat the press by rinsing it with hot water to warm the carafe. This helps maintain temperature through extraction. Then grind your coffee to a coarse, even consistency. For about 330 milliliters of water, use roughly 22 grams of coffee. Add the grounds to the carafe, then bloom by pouring a small amount of hot water to saturate them; wait about 30 seconds and let the coffee release its aroma. Pour in the remaining hot water slowly to ensure even saturation. Give a gentle stir to mix, place the plunger on top (lid up, not pressed), and let it steep for about four minutes. Finally, press the plunger down steadily and pour the coffee immediately. Clean your equipment after enjoying your brew. Enjoy the ritual of a well-made French press coffee."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 2.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 7.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 4.6,
+  "feedback": "The output adheres to the topic and includes helpful context in narration, but it uses a scene-based script instead of the required timestamped format. It also misses the precise, timestamped shot boundaries and explicit camera angles that define the gold standard (e.g., [00:00-00:02], macro/close-up, tracking). To align with the gold standard, convert to a timestamped, shot-by-shot structure with clear camera angles and durations, preserving the bloom, steep, and plunge sequence.\nFailed checks: example_alignment",
+  "strengths": [
+    "Covers core equipment and steps needed to brew with a French press.",
+    "Narration adds useful context (temperature, weights, timings) beyond the visible actions."
+  ],
+  "fixes": [
+    "Rewrite as timestamped segments in [00:00-00:02] style (e.g., [00:00-00:02], [00:02-00:04], ...), with distinct actions per shot.",
+    "Specify explicit camera angles for each shot (e.g., macro close-up on grounds, top-down blooming, side-view pouring) and align the sequence to the gold standard’s order (bloom, pour, stir, steep, plunge)."
+  ]
+}

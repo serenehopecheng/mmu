@@ -1,0 +1,35 @@
+{
+  "task_id": "17.mp4",
+  "topic": "A person changing a flat tire on a car.",
+  "raw_generation": "{\n  \"script\": \"Scene 1: Setup and safety\\n[Host] A car with a flat tire pulls over to the shoulder on a quiet road. Hazard lights are on. The driver sets the parking brake and places a reflective triangle behind the vehicle if available. The area is level and away from traffic.\\nScene 2: Tools and preparation\\n[Host] Gather the tools you’ll need: a spare tire, a jack, a lug wrench, and wheel chocks or heavy objects to block the wheel.\\nScene 3: Loosen lug nuts\\n[Host] Before lifting the car, slightly loosen the lug nuts while the wheel is still on the ground. Use steady, even pressure to break them loose.\\nScene 4: Lift the car\\n[Host] Locate the proper jacking point in your owner’s manual. Place the jack under the point and raise the car a few inches until the tire clears the ground. Do not get under the car while it is supported by the jack.\\nScene 5: Remove wheel\\n[Host] Remove the lug nuts completely and slide the wheel off the studs. Set the lug nuts somewhere safe.\\nScene 6: Mount spare\\n[Host] Align the spare tire with the studs and hand tighten the lug nuts.\\nScene 7: Lower and tighten\\n[Host] Lower the car to the ground. Tighten the lug nuts in a star pattern until snug, then give a final turn to ensure even pressure.\\nScene 8: Clean up and final checks\\n[Host] Put tools away, check the spare tire pressure, and store the flat tire if needed for a repair later. If the spare is temporary, plan to visit a tire shop soon. If at any point you feel unsafe, call roadside assistance.\",\n  \"narration\": \"VO: You pull over to a safe, level spot and switch on the hazard lights. The road falls quiet as you focus on the repair. First, you gather the tools: spare tire, jack, lug wrench, and wheel chocks. Donning gloves for grip and protection, you loosen the lug nuts a bit while the wheel remains on the ground. You locate the correct jacking point in the manual, place the jack, and raise the car until the tire is off the ground. Remember, never go under the car when it is only supported by a jack. You remove the lug nuts completely and take off the wheel. The spare goes on the studs, and you hand tighten the nuts. You lower the car and tighten the lug nuts in a star pattern for even tension, then perform a final check after the car is fully down. You tidy up the tools, check the spare’s pressure, and store the flat tire for a later repair. If you’re unsure at any step or the surroundings aren’t safe, the best option is to call roadside assistance.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1: Setup and safety\n[Host] A car with a flat tire pulls over to the shoulder on a quiet road. Hazard lights are on. The driver sets the parking brake and places a reflective triangle behind the vehicle if available. The area is level and away from traffic.\nScene 2: Tools and preparation\n[Host] Gather the tools you’ll need: a spare tire, a jack, a lug wrench, and wheel chocks or heavy objects to block the wheel.\nScene 3: Loosen lug nuts\n[Host] Before lifting the car, slightly loosen the lug nuts while the wheel is still on the ground. Use steady, even pressure to break them loose.\nScene 4: Lift the car\n[Host] Locate the proper jacking point in your owner’s manual. Place the jack under the point and raise the car a few inches until the tire clears the ground. Do not get under the car while it is supported by the jack.\nScene 5: Remove wheel\n[Host] Remove the lug nuts completely and slide the wheel off the studs. Set the lug nuts somewhere safe.\nScene 6: Mount spare\n[Host] Align the spare tire with the studs and hand tighten the lug nuts.\nScene 7: Lower and tighten\n[Host] Lower the car to the ground. Tighten the lug nuts in a star pattern until snug, then give a final turn to ensure even pressure.\nScene 8: Clean up and final checks\n[Host] Put tools away, check the spare tire pressure, and store the flat tire if needed for a repair later. If the spare is temporary, plan to visit a tire shop soon. If at any point you feel unsafe, call roadside assistance.",
+    "narration": "VO: You pull over to a safe, level spot and switch on the hazard lights. The road falls quiet as you focus on the repair. First, you gather the tools: spare tire, jack, lug wrench, and wheel chocks. Donning gloves for grip and protection, you loosen the lug nuts a bit while the wheel remains on the ground. You locate the correct jacking point in the manual, place the jack, and raise the car until the tire is off the ground. Remember, never go under the car when it is only supported by a jack. You remove the lug nuts completely and take off the wheel. The spare goes on the studs, and you hand tighten the nuts. You lower the car and tighten the lug nuts in a star pattern for even tension, then perform a final check after the car is fully down. You tidy up the tools, check the spare’s pressure, and store the flat tire for a later repair. If you’re unsure at any step or the surroundings aren’t safe, the best option is to call roadside assistance."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 6.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.0,
+  "final_score": 4.8,
+  "feedback": "The result faithfully covers changing a flat tire, but it lacks the gold standard's timestamped, shot-by-shot structure and explicit camera angles. To align with the format, reframe the output as discrete time segments with [00:00-00:02], [00:02-00:04], etc, and specify camera angles (e.g., wide, close-up, macro) for each shot. Keep the sequence tight around the tire-change actions and maintain a cinematic, action-first cadence.\nFailed checks: example_alignment",
+  "strengths": [
+    "Covers the full tire-change process from safety setup to final checks.",
+    "Clear, consistent host narration guiding steps."
+  ],
+  "fixes": [
+    "Adopt the gold standard's timestamped shot structure, e.g., [00:00-00:02] and [00:02-00:04].",
+    "Include explicit, varied camera angles per shot (wide, close-up, macro, tracking) and concrete visual descriptions.",
+    "Maintain a single, focused narrative thread per shot and trim additional non-essential elements."
+  ]
+}

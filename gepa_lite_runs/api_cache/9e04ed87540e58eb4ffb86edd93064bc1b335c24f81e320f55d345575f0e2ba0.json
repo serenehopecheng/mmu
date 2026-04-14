@@ -1,0 +1,36 @@
+{
+  "task_id": "9.mp4",
+  "topic": "A Mongolian horseman using an Uurga to catch a wild horse, wide landscape shot.",
+  "raw_generation": "{\n  \"script\": \"EXT. MONGOLIAN STEPPE - DAY\\nA sweeping wide shot reveals endless grass under a pale blue sky. A lone horseman rides a sturdy Mongolian horse. In his hand he holds an Uurga, a long rope attached to a wooden throwing staff.\\nThe wind moves the grass in amber waves, and mountain silhouettes fill the horizon.\\n\\nCUT TO:\\nCLOSE UP on the Uurga as the rope coils and the leather grip is worn smooth by use.\\n\\nEXT. RIDGE - WIDE\\nA wild horse appears at the far edge of a ridge, nostrils flaring and ears pinned. It tests the air, then pivots and bucks, trying to break away.\\n\\nThe horseman tightens his seat, turns his mount with practiced ease, and begins to close the distance with patient speed.\\n\\nMONTAGE:\\n- The Uurga arcs through the air in a single fluid loop.\\n- The rope settles around the target and the wild horse shudders, then slows.\\n- The horseman moves in, maintaining calm posture, speaking softly to the animal through steady breath and quiet command.\\n\\nCLOSE UP:\\nThe rope tightens slightly as the horse comes under control. The horseman dismounts with deliberate ease and slides a securing knot through the tether.\\n\\nMEDIUM SHOT:\\nThe wild horse is now calm, standing tethered to a post. The horseman stands nearby, watching the animal with respect as wind and grass whisper across the plain.\\n\\nFADE OUT.\",\n  \"narration\": \"On the Mongolian steppe, tradition and skill meet the living wind. The Uurga is more than a tool; it is a bridge between horse and rider. Here, the wild horse tests resolve, and the horseman answers with patience, balance, and respect for the land. This is Mongolia, where every capture is a moment in the enduring story between human and horse.\"\n}",
+  "parsed_generation": {
+    "script": "EXT. MONGOLIAN STEPPE - DAY\nA sweeping wide shot reveals endless grass under a pale blue sky. A lone horseman rides a sturdy Mongolian horse. In his hand he holds an Uurga, a long rope attached to a wooden throwing staff.\nThe wind moves the grass in amber waves, and mountain silhouettes fill the horizon.\n\nCUT TO:\nCLOSE UP on the Uurga as the rope coils and the leather grip is worn smooth by use.\n\nEXT. RIDGE - WIDE\nA wild horse appears at the far edge of a ridge, nostrils flaring and ears pinned. It tests the air, then pivots and bucks, trying to break away.\n\nThe horseman tightens his seat, turns his mount with practiced ease, and begins to close the distance with patient speed.\n\nMONTAGE:\n- The Uurga arcs through the air in a single fluid loop.\n- The rope settles around the target and the wild horse shudders, then slows.\n- The horseman moves in, maintaining calm posture, speaking softly to the animal through steady breath and quiet command.\n\nCLOSE UP:\nThe rope tightens slightly as the horse comes under control. The horseman dismounts with deliberate ease and slides a securing knot through the tether.\n\nMEDIUM SHOT:\nThe wild horse is now calm, standing tethered to a post. The horseman stands nearby, watching the animal with respect as wind and grass whisper across the plain.\n\nFADE OUT.",
+    "narration": "On the Mongolian steppe, tradition and skill meet the living wind. The Uurga is more than a tool; it is a bridge between horse and rider. Here, the wild horse tests resolve, and the horseman answers with patience, balance, and respect for the land. This is Mongolia, where every capture is a moment in the enduring story between human and horse."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 3.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 7.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.2,
+  "final_score": 5.0,
+  "feedback": "The script captures the Mongolian steppe and the Uurga-based horse capture, but it diverges from the gold standard by not using bracketed timestamps or a tight two-shot structure. It includes additional montage and follow-up shots (dismount, tether) that aren’t in the reference. To fix, present a concise, timestamped sequence with two clear shots: [00:00-00:04] wide landscape with rider and uurga; [00:04-00:08] extended uurga loop toward a wild horse, focusing on balance and capture.\nFailed checks: example_alignment",
+  "strengths": [
+    "Atmospheric steppe setting with descriptive visuals (grass, sky, wind).",
+    "Clear focus on the Uurga and the capture action; remains centered on the rider and horse."
+  ],
+  "fixes": [
+    "Adopt the gold standard’s timestamped shot structure (e.g., [00:00-00:04], [00:04-00:08]).",
+    "Limit to the core two-shot sequence showing the capture with the uurga; reduce side actions (dismounting, tethering) unless required by the brief.",
+    "Use concise, action-first lines that specify camera angles (wide, tracking, close-up) in bracketed segments.",
+    "Match the exact cadence of the gold standard: a wide landscape shot followed by the uurga extension toward the wild horse."
+  ]
+}

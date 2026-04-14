@@ -1,0 +1,36 @@
+{
+  "task_id": "17.mp4",
+  "topic": "A person changing a flat tire on a car.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: The person loosens lug nuts, front view\\nShot 2 [00:02-00:05]: The person lifts the car with a jack, side-angle\\nShot 3 [00:05-00:08]: The person mounts the spare onto the hub, top-down\",\n  \"narration\": \"The sequence follows a single person changing a flat tire on a car, starting with loosening the lug nuts, then lifting the car, and finally mounting the spare. The shots stay tight on the tire-change process, with cinematic, action-first pacing.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: The person loosens lug nuts, front view\nShot 2 [00:02-00:05]: The person lifts the car with a jack, side-angle\nShot 3 [00:05-00:08]: The person mounts the spare onto the hub, top-down",
+    "narration": "The sequence follows a single person changing a flat tire on a car, starting with loosening the lug nuts, then lifting the car, and finally mounting the spare. The shots stay tight on the tire-change process, with cinematic, action-first pacing."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 3.0,
+    "topic_precision": 5.0
+  },
+  "base_quality_score": 4.8,
+  "final_score": 4.8,
+  "feedback": "The sequence covers loosening nuts, lifting the car, and mounting the spare, but misses key steps in the gold standard: removing the flat tire, tightening the lug nuts in a star pattern, and the final lowering with torque. To align with the gold standard, add a shot showing tire removal and spare placement, a shot demonstrating star-pattern nut tightening, and a final shot of lowering the car and completing the torque. Also align timestamps and durations to the canonical [00:00-00:03], [00:03-00:06], [00:06-00:08] format with precise camera angles.",
+  "strengths": [
+    "Clear three-shot structure with distinct camera angles",
+    "Action-first, cinematic wording",
+    "Maintains focus on a single subject throughout"
+  ],
+  "fixes": [
+    "Include explicit tire removal and replacement sequence (remove tire, place spare, hand-tighten nuts in a star pattern)",
+    "Add final lowering and torque tightening after mounting the spare",
+    "Match gold-standard timestamp conventions and durations (e.g., [00:00-00:03], [00:03-00:06], [00:06-00:08]) with precise camera directions"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "task_id": "9.mp4",
+  "topic": "A Mongolian horseman using an Uurga to catch a wild horse, wide landscape shot.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Wide landscape establishing shot of a lone Mongolian horseman readying an uurga on the steppe.\\nShot 2 [00:02-00:05]: Side-angle as the horseman throws the uurga to loop a wild horse, dust rising.\\nShot 3 [00:05-00:08]: Front view as the horseman tightens the uurga to secure the catch with the wild horse restrained.\",\n  \"narration\": \"On the wind-swept steppe, a Mongolian horseman readies the uurga. He throws and tightens the lasso to secure the wild horse.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Wide landscape establishing shot of a lone Mongolian horseman readying an uurga on the steppe.\nShot 2 [00:02-00:05]: Side-angle as the horseman throws the uurga to loop a wild horse, dust rising.\nShot 3 [00:05-00:08]: Front view as the horseman tightens the uurga to secure the catch with the wild horse restrained.",
+    "narration": "On the wind-swept steppe, a Mongolian horseman readies the uurga. He throws and tightens the lasso to secure the wild horse."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.2,
+  "final_score": 5.0,
+  "feedback": "The output centers on a Mongolian horseman, an uurga, and a steppe setting with progressive actions, but it diverges from the gold standard's two-shot, 4-second-block structure. It also uses a slightly different camera cue set. To tighten alignment, present exactly two shots (e.g., [00:00-00:04] wide landscape establishing the action, [00:04-00:08] the capture with a lowering loop and tracking toward the horse), and use precise terms and angles (wide establishing, tracking, close-up) consistent with the gold standard.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear subject and setting alignment",
+    "Concise, actionable shot prompts"
+  ],
+  "fixes": [
+    "Adopt the two-shot structure with uniform time blocks [00:00-00:04] and [00:04-00:08], matching the gold standard's cadence.",
+    "Incorporate explicit camera angles (wide establishing, tracking, close-up) and use consistent terminology (uurga) to describe lowering the loop toward the wild horse."
+  ]
+}

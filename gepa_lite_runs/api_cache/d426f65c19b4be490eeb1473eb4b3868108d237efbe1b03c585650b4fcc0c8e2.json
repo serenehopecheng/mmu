@@ -1,0 +1,34 @@
+{
+  "task_id": "19.mp4",
+  "topic": "A person wearing a 'Hennin' headdress walking through a 15th-century court.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Subject enters in full-front view, hennin tall, stepping into the 15th-century court.\\nShot 2 [00:02-00:05]: Camera tracks in side-angle as the figure walks along the stone corridor of the court.\\nShot 3 [00:05-00:08]: Low-angle close-up as the hennin silhouette passes the throne, completing the walk through the court.\",\n  \"narration\": \"Across eight seconds, a lone figure wearing a hennin strides through a 15th-century court. The sequence moves from a frontal reveal to a side-angle walk along the corridor, finishing with a low-angle silhouette by the throne.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Subject enters in full-front view, hennin tall, stepping into the 15th-century court.\nShot 2 [00:02-00:05]: Camera tracks in side-angle as the figure walks along the stone corridor of the court.\nShot 3 [00:05-00:08]: Low-angle close-up as the hennin silhouette passes the throne, completing the walk through the court.",
+    "narration": "Across eight seconds, a lone figure wearing a hennin strides through a 15th-century court. The sequence moves from a frontal reveal to a side-angle walk along the corridor, finishing with a low-angle silhouette by the throne."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 4.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.6,
+  "final_score": 4.4,
+  "feedback": "The result keeps a single subject and uses clear camera angles, but its timestamp structure diverges from the gold standard. To tighten alignment, restructure into two 4-second segments: [00:00-00:04] a front reveal of a woman wearing a tall hennin in a 15th-century court; [00:04-00:08] a side-tracking shot along the corridor emphasizing the vertical silhouette and veil. Avoid extra throne close-ups and keep the focus on the hennin-wearing subject.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear subject and camera-angle variety",
+    "Explicit hennin and 15th-century court context"
+  ],
+  "fixes": [
+    "Adopt the two-shot, 4-second interval structure [00:00-00:04] and [00:04-00:08]",
+    "Describe the woman with veil and tall hennin; omit additional elements like a throne close-up"
+  ]
+}

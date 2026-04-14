@@ -1,0 +1,35 @@
+{
+  "task_id": "23.mp4",
+  "topic": "A technician performing a 'Three-Point Bend' test on a carbon fiber sample.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view: The technician places the carbon fiber sample on the three-point bending fixture, aligning the center with the supports.\\nShot 2 [00:02-00:05]: Close-up: The loading nose descends to contact the sample as the supports hold the ends steady.\\nShot 3 [00:05-00:08]: Side-angle: The technician watches the midspan deflection while the load increases toward the fracture threshold.\",\n  \"narration\": \"The technician secures the carbon fiber sample in the three-point bend fixture and aligns it for testing. The loading nose engages and midspan deflection is observed as the load increases.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view: The technician places the carbon fiber sample on the three-point bending fixture, aligning the center with the supports.\nShot 2 [00:02-00:05]: Close-up: The loading nose descends to contact the sample as the supports hold the ends steady.\nShot 3 [00:05-00:08]: Side-angle: The technician watches the midspan deflection while the load increases toward the fracture threshold.",
+    "narration": "The technician secures the carbon fiber sample in the three-point bend fixture and aligns it for testing. The loading nose engages and midspan deflection is observed as the load increases."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.8,
+  "final_score": 6.8,
+  "feedback": "The sequence captures the three-point bending setup and a camera-focused progression, but it lacks the explicit fracture moment and fixture details emphasized in the gold standard. Consider aligning the shot structure to two clear intervals [00:00-00:04] and [00:04-00:08], show the carbon fiber on metal supports under vertical load, and include a definitive fracture cue. Streamline shot labels to mirror the gold standard’s bracketed format and enhance lighting/texture cues for visuals.",
+  "strengths": [
+    "Clear identification of three-shot sequence and camera angles",
+    "Covers loading contact and midspan deflection"
+  ],
+  "fixes": [
+    "Adopt two-interval timing to match gold standard",
+    "Include explicit fracture event and fixture details",
+    "Adjust wording to match concise, bracketed timestamp style without 'Shot' labels"
+  ]
+}

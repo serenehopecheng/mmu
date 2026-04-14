@@ -1,0 +1,34 @@
+{
+  "task_id": "7.mp4",
+  "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+  "raw_generation": "{\"script\": \"SCENE 1 - Street-level exterior: A bright yellow NYC taxi sits at the curb on a busy Times Square street. The camera is at ground level, just a few inches off the pavement, staring up at the taxi's chrome grille as reflections from towering neon signs shimmer on the paint. Distant chatter, horns, and a warm exhaust hum fill the air. The meter lights flicker softly as the driver glances forward.\\nSCENE 2 - Exterior: The taxi begins to move. The camera remains low, hugging the curb as the wheel taps over the asphalt. Giant LED billboards flash in the background; a sea of pedestrians flows along the sidewalks, phones up, people in motion. The taxi's windshield catches a kaleidoscope of color—pink, blue, and electric yellow—bouncing off the glass.\\nSCENE 3 - Exterior: We slow past street vendors and buskers. A performer with a tambourine taps a rhythm that blends with the bass from a nearby club. The TKTS sign glows in red, while cartoonish storefronts and a coffee cart create a moving mosaic against the towering skyline.\\nSCENE 4 - Exterior: The light changes. The taxi glides through a crosswalk as a sea of neon continues to flood the frame. The taxi meter ticks, interior lights glimmer, and the city hums at full volume: sirens, chatter, a distant subway rumble, and a jazzy street melody.\\nSCENE 5 - Exterior: Night deepens. The taxi slides past the iconic billboards and the neon halo around Times Square intensifies. The frame widens, revealing the city as a glowing grid while the yellow taxi continues on its way into the pulse of New York. The city breathes around it, alive, endless, and undeniable.\", \"narration\": \"SCENE 1: A yellow NYC taxi sits at the curb in Times Square, street level and ready. The neon signs spill across the paint as the camera, low to the ground, captures the moment before motion begins.\\nSCENE 2: The cab eases into the street. The curb-side perspective keeps the city tight in the frame—billboards blaze, pedestrians move in a bright river, and the taxi's color stands out in a wash of color.\\nSCENE 3: Street life fills the frame: a vendor, a busker, a red TKTS sign, and a mosaic of storefronts against the looming towers.\\nSCENE 4: The crosswalk becomes a choreography of light. The meter ticks, interior lights glow, and the city hums—sirens, music, footsteps, and the subway's distant rumble—all weaving into one moment.\\nSCENE 5: Night deepens and the yellow taxi continues onward, a bright thread weaving through Times Square's electric tapestry. The city breathes around it, alive, endless, and undeniable.\"}",
+  "parsed_generation": {
+    "script": "SCENE 1 - Street-level exterior: A bright yellow NYC taxi sits at the curb on a busy Times Square street. The camera is at ground level, just a few inches off the pavement, staring up at the taxi's chrome grille as reflections from towering neon signs shimmer on the paint. Distant chatter, horns, and a warm exhaust hum fill the air. The meter lights flicker softly as the driver glances forward.\nSCENE 2 - Exterior: The taxi begins to move. The camera remains low, hugging the curb as the wheel taps over the asphalt. Giant LED billboards flash in the background; a sea of pedestrians flows along the sidewalks, phones up, people in motion. The taxi's windshield catches a kaleidoscope of color—pink, blue, and electric yellow—bouncing off the glass.\nSCENE 3 - Exterior: We slow past street vendors and buskers. A performer with a tambourine taps a rhythm that blends with the bass from a nearby club. The TKTS sign glows in red, while cartoonish storefronts and a coffee cart create a moving mosaic against the towering skyline.\nSCENE 4 - Exterior: The light changes. The taxi glides through a crosswalk as a sea of neon continues to flood the frame. The taxi meter ticks, interior lights glimmer, and the city hums at full volume: sirens, chatter, a distant subway rumble, and a jazzy street melody.\nSCENE 5 - Exterior: Night deepens. The taxi slides past the iconic billboards and the neon halo around Times Square intensifies. The frame widens, revealing the city as a glowing grid while the yellow taxi continues on its way into the pulse of New York. The city breathes around it, alive, endless, and undeniable.",
+    "narration": "SCENE 1: A yellow NYC taxi sits at the curb in Times Square, street level and ready. The neon signs spill across the paint as the camera, low to the ground, captures the moment before motion begins.\nSCENE 2: The cab eases into the street. The curb-side perspective keeps the city tight in the frame—billboards blaze, pedestrians move in a bright river, and the taxi's color stands out in a wash of color.\nSCENE 3: Street life fills the frame: a vendor, a busker, a red TKTS sign, and a mosaic of storefronts against the looming towers.\nSCENE 4: The crosswalk becomes a choreography of light. The meter ticks, interior lights glow, and the city hums—sirens, music, footsteps, and the subway's distant rumble—all weaving into one moment.\nSCENE 5: Night deepens and the yellow taxi continues onward, a bright thread weaving through Times Square's electric tapestry. The city breathes around it, alive, endless, and undeniable."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.4,
+  "final_score": 5.2,
+  "feedback": "The output centers on a yellow NYC taxi in Times Square and follows a street-level progression, but it does not use the gold standard’s timestamp format or discrete [mm:ss] segments. It could improve by presenting clearly segmented shots with exact timing and distinct camera moves. Strengthen alignment with the topic by tightening the visual focus on Times Square neon reflections on the taxi and using precise, action-first phrasing for each shot.\nFailed checks: example_alignment",
+  "strengths": [
+    "Strong taxi-centric visuals with a street-level perspective.",
+    "Clear progression through multiple moments (idle, movement, night)."
+  ],
+  "fixes": [
+    "Adopt the exact timestamp format [00:00-00:04], [00:04-00:08], etc., with shot-by-shot segments.",
+    "Specify precise camera angles per shot (wide establishing, tracking, close-up) and minimize extraneous background elements to match the gold standard's style."
+  ]
+}

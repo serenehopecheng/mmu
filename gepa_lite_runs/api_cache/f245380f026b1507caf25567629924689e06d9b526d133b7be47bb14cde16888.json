@@ -1,0 +1,35 @@
+{
+  "task_id": "2.mp4",
+  "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Side view of a hand gripping a Coca-Cola bottle with a tethered cap, preparing to twist\\nShot 2 [00:02-00:05]: Close-up on the tethered cap as the hand twists it open\\nShot 3 [00:05-00:08]: Side-angle shot of the bottle opening as the tether retracts\",\n  \"narration\": \"Across eight seconds, a single hand grips a Coca-Cola bottle with the tethered cap and moves to twist. The cap opens with a crisp release as the tether retracts, finishing with the bottle opened in a side-view showcase.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Side view of a hand gripping a Coca-Cola bottle with a tethered cap, preparing to twist\nShot 2 [00:02-00:05]: Close-up on the tethered cap as the hand twists it open\nShot 3 [00:05-00:08]: Side-angle shot of the bottle opening as the tether retracts",
+    "narration": "Across eight seconds, a single hand grips a Coca-Cola bottle with the tethered cap and moves to twist. The cap opens with a crisp release as the tether retracts, finishing with the bottle opened in a side-view showcase."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 5.8,
+  "feedback": "Compared to the gold standard, the structure is clear and action-first, but the exact shot progression and hinge detail differ. To tighten alignment, adjust the sequence to mirror the gold: [00:00-00:03] side-view medium shot of a person holding the bottle and twisting the cap counterclockwise; [00:03-00:05] close-up on the cap as it remains attached via the hinge; [00:05-00:08] tilt the bottle to show the hinged cap preventing detachment. Emphasize the hinge mechanism and a drink-taking moment for closure.",
+  "strengths": [
+    "Clear three-shot structure with distinct camera angles.",
+    "Focuses on the tethered-cap mechanism and action of twisting."
+  ],
+  "fixes": [
+    "Align shot details and timing more closely with gold standard: [00:00-00:03] side-view medium shot, [00:03-00:05] close-up on cap showing hinge, [00:05-00:08] bottle tilted for drink, illustrating hinged release.",
+    "Use explicit counterclockwise twist and reference the cap detaching only via hinge as in the gold standard.",
+    "Refer to the subject as a person holding a Coca-Cola bottle and capture the drink-tilting moment to mirror the last gold-standard shot."
+  ]
+}

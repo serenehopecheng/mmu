@@ -1,0 +1,34 @@
+{
+  "task_id": "12.mp4",
+  "topic": "A chef preparing Hand-Pulled Lanzhou Ramen (Lamian).",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Chef measures flour and water, forms lamian dough — front view\\\\nShot 2 [00:02-00:05]: Chef pulls and stretches the dough into long lamian strands — close-up\\\\nShot 3 [00:05-00:08]: Noodles cook in broth and are plated — top-down\",\n  \"narration\": \"From dough formation to hand-pulled lamian strands, the chef pulls and shapes the noodles in sequence. The final shot shows the noodles in broth, plated for serving.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Chef measures flour and water, forms lamian dough — front view\\nShot 2 [00:02-00:05]: Chef pulls and stretches the dough into long lamian strands — close-up\\nShot 3 [00:05-00:08]: Noodles cook in broth and are plated — top-down",
+    "narration": "From dough formation to hand-pulled lamian strands, the chef pulls and shapes the noodles in sequence. The final shot shows the noodles in broth, plated for serving."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.0,
+  "final_score": 5.0,
+  "feedback": "Compared to the gold standard, the sequence covers dough handling and pulling but the first shot is shorter and the third shot ends with plating rather than the noodles being dropped into boiling water. The times are not aligned with the two-even 4-second blocks of the gold standard and the description could explicitly show rolling into a cylinder and the exponential strand formation. To improve, adjust to two 4-second blocks: [00:00-00:04] rolling cylinder and repetitive stretching/folding; [00:04-00:08] noodles dropped into boiling water, formed, and plated in broth; strengthen cinematic diction and reference Lanzhou lamian explicitly.",
+  "strengths": [
+    "Clear shot-by-shot structure with timestamps and explicit camera angles",
+    "Concise, action-first cinematic language that stays focused on lamian process"
+  ],
+  "fixes": [
+    "Add explicit rolling-into-cylinder and repetitive folding actions in the first shot",
+    "Make the third shot show noodles entering boiling water and the final plating, mirroring the gold standard's progression"
+  ]
+}

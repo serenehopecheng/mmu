@@ -1,0 +1,36 @@
+{
+  "task_id": "18.mp4",
+  "topic": "A dancer performing the 'Haka' with correct 'Pukana' facial expressions.",
+  "raw_generation": "{\n  \"script\": \"SCENE 1: OPENING SHOT. A group of dancers stands in a disciplined line on a wooden stage. A drumbeat begins, slow and steady. The lead dancer steps forward, eyes forward, posture strong.\\nLEAD DANCER: This is the Haka. We perform with focus, unity, and respect.\\nThe group responds with a synchronized stomp as the chant joins the drum, tightening the formation.\\n\\nSCENE 2: PUKANA PREPARATION. The lead signals a moment of heightened intensity. Dancers shift weight, shoulders square, and the first Pukana begins.\\nThe lead dancer enters Pukana: eyes widen, whites show, tongue darts or extends between the lips, brows furrow, lips curl back; the expression shifts from determined to fierce. Other dancers mirror the emotion at varying levels, creating a ripple of Pukana across the line while staying in time with the chant.\\n\\nSCENE 3: FULL PERFORMANCE. The tempo climbs. Stomping feet hit the floor in a thunderous rhythm; chests push forward; arms swing with purpose. The group locks gaze forward, delivering the haka’s momentum together, culminating in a powerful final shout.\\n\\nSCENE 4: CLOSING. The dancers hold a strong, shared pose, breath steadying, then release into a respectful stillness. On-screen caption: Respectful portrayal with guidance from Māori communities.\\n\\nNOTE: This depiction should be practiced with a Māori cultural advisor or iwi group, and performed with explicit permission and intent to honor the tradition.\",\n  \"narration\": \"The haka is a traditional Māori dance that expresses collective strength, welcome, and connection to ancestors. This video centers on Pukana, the expressive facial display used during the haka to intensify emotion and communication. Pukana involves wide, alert eyes with whites showing, a protruding tongue between the lips, and often tightened or curled lips, paired with an overall fierce facial tone. As the performance builds, the dancers move from calm focus to pronounced Pukana in rhythm with the chant and drumbeat, while stamping and chest slaps anchor the energy. Remember, the haka and Pukana are sacred aspects of Māori culture. Any public rendition should be guided by Māori mentors or an approved iwi group, and presented with consent, respect, and a clear educational or ceremonial purpose. The term ‘haka’ means ‘dance’ in Māori, and ‘pukana’ refers specifically to the eye-and-tacial expressions used within the performance.\"\n}",
+  "parsed_generation": {
+    "script": "SCENE 1: OPENING SHOT. A group of dancers stands in a disciplined line on a wooden stage. A drumbeat begins, slow and steady. The lead dancer steps forward, eyes forward, posture strong.\nLEAD DANCER: This is the Haka. We perform with focus, unity, and respect.\nThe group responds with a synchronized stomp as the chant joins the drum, tightening the formation.\n\nSCENE 2: PUKANA PREPARATION. The lead signals a moment of heightened intensity. Dancers shift weight, shoulders square, and the first Pukana begins.\nThe lead dancer enters Pukana: eyes widen, whites show, tongue darts or extends between the lips, brows furrow, lips curl back; the expression shifts from determined to fierce. Other dancers mirror the emotion at varying levels, creating a ripple of Pukana across the line while staying in time with the chant.\n\nSCENE 3: FULL PERFORMANCE. The tempo climbs. Stomping feet hit the floor in a thunderous rhythm; chests push forward; arms swing with purpose. The group locks gaze forward, delivering the haka’s momentum together, culminating in a powerful final shout.\n\nSCENE 4: CLOSING. The dancers hold a strong, shared pose, breath steadying, then release into a respectful stillness. On-screen caption: Respectful portrayal with guidance from Māori communities.\n\nNOTE: This depiction should be practiced with a Māori cultural advisor or iwi group, and performed with explicit permission and intent to honor the tradition.",
+    "narration": "The haka is a traditional Māori dance that expresses collective strength, welcome, and connection to ancestors. This video centers on Pukana, the expressive facial display used during the haka to intensify emotion and communication. Pukana involves wide, alert eyes with whites showing, a protruding tongue between the lips, and often tightened or curled lips, paired with an overall fierce facial tone. As the performance builds, the dancers move from calm focus to pronounced Pukana in rhythm with the chant and drumbeat, while stamping and chest slaps anchor the energy. Remember, the haka and Pukana are sacred aspects of Māori culture. Any public rendition should be guided by Māori mentors or an approved iwi group, and presented with consent, respect, and a clear educational or ceremonial purpose. The term ‘haka’ means ‘dance’ in Māori, and ‘pukana’ refers specifically to the eye-and-tacial expressions used within the performance."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 4.0,
+    "veo_prompt_craft": 4.0,
+    "narration_insight": 6.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.4,
+  "final_score": 4.2,
+  "feedback": "The generated piece centers on the Haka and Pukana and remains focused on the group, with contextual narration about the tradition. However, it lacks the gold-standard timestamped shot-breakdown and explicit camera angles. To align with the gold standard, structure the output into precise [00:00-00:02]-style segments with clear wide/close-up/tracking shots, and tighten action-first descriptions around pukana and the dancers' unity.\nFailed checks: example_alignment",
+  "strengths": [
+    "Covers core elements of Haka and Pukana and emphasizes respect/cultural guidance",
+    "Offers a multi-scene progression with explicit pukana cues"
+  ],
+  "fixes": [
+    "Adopt timestamped segments in [mm:ss-mm:ss] format with consistent intervals (e.g., 2-second beats)",
+    "Embed concrete camera angles (wide shot, close-up, tracking) and specify lens/framing where relevant",
+    "Keep narrative concise and cinematically charged, mirroring the gold standard's shot-by-shot style",
+    "Remove nonessential narration deviations and focus on visual sequence and facial expressions in pukana"
+  ]
+}

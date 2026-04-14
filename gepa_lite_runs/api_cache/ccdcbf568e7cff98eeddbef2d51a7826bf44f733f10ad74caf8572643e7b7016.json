@@ -1,0 +1,37 @@
+{
+  "task_id": "9.mp4",
+  "topic": "A Mongolian horseman using an Uurga to catch a wild horse, wide landscape shot.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: wide landscape establishing the steppe with the Mongolian horseman and Uurga ready - Camera: Wide, Framing: Full body, Distance: Wide, Movement: Static, Subject: Mongolian horseman.\\n[00:02-00:05] Shot 2: medium shot as he pivots toward the distant wild horse, Uurga in grip - Camera: Medium, Framing: Medium, Distance: Medium, Movement: Slow tracking, Subject: Mongolian horseman.\\n[00:05-00:08] Shot 3: close-up on hands and Uurga as the loop tightens toward the target - Camera: Close-up, Framing: Medium close, Distance: Close, Movement: Static, Subject: Mongolian horseman.\",\n  \"narration\": \"Shot 1 shows a lone Mongolian horseman on the wide steppe, Uurga in hand, surveying for a wild horse. Shot 2 narrows to a medium view as he pivots into position, the Uurga readied and his gaze fixed on the distant target. Shot 3 moves in close to his hands and rope as the loop closes toward the animal, signaling the moment of capture. The sequence presents a single, continuous pursuit across the landscape, illustrating how skill, focus, and the Uurga translate a wild horse into a controlled moment.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: wide landscape establishing the steppe with the Mongolian horseman and Uurga ready - Camera: Wide, Framing: Full body, Distance: Wide, Movement: Static, Subject: Mongolian horseman.\n[00:02-00:05] Shot 2: medium shot as he pivots toward the distant wild horse, Uurga in grip - Camera: Medium, Framing: Medium, Distance: Medium, Movement: Slow tracking, Subject: Mongolian horseman.\n[00:05-00:08] Shot 3: close-up on hands and Uurga as the loop tightens toward the target - Camera: Close-up, Framing: Medium close, Distance: Close, Movement: Static, Subject: Mongolian horseman.",
+    "narration": "Shot 1 shows a lone Mongolian horseman on the wide steppe, Uurga in hand, surveying for a wild horse. Shot 2 narrows to a medium view as he pivots into position, the Uurga readied and his gaze fixed on the distant target. Shot 3 moves in close to his hands and rope as the loop closes toward the animal, signaling the moment of capture. The sequence presents a single, continuous pursuit across the landscape, illustrating how skill, focus, and the Uurga translate a wild horse into a controlled moment."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 6.0,
+    "topic_precision": 6.0
+  },
+  "base_quality_score": 6.0,
+  "final_score": 6.0,
+  "feedback": "The sequence stays with the Mongolian horseman and the uurga, but it drifts from the gold standard by not showing the rider galloping with the uurga in the opening shot. To align more closely, make the first shot a wide steppe view with the rider actively in motion holding the uurga (00:00-00:04), then depict the loop extending toward a distant wild horse (00:04-00:08) culminating in capture. Use tighter, two-beat, action-first phrasing to mirror the gold standard’s cadence and explicit capture moment.",
+  "strengths": [
+    "Clear three-shot sequence with defined camera angles",
+    "Includes hands-on action with the uurga and loop",
+    "Narration provides context beyond visuals"
+  ],
+  "fixes": [
+    "Align shot durations to the gold standard (e.g., 00:00-00:04 and 00:04-00:08)",
+    "Change Shot 1 to show galloping with the uurga holding the loop",
+    "Move the capture action into Shot 2–4 with explicit ‘extend loop to capture’ language",
+    "Use more explicit terms like 'capture' and 'wild horse' to reinforce topic precision"
+  ]
+}

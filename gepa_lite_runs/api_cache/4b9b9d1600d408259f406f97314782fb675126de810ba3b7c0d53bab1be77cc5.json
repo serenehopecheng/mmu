@@ -1,0 +1,34 @@
+{
+  "task_id": "1.mp4",
+  "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+  "raw_generation": "{\"script\": \"EXT. URBAN STREET - DAWN\\nA close up low angle camera sits near the ground as a Tesla Cybertruck approaches a puddle.\\nShot 1: CLOSE UP on the front wheel and tire; water beads on the tread and reflections ripple on the slick asphalt.\\nShot 2: The tire meets the edge of the puddle; a plume of spray arcs outward as mud droplets scatter.\\nShot 3: LOW ANGLE on the steel body; the Cybertruck silhouette dominates the frame, raindrops bead along the brushed stainless surface.\\nShot 4: A side tracking shot follows the wheel; water sprays in a fan, city lights blur in the background.\\nShot 5: Quick macro of the angular lines and edge bevels of the body, a glint of light on the armor plating.\\nSFX: rain, distant traffic, the soft whine of the electric drivetrain.\\n\", \"narration\": \"A ground level view of the Cybertruck as it pushes through a puddle. Water explodes in a wide spray, the tire carving a path through the slick surface. The low angle emphasizes the truck's brutal, geometric silhouette, stainless steel catching streetlight and rain. It feels powerful, precise, and relentlessly futuristic.\"}",
+  "parsed_generation": {
+    "script": "EXT. URBAN STREET - DAWN\nA close up low angle camera sits near the ground as a Tesla Cybertruck approaches a puddle.\nShot 1: CLOSE UP on the front wheel and tire; water beads on the tread and reflections ripple on the slick asphalt.\nShot 2: The tire meets the edge of the puddle; a plume of spray arcs outward as mud droplets scatter.\nShot 3: LOW ANGLE on the steel body; the Cybertruck silhouette dominates the frame, raindrops bead along the brushed stainless surface.\nShot 4: A side tracking shot follows the wheel; water sprays in a fan, city lights blur in the background.\nShot 5: Quick macro of the angular lines and edge bevels of the body, a glint of light on the armor plating.\nSFX: rain, distant traffic, the soft whine of the electric drivetrain.\n",
+    "narration": "A ground level view of the Cybertruck as it pushes through a puddle. Water explodes in a wide spray, the tire carving a path through the slick surface. The low angle emphasizes the truck's brutal, geometric silhouette, stainless steel catching streetlight and rain. It feels powerful, precise, and relentlessly futuristic."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 6.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.4,
+  "final_score": 5.2,
+  "feedback": "The output captures the Cybertruck and puddle action with engaging angles, but fails the required timestamped, shot-by-shot format. It also introduces more shots than the gold standard, diluting the concise three-shot progression. To fix, convert to explicit [00:00-00:03], [00:03-00:06], [00:06-00:08] timestamps and align the sequence to three key shots (low-angle ground shot, front tire in puddle with spray, tracking through the water). Keep the focus strictly on the Cybertruck and its interaction with the puddle, trimming extra macro-style detail if needed.\nFailed checks: example_alignment",
+  "strengths": [
+    "Strong use of camera angles and dynamic puddle interaction (spray, reflections, textures).",
+    "Clear sequence progression with intentional emphasis on geometry and lighting."
+  ],
+  "fixes": [
+    "Add explicit timestamp blocks in the [00:00-00:03], [00:03-00:06], [00:06-00:08] format and condense to three distinct shots.",
+    "Refine to a single, cohesive shot progression: low-angle ground shot, close-up of the front tire in the puddle, and a tracking shot following the vehicle; remove extra macro/alternate angles to match the gold standard."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "task_id": "15.mp4",
+  "topic": "A person using a 'Self-Checkout' machine at a grocery store.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: In front of a 'Self-Checkout' machine at a grocery store - Camera: Wide-angle, Framing: Medium distance, Movement: Static, Subject: A person\\n[00:02-00:05] Shot 2: Over-the-shoulder view of the Self-Checkout screen as the person scans items - Camera: Over-the-shoulder, Framing: Close distance, Movement: Static, Subject: A person\\n[00:05-00:08] Shot 3: Close-up of the person's hands tapping the keypad and bagging items - Camera: Close-up, Framing: Close distance, Movement: Static, Subject: A person\",\n  \"narration\": \"This sequence follows A person using a 'Self-Checkout' machine at a grocery store through three quick views. In the first shot, a wide view establishes the setting as the person approaches the kiosk. The second shot shifts to an over-the-shoulder view of the Self-Checkout screen, where the person scans items and interacts with the touchscreen. The final shot zooms to a close-up of the person's fingers tapping the keypad and placing items in a bag, completing the transaction. Taken together, these visuals illustrate a typical self-checkout experience: fast, autonomous, and shopper-driven.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: In front of a 'Self-Checkout' machine at a grocery store - Camera: Wide-angle, Framing: Medium distance, Movement: Static, Subject: A person\n[00:02-00:05] Shot 2: Over-the-shoulder view of the Self-Checkout screen as the person scans items - Camera: Over-the-shoulder, Framing: Close distance, Movement: Static, Subject: A person\n[00:05-00:08] Shot 3: Close-up of the person's hands tapping the keypad and bagging items - Camera: Close-up, Framing: Close distance, Movement: Static, Subject: A person",
+    "narration": "This sequence follows A person using a 'Self-Checkout' machine at a grocery store through three quick views. In the first shot, a wide view establishes the setting as the person approaches the kiosk. The second shot shifts to an over-the-shoulder view of the Self-Checkout screen, where the person scans items and interacts with the touchscreen. The final shot zooms to a close-up of the person's fingers tapping the keypad and placing items in a bag, completing the transaction. Taken together, these visuals illustrate a typical self-checkout experience: fast, autonomous, and shopper-driven."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 5.8,
+  "feedback": "The sequence stays centered on a person using a Self-Checkout, but the gold standard emphasizes a beep during scanning and a card tap with receipt printing. To closer align, add an explicit beep cue, show the price/update on screen, then depict the payment step and receipt printing in clearly defined timestamp blocks. Consider tightening the cadence to two distinct 4-second segments to mirror the gold standard’s structure.",
+  "strengths": [
+    "Clear shot variety (wide, over-the-shoulder, close-up) that maintains focus on the user",
+    "Concise narration that frames the sequence as a typical self-checkout experience"
+  ],
+  "fixes": [
+    "Incorporate beeps and a payment action (tap card) and receipt print to align with the gold standard",
+    "Match the timestamp cadence to 00:00-00:04 and 00:04-00:08 with distinct actions and outcomes"
+  ]
+}

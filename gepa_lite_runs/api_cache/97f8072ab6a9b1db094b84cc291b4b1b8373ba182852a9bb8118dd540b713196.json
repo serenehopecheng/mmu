@@ -1,0 +1,34 @@
+{
+  "task_id": "7.mp4",
+  "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: A yellow New York City taxi driving through Times Square, street-level view - Camera: Eye-level, Framing: Wide, Movement: Static, Subject: taxi.\\n[00:02-00:05] Shot 2: A yellow New York City taxi driving through Times Square, street-level view - Camera: Eye-level, Framing: Medium, Movement: Slow Tracking, Subject: taxi.\\n[00:05-00:08] Shot 3: A yellow New York City taxi driving through Times Square, street-level view - Camera: Eye-level, Framing: Close, Movement: Push-in, Subject: taxi.\",\n  \"narration\": \"A yellow New York City taxi driving through Times Square, street-level view. In the first shot, the taxi sits in the frame with neon signs surrounding the street, camera static to establish the iconic crossroads. In the second shot, the taxi moves forward at eye level with medium framing as the billboards blur and lights reflect off the taxi’s surface. In the third shot, a close-up push-in captures the taxi’s front, the color vivid against Times Square’s glow, illustrating how a single vehicle threads the city’s energy through this famous junction.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: A yellow New York City taxi driving through Times Square, street-level view - Camera: Eye-level, Framing: Wide, Movement: Static, Subject: taxi.\n[00:02-00:05] Shot 2: A yellow New York City taxi driving through Times Square, street-level view - Camera: Eye-level, Framing: Medium, Movement: Slow Tracking, Subject: taxi.\n[00:05-00:08] Shot 3: A yellow New York City taxi driving through Times Square, street-level view - Camera: Eye-level, Framing: Close, Movement: Push-in, Subject: taxi.",
+    "narration": "A yellow New York City taxi driving through Times Square, street-level view. In the first shot, the taxi sits in the frame with neon signs surrounding the street, camera static to establish the iconic crossroads. In the second shot, the taxi moves forward at eye level with medium framing as the billboards blur and lights reflect off the taxi’s surface. In the third shot, a close-up push-in captures the taxi’s front, the color vivid against Times Square’s glow, illustrating how a single vehicle threads the city’s energy through this famous junction."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 7.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 7.0,
+  "final_score": 7.0,
+  "feedback": "The output accurately centers on a yellow NYC taxi in Times Square with street-level framing and clear timestamped shots. It could more closely mimic the gold standard’s two-shot structure and neon-lit, reflective textures. To improve, tighten the timing blocks to two segments, and foreground richer details like LED billboards reflecting on the taxi and specific color cues from Times Square lighting.",
+  "strengths": [
+    "Clear, action-first progression of shots focusing on the taxi.",
+    "Consistent topic focus and timestamped structure with camera-genre cues."
+  ],
+  "fixes": [
+    "Align timing structure to the gold standard style (e.g., [00:00-00:04], [00:04-00:08]) for tighter segment delineation.",
+    "Increase visual specificity by naming neon lighting reflections, billboard colors, and texture details (e.g., LED reflections on the taxi hood)."
+  ]
+}

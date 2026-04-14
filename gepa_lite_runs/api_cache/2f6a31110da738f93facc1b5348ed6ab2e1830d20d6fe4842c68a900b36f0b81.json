@@ -1,0 +1,34 @@
+{
+  "task_id": "26.mp4",
+  "topic": "An artisan practicing Kintsugi on a broken ceramic bowl, soft-lit tabletop scene.",
+  "raw_generation": "{\n  \"script\": \"[SCENE 1: ESTABLISHING SHOT]\\\\nA softly lit studio. A wooden tabletop holds a broken ceramic bowl and scattered shards resting on a felt pad. The camera lingers on warm textures, a small container of gold powder and a fine brush within reach. A calm artisan steps into frame, apron tied, moving with measured care.\\\\n\\\\n[SCENE 2: PREPARATION]\\\\nClose ups on urushi lacquer and gold dust. The artisan wipes the edges, tests the fit of the shards against the bowl’s base, then aligns the pieces on the pad. He speaks in a gentle voice about turning loss into beauty and the philosophy of wabi sabi.\\\\n\\\\n[SCENE 3: REPAIR PROCESS]\\\\nThin threads of lacquer are brushed along the cracks. The resin glistens as it wets the edges. Gold powder is sprinkled into the wet lacquer; veins begin to form as the surface catches the light. Macro footage shows the gleam growing along each fracture.\\\\n\\\\n[SCENE 4: ALIGNMENT AND Smoothing]\\\\nThe shards are nudged into place with careful fingertip pressure. The artisan smooths the seams with a soft cloth, removing excess lacquer while leaving the gold lines prominent.\\\\n\\\\n[SCENE 5: DRYING AND REFLECTION]\\\\nThe bowl rests under a warm lamp. The gold lines shine subtly as the lacquer cures. The artisan reflects on the idea that flaws can be markers of history and resilience.\\\\n\\\\n[SCENE 6: FINAL REVEAL]\\\\nThe finished bowl is shown from multiple angles, the gold seams tracing a luminous map of its journey. The scene ends with a gentle fade and the soft hum of the studio ambience.\",\n  \"narration\": \"Soft light settles over a wooden table where a broken ceramic bowl lies among its pieces. In a quiet studio, an artisan gathers the shards, cleans the edges, and begins the careful work of Kintsugi. Urushi lacquer and gold powder are prepared as the bowl is reassembled, seam by seam. The cracks drink the resin as the gold vein appears, a bright reminder of what was once broken. The process is slow, patient, and meditative, inviting the viewer to recognize beauty in imperfection. By the time the final shine appears, the bowl tells a new story of resilience and renewal, a delicate sculpture born from repair.\"\n}",
+  "parsed_generation": {
+    "script": "[SCENE 1: ESTABLISHING SHOT]\\nA softly lit studio. A wooden tabletop holds a broken ceramic bowl and scattered shards resting on a felt pad. The camera lingers on warm textures, a small container of gold powder and a fine brush within reach. A calm artisan steps into frame, apron tied, moving with measured care.\\n\\n[SCENE 2: PREPARATION]\\nClose ups on urushi lacquer and gold dust. The artisan wipes the edges, tests the fit of the shards against the bowl’s base, then aligns the pieces on the pad. He speaks in a gentle voice about turning loss into beauty and the philosophy of wabi sabi.\\n\\n[SCENE 3: REPAIR PROCESS]\\nThin threads of lacquer are brushed along the cracks. The resin glistens as it wets the edges. Gold powder is sprinkled into the wet lacquer; veins begin to form as the surface catches the light. Macro footage shows the gleam growing along each fracture.\\n\\n[SCENE 4: ALIGNMENT AND Smoothing]\\nThe shards are nudged into place with careful fingertip pressure. The artisan smooths the seams with a soft cloth, removing excess lacquer while leaving the gold lines prominent.\\n\\n[SCENE 5: DRYING AND REFLECTION]\\nThe bowl rests under a warm lamp. The gold lines shine subtly as the lacquer cures. The artisan reflects on the idea that flaws can be markers of history and resilience.\\n\\n[SCENE 6: FINAL REVEAL]\\nThe finished bowl is shown from multiple angles, the gold seams tracing a luminous map of its journey. The scene ends with a gentle fade and the soft hum of the studio ambience.",
+    "narration": "Soft light settles over a wooden table where a broken ceramic bowl lies among its pieces. In a quiet studio, an artisan gathers the shards, cleans the edges, and begins the careful work of Kintsugi. Urushi lacquer and gold powder are prepared as the bowl is reassembled, seam by seam. The cracks drink the resin as the gold vein appears, a bright reminder of what was once broken. The process is slow, patient, and meditative, inviting the viewer to recognize beauty in imperfection. By the time the final shine appears, the bowl tells a new story of resilience and renewal, a delicate sculpture born from repair."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 8.0,
+    "temporal_depth": 3.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 7.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.6,
+  "final_score": 5.4,
+  "feedback": "The output stays true to the topic with the artisan repairing a broken bowl using Kintsugi materials, and the narration adds mood and philosophy. However, it does not follow the gold standard’s timestamped shot-by-shot structure, instead using scene labels and prose. To tighten alignment, present a strict, timestamped sequence like [00:00-00:04], [00:04-00:08], etc., and foreground concise, camera-angle driven actions (top-down, macro, tracking) in each segment.\nFailed checks: example_alignment",
+  "strengths": [
+    "Rich detail about Kintsugi materials (urushi lacquer, gold powder) and warm, soft-lit atmosphere.",
+    "Narration provides context about mood and philosophy (wabi-sabi), enhancing thematic depth."
+  ],
+  "fixes": [
+    "Adopt the exact timestamped reel format with [00:00-00:04], [00:04-00:08], etc., and include explicit camera angles in each segment.",
+    "Keep a tight, two-scene or few-shot structure focused on the bowl and artisan, minimizing extraneous actions and ensuring single-subject focus per shot."
+  ]
+}

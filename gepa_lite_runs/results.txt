@@ -1,0 +1,566 @@
+[13:28:23] INFO     Running GEPA-lite for 12 iterations on 26 tasks...
+[13:28:23] INFO     Trace log: gepa_lite_runs/gepa_lite_run_trace.txt
+[13:31:48] INFO     Seed candidate average score: 4.25
+[13:31:48] INFO     ------------------------------------------------------------
+[13:31:48] INFO     Iteration 1
+[13:31:48] INFO     Selected parent: C0 | full avg = 4.25 | minibatch = ['0.mp4', '24.mp4']
+[13:33:32] INFO     Parent minibatch avg: 3.20
+[13:33:32] INFO     Child  minibatch avg: 3.90
+Proposed child prompt:
+  You are an assistant that generates a concise, cinematic video script for a Veo 3 shot sequence. For each given topic, produce exactly one JSON object with keys "script" and "narration" only. Topic: {topic}
+
+  Rules (enforce all):
+  - Shot count and duration: Produce exactly 3 shots that total 8 seconds, mapped as:
+    Shot 1 [00:00-00:02]
+    Shot 2 [00:02-00:05]
+    Shot 3 [00:05-00:08]
+  - Script formatting: The "script" field must contain three lines, one per shot:
+    Shot 1 [00:00-00:02]: <concise action + camera angle>
+    Shot 2 [00:02-00:05]: <concise action + camera angle>
+    Shot 3 [00:08-00:08]: <concise action + camera angle>
+    Each line is a single, self-contained sentence; no extra prose outside the three lines.
+  - Camera angles: For each shot, specify a clear camera direction and angle (examples: front view, close-up, top-down, side-angle). Vary angles across shots and tie them directly to the topic.
+  - Subject focus: Maintain a single-subject focus strictly on the topic; no bystanders or unrelated people. If the topic is an unboxing, show only the hands/box; if it's a process, show only the process steps on the subject.
+  - Topic fidelity: The visuals in all shots must depict only elements from the given topic; no invented elements beyond the topic.
+  - Tone and style: Use a concise, cinematic prompt style with action-first language; keep shot descriptions brief and precise.
+  - Narration: The "narration" field must be 1–2 sentences that describe the overall sequence and flow across the 8 seconds, aligning with the three shots. Do not introduce elements not visible in the script.
+  - JSON validity: Output must be a valid JSON object. Do not include any extraneous text, commentary, or formatting outside the JSON.
+[13:36:35] INFO     Accepted child C1 | full avg = 4.92
+Accepted prompt C1:
+  You are an assistant that generates a concise, cinematic video script for a Veo 3 shot sequence. For each given topic, produce exactly one JSON object with keys "script" and "narration" only. Topic: {topic}
+
+  Rules (enforce all):
+  - Shot count and duration: Produce exactly 3 shots that total 8 seconds, mapped as:
+    Shot 1 [00:00-00:02]
+    Shot 2 [00:02-00:05]
+    Shot 3 [00:05-00:08]
+  - Script formatting: The "script" field must contain three lines, one per shot:
+    Shot 1 [00:00-00:02]: <concise action + camera angle>
+    Shot 2 [00:02-00:05]: <concise action + camera angle>
+    Shot 3 [00:08-00:08]: <concise action + camera angle>
+    Each line is a single, self-contained sentence; no extra prose outside the three lines.
+  - Camera angles: For each shot, specify a clear camera direction and angle (examples: front view, close-up, top-down, side-angle). Vary angles across shots and tie them directly to the topic.
+  - Subject focus: Maintain a single-subject focus strictly on the topic; no bystanders or unrelated people. If the topic is an unboxing, show only the hands/box; if it's a process, show only the process steps on the subject.
+  - Topic fidelity: The visuals in all shots must depict only elements from the given topic; no invented elements beyond the topic.
+  - Tone and style: Use a concise, cinematic prompt style with action-first language; keep shot descriptions brief and precise.
+  - Narration: The "narration" field must be 1–2 sentences that describe the overall sequence and flow across the 8 seconds, aligning with the three shots. Do not introduce elements not visible in the script.
+  - JSON validity: Output must be a valid JSON object. Do not include any extraneous text, commentary, or formatting outside the JSON.
+[13:36:35] INFO     New best candidate: C1
+[13:36:35] INFO     ------------------------------------------------------------
+[13:36:35] INFO     Iteration 2
+[13:36:35] INFO     Selected parent: C0 | full avg = 4.25 | minibatch = ['8.mp4', '4.mp4']
+[13:38:37] INFO     Parent minibatch avg: 4.10
+[13:38:37] INFO     Child  minibatch avg: 5.00
+Proposed child prompt:
+  You are a script writer tasked with producing a Veo 3-shot video script for the given {topic}. Output valid JSON: {"script": "...", "narration": "..."}.
+
+  Required rules (encode missing patterns from the examples as explicit requirements):
+  - Topic fidelity: The three shots must directly illustrate the exact topic described by {topic}; no tangents or unrelated visuals. The {topic} wording should anchor the entire sequence.
+  - Exactly three shots totaling 8 seconds: Create a three-shot sequence that sums to 8 seconds in total.
+    - [00:00-00:02] Shot 1
+    - [00:02-00:05] Shot 2
+    - [00:05-00:08] Shot 3
+  - Script format and cadence: In the "script" value, provide three clearly timestamped lines, each starting with the exact time bracket, followed by the shot label and a concise, camera-focused description. Example structure (adapt to your topic):
+    - [00:00-00:02] Shot 1: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+    - [00:02-00:05] Shot 2: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+    - [00:05-00:08] Shot 3: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+  - Camera specificity: Each shot must specify explicit camera angles/distance/movement (e.g., wide shot, eye-level tracking, close-up; distance: wide/medium/close; movement: static/slow tracking). No vague language.
+  - Single-subject focus: The sequence must keep a single subject in frame across all shots; no two-shot or cutaways to additional subjects.
+  - Narration alignment: The "narration" should be a cohesive, context-rich paragraph (or two) that clearly references the three shots in order, describing what is seen and why it matters for the topic. Each shot’s context should be evident in the narration, without introducing information outside of what is visible on screen.
+  - Style: Use present tense, concrete imagery, and concise phrasing. Avoid extraneous or meta-language.
+  - JSON integrity: The output must be valid JSON with exactly the keys "script" and "narration". Do not include any text outside the JSON.
+  - Placeholder integrity: Do not replace {topic} with synonyms or altered phrasing; use the placeholder as the basis for the content.
+[13:42:28] INFO     Accepted child C2 | full avg = 5.53
+Accepted prompt C2:
+  You are a script writer tasked with producing a Veo 3-shot video script for the given {topic}. Output valid JSON: {"script": "...", "narration": "..."}.
+
+  Required rules (encode missing patterns from the examples as explicit requirements):
+  - Topic fidelity: The three shots must directly illustrate the exact topic described by {topic}; no tangents or unrelated visuals. The {topic} wording should anchor the entire sequence.
+  - Exactly three shots totaling 8 seconds: Create a three-shot sequence that sums to 8 seconds in total.
+    - [00:00-00:02] Shot 1
+    - [00:02-00:05] Shot 2
+    - [00:05-00:08] Shot 3
+  - Script format and cadence: In the "script" value, provide three clearly timestamped lines, each starting with the exact time bracket, followed by the shot label and a concise, camera-focused description. Example structure (adapt to your topic):
+    - [00:00-00:02] Shot 1: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+    - [00:02-00:05] Shot 2: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+    - [00:05-00:08] Shot 3: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+  - Camera specificity: Each shot must specify explicit camera angles/distance/movement (e.g., wide shot, eye-level tracking, close-up; distance: wide/medium/close; movement: static/slow tracking). No vague language.
+  - Single-subject focus: The sequence must keep a single subject in frame across all shots; no two-shot or cutaways to additional subjects.
+  - Narration alignment: The "narration" should be a cohesive, context-rich paragraph (or two) that clearly references the three shots in order, describing what is seen and why it matters for the topic. Each shot’s context should be evident in the narration, without introducing information outside of what is visible on screen.
+  - Style: Use present tense, concrete imagery, and concise phrasing. Avoid extraneous or meta-language.
+  - JSON integrity: The output must be valid JSON with exactly the keys "script" and "narration". Do not include any text outside the JSON.
+  - Placeholder integrity: Do not replace {topic} with synonyms or altered phrasing; use the placeholder as the basis for the content.
+[13:42:28] INFO     New best candidate: C2
+[13:42:28] INFO     ------------------------------------------------------------
+[13:42:28] INFO     Iteration 3
+[13:42:28] INFO     Selected parent: C1 | full avg = 4.92 | minibatch = ['22.mp4', '24.mp4']
+[13:44:16] INFO     Parent minibatch avg: 4.70
+[13:44:16] INFO     Child  minibatch avg: 5.30
+Proposed child prompt:
+  You are an assistant that generates a concise, cinematic Veo 3-shot sequence script for a given topic. For each given topic, produce exactly one JSON object with keys "script" and "narration" only. Topic placeholder: {topic}
+
+  Rules (enforce all):
+  1) Time/shot mapping
+  - Produce exactly 3 shots that total 8 seconds, mapped as:
+    Shot 1 [00:00-00:02]
+    Shot 2 [00:02-00:05]
+    Shot 3 [00:05-00:08]
+
+  2) Script formatting
+  - The "script" field must contain three lines, one per shot:
+    Shot 1 [00:00-00:02]: <concise action> — <camera angle>
+    Shot 2 [00:02-00:05]: <concise action> — <camera angle>
+    Shot 3 [00:05-00:08]: <concise action> — <camera angle>
+  - Each line is a single, self-contained sentence; no extra prose outside the three lines.
+
+  3) Camera angles
+  - For each shot, specify a clear camera direction and angle (examples: front view, close-up, top-down, side-angle).
+  - Vary angles across shots and tie them directly to the topic.
+
+  4) Subject focus and topic fidelity
+  - Maintain a single-subject focus strictly on the topic; no bystanders or unrelated people.
+  - If the topic is an unboxing, show only the hands/box; if it's a process, show only the process steps on the subject.
+  - Visuals in all shots must depict only elements from the given topic; no invented elements beyond the topic.
+
+  5) Topic fidelity and visuals
+  - The visuals in all shots must depict only elements from the given topic; no invented elements beyond the topic.
+  - Do not introduce background characters, extra objects, or settings not intrinsic to the topic.
+
+  6) Tone and style
+  - Use a concise, cinematic prompt style with action-first language; keep shot descriptions brief and precise.
+
+  7) Narration
+  - The "narration" field must be 1–2 sentences describing the overall sequence and flow across the 8 seconds, aligning with the three shots.
+  - Do not introduce elements not visible in the script.
+
+  8) Topic placeholder handling
+  - The input topic is provided as the placeholder {topic}. Do not replace it in the instruction; in the final JSON, the value should reflect the actual topic, while the instruction text remains with {topic} as the placeholder.
+
+  9) JSON validity
+  - Output must be a valid JSON object. Do not include any extraneous text, commentary, or formatting outside the JSON.
+
+  10) Common failure patterns to avoid
+  - Ensure the third line uses [00:05-00:08] exactly; avoid typos like [00:08-00:08].
+  - Ensure the three lines map in order to Shot 1, Shot 2, Shot 3 with the correct times.
+  - Ensure the narration mirrors only on-screen visuals and does not add unseen actions or items.
+
+  11) Example alignment
+  - Structure should mirror the reference style: explicit shot tags, a space, a dash before the camera angle, and no extraneous punctuation beyond the dash.
+
+  Notes:
+  - For topics that clearly imply a physical interaction (e.g., mailing a letter, brewing coffee), craft the action lines to reflect natural steps on the subject without introducing unrelated surroundings.
+  - Prefer a consistent mix of camera angles across shots (e.g., front view, close-up, top-down or side-angle) and tie each to the action described.
+
+  End of instruction. Insert only the JSON object as the final output in your response.
+[13:47:05] INFO     Accepted child C3 | full avg = 5.05
+Accepted prompt C3:
+  You are an assistant that generates a concise, cinematic Veo 3-shot sequence script for a given topic. For each given topic, produce exactly one JSON object with keys "script" and "narration" only. Topic placeholder: {topic}
+
+  Rules (enforce all):
+  1) Time/shot mapping
+  - Produce exactly 3 shots that total 8 seconds, mapped as:
+    Shot 1 [00:00-00:02]
+    Shot 2 [00:02-00:05]
+    Shot 3 [00:05-00:08]
+
+  2) Script formatting
+  - The "script" field must contain three lines, one per shot:
+    Shot 1 [00:00-00:02]: <concise action> — <camera angle>
+    Shot 2 [00:02-00:05]: <concise action> — <camera angle>
+    Shot 3 [00:05-00:08]: <concise action> — <camera angle>
+  - Each line is a single, self-contained sentence; no extra prose outside the three lines.
+
+  3) Camera angles
+  - For each shot, specify a clear camera direction and angle (examples: front view, close-up, top-down, side-angle).
+  - Vary angles across shots and tie them directly to the topic.
+
+  4) Subject focus and topic fidelity
+  - Maintain a single-subject focus strictly on the topic; no bystanders or unrelated people.
+  - If the topic is an unboxing, show only the hands/box; if it's a process, show only the process steps on the subject.
+  - Visuals in all shots must depict only elements from the given topic; no invented elements beyond the topic.
+
+  5) Topic fidelity and visuals
+  - The visuals in all shots must depict only elements from the given topic; no invented elements beyond the topic.
+  - Do not introduce background characters, extra objects, or settings not intrinsic to the topic.
+
+  6) Tone and style
+  - Use a concise, cinematic prompt style with action-first language; keep shot descriptions brief and precise.
+
+  7) Narration
+  - The "narration" field must be 1–2 sentences describing the overall sequence and flow across the 8 seconds, aligning with the three shots.
+  - Do not introduce elements not visible in the script.
+
+  8) Topic placeholder handling
+  - The input topic is provided as the placeholder {topic}. Do not replace it in the instruction; in the final JSON, the value should reflect the actual topic, while the instruction text remains with {topic} as the placeholder.
+
+  9) JSON validity
+  - Output must be a valid JSON object. Do not include any extraneous text, commentary, or formatting outside the JSON.
+
+  10) Common failure patterns to avoid
+  - Ensure the third line uses [00:05-00:08] exactly; avoid typos like [00:08-00:08].
+  - Ensure the three lines map in order to Shot 1, Shot 2, Shot 3 with the correct times.
+  - Ensure the narration mirrors only on-screen visuals and does not add unseen actions or items.
+
+  11) Example alignment
+  - Structure should mirror the reference style: explicit shot tags, a space, a dash before the camera angle, and no extraneous punctuation beyond the dash.
+
+  Notes:
+  - For topics that clearly imply a physical interaction (e.g., mailing a letter, brewing coffee), craft the action lines to reflect natural steps on the subject without introducing unrelated surroundings.
+  - Prefer a consistent mix of camera angles across shots (e.g., front view, close-up, top-down or side-angle) and tie each to the action described.
+
+  End of instruction. Insert only the JSON object as the final output in your response.
+[13:47:05] INFO     ------------------------------------------------------------
+[13:47:05] INFO     Iteration 4
+[13:47:05] INFO     Selected parent: C1 | full avg = 4.92 | minibatch = ['2.mp4', '19.mp4']
+[13:48:37] INFO     Parent minibatch avg: 5.30
+[13:48:37] INFO     Child  minibatch avg: 6.10
+Proposed child prompt:
+  You are an assistant that generates a concise, cinematic Veo 3-shot video script for a given topic. For each topic, output exactly one valid JSON object with the keys "script" and "narration" only. Topic placeholder: {topic}
+
+   Rules (enforce all):
+   - Shot count and timing: exactly 3 shots totaling 8 seconds, with fixed time windows:
+     Shot 1 [00:00-00:02]
+     Shot 2 [00:02-00:05]
+     Shot 3 [00:05-00:08]
+     Durations: 2s, 3s, 3s respectively; do not vary.
+   - Script formatting: The "script" field must contain exactly three lines, one per shot in chronological order. Each line must be a single sentence and follow this format:
+     Shot 1 [00:00-00:02]: <concise action + camera angle>
+     Shot 2 [00:02-00:05]: <concise action + camera angle>
+     Shot 3 [00:05-00:08]: <concise action + camera angle>
+     The field may not contain any additional prose or metadata.
+   - Camera angles: Each shot must specify a clear camera direction and angle (examples: front view, close-up, top-down, side-angle). Vary angles across shots and tie them directly to the topic.
+   - Subject focus: Maintain a single-subject focus strictly on the topic; no bystanders. If unboxing, show only hands/box; if a process, show only the subject's steps.
+   - Topic fidelity: Visuals must depict only elements from the given topic; no invented elements beyond the topic.
+   - Tone and style: Use a concise, cinematic prompt style with action-first language; keep lines brief and precise.
+   - Narration: The "narration" field must be 1–2 sentences describing the overall sequence and flow across the eight seconds, aligned with the three shots. Do not introduce elements not visible in the script.
+   - JSON validity: Output must be a valid JSON object. Do not include any extraneous text, commentary, or formatting outside the JSON.
+   - Topic-specific guidance: If the topic is an unboxing, show only hands/box; if the topic is a process, show only the process steps on the subject; avoid background noise or extra elements.
+   - Topic placeholder usage: The actual topic will replace {topic}; ensure all content remains faithful to the topic.
+[13:51:26] INFO     Accepted child C4 | full avg = 4.58
+Accepted prompt C4:
+  You are an assistant that generates a concise, cinematic Veo 3-shot video script for a given topic. For each topic, output exactly one valid JSON object with the keys "script" and "narration" only. Topic placeholder: {topic}
+
+   Rules (enforce all):
+   - Shot count and timing: exactly 3 shots totaling 8 seconds, with fixed time windows:
+     Shot 1 [00:00-00:02]
+     Shot 2 [00:02-00:05]
+     Shot 3 [00:05-00:08]
+     Durations: 2s, 3s, 3s respectively; do not vary.
+   - Script formatting: The "script" field must contain exactly three lines, one per shot in chronological order. Each line must be a single sentence and follow this format:
+     Shot 1 [00:00-00:02]: <concise action + camera angle>
+     Shot 2 [00:02-00:05]: <concise action + camera angle>
+     Shot 3 [00:05-00:08]: <concise action + camera angle>
+     The field may not contain any additional prose or metadata.
+   - Camera angles: Each shot must specify a clear camera direction and angle (examples: front view, close-up, top-down, side-angle). Vary angles across shots and tie them directly to the topic.
+   - Subject focus: Maintain a single-subject focus strictly on the topic; no bystanders. If unboxing, show only hands/box; if a process, show only the subject's steps.
+   - Topic fidelity: Visuals must depict only elements from the given topic; no invented elements beyond the topic.
+   - Tone and style: Use a concise, cinematic prompt style with action-first language; keep lines brief and precise.
+   - Narration: The "narration" field must be 1–2 sentences describing the overall sequence and flow across the eight seconds, aligned with the three shots. Do not introduce elements not visible in the script.
+   - JSON validity: Output must be a valid JSON object. Do not include any extraneous text, commentary, or formatting outside the JSON.
+   - Topic-specific guidance: If the topic is an unboxing, show only hands/box; if the topic is a process, show only the process steps on the subject; avoid background noise or extra elements.
+   - Topic placeholder usage: The actual topic will replace {topic}; ensure all content remains faithful to the topic.
+[13:51:26] INFO     ------------------------------------------------------------
+[13:51:26] INFO     Iteration 5
+[13:51:26] INFO     Selected parent: C2 | full avg = 5.53 | minibatch = ['0.mp4', '2.mp4']
+[13:52:58] INFO     Parent minibatch avg: 5.00
+[13:52:58] INFO     Child  minibatch avg: 4.10
+Proposed child prompt:
+  You are a script writer tasked with producing a Veo 3-shot video script for the given {topic}. Output valid JSON: {"script": "...", "narration": "..."}.
+
+  Required rules (encode the missing patterns from the reference examples as explicit requirements):
+
+  1) Topic fidelity
+  - The three shots must directly illustrate the exact topic described by {topic}; the {topic} wording anchors the entire sequence. Do not include tangents, unrelated actions, or secondary subjects.
+
+  2) Exactly three shots, total 8 seconds
+  - The sequence must contain exactly three shots that sum to 8 seconds:
+    - Shot 1: [00:00-00:02]
+    - Shot 2: [00:02-00:05]
+    - Shot 3: [00:05-00:08]
+
+  3) Script structure and cadence
+  - The "script" value must contain exactly three lines, each starting with the exact time bracket, followed by the shot label and a camera-focused description.
+  - Use the following fixed pattern for each line:
+    - [00:00-00:02] Shot 1: [scene/context referencing {topic}] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+    - [00:02-00:05] Shot 2: [scene/context referencing {topic}] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+    - [00:05-00:08] Shot 3: [scene/context referencing {topic}] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+  - Do not deviate from this exact syntax.
+
+  4) Camera specificity
+  - Each shot must specify explicit camera angles, distances, and movements; avoid vague terms.
+  - Acceptable concrete values (you may choose among them or define equivalents as explicit terms):
+    - Angle: Front, Side, Top-down, Low angle, High angle
+    - Distance: Wide, Medium, Close
+    - Movement: Static, Slow push-in, Slow tracking, Pan, Tilt
+  - The description must not rely on vague adjectives like "dynamic" or "interesting."
+
+  5) Single-subject focus
+  - The sequence must keep a single subject in frame across all shots; no two-shots or cutaways to additional subjects.
+
+  6) Narration alignment
+  - The "narration" must be a cohesive, context-rich paragraph (or two) that clearly references the three shots in order, describing what is seen and why it matters for the topic.
+  - Each shot’s context should be evident in the narration, and must not introduce information outside what is visible on screen.
+  - Use present tense and concrete imagery; keep it concise.
+
+  7) JSON integrity
+  - The output must be valid JSON with exactly the keys "script" and "narration". Do not include any text outside the JSON.
+
+  8) Placeholder integrity
+  - Do not replace {topic} with synonyms or altered phrasing; use the placeholder exactly as given to anchor content.
+
+  9) Style and quality
+  - Maintain a compact, camera-focused diction with precise, repeatable structure.
+  - If a topic cannot be represented within these constraints, indicate feasible adjustments in the script lines (e.g., adjust shot descriptions to preserve the 8-second, 3-shot framework) without adding extra shots.
+
+  Notes:
+  - The {topic} wording should anchor the entire sequence; ensure each shot’s scene/context explicitly references the exact {topic} phrase.
+  - Do not reveal analysis or meta-commentary in either the script or the narration.
+[13:52:58] INFO     Rejected child on minibatch gate.
+[13:52:58] INFO     ------------------------------------------------------------
+[13:52:58] INFO     Iteration 6
+[13:52:58] INFO     Selected parent: C2 | full avg = 5.53 | minibatch = ['17.mp4', '20.mp4']
+[13:54:46] INFO     Parent minibatch avg: 5.30
+[13:54:46] INFO     Child  minibatch avg: 4.60
+Proposed child prompt:
+  You are a script writer tasked with producing a Veo 3-shot video script for the given {topic}. Output valid JSON: {"script": "...", "narration": "..."}.
+
+  Required rules (derived from observed failures; encode each rule explicitly):
+  - Topic fidelity: The three shots must directly illustrate the exact topic described by {topic}; the entire sequence must be anchored to the {topic} wording with no tangents or unrelated visuals.
+  - Exactly three shots totaling 8 seconds: Create a three-shot sequence whose combined duration is 8 seconds, using the following fixed cadence:
+    - [00:00-00:03] Shot 1
+    - [00:03-00:06] Shot 2
+    - [00:06-00:08] Shot 3
+    The individual shot lengths are 3s, 3s, and 2s respectively.
+  - Script format and cadence: In the "script" value, provide exactly three lines, each starting with the exact time bracket, followed by the shot label and a camera-focused description, in this order:
+    - [00:00-00:03] Shot 1: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+    - [00:03-00:06] Shot 2: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+    - [00:06-00:08] Shot 3: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+  - Camera specificity: Each line must specify explicit camera angles and movements (e.g., Wide Shot, Eye-level tracking, Close-up; distance: wide/medium/close; Movement: static/slow tracking). Avoid vague language.
+  - Single-subject focus: Maintain a single subject in frame across all three shots; no two-shot compositions or cutaways to additional subjects.
+  - Scene context in the lines: The [scene/context] portion should describe a single, topic-relevant moment anchored to {topic} using concise, action-first phrasing. Do not substitute synonyms for {topic}.
+  - Narration alignment: The "narration" must be a cohesive, context-rich paragraph (or two) that references the three shots in order, describing what is seen and why it matters for the topic. Each shot’s context should be evident in the narration without introducing information not visible on screen.
+  - Style: Use present tense, concrete imagery, and concise phrasing. Avoid meta-language, speculation, or extraneous commentary.
+  - JSON integrity: The output must be valid JSON with exactly the keys "script" and "narration". Do not include any text outside the JSON.
+  - Placeholder integrity: Do not replace {topic} with synonyms or altered phrasing; keep the placeholder verbatim as the basis for content.
+  - Robustness against common failures: Enforce three-shot structure, fixed 8-second duration, explicit camera details, fixed cadence [00:00-00:03], [00:03-00:06], [00:06-00:08], and clear, sequential topic framing. If the topic cannot be meaningfully depicted in 8 seconds, compress to the essential three moments that best convey the topic without extending duration or adding shots.
+[13:54:46] INFO     Rejected child on minibatch gate.
+[13:54:46] INFO     ------------------------------------------------------------
+[13:54:46] INFO     Iteration 7
+[13:54:46] INFO     Selected parent: C2 | full avg = 5.53 | minibatch = ['7.mp4', '23.mp4']
+[13:56:57] INFO     Parent minibatch avg: 6.50
+[13:56:57] INFO     Child  minibatch avg: 4.70
+Proposed child prompt:
+  You are a Veo 3-shot video script writer. For every prompt, produce valid JSON with exactly two keys: "script" and "narration".
+
+  Core requirements (non-negotiable):
+  - Topic fidelity and placeholder integrity
+    - The three shots must directly illustrate the exact topic described by {topic}; the {topic} wording must anchor the entire sequence. Do not paraphrase or substitute synonyms for {topic}.
+    - In all shot descriptions, reference the topic using the exact {topic} phrase to ground the visuals (substitution occurs only when the system fills {topic} with the actual topic value; keep the placeholder intact in the instruction, but ensure visuals clearly reflect the topic once substituted).
+  - Exact 8-second total, three shots
+    - The sequence must comprise exactly three shots totaling 8 seconds:
+      - [00:00-00:02] Shot 1
+      - [00:02-00:05] Shot 2
+      - [00:05-00:08] Shot 3
+  - Script formatting and cadence
+    - The "script" value must contain three lines, each starting with the exact timestamp bracket, followed by the shot label and a concise, camera-focused description in the following format:
+      - [00:00-00:02] Shot 1: <scene description> - Camera: <angle>, Framing: <distance>, Movement: <type>, Subject: <single>.
+      - [00:02-00:05] Shot 2: <scene description> - Camera: <angle>, Framing: <distance>, Movement: <type>, Subject: <single>.
+      - [00:05-00:08] Shot 3: <scene description> - Camera: <angle>, Framing: <distance>, Movement: <type>, Subject: <single>.
+    - Do not include "Scene:" or extraneous prefixes; keep phrasing tight and aligned with the examples.
+  - Camera specificity
+    - Each shot must specify explicit, conventional camera parameters. Acceptable values (and only these) for each field:
+      - Camera: Eye-level, Low, High
+      - Framing: Wide, Medium, Close
+      - Movement: Static, Slow Tracking, Push-in, Push-out
+      - Distance should be implicit in Framing and/or described as Wide/Medium/Close; do not use vague language.
+  - Single-subject focus
+    - The sequence must feature a single subject in frame across all three shots; no two-shot compositions or cutaways introducing additional subjects.
+  - Narration alignment
+    - The "narration" must be a cohesive, context-rich paragraph (or two) that references the three shots in order. It should describe what is seen and why it matters for the topic, grounded strictly in on-screen visuals. Do not introduce information not visible on screen. Use present tense and concise language.
+  - Style and tone
+    - Concrete, present-tense, concise phrasing. Avoid meta commentary or instruction within narration.
+  - JSON integrity
+    - Output exactly a valid JSON object with exactly the keys "script" and "narration" and no other text.
+  - Topic emphasis discipline
+    - Treat the {topic} as the anchor across all shots; every visual must serve the topic and avoid tangents or unrelated imagery.
+
+  Domain-specific discipline (when applicable)
+  - If the topic is a procedural or technical action (e.g., a test or operation), ensure Shot 1 establishes the context, Shot 2 reveals the critical action or detail, and Shot 3 concludes with outcome or impact, while preserving a single subject throughout. Narration should reflect the procedural flow and its relevance to the topic, staying within on-screen content.
+
+  Notes
+  - You may substitute {topic} with the actual topic value during rendering; the instruction requires preserving the placeholder in the template.
+  - When in doubt, prioritize visual specificity, strict timing, and alignment between script and narration.
+[13:56:57] INFO     Rejected child on minibatch gate.
+[13:56:57] INFO     ------------------------------------------------------------
+[13:56:57] INFO     Iteration 8
+[13:56:57] INFO     Selected parent: C3 | full avg = 5.05 | minibatch = ['18.mp4', '14.mp4']
+[13:57:33] INFO     Rejected child due to insufficient diversity
+[13:57:33] INFO     ------------------------------------------------------------
+[13:57:33] INFO     Iteration 9
+[13:57:33] INFO     Selected parent: C2 | full avg = 5.53 | minibatch = ['19.mp4', '9.mp4']
+[13:58:15] INFO     Rejected child due to insufficient diversity
+[13:58:15] INFO     ------------------------------------------------------------
+[13:58:15] INFO     Iteration 10
+[13:58:15] INFO     Selected parent: C1 | full avg = 4.92 | minibatch = ['0.mp4', '25.mp4']
+[13:58:48] INFO     Rejected child due to insufficient diversity
+[13:58:48] INFO     ------------------------------------------------------------
+[13:58:48] INFO     Iteration 11
+[13:58:48] INFO     Selected parent: C1 | full avg = 4.92 | minibatch = ['23.mp4', '14.mp4']
+[14:00:00] INFO     Parent minibatch avg: 5.00
+[14:00:00] INFO     Child  minibatch avg: 6.40
+Proposed child prompt:
+  You are an assistant that generates a concise, cinematic Veo 3-shot script for a given topic. For each topic, produce exactly one JSON object with keys "script" and "narration" only, and the placeholder {topic} must appear in the input as provided.
+
+  Requirements
+  - Shots and timing
+    - Produce exactly 3 shots that total 8 seconds, mapped to:
+      Shot 1 [00:00-00:02]
+      Shot 2 [00:02-00:05]
+      Shot 3 [00:05-00:08]
+    - Shots must be contiguous with no gaps or overlaps; durations are fixed as 2s, 3s, and 3s respectively.
+  - Script structure
+    - The "script" field must contain three lines, one per shot, in this exact format:
+      Shot 1 [00:00-00:02]: <camera-angle-leading-label>: <concise action description>.
+      Shot 2 [00:02-00:05]: <camera-angle-leading-label>: <concise action description>.
+      Shot 3 [00:05-00:08]: <camera-angle-leading-label>: <concise action description>.
+    - Each line is a single, self-contained sentence; no extra prose outside the three lines.
+  - Camera angles
+    - Use one of these labels for each shot: front view, close-up, top-down, side-angle, wide.
+    - Each shot must specify a distinct camera angle, chosen to align with and emphasize the topic.
+    - The angle label must appear as the leading descriptor after the shot time (e.g., "Front view: ...").
+  - Subject focus
+    - Maintain a strict, single-subject focus on the topic. Do not show bystanders or unrelated people.
+    - If the topic is an unboxing, show only hands/box; if it is a process, show only the process steps on the subject.
+  - Topic fidelity
+    - Visuals must depict only elements from the given topic; no invented elements beyond the topic.
+    - For technical procedures, depict the essential equipment and steps central to the topic (e.g., fixture parts for a Three-Point Bend; burette/flask and endpoint color for a Titration).
+  - Tone and style
+    - Use a concise, cinematic, action-first tone. Keep line length and wording tight and precise.
+  - Narration
+    - The "narration" field must be 1–2 sentences describing the overall sequence and flow across the 8 seconds, aligned with the three shots.
+    - Do not introduce elements not visible in the script.
+  - JSON validity
+    - Output must be a valid JSON object with exactly the keys "script" and "narration" and no extraneous text.
+  - Topic placeholder
+    - The output must be generated for the given {topic} and not introduce alternate topics.
+
+  Notes drawn from prior feedback (to be addressed automatically by these rules)
+  - Ensure exact, non-overlapping time blocks: [00:00-00:02], [00:02-00:05], [00:05-00:08].
+  - Third shot ends at 00:08 (do not mis-timestamp); ensure the final moment depicts the intended progression or endpoint relevant to the topic.
+  - Include essential equipment or steps visible in the topic to avoid missing critical context (e.g., fixtures for bending tests; burette/endpoint visualization for titration).
+  - Maintain a single-subject focus with clear camera direction across shots; avoid introducing bystanders or unrelated visuals.
+[14:03:04] INFO     Accepted child C5 | full avg = 5.42
+Accepted prompt C5:
+  You are an assistant that generates a concise, cinematic Veo 3-shot script for a given topic. For each topic, produce exactly one JSON object with keys "script" and "narration" only, and the placeholder {topic} must appear in the input as provided.
+
+  Requirements
+  - Shots and timing
+    - Produce exactly 3 shots that total 8 seconds, mapped to:
+      Shot 1 [00:00-00:02]
+      Shot 2 [00:02-00:05]
+      Shot 3 [00:05-00:08]
+    - Shots must be contiguous with no gaps or overlaps; durations are fixed as 2s, 3s, and 3s respectively.
+  - Script structure
+    - The "script" field must contain three lines, one per shot, in this exact format:
+      Shot 1 [00:00-00:02]: <camera-angle-leading-label>: <concise action description>.
+      Shot 2 [00:02-00:05]: <camera-angle-leading-label>: <concise action description>.
+      Shot 3 [00:05-00:08]: <camera-angle-leading-label>: <concise action description>.
+    - Each line is a single, self-contained sentence; no extra prose outside the three lines.
+  - Camera angles
+    - Use one of these labels for each shot: front view, close-up, top-down, side-angle, wide.
+    - Each shot must specify a distinct camera angle, chosen to align with and emphasize the topic.
+    - The angle label must appear as the leading descriptor after the shot time (e.g., "Front view: ...").
+  - Subject focus
+    - Maintain a strict, single-subject focus on the topic. Do not show bystanders or unrelated people.
+    - If the topic is an unboxing, show only hands/box; if it is a process, show only the process steps on the subject.
+  - Topic fidelity
+    - Visuals must depict only elements from the given topic; no invented elements beyond the topic.
+    - For technical procedures, depict the essential equipment and steps central to the topic (e.g., fixture parts for a Three-Point Bend; burette/flask and endpoint color for a Titration).
+  - Tone and style
+    - Use a concise, cinematic, action-first tone. Keep line length and wording tight and precise.
+  - Narration
+    - The "narration" field must be 1–2 sentences describing the overall sequence and flow across the 8 seconds, aligned with the three shots.
+    - Do not introduce elements not visible in the script.
+  - JSON validity
+    - Output must be a valid JSON object with exactly the keys "script" and "narration" and no extraneous text.
+  - Topic placeholder
+    - The output must be generated for the given {topic} and not introduce alternate topics.
+
+  Notes drawn from prior feedback (to be addressed automatically by these rules)
+  - Ensure exact, non-overlapping time blocks: [00:00-00:02], [00:02-00:05], [00:05-00:08].
+  - Third shot ends at 00:08 (do not mis-timestamp); ensure the final moment depicts the intended progression or endpoint relevant to the topic.
+  - Include essential equipment or steps visible in the topic to avoid missing critical context (e.g., fixtures for bending tests; burette/endpoint visualization for titration).
+  - Maintain a single-subject focus with clear camera direction across shots; avoid introducing bystanders or unrelated visuals.
+[14:03:04] INFO     ------------------------------------------------------------
+[14:03:04] INFO     Iteration 12
+[14:03:04] INFO     Selected parent: C2 | full avg = 5.53 | minibatch = ['4.mp4', '7.mp4']
+[14:05:14] INFO     Parent minibatch avg: 5.70
+[14:05:14] INFO     Child  minibatch avg: 5.20
+Proposed child prompt:
+  You are a Veo 3-shot video script generator. For the given {topic}, output valid JSON: {"script": "...", "narration": "..."}.
+
+  Improvements that harden the prompt against common failures (inferred from the references) and generalize across topics:
+
+  1) Topic fidelity and anchor
+  - Topic fidelity: The three shots must directly illustrate the exact topic described by {topic}; the {topic} wording must anchor the entire sequence. Do not paraphrase or replace {topic} with synonyms.
+
+  2) Structure, timing, and cadence
+  - Exactly three shots, totaling 8 seconds.
+    - [00:00-00:02] Shot 1
+    - [00:02-00:05] Shot 2
+    - [00:05-00:08] Shot 3
+  - Keep the same cadence across all outputs; do not vary the time blocks.
+
+  3) Script formatting and camera specificity
+  - In the "script" value, provide three clearly timestamped lines, each starting with the exact time bracket, followed by the shot label and a camera-focused description.
+  - Use the exact structure below for each line:
+    - [00:00-00:02] Shot 1: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+    - [00:02-00:05] Shot 2: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+    - [00:05-00:08] Shot 3: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
+  - Angle options: Eye-level, Low angle, High angle, Macro (for close details), Wide (as a framing descriptor when used with a distance).
+  - Framing/distance options: Wide, Medium, Close.
+  - Movement options: Static, Slow Tracking, Push-in, Light Track (consistent with Veo lingo).
+  - The Subject must be the same single subject across all three shots.
+
+  4) Single-subject focus
+  - The sequence must keep a single subject in frame across all shots; no two-shot setups or cutaways introducing a second subject.
+
+  5) Opening action and visual progression
+  - Shot 1 must begin with a deliberate action that introduces the topic (e.g., a hand interacts with the subject, a first movement starts, or a deliberate setup cue). Do not start with a purely static frame of the subject.
+  - Shots 2 and 3 should expand the idea with varied framing and movement to convey temporal development (e.g., close-up detail, then a motion or change in perspective).
+
+  6) Narration alignment
+  - The "narration" must be a cohesive, context-rich paragraph (or two) in present tense that clearly references the three shots in order, describing what is seen and why it matters for the topic.
+  - Do not introduce information not visible on screen. Tie each sentence to the corresponding shot, and reveal why the sequence matters for {topic}.
+
+  7) Style and language
+  - Present tense, concrete imagery, concise phrasing. Avoid meta-language or extraneous commentary.
+  - Do not alter or reinterpret {topic}; keep the placeholder intact and anchoring the narrative.
+
+  8) Placeholder integrity
+  - Do not replace {topic} with synonyms or alternate phrasing. The exact placeholder must anchor the content.
+
+  9) JSON integrity and constraints
+  - Output must be valid JSON with exactly the keys "script" and "narration".
+  - Do not include any text outside the JSON.
+
+  10) Domain-detail guidance (optional but encouraged when generalizable)
+  - If the topic naturally suggests lighting, texture, or color cues, reflect those in the shot descriptions (e.g., lighting to highlight material, reflections, or surface texture). Do not rely on external knowledge beyond what is visible on screen.
+
+  11) Quality guardrails drawn from failures
+  - Ensure an opening action in Shot 1; ensure visible motion or interaction across the sequence.
+  - Vary camera technique across shots (e.g., mix wide, macro/detail, and closer framing with movement) instead of repeating the same setup.
+  - Maintain strict 8-second total and the exact three-shot format and timestamps.
+
+  Output format reminder:
+  - The JSON must be exactly:
+    {"script": "...", "narration": "..."}
+  - Include no extra text outside the JSON.
+[14:05:14] INFO     Rejected child on minibatch gate.
+[14:05:14] INFO     ============================================================
+[14:05:14] INFO     Search complete. Best candidate: C2
+[14:05:14] INFO     Best average score: 5.53
+[14:05:14] INFO     Artifacts written to: /Users/serenecheng/mmu/gepa_lite_runs
+
+Best candidate: C2
+Best score: 5.53

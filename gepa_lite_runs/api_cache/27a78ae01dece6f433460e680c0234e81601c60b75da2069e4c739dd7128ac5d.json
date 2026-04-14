@@ -1,0 +1,35 @@
+{
+  "task_id": "20.mp4",
+  "topic": "A close-up of a 'Mantis Shrimp' punching a glass tank.",
+  "raw_generation": "{\n  \"script\": \"SCENE 1 - CLOSE-UP: Inside a clear glass tank, a mantis shrimp sits motionless. The macro lens locks onto its textured carapace, the long antennae, and the pair of stalked eyes reflecting the world beyond the glass.\\\\nSCENE 2 - PREP: The shrimp coils slightly, tail folding under, raptorial appendages flexing in preparation for a strike. Bubbles drift in the water; light bends through the aquarium walls.\\\\nSCENE 3 - STRIKE: In a fraction of a second, the shrimp lunges. A blur of color and segments shoots forward, colliding with the glass with a sharp ping. The tank shudders and a ripple races outward.\\\\nSCENE 4 - CAVITATION: Extreme slow motion reveals the physics: a fast-moving appendage creates cavitation bubbles at the impact site, glowing briefly as they collapse and emit light and heat.\\\\nSCENE 5 - AFTERMATH: The shrimp relaxes back, antennae quivering. The glass shows momentary distortion; depending on tank design, there may be no cracks, or tiny fractures that hint at the strike's power.\\\\nSCENE 6 - SCIENCE NOTE: A quick caption explains the mantis shrimp's strike speed (up to ~50 mph / 80 km/h) and the cavitation effect that accompanies it.\\\\nSCENE 7 - CLOSING: The shrimp resumes its watchful posture as the scene fades, with a safety reminder about not attempting to reproduce such strikes in home aquariums.\",\n  \"narration\": \"Opening: In a close-up view inside a clear glass tank, a mantis shrimp sits with watchful eyes, awaiting any movement in its world.\\\\nPreparation: It coils its tail and flexes its raptorial appendages, a predator primed for action.\\\\nStrike: In a heartbeat, a blur of motion shoots out and hits the glass with a sharp ping. The glass vibrates, water ripples outward.\\\\nCavitation: Cavitation bubbles form at the strike site, briefly glowing before collapsing with a tiny sonic boom.\\\\nAftermath: The shrimp settles, antennae quivering, while the tank bears the impact—a reminder of the power of nature.\\\\nScience: The speed can exceed 50 mph and the striking action is aided by cavitation that can intensify the force.\\\\nSafety: Do not imitate this behavior at home; mantis shrimps require specialized enclosures and expert handling.\"\n}",
+  "parsed_generation": {
+    "script": "SCENE 1 - CLOSE-UP: Inside a clear glass tank, a mantis shrimp sits motionless. The macro lens locks onto its textured carapace, the long antennae, and the pair of stalked eyes reflecting the world beyond the glass.\\nSCENE 2 - PREP: The shrimp coils slightly, tail folding under, raptorial appendages flexing in preparation for a strike. Bubbles drift in the water; light bends through the aquarium walls.\\nSCENE 3 - STRIKE: In a fraction of a second, the shrimp lunges. A blur of color and segments shoots forward, colliding with the glass with a sharp ping. The tank shudders and a ripple races outward.\\nSCENE 4 - CAVITATION: Extreme slow motion reveals the physics: a fast-moving appendage creates cavitation bubbles at the impact site, glowing briefly as they collapse and emit light and heat.\\nSCENE 5 - AFTERMATH: The shrimp relaxes back, antennae quivering. The glass shows momentary distortion; depending on tank design, there may be no cracks, or tiny fractures that hint at the strike's power.\\nSCENE 6 - SCIENCE NOTE: A quick caption explains the mantis shrimp's strike speed (up to ~50 mph / 80 km/h) and the cavitation effect that accompanies it.\\nSCENE 7 - CLOSING: The shrimp resumes its watchful posture as the scene fades, with a safety reminder about not attempting to reproduce such strikes in home aquariums.",
+    "narration": "Opening: In a close-up view inside a clear glass tank, a mantis shrimp sits with watchful eyes, awaiting any movement in its world.\\nPreparation: It coils its tail and flexes its raptorial appendages, a predator primed for action.\\nStrike: In a heartbeat, a blur of motion shoots out and hits the glass with a sharp ping. The glass vibrates, water ripples outward.\\nCavitation: Cavitation bubbles form at the strike site, briefly glowing before collapsing with a tiny sonic boom.\\nAftermath: The shrimp settles, antennae quivering, while the tank bears the impact—a reminder of the power of nature.\\nScience: The speed can exceed 50 mph and the striking action is aided by cavitation that can intensify the force.\\nSafety: Do not imitate this behavior at home; mantis shrimps require specialized enclosures and expert handling."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 1.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 6.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.4,
+  "final_score": 4.2,
+  "feedback": "The output stays on topic and adds contextual details (macro focus, lighting, cavitation), but it fails the required timestamped shot structure used in the gold standard. Reformat into labeled time segments like [00:00-00:04], [00:04-00:08], and pair each with a concrete camera angle (e.g., macro close-up, wide shot) and a single, action-first description per segment. Limit to two tightly timed shots or ensure the sequence mirrors the concise two-shot cadence of the gold standard to improve alignment.\nFailed checks: example_alignment",
+  "strengths": [
+    "Maintains focus on the mantis shrimp and the glass tank.",
+    "Includes cavitation as a core visual/physical element.",
+    "Uses action-driven, cinematic language."
+  ],
+  "fixes": [
+    "Replace Scene labels with exact time-stamped segments in the [00:00-00:02] / [00:02-00:04] style and keep to a two-shot cadence similar to the gold standard.",
+    "Specify explicit camera angles for each segment (e.g., macro close-up, high-angle, low-angle) and ensure each line describes a single, clear action within those angles."
+  ]
+}

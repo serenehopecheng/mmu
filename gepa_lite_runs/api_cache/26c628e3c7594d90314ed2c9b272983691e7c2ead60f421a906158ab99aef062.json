@@ -1,0 +1,34 @@
+{
+  "task_id": "9.mp4",
+  "topic": "A Mongolian horseman using an Uurga to catch a wild horse, wide landscape shot.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Horseman readies the Uurga and studies the wild horse — front view across the steppe\\nShot 2 [00:02-00:05]: Uurga loops around the wild horse, snaring it in the moment — close up\\nShot 3 [00:05-00:08]: Horseman reins the captured horse, guiding it toward calm against the vast landscape — top view\",\n  \"narration\": \"Across a wide Mongolian landscape, a horseman uses an Uurga to catch a wild horse: he prepares, loops, and reins the animal into calm, in a concise three-shot sequence.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Horseman readies the Uurga and studies the wild horse — front view across the steppe\nShot 2 [00:02-00:05]: Uurga loops around the wild horse, snaring it in the moment — close up\nShot 3 [00:05-00:08]: Horseman reins the captured horse, guiding it toward calm against the vast landscape — top view",
+    "narration": "Across a wide Mongolian landscape, a horseman uses an Uurga to catch a wild horse: he prepares, loops, and reins the animal into calm, in a concise three-shot sequence."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 3.0,
+    "topic_precision": 6.0
+  },
+  "base_quality_score": 4.6,
+  "final_score": 4.6,
+  "feedback": "The sequence centers on a Mongolian horseman with an uurga capturing a wild horse, which roughly aligns with the topic. However, the gold standard emphasizes a wide establishing shot of the rider galloping with the uurga and a later shot of lowering the loop, whereas the generated sequence begins with readiness and ends with a top-view rein, lacking the dynamic gallop moment. To tighten alignment, restructure into two clear 4-second shots (wide establishing gallop, then extended loop to capture) and heighten the action-focused, cinematic language with explicit camera angles and dynamic motion.",
+  "strengths": [
+    "Clear three-shot structure with explicit camera angles (front/steppe, close-up/uurga, top view).",
+    "Includes the uurga concept and the Mongolian steppe setting, keeping the subject centered."
+  ],
+  "fixes": [
+    "Adopt the gold-standard two-shot timing: [00:00-00:04] wide establishing shot of rider galloping with the uurga, [00:04-00:08] close, action-driven sequence showing lowering the loop to capture the horse.",
+    "Use more vivid, action-first language: specify gallop speed, the loop extending toward the wild horse, and add a brief tactile cue (e.g., the wrist grip or the loop tightening) to convey motion and tension."
+  ]
+}

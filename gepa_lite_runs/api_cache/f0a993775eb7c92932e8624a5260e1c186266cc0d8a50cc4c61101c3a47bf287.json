@@ -1,0 +1,36 @@
+{
+  "task_id": "11.mp4",
+  "topic": "The lifecycle of a Monarch butterfly: the chrysalis stage.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Monarch chrysalis hangs from a leaf, side-angle close-up.\\nShot 2 [00:02-00:05]: Chrysalis glows green as gold specks shimmer, top-down view.\\nShot 3 [00:05-00:08]: Chrysalis splits and the butterfly's wings begin to emerge, front view.\",\n  \"narration\": \"Across eight seconds, the sequence shows a monarch chrysalis hanging in a side-angle close-up, then glowing with gold specks from a top-down view, and finally beginning to split as wings emerge in a front view.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Monarch chrysalis hangs from a leaf, side-angle close-up.\nShot 2 [00:02-00:05]: Chrysalis glows green as gold specks shimmer, top-down view.\nShot 3 [00:05-00:08]: Chrysalis splits and the butterfly's wings begin to emerge, front view.",
+    "narration": "Across eight seconds, the sequence shows a monarch chrysalis hanging in a side-angle close-up, then glowing with gold specks from a top-down view, and finally beginning to split as wings emerge in a front view."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": false,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 3.0,
+    "topic_precision": 6.0
+  },
+  "base_quality_score": 4.4,
+  "final_score": 2.0,
+  "feedback": "The output stays on the monarch chrysalis but diverges from the gold standard in structure and timing. It introduces three shots with mixed camera angles and describes a later emergence moment, rather than the shell turning transparent and the pattern reveal inside. To align, use two evenly timed segments ([00:00-00:04], [00:04-00:08]), emphasize the shell turning transparent, and clearly depict the orange-and-black wing patterns hidden inside rather than an outward wing emergence.\nFailed checks: narration_adds_context, example_alignment",
+  "strengths": [
+    "Explicit shot labeling with timestamps",
+    "Clear camera-angle intent for each shot"
+  ],
+  "fixes": [
+    "Adopt the two-shot structure and exact timing from the gold standard: [00:00-00:04] and [00:04-00:08].",
+    "Describe the chrysalis turning transparent and reveal the butterfly's wing patterns inside (orange and black) rather than showing wing emergence.",
+    "Keep the subject strictly to the chrysalis with no additional actions or subjects.",
+    "Maintain the concise, cinematic, action-first language and match the visual cues to the gold standard's level of detail."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "task_id": "11.mp4",
+  "topic": "The lifecycle of a Monarch butterfly: the chrysalis stage.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Chrysalis hangs from a twig, front view.\\nShot 2 [00:02-00:05]: Chrysalis reveals its shell texture; close-up, side-angle.\\nShot 3 [00:05-00:08]: Chrysalis glows as light passes through the shell; top-down view.\",\n  \"narration\": \"The sequence follows a monarch chrysalis hanging in front view, then a close-up side-angle reveals the shell texture, and finally a top-down macro captures its calm, ready-to-transform contour.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Chrysalis hangs from a twig, front view.\nShot 2 [00:02-00:05]: Chrysalis reveals its shell texture; close-up, side-angle.\nShot 3 [00:05-00:08]: Chrysalis glows as light passes through the shell; top-down view.",
+    "narration": "The sequence follows a monarch chrysalis hanging in front view, then a close-up side-angle reveals the shell texture, and finally a top-down macro captures its calm, ready-to-transform contour."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 4.0,
+    "narration_insight": 4.0,
+    "topic_precision": 6.0
+  },
+  "base_quality_score": 4.8,
+  "final_score": 4.8,
+  "feedback": "The sequence stays on the chrysalis, but it lacks the distinctive monarch visuals (green chrysalis, shell turning translucent, wings visible in orange and black). It uses three shots while the gold standard presents a two-shot progression; tighten the shot structure to two canonical segments and describe the transformation more concretely (e.g., shell clears to reveal wing patterns). To improve, specify color/texture cues, adjust angles to emphasize translucency, and align phrasing with the gold-standard cinematic, action-first style.",
+  "strengths": [
+    "Clear, timestamped shot sequence with defined camera angles (front view, close-up, top-down).",
+    "Covers the chrysalis as the subject with a logical progression toward transformation."
+  ],
+  "fixes": [
+    "Incorporate monarch-specific visuals: green chrysalis, translucent shell revealing orange/black wings.",
+    "Reduce to two-shot structure that mirrors the gold standard: [00:00-00:04] close-up of hanging chrysalis beginning to turn transparent; [00:04-00:08] shell fully clears showing wing patterns.",
+    "Use more cinematic, action-first language and include texture/lighting cues (e.g., soft backlight, subtle translucence).",
+    "Avoid extraneous angles unless they add specific meaning; focus on macro/close-up to emphasize transformation."
+  ]
+}

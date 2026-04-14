@@ -1,0 +1,36 @@
+{
+  "task_id": "0.mp4",
+  "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Hands approach and lift the Desert Titanium iPhone 16 Pro box from the wooden table — front view\\nShot 2 [00:02-00:05]: Lid opens to reveal the Desert Titanium iPhone 16 Pro in its box — close-up\\nShot 3 [00:05-00:08]: Phone fully unboxed and placed on the wooden table, Desert Titanium finish facing up — top-down\",\n  \"narration\": \"A single subject unboxes the Desert Titanium iPhone 16 Pro on a wooden table. The sequence moves from box interaction to a close reveal and ends with a top-down view of the device.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Hands approach and lift the Desert Titanium iPhone 16 Pro box from the wooden table — front view\nShot 2 [00:02-00:05]: Lid opens to reveal the Desert Titanium iPhone 16 Pro in its box — close-up\nShot 3 [00:05-00:08]: Phone fully unboxed and placed on the wooden table, Desert Titanium finish facing up — top-down",
+    "narration": "A single subject unboxes the Desert Titanium iPhone 16 Pro on a wooden table. The sequence moves from box interaction to a close reveal and ends with a top-down view of the device."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 3.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.0,
+  "final_score": 3.8,
+  "feedback": "The script stays on-topic and maintains a clear unboxing focus on the Desert Titanium iPhone 16 Pro on a wooden table. However, it diverges from the gold standard in shot variety and sequencing (fewer shots, no macro peel or cable/documentation reveal). To better match the reference, add an initial top-down sealed-box shot, include a side-angle lift showing the device and any accompanying items, and insert a macro shot of peeling the screen protector with corresponding timestamps and audio cues.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear, concise action-first shots",
+    "Subject-focused unboxing on a wooden surface"
+  ],
+  "fixes": [
+    "Add a fourth shot for side-angle lift showing cable and documentation",
+    "Include a macro shot peeling the screen protector",
+    "Align timestamps to a four-shot sequence (e.g., [00:00-00:02], [00:02-00:04], [00:04-00:06], [00:06-00:08]) with distinct actions",
+    "Suggest SFX cues to emulate the gold standard (paper rustle, plastic peel, etc.)"
+  ]
+}

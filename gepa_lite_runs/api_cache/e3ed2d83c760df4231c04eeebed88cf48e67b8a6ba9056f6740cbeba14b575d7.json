@@ -1,0 +1,35 @@
+{
+  "task_id": "25.mp4",
+  "topic": "An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view. - Camera: Side view, Framing: Medium, Movement: Static, Subject: archer.\\n[00:02-00:05] Shot 2: An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view. - Camera: Side view, Framing: Close-up, Movement: Slow tracking, Subject: archer.\\n[00:05-00:08] Shot 3: An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view. - Camera: Side view, Framing: Medium, Movement: Static, Subject: archer.\",\n  \"narration\": \"The sequence opens with a profile, side-view of the archer settling into a steady stance as the Khatra technique comes to life on the release. The second shot tightens to the hands and face in slow tracking, capturing the exact moment the string lets go and the Khatra control is enacted as the arrow begins its flight. In the final shot, the arrow speeds away in slow motion from the same side-view, while the archer holds the posture, demonstrating how the Khatra technique governs the release and guides the arrow along its true path.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view. - Camera: Side view, Framing: Medium, Movement: Static, Subject: archer.\n[00:02-00:05] Shot 2: An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view. - Camera: Side view, Framing: Close-up, Movement: Slow tracking, Subject: archer.\n[00:05-00:08] Shot 3: An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view. - Camera: Side view, Framing: Medium, Movement: Static, Subject: archer.",
+    "narration": "The sequence opens with a profile, side-view of the archer settling into a steady stance as the Khatra technique comes to life on the release. The second shot tightens to the hands and face in slow tracking, capturing the exact moment the string lets go and the Khatra control is enacted as the arrow begins its flight. In the final shot, the arrow speeds away in slow motion from the same side-view, while the archer holds the posture, demonstrating how the Khatra technique governs the release and guides the arrow along its true path."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 6.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.6,
+  "final_score": 4.4,
+  "feedback": "The gold standard presents a two-shot structure with a clear side-view of the release and the khatra-induced bow rotation. The generated version uses three shots with varying framing and nonstandard timestamps, and its narration adds extraneous repetition rather than sharpening the key moment. To align, condense to two concise segments [00:00-00:04] and [00:04-00:08], explicitly show the release and khatra bow rotation, and use tighter, cinematic language focusing on movement and impact.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear archer/Khatra topic focus",
+    "Side-view, slow-motion emphasis present"
+  ],
+  "fixes": [
+    "Adopt the gold-standard two-shot structure and timestamps",
+    "Explicitly depict khatra mechanics (bow rotation, riser clearance)",
+    "Use precise camera directions (side view, close-ups on release) and action-first phrasing"
+  ]
+}

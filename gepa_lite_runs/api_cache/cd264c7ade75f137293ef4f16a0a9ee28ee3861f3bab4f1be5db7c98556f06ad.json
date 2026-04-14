@@ -1,0 +1,34 @@
+{
+  "task_id": "7.mp4",
+  "topic": "A yellow New York City taxi driving through Times Square, street-level view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view: A yellow NYC taxi drives through Times Square, street-level, front bumper in frame.\\nShot 2 [00:02-00:05]: Side-angle: The taxi cruises past neon ads, side profile in sharp relief as lights smear into a city blur.\\nShot 3 [00:05-00:08]: Wide: The taxi continues through the intersection, full car framed against neon signage and street-level architecture.\",\n  \"narration\": \"An eight-second street-level journey of a yellow NYC taxi through Times Square, staged in three cinematic beats. It begins with a front view, transitions to a side-angle, and ends with a wide shot to reveal the full car against neon signage.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view: A yellow NYC taxi drives through Times Square, street-level, front bumper in frame.\nShot 2 [00:02-00:05]: Side-angle: The taxi cruises past neon ads, side profile in sharp relief as lights smear into a city blur.\nShot 3 [00:05-00:08]: Wide: The taxi continues through the intersection, full car framed against neon signage and street-level architecture.",
+    "narration": "An eight-second street-level journey of a yellow NYC taxi through Times Square, staged in three cinematic beats. It begins with a front view, transitions to a side-angle, and ends with a wide shot to reveal the full car against neon signage."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.2,
+  "final_score": 6.2,
+  "feedback": "The result largely captures a yellow NYC taxi in Times Square with a street-level vibe and uses timestamped shot segments. However, it deviates from the gold standard by using a front/side/wide sequence instead of a two-shot wide followed by a street-level tracking shot; to better match, swap to an establishing wide shot of Times Square in [00:00-00:04] and follow with a street-level tracking shot of the taxi passing the camera in [00:04-00:08], emphasizing neon reflections and signage. The language is cinematic but could be tightened to mirror the gold's tempo and specificity.",
+  "strengths": [
+    "Clear, timestamped shot sequence and camera-angle labels",
+    "Subject-focused on the yellow taxi with a neon urban backdrop"
+  ],
+  "fixes": [
+    "Align shot order and duration with the gold standard (establishing wide [00:00-00:04], then street-level tracking [00:04-00:08]).",
+    "Add concrete neon-light details (LED billboards reflecting on the taxi hood; blue/pink neon) and ensure each segment clearly tracks the taxi through Times Square."
+  ]
+}

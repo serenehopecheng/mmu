@@ -1,0 +1,34 @@
+{
+  "task_id": "20.mp4",
+  "topic": "A close-up of a 'Mantis Shrimp' punching a glass tank.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: The mantis shrimp coils and delivers a rapid punch toward the glass; front view.\\nShot 2 [00:02-00:05]: The impact ripples the glass as the mantis shrimp's punch lands; close-up.\\nShot 3 [00:05-00:08]: The shrimp steadies its stance to prepare another strike against the glass; top-down.\",\n  \"narration\": \"Across eight seconds, a mantis shrimp in a glass tank delivers a rapid punch that makes the glass tremble. The sequence moves from a front-view punch to a close-up impact, then to a top-down readied stance as it prepares another strike.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: The mantis shrimp coils and delivers a rapid punch toward the glass; front view.\nShot 2 [00:02-00:05]: The impact ripples the glass as the mantis shrimp's punch lands; close-up.\nShot 3 [00:05-00:08]: The shrimp steadies its stance to prepare another strike against the glass; top-down.",
+    "narration": "Across eight seconds, a mantis shrimp in a glass tank delivers a rapid punch that makes the glass tremble. The sequence moves from a front-view punch to a close-up impact, then to a top-down readied stance as it prepares another strike."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.0,
+  "final_score": 3.8,
+  "feedback": "The sequence stays with the mantis shrimp and the glass, but the timing structure and strike emphasis diverge from the gold standard’s two 4-second segments and cavitation-focused moment. To tighten alignment, adopt the exact [00:00-00:04] and [00:04-00:08] structure, emphasize the ultra-fast blur of the strike and cavitation, and specify camera angles that mirror the style (e.g., macro close-up, ultra-slow motion). The narration could also hint at the glass’s reaction beyond a simple tremble to add cinematic context.\nFailed checks: example_alignment",
+  "strengths": [
+    "Maintains a single-subject focus on the mantis shrimp and the glass",
+    "Provides a clear shot sequence with distinct angles (front view, close-up, top-down)"
+  ],
+  "fixes": [
+    "Align timestamp segments with the gold standard (two 4-second cuts) and describe the strike with cavitation for authenticity",
+    "Use more cinematic, action-first language (e.g., 'ultra-fast blur,' 'cavitation bubbles') and specific macro/close-up angles"
+  ]
+}

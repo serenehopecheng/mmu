@@ -1,0 +1,34 @@
+{
+  "task_id": "19.mp4",
+  "topic": "A person wearing a 'Hennin' headdress walking through a 15th-century court.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: A person wearing a hennin headdress steps into a vaulted 15th-century court - Camera: Eye-level, Framing: wide, Movement: tracking, Subject: single.\\n[00:02-00:05] Shot 2: The person with hennin headdress walks along a marble aisle past heraldic banners - Camera: Eye-level, Framing: medium, Movement: tracking, Subject: single.\\n[00:05-00:08] Shot 3: The figure pauses beside a throne, hennin catching the torchlight - Camera: Low angle, Framing: close, Movement: push-in, Subject: single.\",\n  \"narration\": \"A person wearing a hennin headdress steps into a vaulted 15th-century court. In the first shot, the figure enters the space at eye level, the wide frame establishing the grandeur of the hall and anchoring the topic in a specific era. In the second shot, the hennin-wearing figure moves along a marble aisle as heraldic banners rise behind, the medium framing keeping the subject in balance with the courtly backdrop. In the third shot, the figure pauses beside a throne as torchlight catches the headdress, a low-angle close-up heightening the presence of status and ritual. Taken together, the three shots follow a single subject through a historical setting, illustrating what it means to walk through a 15th-century court in ceremonial dress.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: A person wearing a hennin headdress steps into a vaulted 15th-century court - Camera: Eye-level, Framing: wide, Movement: tracking, Subject: single.\n[00:02-00:05] Shot 2: The person with hennin headdress walks along a marble aisle past heraldic banners - Camera: Eye-level, Framing: medium, Movement: tracking, Subject: single.\n[00:05-00:08] Shot 3: The figure pauses beside a throne, hennin catching the torchlight - Camera: Low angle, Framing: close, Movement: push-in, Subject: single.",
+    "narration": "A person wearing a hennin headdress steps into a vaulted 15th-century court. In the first shot, the figure enters the space at eye level, the wide frame establishing the grandeur of the hall and anchoring the topic in a specific era. In the second shot, the hennin-wearing figure moves along a marble aisle as heraldic banners rise behind, the medium framing keeping the subject in balance with the courtly backdrop. In the third shot, the figure pauses beside a throne as torchlight catches the headdress, a low-angle close-up heightening the presence of status and ritual. Taken together, the three shots follow a single subject through a historical setting, illustrating what it means to walk through a 15th-century court in ceremonial dress."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 6.4,
+  "final_score": 6.4,
+  "feedback": "The script adheres to the topic and uses clear camera cues, but its shot structure and pacing differ from the gold standard's two-shot, side-tracking approach. Consider simplifying to two concise shots that mirror the gold standard and tighten narration to emphasize era and hennin more succinctly. Keep action-first language while reducing extraneous background details to match the reference style.",
+  "strengths": [
+    "Clear shot-by-shot structure with camera angles",
+    "Maintains a single-subject focus on the hennin-wearing figure"
+  ],
+  "fixes": [
+    "Align shot count and pacing more closely with the gold standard (two shots, with a side-tracking movement)",
+    "Explicitly emphasize the hennin and veil in the narration to reinforce the garment and era while keeping wording concise"
+  ]
+}

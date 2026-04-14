@@ -1,0 +1,35 @@
+{
+  "task_id": "26.mp4",
+  "topic": "An artisan practicing Kintsugi on a broken ceramic bowl, soft-lit tabletop scene.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: The artisan surveys the broken ceramic bowl, noting cracks — front view\\nShot 2 [00:02-00:05]: The artisan brushes gold lacquer into the cracks — close-up\\nShot 3 [00:05-00:08]: The artisan places the completed bowl on the table, revealing the gold-veined repair — side-angle\",\n  \"narration\": \"An artisan surveys a broken ceramic bowl on a softly lit tabletop. The sequence then shows lacquer being applied to the cracks and finally the completed gold-veined repair revealed on the tabletop.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: The artisan surveys the broken ceramic bowl, noting cracks — front view\nShot 2 [00:02-00:05]: The artisan brushes gold lacquer into the cracks — close-up\nShot 3 [00:05-00:08]: The artisan places the completed bowl on the table, revealing the gold-veined repair — side-angle",
+    "narration": "An artisan surveys a broken ceramic bowl on a softly lit tabletop. The sequence then shows lacquer being applied to the cracks and finally the completed gold-veined repair revealed on the tabletop."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 4.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 5.8,
+  "feedback": "The sequence stays on the artisan and the bowl, but the timing and scope diverge from the gold standard. Increase specificity around the join and gold dusting steps, and align the frame structure to the 4-second segments with distinct actions. Enhance lighting cues and tactile texture descriptions to elevate visual richness.",
+  "strengths": [
+    "Clear shot-by-shot progression with explicit camera angles",
+    "Concise, action-first cinematic phrasing"
+  ],
+  "fixes": [
+    "Match timestamp structure to two 4-second segments like [00:00-00:04] and [00:04-00:08]",
+    "Explicitly depict the joining of pieces and the dusting of gold powder for a true Kintsugi sequence",
+    "Add richer lighting cues (soft-lit warmth) and close-up textures of cracks and gold"
+  ]
+}

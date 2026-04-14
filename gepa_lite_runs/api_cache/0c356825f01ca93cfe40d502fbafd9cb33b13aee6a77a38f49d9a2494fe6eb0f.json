@@ -1,0 +1,34 @@
+{
+  "task_id": "25.mp4",
+  "topic": "An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Archer draws the bow in slow motion, side-angle.\\nShot 2 [00:02-00:05]: Archer enters the Khatra technique, close-up on the tensioned fingers and string.\\nShot 3 [00:05-00:08]: Archer releases the arrow in slow motion, side view, displaying the Khatra technique.\",\n  \"narration\": \"From draw to grip to release, the archer executes the Khatra technique in three precise beats. The sequence is captured in slow motion from a side view, culminating in a clean arrow release.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Archer draws the bow in slow motion, side-angle.\nShot 2 [00:02-00:05]: Archer enters the Khatra technique, close-up on the tensioned fingers and string.\nShot 3 [00:05-00:08]: Archer releases the arrow in slow motion, side view, displaying the Khatra technique.",
+    "narration": "From draw to grip to release, the archer executes the Khatra technique in three precise beats. The sequence is captured in slow motion from a side view, culminating in a clean arrow release."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 6.0
+  },
+  "base_quality_score": 4.8,
+  "final_score": 4.8,
+  "feedback": "The prompt stays on the archer and the Khatra technique with slow-mo side views, but the shot structure diverges from the gold standard’s two-shot, 4-second cadence and explicit bow-hand mechanics. Increase fidelity by mirroring the exact timing [00:00-00:04] and [00:04-00:08], describing the bow-hand snap and outward rotation during Khatra, and emphasizing arrow clearance from the riser. Use more cinematic, action-first wording and precise camera directions to mimic the gold standard’s style.",
+  "strengths": [
+    "Clear emphasis on Khatra during release",
+    "Uses side-view and close-up visuals to focus on technique"
+  ],
+  "fixes": [
+    "Adopt the gold-standard timing structure with two 4-second shots: [00:00-00:04] and [00:04-00:08], detailing the draw and the Khatra-induced bow rotation",
+    "Explicitly describe the bow hand snapping forward/down and the bow rotating outward to clear the riser during release; keep the side view for consistency"
+  ]
+}

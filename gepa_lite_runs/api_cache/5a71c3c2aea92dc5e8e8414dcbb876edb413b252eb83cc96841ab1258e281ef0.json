@@ -1,0 +1,34 @@
+{
+  "task_id": "23.mp4",
+  "topic": "A technician performing a 'Three-Point Bend' test on a carbon fiber sample.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: A technician performing a 'Three-Point Bend' test on a carbon fiber sample sits at a lab bench, aligning the sample in the three-point bending fixture. - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: Technician.\\n[00:02-00:05] Shot 2: The technician adjusts the load head and applies load to the carbon fiber sample in the three-point bend fixture. - Camera: Eye-level, Framing: Medium, Movement: Slow Tracking, Subject: Technician.\\n[00:05-00:08] Shot 3: The carbon fiber sample deflects under load. - Camera: Eye-level, Framing: Close, Movement: Push-in, Subject: Technician.\",\n  \"narration\": \"In this sequence a technician performs a 'Three-Point Bend' test on a carbon fiber sample. Shot 1 shows the technician at a lab bench aligning the sample in the three-point bending fixture, establishing the test setup and material context. Shot 2 captures the critical action as the load head engages and applies force to the sample while the gauge tracks deflection, illustrating how the test records the flexural response. Shot 3 concentrates on the outcome as the specimen deflects under load and the technician monitors the reading, highlighting how the test yields the bending behavior of carbon fiber composites.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: A technician performing a 'Three-Point Bend' test on a carbon fiber sample sits at a lab bench, aligning the sample in the three-point bending fixture. - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: Technician.\n[00:02-00:05] Shot 2: The technician adjusts the load head and applies load to the carbon fiber sample in the three-point bend fixture. - Camera: Eye-level, Framing: Medium, Movement: Slow Tracking, Subject: Technician.\n[00:05-00:08] Shot 3: The carbon fiber sample deflects under load. - Camera: Eye-level, Framing: Close, Movement: Push-in, Subject: Technician.",
+    "narration": "In this sequence a technician performs a 'Three-Point Bend' test on a carbon fiber sample. Shot 1 shows the technician at a lab bench aligning the sample in the three-point bending fixture, establishing the test setup and material context. Shot 2 captures the critical action as the load head engages and applies force to the sample while the gauge tracks deflection, illustrating how the test records the flexural response. Shot 3 concentrates on the outcome as the specimen deflects under load and the technician monitors the reading, highlighting how the test yields the bending behavior of carbon fiber composites."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": false,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 4.0,
+    "narration_insight": 6.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.0,
+  "final_score": 2.6,
+  "feedback": "The result largely captures the topic but diverges from the gold standard in structure and shot language. It uses three brief segments with camera notes, yet the timestamps and shot framing do not follow the [00:00-00:04], [00:04-00:08] cadence and lack explicit angles (e.g., top-down, wide, macro). To improve, align timing blocks to standard four-second intervals, adopt a more concise, action-first narration style, and include precise angles; ensure the visual subject aligns with the action (the carbon fiber sample drives shot 3, not the technician).\nFailed checks: single_subject_focus, example_alignment",
+  "strengths": [
+    "Covers setup, load, and deflection phases with camera metadata",
+    "Includes timestamped segments and explicit actions"
+  ],
+  "fixes": [
+    "Adopt gold-standard 4-second interval structure ([00:00-00:04], [00:04-00:08]), with clear, distinct actions per shot",
+    "Use explicit shot angles (top-down, low-angle, macro) and ensure the subject reflects the action (focus on the sample in the bend)"
+  ]
+}

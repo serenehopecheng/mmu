@@ -1,0 +1,34 @@
+{
+  "task_id": "13.mp4",
+  "topic": "A person playing a game of 'Jenga' and pulling out a middle block.",
+  "raw_generation": "{\"script\": \"INT. LIVING ROOM - DAY\\nA close-up reveals a Jenga tower standing tall on a wooden table. The room is warm, with soft music in the background.\\nALEX (smiling nervously): Here goes nothing.\\nThe camera pulls back to show the table and the whole tower.\\n\\nCLOSE-UP: ALEX's hand hovers over the middle layer of blocks...\\nALEX: This is the middle block—the hardest to pull, but the most satisfying when it comes loose.\\nHe breathes in, centers himself, and slides the block out slowly.\\nThe tower tilts, wood creaks; a dramatic guitar note plays in the soundtrack.\\nALEX: Phew... that was close.\\nThe tower steadies for a moment, then settles with a wobble.\\nThe camera circles to a wide shot as the tower remains upright.\\n\\nFADE OUT: Title card: The Middle Block Moment\", \"narration\": \"In this tense moment, all attention focuses on the middle block. The tower could topple with one wrong pull. The player takes a measured breath, steadies the hand, and nudges the block free. A tiny creak swells into a suspenseful note as the blocks settle. Will the tower survive this daring move, or will gravity claim the topples? This is the middle block moment—the balance between risk and calm.\"}",
+  "parsed_generation": {
+    "script": "INT. LIVING ROOM - DAY\nA close-up reveals a Jenga tower standing tall on a wooden table. The room is warm, with soft music in the background.\nALEX (smiling nervously): Here goes nothing.\nThe camera pulls back to show the table and the whole tower.\n\nCLOSE-UP: ALEX's hand hovers over the middle layer of blocks...\nALEX: This is the middle block—the hardest to pull, but the most satisfying when it comes loose.\nHe breathes in, centers himself, and slides the block out slowly.\nThe tower tilts, wood creaks; a dramatic guitar note plays in the soundtrack.\nALEX: Phew... that was close.\nThe tower steadies for a moment, then settles with a wobble.\nThe camera circles to a wide shot as the tower remains upright.\n\nFADE OUT: Title card: The Middle Block Moment",
+    "narration": "In this tense moment, all attention focuses on the middle block. The tower could topple with one wrong pull. The player takes a measured breath, steadies the hand, and nudges the block free. A tiny creak swells into a suspenseful note as the blocks settle. Will the tower survive this daring move, or will gravity claim the topples? This is the middle block moment—the balance between risk and calm."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 2.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 6.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.4,
+  "final_score": 4.2,
+  "feedback": "The scene centers on the middle block and conveys tension, but it lacks timestamped shot progression and the concise, shot-by-shot framing found in the gold standard. To improve, restructure into explicit [00:00-00:02], [00:02-00:04], etc., with clearly defined camera angles (close-up, macro, tracking) and a focused sequence: test the block, slide it out, handle wobble or toppling. Align the pacing and action-first narration to mirror the gold standard style.\nFailed checks: example_alignment",
+  "strengths": [
+    "Focused on the middle block tension with clear actor intent.",
+    "Uses varied camera language (close-up, wide, tilts) and clear action flow."
+  ],
+  "fixes": [
+    "Add explicit timestamped shot segments in the [00:00-00:02] format.",
+    "Match the gold standard's concise, action-first pacing (test block, slide block, note tower wobble or placement)."
+  ]
+}

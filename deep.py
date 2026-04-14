@@ -772,39 +772,39 @@ async def run_pipeline(query: str, iid: int):
     with open(filename, "w", encoding="utf-8") as f:
         f.write(web_context)
 
-    # print("[STEP 2/5] Retrieving reference images...")
-    # reference_images = await image_retriever.run(ImageRetrieverArgs(query=query, iid=iid, pynum_images=1), None)
-    # if not reference_images:
-    #     raise Exception("No reference images were retrieved")
+    print("[STEP 2/5] Retrieving reference images...")
+    reference_images = await image_retriever.run(ImageRetrieverArgs(query=query, iid=iid, pynum_images=1), None)
+    if not reference_images:
+        raise Exception("No reference images were retrieved")
 
-    # # # TEST IMAGES
-    # # reference_images = Path("test/2_unique/unique3__0.jpg")
-    # # if isinstance(reference_images, (str, Path)):
-    # #     image_path = Path(reference_images)
-    # #     reference_images = [{
-    # #         "url": str(image_path),
-    # #         "bytes": image_path.read_bytes(),
-    # #         "index": 0,
-    # #         "relevance_score": 10,
-    # #     }]
+    # # TEST IMAGES
+    # reference_images = Path("test/2_unique/unique3__0.jpg")
+    # if isinstance(reference_images, (str, Path)):
+    #     image_path = Path(reference_images)
+    #     reference_images = [{
+    #         "url": str(image_path),
+    #         "bytes": image_path.read_bytes(),
+    #         "index": 0,
+    #         "relevance_score": 10,
+    #     }]
 
-    # frame_image = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
-    # frame_buffer = io.BytesIO()
-    # frame_image.save(frame_buffer, format="JPEG", quality=95)
-    # frame = frame_buffer.getvalue()
-    # ref_dir = Path("test/2_images")
-    # ref_dir.mkdir(parents=True, exist_ok=True)
-    # for ref in reference_images:
-    #     url = str(ref.get("url", ""))
-    #     m = re.search(r"\.(jpg|jpeg|png|gif|webp)(?:$|[?#])", url, flags=re.IGNORECASE)
-    #     ext = (m.group(1).lower() if m else "jpg")
-    #     img_bytes = ref["bytes"]
-    #     idx = ref.get("index", 0)
-    #     safe_url = re.sub(r"[^A-Za-z0-9_]+", "", url)[:30]
-    #     out_name = f"{iid}.{ext}"
-    #     out_path = ref_dir / out_name
-    #     with open(out_path, "wb") as imgf:
-    #         imgf.write(img_bytes)
+    frame_image = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
+    frame_buffer = io.BytesIO()
+    frame_image.save(frame_buffer, format="JPEG", quality=95)
+    frame = frame_buffer.getvalue()
+    ref_dir = Path("test/2_images")
+    ref_dir.mkdir(parents=True, exist_ok=True)
+    for ref in reference_images:
+        url = str(ref.get("url", ""))
+        m = re.search(r"\.(jpg|jpeg|png|gif|webp)(?:$|[?#])", url, flags=re.IGNORECASE)
+        ext = (m.group(1).lower() if m else "jpg")
+        img_bytes = ref["bytes"]
+        idx = ref.get("index", 0)
+        safe_url = re.sub(r"[^A-Za-z0-9_]+", "", url)[:30]
+        out_name = f"{iid}.{ext}"
+        out_path = ref_dir / out_name
+        with open(out_path, "wb") as imgf:
+            imgf.write(img_bytes)
     
     print("[STEP 3/5] Generating script...")
     generator_args = ScriptGeneratorArgs(query=query, context_info=web_context)

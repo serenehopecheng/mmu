@@ -1,0 +1,34 @@
+{
+  "task_id": "14.mp4",
+  "topic": "A chemist performing a 'Titration' until the exact 'End Point' is reached.",
+  "raw_generation": "{\n  \"script\": \"Scene 1 — Opening\\nINT. MODERN CHEMISTRY LAB — DAY\\nA chemist in a lab coat and goggles stands at a clutter-free benchtop. A burette is clamped above a conical flask. A bottle of titrant, a pipette, and an Erlenmeyer with the analyte sit nearby.\\nCHEMIST: Today we perform a titration to determine the concentration of this solution. We'll reach the end point when the color change persists after swirling.\\nCamera follows as the chemist checks the equipment and places the indicators.\\n\\nScene 2 — Safety and Setup\\nCHEMIST: Safety first. Goggles, gloves, and a lab coat. We'll rinse the burette with titrant to ensure accurate results.\\nNarration: The chemist will use phenolphthalein as the indicator for an acid–base titration. The burette is filled with titrant; the initial volume is recorded.\\n\\nScene 3 — Preparing the Analyte and Indicator\\nCHEMIST: We pipette a measured volume of the analyte into the Erlenmeyer and add a few drops of phenolphthalein. The solution is colorless in acidic form.\\nCamera: close-up on the colorless mixture.\\n\\nScene 4 — The Titration\\nCHEMIST: We start adding titrant slowly, swirling constantly. As the pink color lingers for about 30 seconds, we know we are near the end point.\\nCamera: the drop-by-drop addition, the rapid swirls, the color approaching pink.\\n\\nScene 5 — Reaching the End Point and Calculation\\nCHEMIST: The end point is reached when a faint pink persists for a short time. We read the final burette volume and calculate the concentration using the formula M1V1 = M2V2.\\nCamera: close-up on the burette scale and the calculation notebook.\\n\\nScene 6 — Cleanup and Takeaway\\nCHEMIST: Clean up, dispose of wastes, and recap what we learned about end points and equivalence points.\\nNarration: Titration is a precise quantitative method; the end point approximates the equivalence point, depending on the indicator used.\",\n  \"narration\": \"Welcome to the chemistry lab. In this video, a chemist performs a titration to determine the concentration of a solution. We’ll set up the equipment, fill the burette, and carefully add titrant until the end point is reached. The end point is the moment when the indicator’s color change persists, signaling that the analyte has reacted completely with the titrant. We’ll record the burette volume at the end point and use M1V1 = M2V2 to calculate the unknown concentration. Throughout, safety and proper technique are emphasized: PPE, rinsing glassware, swirling the flask, and disposing of waste properly. This demonstration uses a typical acid–base titration with phenolphthalein as the indicator.\"\n}",
+  "parsed_generation": {
+    "script": "Scene 1 — Opening\nINT. MODERN CHEMISTRY LAB — DAY\nA chemist in a lab coat and goggles stands at a clutter-free benchtop. A burette is clamped above a conical flask. A bottle of titrant, a pipette, and an Erlenmeyer with the analyte sit nearby.\nCHEMIST: Today we perform a titration to determine the concentration of this solution. We'll reach the end point when the color change persists after swirling.\nCamera follows as the chemist checks the equipment and places the indicators.\n\nScene 2 — Safety and Setup\nCHEMIST: Safety first. Goggles, gloves, and a lab coat. We'll rinse the burette with titrant to ensure accurate results.\nNarration: The chemist will use phenolphthalein as the indicator for an acid–base titration. The burette is filled with titrant; the initial volume is recorded.\n\nScene 3 — Preparing the Analyte and Indicator\nCHEMIST: We pipette a measured volume of the analyte into the Erlenmeyer and add a few drops of phenolphthalein. The solution is colorless in acidic form.\nCamera: close-up on the colorless mixture.\n\nScene 4 — The Titration\nCHEMIST: We start adding titrant slowly, swirling constantly. As the pink color lingers for about 30 seconds, we know we are near the end point.\nCamera: the drop-by-drop addition, the rapid swirls, the color approaching pink.\n\nScene 5 — Reaching the End Point and Calculation\nCHEMIST: The end point is reached when a faint pink persists for a short time. We read the final burette volume and calculate the concentration using the formula M1V1 = M2V2.\nCamera: close-up on the burette scale and the calculation notebook.\n\nScene 6 — Cleanup and Takeaway\nCHEMIST: Clean up, dispose of wastes, and recap what we learned about end points and equivalence points.\nNarration: Titration is a precise quantitative method; the end point approximates the equivalence point, depending on the indicator used.",
+    "narration": "Welcome to the chemistry lab. In this video, a chemist performs a titration to determine the concentration of a solution. We’ll set up the equipment, fill the burette, and carefully add titrant until the end point is reached. The end point is the moment when the indicator’s color change persists, signaling that the analyte has reacted completely with the titrant. We’ll record the burette volume at the end point and use M1V1 = M2V2 to calculate the unknown concentration. Throughout, safety and proper technique are emphasized: PPE, rinsing glassware, swirling the flask, and disposing of waste properly. This demonstration uses a typical acid–base titration with phenolphthalein as the indicator."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 2.0,
+    "veo_prompt_craft": 4.0,
+    "narration_insight": 6.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 4.8,
+  "final_score": 3.6,
+  "feedback": "The output captures the general titration setup and end-point concept, but it lacks timestamped, shot-by-shot sequencing and precise camera directives. To align with the gold standard, restructure into explicit [00:00-00:02], [00:02-00:04], etc. segments with tight camera angles (top-down/burette reading, close-ups of the color change, tracking of the滴 titrant) and culminate in a single, dramatic end-point moment. Reduce broad scene descriptions and emphasize a single, cinematic end-point beat that mirrors the gold-standard timing and pacing.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear progression through setup, titration, and end-point concept.",
+    "Incorporates safety/isolation of steps and mentions the indicator."
+  ],
+  "fixes": [
+    "Adopt timestamped shot segments with specific camera angles (e.g., top-down burette, close-up on end-point color).",
+    "Focus the narrative on a single, dramatic end-point moment with concise, action-first cinematography."
+  ]
+}

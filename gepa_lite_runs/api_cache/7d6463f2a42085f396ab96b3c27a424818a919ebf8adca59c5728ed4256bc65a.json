@@ -1,0 +1,35 @@
+{
+  "task_id": "20.mp4",
+  "topic": "A close-up of a 'Mantis Shrimp' punching a glass tank.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view: Mantis shrimp sits at the glass tank edge, body tense and eyes locked, ready to strike.\\nShot 2 [00:02-00:05]: Close-up: Mantis shrimp's raptorial claw snaps forward, the glass surface quivers at impact.\\nShot 3 [00:05-00:08]: Top-down: Glass tank ripples outward as the punch lands, mantis shrimp's silhouette pinned at the impact point.\",\n  \"narration\": \"An athletic mantis shrimp readies and strikes a glass tank, and the glass ripples on impact. The sequence uses front view, close-up, and top-down to emphasize speed, precision, and force.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view: Mantis shrimp sits at the glass tank edge, body tense and eyes locked, ready to strike.\nShot 2 [00:02-00:05]: Close-up: Mantis shrimp's raptorial claw snaps forward, the glass surface quivers at impact.\nShot 3 [00:05-00:08]: Top-down: Glass tank ripples outward as the punch lands, mantis shrimp's silhouette pinned at the impact point.",
+    "narration": "An athletic mantis shrimp readies and strikes a glass tank, and the glass ripples on impact. The sequence uses front view, close-up, and top-down to emphasize speed, precision, and force."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.2,
+  "final_score": 6.2,
+  "feedback": "The output roughly matches the topic and uses timestamped, shot-by-shot structure, but it diverges from the gold standard by not prioritizing a close-up aquarium intro and by omitting cavitation bubble details. To align, start with a close-up of the mantis shrimp locking its appendage in an aquarium [00:00-00:04], then show an ultra-fast strike with visible cavitation bubbles [00:04-00:08], and keep the shots tightly focused on the mantis and the glass. Consider referencing the specific glass impact and bubble physics to mirror the gold standard's emphasis.",
+  "strengths": [
+    "Clear shot progression with distinct angles",
+    "Concise, cinematic phrasing"
+  ],
+  "fixes": [
+    "Reorder to begin with a close-up in an aquarium",
+    "Add cavitation bubbles and glass impact detail in the strike shot",
+    "Match exact timestamp structure and cadence to gold standard"
+  ]
+}

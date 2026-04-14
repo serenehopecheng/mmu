@@ -1,0 +1,36 @@
+{
+  "task_id": "10.mp4",
+  "topic": "A samurai practicing with a nodachi.",
+  "raw_generation": "{\"script\":\"EXT. MOUNTAIN DOJO - DAWN\\nA lone SAMURAI stands in a quiet dojo built of timber. A nodachi rests in a stand, its steel blade catching the first pale light.\\n\\nCLOSE UP: The sword's long curvature, the hand-guard, the cord-wrapped grip.\\n\\nHe bows once to the blade, then to the space, then to the rising sun. A soft breath fogs the air.\\n\\nA SENSEI watches from the shadow, patient. He signals with a small nod; the practice begins.\\n\\nThe samurai lifts the nodachi with calm, holding it with reverence. The room is still; only the sound of breath and distant wind.\\n\\nHe performs slow, ceremonial movements—flowing from stance to stance, controlled and precise—white dust rises with each measured motion. No reckless force, only discipline.\\n\\nCLOSE ON: Hands guiding the blade along imaginary arcs, protective form, balance evident in every muscle.\\n\\nSFX: Wood taps, soft leather, quiet breath.\\n\\nSAMURAI: \\\"Practice is a vow of patience.\\\"\\nSENSEI: \\\"Respect the blade. Respect the safety of all who share this space.\\\"\\n\\nThe sun climbs higher. He lowers the nodachi, resting it back on its stand. He bows once more. The room returns to quiet.\\n\\nFADE OUT.\",\"narration\":\"In the quiet hours before the village wakes, a samurai meets his long blade: the nodachi, a symbol of length and resolve. Here, training is not about speed or brutality, but balance, breath, and reverence. The blade is treated like a living partner—never an instrument of harm, but a ceremonial partner that demands discipline. The dojo breathes with him; dust motes drift in the morning light as he moves with deliberate, ceremonial grace. His steps are measured, his gaze steady. Sage advice from the elder sounds over the timber walls: safety, respect, and focus. Through patient repetition, the samurai seeks harmony between body and blade, between will and calm. As the sun climbs, the ritual ends as it began—with silence, and a bow to the blade, and to the dawning day.\"}",
+  "parsed_generation": {
+    "script": "EXT. MOUNTAIN DOJO - DAWN\nA lone SAMURAI stands in a quiet dojo built of timber. A nodachi rests in a stand, its steel blade catching the first pale light.\n\nCLOSE UP: The sword's long curvature, the hand-guard, the cord-wrapped grip.\n\nHe bows once to the blade, then to the space, then to the rising sun. A soft breath fogs the air.\n\nA SENSEI watches from the shadow, patient. He signals with a small nod; the practice begins.\n\nThe samurai lifts the nodachi with calm, holding it with reverence. The room is still; only the sound of breath and distant wind.\n\nHe performs slow, ceremonial movements—flowing from stance to stance, controlled and precise—white dust rises with each measured motion. No reckless force, only discipline.\n\nCLOSE ON: Hands guiding the blade along imaginary arcs, protective form, balance evident in every muscle.\n\nSFX: Wood taps, soft leather, quiet breath.\n\nSAMURAI: \"Practice is a vow of patience.\"\nSENSEI: \"Respect the blade. Respect the safety of all who share this space.\"\n\nThe sun climbs higher. He lowers the nodachi, resting it back on its stand. He bows once more. The room returns to quiet.\n\nFADE OUT.",
+    "narration": "In the quiet hours before the village wakes, a samurai meets his long blade: the nodachi, a symbol of length and resolve. Here, training is not about speed or brutality, but balance, breath, and reverence. The blade is treated like a living partner—never an instrument of harm, but a ceremonial partner that demands discipline. The dojo breathes with him; dust motes drift in the morning light as he moves with deliberate, ceremonial grace. His steps are measured, his gaze steady. Sage advice from the elder sounds over the timber walls: safety, respect, and focus. Through patient repetition, the samurai seeks harmony between body and blade, between will and calm. As the sun climbs, the ritual ends as it began—with silence, and a bow to the blade, and to the dawning day."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": false,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 3.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 7.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 3.4,
+  "feedback": "The piece centers on a samurai and his nodachi and adds contextual narration, but it lacks timestamped shot-by-shot sequencing and a strict, single-subject focus. To align with the gold standard, structure the script as [00:00-00:02], [00:02-00:04], etc., specify explicit camera angles for each beat (wide, close-up, tracking), and minimize additional characters in frames. Consider keeping the sensei as a background or off-camera presence to maintain single-subject focus.\nFailed checks: single_subject_focus, example_alignment",
+  "strengths": [
+    "Cinematic, ceremonial tone with a clear nodachi focus",
+    "Incorporates descriptive details of the blade and movement",
+    "Narration adds interpretive context about balance and reverence"
+  ],
+  "fixes": [
+    "Add timestamped shot segments in [mm:ss] format to match gold standard structure",
+    "Replace or downplay the Sensei presence to preserve single-subject focus",
+    "Use explicit camera cues for each beat (e.g., wide shot, close-up on grip, tracking of movement) and maintain concise, action-first language"
+  ]
+}

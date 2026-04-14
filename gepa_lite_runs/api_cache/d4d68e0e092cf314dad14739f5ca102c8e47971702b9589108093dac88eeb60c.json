@@ -1,0 +1,34 @@
+{
+  "task_id": "21.mp4",
+  "topic": "A person making a peanut butter and jelly sandwich.",
+  "raw_generation": "{\n  \"script\": \"INT. KITCHEN - DAY\\nA clean wooden table sits with two slices of bread, a jar of peanut butter, a jar of jelly, a knife, and a plate.\\n\\nPERSON: Hey there! Today we're making a classic peanut butter and jelly sandwich.\\n\\nCUT TO: Close-up on bread\\nThe bread rests on a cutting board.\\n\\nPERSON: First, place two slices of bread on the board.\\n\\nCUT TO: Spreading peanut butter\\nThe person drags a knife through a thick layer of peanut butter and spreads it evenly from edge to edge.\\n\\nCUT TO: Spreading jelly\\nThey take jelly and spread on the other slice, leaving a thin margin around the edges.\\n\\nCUT TO: Assembling\\nThe two slices are pressed together, peanut butter side facing jelly.\\n\\nCUT TO: Cutting and plating\\nThe sandwich is cut diagonally and placed on a plate.\\n\\nCUT TO: Tasting\\nPERSON: Delicious! A simple, classic snack.\\n\",\n  \"narration\": \"In this quick tutorial, a person shows how to make a peanut butter and jelly sandwich. Start with two slices of bread. Spread peanut butter on one slice, jelly on the other. Put the slices together, slice the sandwich, and enjoy. Tip: wipe the knife between spreads, or use separate knives. Optional add-ons: banana slices, honey, or chocolate chips.\"\n}",
+  "parsed_generation": {
+    "script": "INT. KITCHEN - DAY\nA clean wooden table sits with two slices of bread, a jar of peanut butter, a jar of jelly, a knife, and a plate.\n\nPERSON: Hey there! Today we're making a classic peanut butter and jelly sandwich.\n\nCUT TO: Close-up on bread\nThe bread rests on a cutting board.\n\nPERSON: First, place two slices of bread on the board.\n\nCUT TO: Spreading peanut butter\nThe person drags a knife through a thick layer of peanut butter and spreads it evenly from edge to edge.\n\nCUT TO: Spreading jelly\nThey take jelly and spread on the other slice, leaving a thin margin around the edges.\n\nCUT TO: Assembling\nThe two slices are pressed together, peanut butter side facing jelly.\n\nCUT TO: Cutting and plating\nThe sandwich is cut diagonally and placed on a plate.\n\nCUT TO: Tasting\nPERSON: Delicious! A simple, classic snack.\n",
+    "narration": "In this quick tutorial, a person shows how to make a peanut butter and jelly sandwich. Start with two slices of bread. Spread peanut butter on one slice, jelly on the other. Put the slices together, slice the sandwich, and enjoy. Tip: wipe the knife between spreads, or use separate knives. Optional add-ons: banana slices, honey, or chocolate chips."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 5.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 6.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.0,
+  "final_score": 4.8,
+  "feedback": "Compared to the gold standard, the output covers the PB&J steps in a logical order and uses camera cues, but it lacks the timestamped, shot-by-shot structure the gold standard uses. To align, adopt bracketed [00:00-00:04] style timestamps, specify exact camera angles per segment (wide, close-up, macro, tracking), and keep each action concise in distinct timestamped lines.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear PB&J sequence with logical step progression",
+    "Uses explicit camera cues (CUT TO, close-up, etc.)"
+  ],
+  "fixes": [
+    "Add timestamped segments in [00:00-00:02] style and align with a clocked sequence",
+    "Specify precise camera angles for each segment (wide, macro, tracking) and keep actions concise within each timestamp"
+  ]
+}

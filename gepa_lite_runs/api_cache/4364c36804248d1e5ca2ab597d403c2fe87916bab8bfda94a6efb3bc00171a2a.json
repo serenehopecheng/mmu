@@ -1,0 +1,35 @@
+{
+  "task_id": "16.mp4",
+  "topic": "A close-up of a 'Vinyl Record Player' being started.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view of the vinyl record player as the power switch is flipped on.\\nShot 2 [00:02-00:05]: Close-up of the tonearm lowering onto the outer edge of the record.\\nShot 3 [00:05-00:08]: Top-down view of the platter spinning with the record in motion.\",\n  \"narration\": \"The turntable powers up from the first shot, the tonearm lowers onto the record, and the platter begins to spin from a top-down view.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view of the vinyl record player as the power switch is flipped on.\nShot 2 [00:02-00:05]: Close-up of the tonearm lowering onto the outer edge of the record.\nShot 3 [00:05-00:08]: Top-down view of the platter spinning with the record in motion.",
+    "narration": "The turntable powers up from the first shot, the tonearm lowers onto the record, and the platter begins to spin from a top-down view."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.6,
+  "final_score": 5.6,
+  "feedback": "The sequence clearly shows a turntable being started, with distinct shots and camera angles. However, it misses the more cinematic macro moment of the record on the platter and the moment the needle contacts the groove (and the crackle) that the gold standard emphasizes. To align more closely, swap in a macro shot of the record, followed by the tonearm/needle contact and audible crackle, and adjust timings to mirror the staggered 0–4s and 4–8s structure.",
+  "strengths": [
+    "Clear three-shot sequence with distinct camera angles",
+    "Concise, action-first phrasing"
+  ],
+  "fixes": [
+    "Add a macro shot of the record on the platter and the needle making contact",
+    "Include the subtle crackle and music onset as distinct moments, with corresponding SFX",
+    "Align the timing to mirror the gold standard's two-stage progression (e.g., [00:00-00:04], [00:04-00:08])"
+  ]
+}

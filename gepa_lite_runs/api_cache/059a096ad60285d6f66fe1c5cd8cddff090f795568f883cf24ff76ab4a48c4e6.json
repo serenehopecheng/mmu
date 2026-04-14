@@ -1,0 +1,34 @@
+{
+  "task_id": "26.mp4",
+  "topic": "An artisan practicing Kintsugi on a broken ceramic bowl, soft-lit tabletop scene.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: front view of the artisan's hands stabilizing a broken ceramic bowl on a softly lit tabletop.\\nShot 2 [00:02-00:05]: close-up on the artisan applying gold lacquer into the crack along the seam.\\nShot 3 [00:05-00:08]: top-down view as the artisan steadies the repaired bowl, the gold seams catching the soft light.\",\n  \"narration\": \"Soft light frames a lone artisan stabilizing a broken ceramic bowl on a softly lit tabletop. The sequence follows careful stabilization, gold-lacquer application into the cracks, and a final reveal of the repaired bowl with shimmering gold seams.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: front view of the artisan's hands stabilizing a broken ceramic bowl on a softly lit tabletop.\nShot 2 [00:02-00:05]: close-up on the artisan applying gold lacquer into the crack along the seam.\nShot 3 [00:05-00:08]: top-down view as the artisan steadies the repaired bowl, the gold seams catching the soft light.",
+    "narration": "Soft light frames a lone artisan stabilizing a broken ceramic bowl on a softly lit tabletop. The sequence follows careful stabilization, gold-lacquer application into the cracks, and a final reveal of the repaired bowl with shimmering gold seams."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 7.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 4.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.4,
+  "final_score": 6.4,
+  "feedback": "The sequence stays on the artisan and the repaired bowl, but it diverges from the gold standard by using three short shots rather than two longer segments and by not explicitly depicting the dusting of gold powder. To tighten alignment, structure the scene into two ~4-second shots that mirror the joining and gold-dusting steps, and include a shot that shows the powder being applied to the seam for a true Kintsugi cadence.",
+  "strengths": [
+    "Clear shot-by-shot structure with defined angles (front view, close-up, top-down).",
+    "Action-first, cinematic language focused on the repair process."
+  ],
+  "fixes": [
+    "Align pacing and segment count more closely with the gold standard (two 4-second segments).",
+    "Explicitly depict the gold-dusting step to emphasize Kintsugi and add a final shimmering reveal."
+  ]
+}

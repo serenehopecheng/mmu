@@ -1,0 +1,35 @@
+{
+  "task_id": "4.mp4",
+  "topic": "A close-up of a Newton's Cradle in motion on a desk, macro view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: A single ball lifts and initiates a precise arc in macro focus — front view\\nShot 2 [00:02-00:05]: Balls collide and rebound in a rhythmic chain, captured in tight macro — top-down\\nShot 3 [00:05-00:08]: The motion settles as the cradle returns to equilibrium — side-angle\",\n  \"narration\": \"Begin with a macro front-view of a Newton's cradle as one ball lifts into a precise arc. The rhythm of collisions ripples through the suspended spheres, then the motion settles back toward rest.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: A single ball lifts and initiates a precise arc in macro focus — front view\nShot 2 [00:02-00:05]: Balls collide and rebound in a rhythmic chain, captured in tight macro — top-down\nShot 3 [00:05-00:08]: The motion settles as the cradle returns to equilibrium — side-angle",
+    "narration": "Begin with a macro front-view of a Newton's cradle as one ball lifts into a precise arc. The rhythm of collisions ripples through the suspended spheres, then the motion settles back toward rest."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.0,
+  "final_score": 6.0,
+  "feedback": "The prompt stays on Newton's Cradle in macro view, with clear shot angles, but it lacks the gold standard's initial static five-ball setup and explicit slow-motion energy transfer. To better align, structure the segmenting as [00:00-00:03] macro of five balls on a desk with one lifting, [00:03-00:05] slow-motion collision transferring energy, [00:05-00:08] wide shot showing rhythmic oscillation. Add lighting texture and desk details, and emphasize the metallic surfaces for richer visuals.",
+  "strengths": [
+    "Clear macro front/top-down/side-angle shot descriptors",
+    "Concise, action-first language with distinct segments"
+  ],
+  "fixes": [
+    "Include an initial static shot of five balls on the desk",
+    "Add slow-motion emphasis on energy transfer and a final wide shot of rhythmic oscillation",
+    "Enhance lighting and texture cues (metallic surfaces, desk material) for visual richness"
+  ]
+}

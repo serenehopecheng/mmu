@@ -1,0 +1,38 @@
+{
+  "task_id": "23.mp4",
+  "topic": "A technician performing a 'Three-Point Bend' test on a carbon fiber sample.",
+  "raw_generation": "{\n  \"script\": [\n    \"Shot 1 [00:00-00:02]: The technician positions the carbon fiber sample on the three-point bend rig — front view.\",\n    \"Shot 2 [00:02-00:05]: The technician secures the sample and engages the center loading nose to begin bending — close-up.\",\n    \"Shot 3 [00:05-00:08]: The technician monitors deflection as the carbon fiber sample bends under load — side-angle.\"\n  ],\n  \"narration\": \"A technician places the carbon fiber sample on the three-point bend rig and aligns it for testing. The center loading nose applies the bend while the technician observes the deflection of the sample.\"\n}",
+  "parsed_generation": {
+    "script": [
+      "Shot 1 [00:00-00:02]: The technician positions the carbon fiber sample on the three-point bend rig — front view.",
+      "Shot 2 [00:02-00:05]: The technician secures the sample and engages the center loading nose to begin bending — close-up.",
+      "Shot 3 [00:05-00:08]: The technician monitors deflection as the carbon fiber sample bends under load — side-angle."
+    ],
+    "narration": "A technician places the carbon fiber sample on the three-point bend rig and aligns it for testing. The center loading nose applies the bend while the technician observes the deflection of the sample."
+  },
+  "hard_checks": {
+    "valid_json": false,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.4,
+  "final_score": 4.2,
+  "feedback": "Local hard-check failures: Output is not valid JSON with string fields script and narration.\nThe generated sequence stays on topic and uses clearly labeled shots with camera angles, but it lacks the explicit two-support setup and a four-second cadence seen in the gold standard. To align more closely, structure the timestamps in uniform 4-second blocks, emphasize the vertical loading action on the center, and describe the carbon fiber sample's interaction (deflection, onset of fracture) with more cinematic, action-first phrasing. Consider integrating a brief SFX cue and more specific lighting/texture details to heighten realism.\nFailed checks: valid_json",
+  "strengths": [
+    "Clear shot-by-shot sequence with camera angles",
+    "Concise narration that aligns with visuals"
+  ],
+  "fixes": [
+    "Adopt uniform 4-second blocks and explicitly show the two-support framing",
+    "Enhance visual detail (lighting, texture) and narration about loading and deflection"
+  ]
+}

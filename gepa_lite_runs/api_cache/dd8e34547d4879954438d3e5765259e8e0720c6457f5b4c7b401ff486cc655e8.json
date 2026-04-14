@@ -1,0 +1,35 @@
+{
+  "task_id": "1.mp4",
+  "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view: The Cybertruck approaches and splashes through the puddle.\\nShot 2 [00:02-00:05]: Close-up: Water droplets bead on the Cybertruck's surface as the tire churns through the puddle.\\nShot 3 [00:05-00:08]: Top-down: The Cybertruck carves a path through the puddle, ripples and reflections radiating outward.\",\n  \"narration\": \"Open with the Cybertruck approaching the puddle from the front; the sequence tightens to a close-up of water spray, then pulls up to a top-down view of it carving through the water.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view: The Cybertruck approaches and splashes through the puddle.\nShot 2 [00:02-00:05]: Close-up: Water droplets bead on the Cybertruck's surface as the tire churns through the puddle.\nShot 3 [00:05-00:08]: Top-down: The Cybertruck carves a path through the puddle, ripples and reflections radiating outward.",
+    "narration": "Open with the Cybertruck approaching the puddle from the front; the sequence tightens to a close-up of water spray, then pulls up to a top-down view of it carving through the water."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": false,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 5.0
+  },
+  "base_quality_score": 4.8,
+  "final_score": 3.6,
+  "feedback": "The output shows the Cybertruck interacting with a puddle and uses timestamped shots, but it doesn't deliver the requested low-angle opening and the sequence diverges from the gold standard's framing. To align, start with a true low-angle ground shot [00:00-00:03], then a slow-motion close-up on the tire entering water [00:03-00:06], followed by a tracking shot through the puddle [00:06-00:08], and add SFX cues. Increase lighting and texture detail to heighten cinematic impact.\nFailed checks: topic_fidelity",
+  "strengths": [
+    "Clear three-shot sequence centered on the Cybertruck and puddle.",
+    "Uses straightforward timestamped structure."
+  ],
+  "fixes": [
+    "Replace opening with a true low-angle shot to match topic.",
+    "Add SFX cues and richer lighting/texture details for cinematic depth.",
+    "Tighten camera angles to mirror the gold standard's action-first style."
+  ]
+}

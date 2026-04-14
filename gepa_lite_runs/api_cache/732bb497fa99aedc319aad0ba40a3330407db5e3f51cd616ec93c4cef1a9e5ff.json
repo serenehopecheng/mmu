@@ -1,0 +1,35 @@
+{
+  "task_id": "19.mp4",
+  "topic": "A person wearing a 'Hennin' headdress walking through a 15th-century court.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: wide: A lone figure wearing a hennin headdress walks through a candlelit 15th-century court.\\nShot 2 [00:02-00:05]: close-up: The hennin silhouette frames the wearer's focused gaze as they advance.\\nShot 3 [00:05-00:08]: side-angle: The figure passes a stone column, the hennin casting a long shadow on the floor.\",\n  \"narration\": \"A solitary figure in a hennin headdress moves through a candlelit 15th-century court. The sequence tightens from wide to close-up, then tracks the walk along the stone columns.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: wide: A lone figure wearing a hennin headdress walks through a candlelit 15th-century court.\nShot 2 [00:02-00:05]: close-up: The hennin silhouette frames the wearer's focused gaze as they advance.\nShot 3 [00:05-00:08]: side-angle: The figure passes a stone column, the hennin casting a long shadow on the floor.",
+    "narration": "A solitary figure in a hennin headdress moves through a candlelit 15th-century court. The sequence tightens from wide to close-up, then tracks the walk along the stone columns."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 3.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.0,
+  "final_score": 6.0,
+  "feedback": "The output captures the hennin-in-court premise with clear shot terminology, but it omits some specifics found in the gold standard (e.g., the veil and explicit female framing). To better align, adopt a two-shot structure or timing that mirrors the reference, and enrich visuals with costume textures and lighting cues. The narration could lean more on contextual cues about era and character without restating visuals already shown.",
+  "strengths": [
+    "Clear shot-by-shot sequence with camera angles",
+    "Conveys candlelit medieval ambiance and movement"
+  ],
+  "fixes": [
+    "Specify gender and costume details more explicitly (e.g., woman, hennin with veil) to align with the gold standard",
+    "Tighten the timestamp structure to mirror the two-segment gold-standard pattern or provide equally distinct time blocks",
+    "Enhance visual detail: fabrics, textures, lighting contrasts, and the hennin's silhouette against the court"
+  ]
+}

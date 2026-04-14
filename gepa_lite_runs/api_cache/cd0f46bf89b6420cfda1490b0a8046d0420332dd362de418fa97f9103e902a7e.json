@@ -1,0 +1,36 @@
+{
+  "task_id": "0.mp4",
+  "topic": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view, hands hover over a Desert Titanium iPhone 16 Pro box on a wooden table.\\nShot 2 [00:02-00:05]: Close-up, fingers lift the lid to reveal the Desert Titanium iPhone 16 Pro inside the box.\\nShot 3 [00:05-00:08]: Top-down, the opened box shows the Desert Titanium iPhone 16 Pro nestled in its packaging on the wooden surface.\",\n  \"narration\": \"A concise, cinematic unboxing sequence on a wooden table. The hands move from approaching the closed box, to lifting the lid, and finally viewing the opened package from above, revealing the Desert Titanium iPhone 16 Pro inside.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view, hands hover over a Desert Titanium iPhone 16 Pro box on a wooden table.\nShot 2 [00:02-00:05]: Close-up, fingers lift the lid to reveal the Desert Titanium iPhone 16 Pro inside the box.\nShot 3 [00:05-00:08]: Top-down, the opened box shows the Desert Titanium iPhone 16 Pro nestled in its packaging on the wooden surface.",
+    "narration": "A concise, cinematic unboxing sequence on a wooden table. The hands move from approaching the closed box, to lifting the lid, and finally viewing the opened package from above, revealing the Desert Titanium iPhone 16 Pro inside."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 3.0,
+    "veo_prompt_craft": 4.0,
+    "narration_insight": 3.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 4.2,
+  "final_score": 3.0,
+  "feedback": "The generated sequence largely centers on the Desert Titanium iPhone 16 Pro on a wooden table, but its shot count and timing diverge from the gold standard (fewer shots, uneven [00:02-00:05] and [00:05-00:08] segments). It lacks the explicit top-down sealed-box setup, the side-angle reveal of the phone’s profile and camera bump, and the macro peel shot. To improve, adopt the 4-shot structure with uniform 2-second segments, include a macro peel shot and visible accessories, and add precise SFX cues for a cinema-quality unboxing sequence.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear focus on Desert Titanium finish and wooden table setting",
+    "Front-view framing initiates the unboxing premise"
+  ],
+  "fixes": [
+    "Increase shot count to mirror the gold standard (e.g., top-down sealed box, lid removal close-up, side-angle reveal of phone and accessories, macro peel).",
+    "Use uniform 2-second segments: [00:00-00:02], [00:02-00:04], [00:04-00:06], [00:06-00:08].",
+    "Incorporate additional visual details (camera bump, USB-C cable, documentation) and a macro shot of the screen protection peel.",
+    "Add SFX cues (cardboard slide, paper rustle, film peel) to heighten the unboxing experience."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "task_id": "5.mp4",
+  "topic": "A person tying a Bowline knot with a thick rope, hands-only close-up.",
+  "raw_generation": "{\n  \"script\": \"Shot 1: Hands-only close-up on a thick rope coiled on a work surface. The camera stays focused on the hands and rope texture.\\nShot 2: The left hand forms a small loop in the standing part of the rope, with the loop facing the camera.\\nShot 3: The right hand guides the working end up through the loop from underneath, so the tail emerges on top.\\nShot 4: The working end wraps around the standing part from left to right, moving behind the rope.\\nShot 5: The working end is brought back down and passes through the loop again, exiting on the same side as it entered.\\nShot 6: Both hands pull in opposite directions to snug the knot, first tightening the loop and then seating the tail.\\nShot 7: Tighten fully and show the finished Bowline: a fixed loop at the end of the rope, with the tail protruding a short length.\\nShot 8: Optional backup: briefly show tying a small overhand stopper knot with the tail for extra security.\\nShot 9: Final frame: a clean hands-only close-up of the completed knot; the loop remains stable as the rope is gently tugged.\",\n  \"narration\": \"We tie a Bowline knot using a thick rope, shown in a hands-only close-up. Step one, form a small loop in the standing part of the rope. Step two, bring the working end up through the loop from underneath. Step three, wrap the working end around the standing part and back toward the loop. Step four, pass the tail down through the loop. Step five, pull the standing part and the tail to snug the knot. You should have a secure fixed loop that won't slip under load. For extra security, add a backup knot with the tail. Inspect the finished knot to ensure the loop is stable and the tail is visible. Practice with a safe rope and avoid relying on a single knot for critical loads without proper safety precautions.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1: Hands-only close-up on a thick rope coiled on a work surface. The camera stays focused on the hands and rope texture.\nShot 2: The left hand forms a small loop in the standing part of the rope, with the loop facing the camera.\nShot 3: The right hand guides the working end up through the loop from underneath, so the tail emerges on top.\nShot 4: The working end wraps around the standing part from left to right, moving behind the rope.\nShot 5: The working end is brought back down and passes through the loop again, exiting on the same side as it entered.\nShot 6: Both hands pull in opposite directions to snug the knot, first tightening the loop and then seating the tail.\nShot 7: Tighten fully and show the finished Bowline: a fixed loop at the end of the rope, with the tail protruding a short length.\nShot 8: Optional backup: briefly show tying a small overhand stopper knot with the tail for extra security.\nShot 9: Final frame: a clean hands-only close-up of the completed knot; the loop remains stable as the rope is gently tugged.",
+    "narration": "We tie a Bowline knot using a thick rope, shown in a hands-only close-up. Step one, form a small loop in the standing part of the rope. Step two, bring the working end up through the loop from underneath. Step three, wrap the working end around the standing part and back toward the loop. Step four, pass the tail down through the loop. Step five, pull the standing part and the tail to snug the knot. You should have a secure fixed loop that won't slip under load. For extra security, add a backup knot with the tail. Inspect the finished knot to ensure the loop is stable and the tail is visible. Practice with a safe rope and avoid relying on a single knot for critical loads without proper safety precautions."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 3.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 6.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.6,
+  "final_score": 4.4,
+  "feedback": "The generated script stays on topic and adds context in narration, but it does not follow the gold standard's timestamped shot structure. Improve by structuring into [00:00-00:02], [00:02-00:04], [00:04-00:06] style segments with 3-4 precise shots that mirror the Bowline steps (form loop, pass working end through, tighten). Remove or relegates nonessential extras (backup knot) and explicitly call out camera angles (macro/close-up, over-the-shoulder) and the rope parts (standing part, working end, tail) to align with the gold standard.\nFailed checks: example_alignment",
+  "strengths": [
+    "Covers the essential Bowline steps and keeps both hands involved",
+    "Uses hands-only close-ups and references rope texture"
+  ],
+  "fixes": [
+    "Adopt gold-standard timestamp scheme with concise, distinct shots",
+    "Limit to core three actions: form loop, pass end through, tighten; remove extraneous steps unless requested"
+  ]
+}

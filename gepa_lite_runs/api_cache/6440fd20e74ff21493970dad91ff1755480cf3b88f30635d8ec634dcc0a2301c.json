@@ -1,0 +1,34 @@
+{
+  "task_id": "18.mp4",
+  "topic": "A dancer performing the 'Haka' with correct 'Pukana' facial expressions.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view of dancer in haka stance, arms raised, beginning Pukana facial expressions. Shot 2 [00:02-00:05]: Side-angle of dancer mid-haka, mouth open in a fierce shout, eyes wide in full Pukana. Shot 3 [00:05-00:08]: Close-up of dancer's face with peak Pukana, tongue extended and eyes bulging as the chant crescendos.\",\n  \"narration\": \"A dancer performs a haka in three concise shots, starting with a front view in a ready stance, moving to a side profile during the mid-haka, and ending with a close-up that captures the peak Pukana expressions. The sequence maintains a single-subject focus, emphasizing authentic facial expressions and dynamic movement throughout the 8 seconds.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view of dancer in haka stance, arms raised, beginning Pukana facial expressions. Shot 2 [00:02-00:05]: Side-angle of dancer mid-haka, mouth open in a fierce shout, eyes wide in full Pukana. Shot 3 [00:05-00:08]: Close-up of dancer's face with peak Pukana, tongue extended and eyes bulging as the chant crescendos.",
+    "narration": "A dancer performs a haka in three concise shots, starting with a front view in a ready stance, moving to a side profile during the mid-haka, and ending with a close-up that captures the peak Pukana expressions. The sequence maintains a single-subject focus, emphasizing authentic facial expressions and dynamic movement throughout the 8 seconds."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 6.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 7.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.4,
+  "final_score": 5.2,
+  "feedback": "The concept aligns with a haka and pukana, but the gold standard emphasizes a group performance with stomping and chest slaps before a close-up. The timestamp structure and segment pacing differ from the gold standard (two 4-second chunks vs. three uneven segments). To improve alignment, shift to a two-part, 0:00–0:04 and 0:04–0:08 structure (or clearly include background dancers and stomping in the first shot) and maintain concise, cinematic camera cues across both shots.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear three-shot progression with distinct camera angles (front, side, close-up).",
+    "Explicit focus on pukana in the closing frame."
+  ],
+  "fixes": [
+    "Adopt the gold standard's timing pattern (e.g., two 4-second segments) or explicitly include a group/dynamic starting shot to reflect the haka in unison.",
+    "Incorporate background dancers or stomping elements and unify the shot descriptions to mirror the group energy of the reference."
+  ]
+}

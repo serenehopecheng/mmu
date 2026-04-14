@@ -1,0 +1,34 @@
+{
+  "task_id": "14.mp4",
+  "topic": "A chemist performing a 'Titration' until the exact 'End Point' is reached.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: [The A chemist stands at a lab bench with a filled burette clamped above a flask, indicator solution ready.] - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: single.\\n[00:02-00:05] Shot 2: [The chemist slowly dispenses titrant from the burette into the flask; the indicator color begins to shift as the titration proceeds.] - Camera: Eye-level, Framing: Medium, Movement: Slow tracking, Subject: single.\\n[00:05-00:08] Shot 3: [The final drop is added and the color change stabilizes, signaling the End Point; the chemist notes the volume.] - Camera: Eye-level, Framing: Close, Movement: Static, Subject: single.\",\n  \"narration\": \"Shot 1 shows the A chemist at a lab bench preparing the titration setup with a burette clamped above a flask and indicator ready. Shot 2 follows as the chemist carefully dispenses titrant into the flask, watching the indicator color shift toward the endpoint. Shot 3 captures the moment the final drop is added and the color change stabilizes at the End Point, signaling the exact moment to stop and record the measurement.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: [The A chemist stands at a lab bench with a filled burette clamped above a flask, indicator solution ready.] - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: single.\n[00:02-00:05] Shot 2: [The chemist slowly dispenses titrant from the burette into the flask; the indicator color begins to shift as the titration proceeds.] - Camera: Eye-level, Framing: Medium, Movement: Slow tracking, Subject: single.\n[00:05-00:08] Shot 3: [The final drop is added and the color change stabilizes, signaling the End Point; the chemist notes the volume.] - Camera: Eye-level, Framing: Close, Movement: Static, Subject: single.",
+    "narration": "Shot 1 shows the A chemist at a lab bench preparing the titration setup with a burette clamped above a flask and indicator ready. Shot 2 follows as the chemist carefully dispenses titrant into the flask, watching the indicator color shift toward the endpoint. Shot 3 captures the moment the final drop is added and the color change stabilizes at the End Point, signaling the exact moment to stop and record the measurement."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.6,
+  "final_score": 5.6,
+  "feedback": "The sequence centers on a chemist performing a titration and reaching the endpoint, which aligns with the topic. Narration adds context about stopping and recording measurements. To better match the gold standard, tighten the focus on the endpoint moment (color change to pink) with clearer, shorter segments and emphasize a single, decisive endpoint event.",
+  "strengths": [
+    "Clear three-shot progression showing titration action and progression toward the endpoint.",
+    "Explicit camera angles and time stamps provide cinematic, action-first guidance."
+  ],
+  "fixes": [
+    "Converge the endpoint depiction with a tight close-up of the color change to a pink/end-point signal, as in the gold standard.",
+    "Standardize the timestamps to consistent, compact segments (e.g., [00:00-00:04], [00:04-00:08]) and ensure the final shot distinctly captures the endpoint reaction and the recording of the measurement."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "task_id": "25.mp4",
+  "topic": "An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: side-angle: The archer settles into stance and begins the Khatra technique in slow motion.\\nShot 2 [00:02-00:05]: close-up: Fingers tighten on the string and arrow nock, tension rising.\\nShot 3 [00:05-00:08]: wide: The release unfolds and the arrow darts forward in slow motion.\",\n  \"narration\": \"From a slow-motion side view, the archer begins the Khatra technique in the first two seconds. The sequence moves to a close-up of the draw, then ends with a wide, slow-motion arrow release.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: side-angle: The archer settles into stance and begins the Khatra technique in slow motion.\nShot 2 [00:02-00:05]: close-up: Fingers tighten on the string and arrow nock, tension rising.\nShot 3 [00:05-00:08]: wide: The release unfolds and the arrow darts forward in slow motion.",
+    "narration": "From a slow-motion side view, the archer begins the Khatra technique in the first two seconds. The sequence moves to a close-up of the draw, then ends with a wide, slow-motion arrow release."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 4.0,
+    "narration_insight": 3.0,
+    "topic_precision": 5.0
+  },
+  "base_quality_score": 4.4,
+  "final_score": 3.2,
+  "feedback": "The result keeps the archer and Khatra concept with a slow-motion feel, but it lacks the explicit two-part structure and riser-clearing movement described in the gold standard. The timing segments are present, yet the shots don’t clearly show the bow rotation or the clearing action during release. To improve, align the two-segment timing [00:00-00:04] (side view drawing) and [00:04-00:08] (khatra-driven bow rotation and arrow release), and explicitly name the clearing of the riser and the outward bow rotation in the visuals and narration.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear shot-by-shot structure with camera angle labels (side-angle, close-up, wide).",
+    "Concise, action-first language that centers on the archer and release."
+  ],
+  "fixes": [
+    "Adopt the two-shot structure from the gold standard: [00:00-00:04] slow-motion side view drawing; [00:04-00:08] khatra-driven bow rotation and arrow release.",
+    "Explicitly describe the bow hand snapping forward and downward and the arrow clearing the riser during the release; enhance with more visual details (lighting, texture of bow/riser, string tension)."
+  ]
+}

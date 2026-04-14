@@ -1,0 +1,35 @@
+{
+  "task_id": "2.mp4",
+  "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Grip bottle and position tethered cap at the rim — side view\\nShot 2 [00:02-00:05]: Twist and lift the tethered cap to crack the seal — close-up\\nShot 3 [00:05-00:08]: Tilt bottle to pour Coca-Cola while the cap remains tethered — side-angle\",\n  \"narration\": \"Across eight seconds, a single subject grips a Coca-Cola bottle, then rotates the tethered cap to break the seal, and finally tilts to pour with the cap still attached. The sequence uses a side view, close-up, and side-angle to emphasize the tethered cap interaction with the bottle.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Grip bottle and position tethered cap at the rim — side view\nShot 2 [00:02-00:05]: Twist and lift the tethered cap to crack the seal — close-up\nShot 3 [00:05-00:08]: Tilt bottle to pour Coca-Cola while the cap remains tethered — side-angle",
+    "narration": "Across eight seconds, a single subject grips a Coca-Cola bottle, then rotates the tethered cap to break the seal, and finally tilts to pour with the cap still attached. The sequence uses a side view, close-up, and side-angle to emphasize the tethered cap interaction with the bottle."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 6.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.6,
+  "final_score": 4.4,
+  "feedback": "The sequence stays on topic and centers on a tethered-cap Coca-Cola bottle, but the timestamp structure and some cap-behavior details diverge from the gold standard. To improve, align shot timings to the exact [00:00-00:03], [00:03-00:05], [00:05-00:08] structure and describe the cap's hinge and separation (cap separates yet remains attached via hinge) along with the drinking tilt. Emphasize more cinematic language (e.g., side-view medium shot, close-up, side angle) to mirror the gold-standard prompt style.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear three-shot sequence focused on the tethered-cap interaction.",
+    "Uses side-view and close-up cues to convey the mechanism."
+  ],
+  "fixes": [
+    "Match the gold-standard timestamp structure exactly.",
+    "Explicitly describe the hinge and cap separation rather than a generic 'crack the seal'.",
+    "Adopt more cinematic shot descriptors (medium shot, tracking angles) to tighten alignment with the gold standard."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "iterations": 12,
+  "accepted": 5,
+  "rejected": 7,
+  "api_calls": 340,
+  "cache_hits": 0,
+  "start_time": "2026-04-14T13:28:23.111272",
+  "end_time": "2026-04-14T14:05:14.724196",
+  "cache_hit_rate": 0.0,
+  "elapsed_seconds": 2211.612924
+}

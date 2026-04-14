@@ -1,0 +1,35 @@
+{
+  "task_id": "8.mp4",
+  "topic": "A person walking across the Abbey Road zebra crossing, eye-level view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: The person steps onto the Abbey Road zebra crossing, eye-level front view.\\nShot 2 [00:02-00:05]: The person walks steadily across the zebra crossing, eye-level side-angle.\\nShot 3 [00:05-00:08]: The person completes crossing the zebra crossing, eye-level long shot.\",\n  \"narration\": \"An eye-level sequence follows a person stepping onto the Abbey Road zebra crossing from a front view, then moving with a steady stride in a side-angle. The final long shot captures the person fully crossing, completing the journey across the stripes.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: The person steps onto the Abbey Road zebra crossing, eye-level front view.\nShot 2 [00:02-00:05]: The person walks steadily across the zebra crossing, eye-level side-angle.\nShot 3 [00:05-00:08]: The person completes crossing the zebra crossing, eye-level long shot.",
+    "narration": "An eye-level sequence follows a person stepping onto the Abbey Road zebra crossing from a front view, then moving with a steady stride in a side-angle. The final long shot captures the person fully crossing, completing the journey across the stripes."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 9.0
+  },
+  "base_quality_score": 5.4,
+  "final_score": 4.2,
+  "feedback": "The sequence centers on an eye-level crossing of Abbey Road, but the shot structure diverges from the gold standard (three shots with varied timing vs. two 4-second segments) and lacks the canonical static first frame with prominent perspective lines. To better match the gold standard, use two bracketed timestamps of [00:00-00:04] and [00:04-00:08], describe a static eye-level wide shot with perspective lines, then the crossing in center-frame. Also tighten the wording to mirror the concise, cinematic style (no ‘Shot 1/2/3’ labels).\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear focus on eye-level perspective and subject crossing.",
+    "Concise, action-first shot descriptions."
+  ],
+  "fixes": [
+    "Adopt the two-shot structure with uniform 4-second blocks: [00:00-00:04] static eye-level wide shot showing the crossing background; [00:04-00:08] subject stepping onto stripes toward the center.",
+    "Use bracketed timestamps only (e.g., [00:00-00:04]) and remove explicit 'Shot 1/2/3' labeling.",
+    "Enhance visual specificity by including background elements (cars stopped, strong perspective lines) and precise camera angles (static wide, tracking center)."
+  ]
+}

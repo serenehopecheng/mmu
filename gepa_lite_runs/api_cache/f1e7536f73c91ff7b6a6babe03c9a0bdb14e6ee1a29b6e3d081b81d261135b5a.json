@@ -1,0 +1,34 @@
+{
+  "task_id": "4.mp4",
+  "topic": "A close-up of a Newton's Cradle in motion on a desk, macro view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view: A single ball is drawn back and released, starting a gentle, rhythmic swing.\\nShot 2 [00:02-00:05]: Close-up: The collision and momentum transfer are seen in sharp macro detail as beads align.\\nShot 3 [00:05-00:08]: Top-down: The array settles into a mirrored rebound, all balls swinging in unison from above.\",\n  \"narration\": \"A single ball is pulled and released, initiating momentum transfer across the cradle. The close-up captures the collision and transfer, then the top-down reveals the synchronized rebound completing the rhythm.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view: A single ball is drawn back and released, starting a gentle, rhythmic swing.\nShot 2 [00:02-00:05]: Close-up: The collision and momentum transfer are seen in sharp macro detail as beads align.\nShot 3 [00:05-00:08]: Top-down: The array settles into a mirrored rebound, all balls swinging in unison from above.",
+    "narration": "A single ball is pulled and released, initiating momentum transfer across the cradle. The close-up captures the collision and transfer, then the top-down reveals the synchronized rebound completing the rhythm."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 8.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 5.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 5.8,
+  "feedback": "The sequence presents a Newton's Cradle with clear shot ideas and proper timestamps, but it slightly drifts from the macro-first emphasis of the topic by starting with a non-macro front view. Strengthen the macro focus from the opening frame and anchor the scene to a desk surface. Enhance lighting and metallic textures to better convey the cradle's material and motion cues.",
+  "strengths": [
+    "Clear, three-shot sequence with distinct camera angles (front, macro close-up, top-down).",
+    "Macro emphasis is present in the second shot, capturing collision details."
+  ],
+  "fixes": [
+    "Begin with a macro close-up to strictly satisfy the macro-view requirement and explicitly reference the desk surface.",
+    "Enrich visual detail with lighting cues and metallic textures to convey materials and motion (e.g., reflections on the balls, desk texture)."
+  ]
+}

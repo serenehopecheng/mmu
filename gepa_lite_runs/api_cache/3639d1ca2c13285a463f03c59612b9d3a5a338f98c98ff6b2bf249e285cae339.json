@@ -1,0 +1,34 @@
+{
+  "task_id": "9.mp4",
+  "topic": "A Mongolian horseman using an Uurga to catch a wild horse, wide landscape shot.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Wide landscape front view of a lone Mongolian horseman with an Uurga, ready to lasso.\\nShot 2 [00:02-00:05]: Side-angle as the horseman swings the Uurga to rope the wild horse.\\nShot 3 [00:05-00:08]: Close-up on the Uurga tightening around the wild horse, securing the catch.\",\n  \"narration\": \"An expansive steppe frame opens with the Mongolian horseman and his Uurga in a wide front view. It then follows a side-angle lasso swing toward the wild horse and finishes with a close-up of the Uurga securing the catch on the animal.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Wide landscape front view of a lone Mongolian horseman with an Uurga, ready to lasso.\nShot 2 [00:02-00:05]: Side-angle as the horseman swings the Uurga to rope the wild horse.\nShot 3 [00:05-00:08]: Close-up on the Uurga tightening around the wild horse, securing the catch.",
+    "narration": "An expansive steppe frame opens with the Mongolian horseman and his Uurga in a wide front view. It then follows a side-angle lasso swing toward the wild horse and finishes with a close-up of the Uurga securing the catch on the animal."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.0,
+  "final_score": 6.0,
+  "feedback": "The concept stays on topic and uses a clear shot progression, but it deviates from the gold standard by using three shots instead of two and by not clearly depicting the high-speed gallop or the explicit lowering/tightening of the uurga loop. To align with the gold standard, structure the sequence as two 4-second segments: [00:00-00:04] a wide landscape of the steppe with a galloping rider holding the uurga, and [00:04-00:08] the rider extending/lowering the loop to capture the wild horse, with a close-up on the loop tightening.",
+  "strengths": [
+    "Clear, concise shot-by-shot progression with distinct angles.",
+    "Action-first cinematic language that conveys the capture moment."
+  ],
+  "fixes": [
+    "Adopt the two-shot, four-second-per-shot structure [00:00-00:04] and [00:04-00:08] to mirror the gold standard.",
+    "Emphasize high-speed gallop and the lowering/loop action of the uurga, including a close-up of the loop tightening."
+  ]
+}

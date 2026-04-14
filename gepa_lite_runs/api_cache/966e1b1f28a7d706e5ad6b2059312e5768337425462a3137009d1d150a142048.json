@@ -1,0 +1,35 @@
+{
+  "task_id": "21.mp4",
+  "topic": "A person making a peanut butter and jelly sandwich.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: A person making a peanut butter and jelly sandwich - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: single.\\n[00:02-00:05] Shot 2: A person making a peanut butter and jelly sandwich - Camera: Close-up, Framing: Close, Movement: Static, Subject: single.\\n[00:05-00:08] Shot 3: A person making a peanut butter and jelly sandwich - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: single.\",\n  \"narration\": \"First, A person making a peanut butter and jelly sandwich stands at a kitchen counter with bread, a jar of peanut butter, a jar of jelly, and a knife, the camera at eye level capturing a medium view to establish the scene. This anchors the topic by showing the ingredients and setup. Second, a close-up focuses on the hands spreading peanut butter onto one slice, highlighting texture and the first assembly step. Finally, the person brings the second slice over, completes the sandwich, and presents the finished PB&J on a plate in a steady, frontal view, signaling completion of the task.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: A person making a peanut butter and jelly sandwich - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: single.\n[00:02-00:05] Shot 2: A person making a peanut butter and jelly sandwich - Camera: Close-up, Framing: Close, Movement: Static, Subject: single.\n[00:05-00:08] Shot 3: A person making a peanut butter and jelly sandwich - Camera: Eye-level, Framing: Medium, Movement: Static, Subject: single.",
+    "narration": "First, A person making a peanut butter and jelly sandwich stands at a kitchen counter with bread, a jar of peanut butter, a jar of jelly, and a knife, the camera at eye level capturing a medium view to establish the scene. This anchors the topic by showing the ingredients and setup. Second, a close-up focuses on the hands spreading peanut butter onto one slice, highlighting texture and the first assembly step. Finally, the person brings the second slice over, completes the sandwich, and presents the finished PB&J on a plate in a steady, frontal view, signaling completion of the task."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 4.0,
+    "veo_prompt_craft": 3.0,
+    "narration_insight": 5.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 4.4,
+  "final_score": 3.2,
+  "feedback": "The output stays focused on a single person making PB&J and uses timestamped shot blocks, but it diverges from the gold standard by not showing the bread layout, the two spreading actions on separate slices, or a final diagonal cut. To align, structure two clearly defined shots: [00:00-00:04] bread slices laid out with peanut butter on one and jelly on the other; [00:04-00:08] stack the slices and cut the sandwich diagonally, presenting it on a plate. Use more action-first, concrete verbs to mirror the gold standard’s cinematic style.\nFailed checks: example_alignment",
+  "strengths": [
+    "Uses clean, timestamped shot blocks with camera-angle labels.",
+    "Maintains a single-subject focus throughout the sequence."
+  ],
+  "fixes": [
+    "Add explicit bread layout and two-slice preparation: spread peanut butter on one slice and jelly on the other.",
+    "Show the assembly step and final presentation: bring slices together, cut diagonally, plate the sandwich.",
+    "Adopt concise, action-forward wording to mirror the gold standard (e.g., 'Bread slices laid out', 'Peanut butter spread', 'Jelly spread', 'Sandwich assembled', 'Diagonal cut')."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "task_id": "8.mp4",
+  "topic": "A person walking across the Abbey Road zebra crossing, eye-level view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: The subject steps onto the Abbey Road zebra crossing — eye-level view\\nShot 2 [00:02-00:05]: The subject walks mid-crossing in mid-stride — side-angle\\nShot 3 [00:05-00:08]: The subject reaches the far side and continues across — close-up\",\n  \"narration\": \"A single subject walks across the Abbey Road zebra crossing in three quick cuts. The sequence uses eye-level, side-angle, and close-up views to follow the transition from entry to completion.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: The subject steps onto the Abbey Road zebra crossing — eye-level view\nShot 2 [00:02-00:05]: The subject walks mid-crossing in mid-stride — side-angle\nShot 3 [00:05-00:08]: The subject reaches the far side and continues across — close-up",
+    "narration": "A single subject walks across the Abbey Road zebra crossing in three quick cuts. The sequence uses eye-level, side-angle, and close-up views to follow the transition from entry to completion."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 3.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 3.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.0,
+  "final_score": 5.0,
+  "feedback": "The output stays on topic with the Abbey Road crossing and an eye-level reference, and it uses timestamped shots with camera-angle cues. However, it diverges from the gold standard’s two-shot structure and richer static framing, and it offers limited visual detail. To better align, adopt the gold standard’s two-timestamp format, emphasize static eye-level framing in the first shot, and add explicit background cues (e.g., cars stopped, perspective lines).",
+  "strengths": [
+    "Clear timestamped shot structure with camera-angle notes.",
+    "Maintains focus on a single subject crossing the Abbey Road crossing."
+  ],
+  "fixes": [
+    "Align to the gold standard’s two-shot pacing: [00:00-00:04] eye-level static shot; [00:04-00:08] the subject stepping onto the stripes toward the center.",
+    "Incorporate concrete visual cues: strong perspective lines, cars stopped in the background, and the white stripes alignment.",
+    "Use uniform, action-first language for the first shot (static eye-level framing) to emphasize perspective."
+  ]
+}

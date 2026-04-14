@@ -1,0 +1,35 @@
+{
+  "task_id": "12.mp4",
+  "topic": "A chef preparing Hand-Pulled Lanzhou Ramen (Lamian).",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view: The chef kneads dough into a smooth, taut ball, laying the groundwork for lamian.\\nShot 2 [00:02-00:05]: Close-up: Hands pull the dough into long, elastic strands, testing strength with each stretch.\\nShot 3 [00:05-00:08]: Top-down: The stretched noodles are arranged into a steaming bowl, ready for broth.\",\n  \"narration\": \"From dough to long lamian strands to a steaming bowl, a chef demonstrates lamian craft in eight seconds. The sequence moves from knead to pull to plating, with each shot guiding the viewer through the process.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view: The chef kneads dough into a smooth, taut ball, laying the groundwork for lamian.\nShot 2 [00:02-00:05]: Close-up: Hands pull the dough into long, elastic strands, testing strength with each stretch.\nShot 3 [00:05-00:08]: Top-down: The stretched noodles are arranged into a steaming bowl, ready for broth.",
+    "narration": "From dough to long lamian strands to a steaming bowl, a chef demonstrates lamian craft in eight seconds. The sequence moves from knead to pull to plating, with each shot guiding the viewer through the process."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 5.0,
+    "topic_precision": 6.0
+  },
+  "base_quality_score": 5.2,
+  "final_score": 5.2,
+  "feedback": "The sequence presents lamian preparation with clear camera angles and a concise, action-first flow, but it drifts from the gold standard by omitting the boiling/formation phase and the explicit Lanzhou lamian cadence. To tighten alignment, structure the timestamps closer to the two-shot gold standard or extend to four evenly split segments, include a noodle-formation or boiling action, and lean into more cinematic prompts (tracking, macro) with Lanzhou-specific cues. This would improve topic precision and visual storytelling fidelity.",
+  "strengths": [
+    "Clear, focused depiction of kneading, pulling, and plating.",
+    "Uses explicit camera angles (front view, close-up, top-down)."
+  ],
+  "fixes": [
+    "Add a boiling/formation moment to mirror lamian production.",
+    "Align timestamps to the gold-standard cadence or expand to distinct 0:00-0:04 and 0:04-0:08 segments with stronger action beats.",
+    "Incorporate more cinematic verbs (tracking, macro) and mention Lanzhou lamian cues."
+  ]
+}

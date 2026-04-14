@@ -1,0 +1,34 @@
+{
+  "task_id": "1.mp4",
+  "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Cybertruck enters frame, drives through the puddle, spray erupts — low-angle front view\\nShot 2 [00:02-00:05]: Water sprays as the Cybertruck powers through the puddle, wheels churn — low-angle side view\\nShot 3 [00:05-00:08]: Close-up on the Cybertruck's tire carving through the puddle, spray trailing — low-angle close-up\",\n  \"narration\": \"The sequence follows a Tesla Cybertruck as it breaches and powers through a puddle from a low-angle perspective, spraying water with each pass. It ends with a tight close-up on the tire as the vehicle continues through the water.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Cybertruck enters frame, drives through the puddle, spray erupts — low-angle front view\nShot 2 [00:02-00:05]: Water sprays as the Cybertruck powers through the puddle, wheels churn — low-angle side view\nShot 3 [00:05-00:08]: Close-up on the Cybertruck's tire carving through the puddle, spray trailing — low-angle close-up",
+    "narration": "The sequence follows a Tesla Cybertruck as it breaches and powers through a puddle from a low-angle perspective, spraying water with each pass. It ends with a tight close-up on the tire as the vehicle continues through the water."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.8,
+  "final_score": 5.8,
+  "feedback": "The output stays centered on the Cybertruck passing through a puddle with a low-angle perspective and three concise shots. However, it lacks the distinct ground-shot opener, a slow-motion tire close-up, and a tracking shot that the gold standard uses to build visual drama. Improve by aligning the timestamps to [00:00-00:03], [00:03-00:06], [00:06-00:08], explicitly describe the tire close-up and a tracking sequence, and add SFX cues to enhance the cinematic feel.",
+  "strengths": [
+    "Clear three-shot sequence with low-angle framing",
+    "Concise, action-first language that centers on the vehicle and water spray"
+  ],
+  "fixes": [
+    "Align timestamps and shot variety to match the gold standard's structure (ground shot, slow-mo tire close-up, tracking through water) and specify camera angles beyond 'low-angle' (e.g., front tire close-up, tracking).",
+    "Include SFX cues (e.g., electric motor hum, whoosh of water) and richer environmental details (reflections on the Cybertruck’s panels, spray arc) to heighten realism."
+  ]
+}

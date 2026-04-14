@@ -1,0 +1,34 @@
+{
+  "task_id": "13.mp4",
+  "topic": "A person playing a game of 'Jenga' and pulling out a middle block.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Front view of hands hovering over the Jenga tower, selecting the middle block.\\nShot 2 [00:02-00:05]: Close-up of hands gripping and gently pulling the middle block free.\\nShot 3 [00:05-00:08]: Top-down view as the block releases, tower briefly wobbles.\",\n  \"narration\": \"From a front view, the player targets the middle block, then moves to a close-up as the block is pulled free. A top-down view shows the block released and the tower briefly wobbles, completing the 8-second sequence.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Front view of hands hovering over the Jenga tower, selecting the middle block.\nShot 2 [00:02-00:05]: Close-up of hands gripping and gently pulling the middle block free.\nShot 3 [00:05-00:08]: Top-down view as the block releases, tower briefly wobbles.",
+    "narration": "From a front view, the player targets the middle block, then moves to a close-up as the block is pulled free. A top-down view shows the block released and the tower briefly wobbles, completing the 8-second sequence."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 3.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.4,
+  "final_score": 4.2,
+  "feedback": "The concept captures pulling a middle Jenga block and a wobble, but it diverges from the gold standard by not clearly showing a stability test or final placement. Align the prompt with the gold standard's timestamp structure and camera cues (include wide, macro, and tracking angles) and add a final shot of the block being placed on top. Consider adding a dedicated stability-test moment and a closing top-down placement to strengthen topic precision and cinematic flow.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear focus on the middle-block extraction and resulting wobble",
+    "Concise, action-driven sequence with distinct shot transitions"
+  ],
+  "fixes": [
+    "Add explicit stability-testing and final top-placement shots, and reference top-down or macro angles to match style",
+    "Adopt the two-block timestamp cadence (e.g., [00:00-00:04], [00:04-00:08]) and incorporate wide/tracking angles as required"
+  ]
+}

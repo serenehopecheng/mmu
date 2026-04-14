@@ -1,0 +1,34 @@
+{
+  "task_id": "15.mp4",
+  "topic": "A person using a 'Self-Checkout' machine at a grocery store.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: front view of a shopper at a self-checkout scanning an item.\\nShot 2 [00:02-00:05]: side-angle, close-up of the shopper scanning a barcode and placing the item on the bagging area.\\nShot 3 [00:05-00:08]: top-down, close-up of the shopper completing payment on the screen and retrieving a receipt.\",\n  \"narration\": \"A single shopper engages a self-checkout. The sequence shows scanning items, placing them in the bagging area, and completing payment across eight seconds.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: front view of a shopper at a self-checkout scanning an item.\nShot 2 [00:02-00:05]: side-angle, close-up of the shopper scanning a barcode and placing the item on the bagging area.\nShot 3 [00:05-00:08]: top-down, close-up of the shopper completing payment on the screen and retrieving a receipt.",
+    "narration": "A single shopper engages a self-checkout. The sequence shows scanning items, placing them in the bagging area, and completing payment across eight seconds."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.4,
+  "final_score": 5.4,
+  "feedback": "Strengths: clear, shot-by-shot framing with distinct camera angles and a tight focus on the self-checkout sequence. It stays on topic and uses action-first language. Fixes: align the timing blocks and events more closely with the gold standard (two 00:00-00:04 and 00:04-00:08 segments), and explicitly include beep sounds, a price update on the screen, the card tap action, and receipt printing to increase fidelity to the reference.",
+  "strengths": [
+    "Clear shot-based framing with distinct angles.",
+    "Maintains a tight focus on the self-checkout sequence."
+  ],
+  "fixes": [
+    "Adopt the two-block timing structure to mirror the gold standard (e.g., [00:00-00:04], [00:04-00:08]).",
+    "Explicitly mention beep, price update, card tap, and receipt printing to tighten topic precision."
+  ]
+}

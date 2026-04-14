@@ -1,0 +1,34 @@
+{
+  "task_id": "26.mp4",
+  "topic": "An artisan practicing Kintsugi on a broken ceramic bowl, soft-lit tabletop scene.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Hands cradle a broken ceramic bowl, front view.\\nShot 2 [00:02-00:05]: Apply resin into cracks and sprinkle gold powder along seams, close-up.\\nShot 3 [00:05-00:08]: Lift the bowl to reveal finished gold seams, side-angle.\",\n  \"narration\": \"A soft-lit tabletop frames the artisan as they inspect the broken ceramic bowl (front view), apply resin and gold powder to the cracks (close-up), and finally lift the repaired piece to reveal the gold seams (side-angle).\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Hands cradle a broken ceramic bowl, front view.\nShot 2 [00:02-00:05]: Apply resin into cracks and sprinkle gold powder along seams, close-up.\nShot 3 [00:05-00:08]: Lift the bowl to reveal finished gold seams, side-angle.",
+    "narration": "A soft-lit tabletop frames the artisan as they inspect the broken ceramic bowl (front view), apply resin and gold powder to the cracks (close-up), and finally lift the repaired piece to reveal the gold seams (side-angle)."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": false,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 5.0,
+    "topic_precision": 5.0
+  },
+  "base_quality_score": 5.0,
+  "final_score": 2.6,
+  "feedback": "The gold standard specifies two timed shots with lacquer-based Kintsugi and joining of pieces, while the generated prompt uses three shots, resin-based crack treatment, and different timings. To align with the gold standard, switch to lacquer, emphasize the joining of shards, and structure the sequence as two clearly delineated [00:00-00:04] and [00:04-00:08] segments. Mirror the gold standard’s concise, front-to-back cinematic flow by focusing on tabletop soft lighting, close-up lacquer application, and the seam highlight.\nFailed checks: topic_fidelity, example_alignment",
+  "strengths": [
+    "Clear shot labeling and timestamps",
+    "Concise, cinematic action-forward phrasing"
+  ],
+  "fixes": [
+    "Replace resin with lacquer and describe joining the broken pieces",
+    "Reformat to two 4-second segments with exactly [00:00-00:04] and [00:04-00:08], removing 'Shot' labels to match the gold standard"
+  ]
+}

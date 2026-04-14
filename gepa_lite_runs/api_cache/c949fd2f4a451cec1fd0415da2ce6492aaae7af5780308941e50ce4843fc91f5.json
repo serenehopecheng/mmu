@@ -1,0 +1,34 @@
+{
+  "task_id": "21.mp4",
+  "topic": "A person making a peanut butter and jelly sandwich.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: Wide: A person stands at the counter with bread, peanut butter, and jelly prepared for the sandwich.\\nShot 2 [00:02-00:05]: Close-up: The person uses a knife to scoop peanut butter and spreads it over a bread slice.\\nShot 3 [00:05-00:08]: Top-down: The person spreads jelly on the other slice and joins the two halves to complete the sandwich.\",\n  \"narration\": \"An 8-second sequence follows a single subject at the counter from setup to sandwich completion. It transitions from a wide establishing shot to a close-up of spreading peanut butter and a top-down view of adding jelly and sealing the sandwich.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: Wide: A person stands at the counter with bread, peanut butter, and jelly prepared for the sandwich.\nShot 2 [00:02-00:05]: Close-up: The person uses a knife to scoop peanut butter and spreads it over a bread slice.\nShot 3 [00:05-00:08]: Top-down: The person spreads jelly on the other slice and joins the two halves to complete the sandwich.",
+    "narration": "An 8-second sequence follows a single subject at the counter from setup to sandwich completion. It transitions from a wide establishing shot to a close-up of spreading peanut butter and a top-down view of adding jelly and sealing the sandwich."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 5.0,
+    "temporal_depth": 7.0,
+    "veo_prompt_craft": 6.0,
+    "narration_insight": 5.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 6.2,
+  "final_score": 6.2,
+  "feedback": "Strengths: the sequence centers on a single subject and uses distinct camera angles (wide, close-up, top-down) to show the acts of making the sandwich. However, it diverges from the gold standard by using three shots and omitting the explicit final diagonal cut. Fixes: align structure with the gold standard’s two 4-second segments [00:00-00:04] (bread laid out, spreads on each slice) and [00:04-00:08] (assemble and cut diagonally into two triangles); add concrete visual details such as purple jelly and smooth peanut butter to increase richness.",
+  "strengths": [
+    "Single subject focus with clear camera angles",
+    "Concise, action-first narration"
+  ],
+  "fixes": [
+    "Adopt the two-shot, four-second cadence to match the gold standard (e.g., [00:00-00:04], [00:04-00:08])",
+    "Describe explicit final action of diagonal cutting and use concrete visuals (e.g., purple jelly, smooth peanut butter)"
+  ]
+}

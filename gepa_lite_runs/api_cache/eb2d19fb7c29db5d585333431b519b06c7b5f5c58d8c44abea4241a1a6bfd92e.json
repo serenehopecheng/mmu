@@ -1,0 +1,34 @@
+{
+  "task_id": "2.mp4",
+  "topic": "A person opening a bottle of Coca-Cola with the new attached tethered cap, side view.",
+  "raw_generation": "{\n  \"script\": \"Shot 1 [00:00-00:02]: side-angle: The person grips a Coca-Cola bottle with the tethered cap, preparing to twist it open.\\nShot 2 [00:02-00:05]: close-up: The tethered cap rotates and tilts back, remaining attached by the tether as the bottle mouth becomes visible.\\nShot 3 [00:05-00:08]: top-down: The bottle tilts slightly and Coca-Cola begins to pour, with the tethered cap resting at the rim.\",\n  \"narration\": \"From side-angle to close-up to top-down, the sequence tracks a single subject opening a Coca-Cola bottle with a tethered cap. The cap remains tethered as it rotates, and Coca-Cola begins to pour from the mouth.\"\n}",
+  "parsed_generation": {
+    "script": "Shot 1 [00:00-00:02]: side-angle: The person grips a Coca-Cola bottle with the tethered cap, preparing to twist it open.\nShot 2 [00:02-00:05]: close-up: The tethered cap rotates and tilts back, remaining attached by the tether as the bottle mouth becomes visible.\nShot 3 [00:05-00:08]: top-down: The bottle tilts slightly and Coca-Cola begins to pour, with the tethered cap resting at the rim.",
+    "narration": "From side-angle to close-up to top-down, the sequence tracks a single subject opening a Coca-Cola bottle with a tethered cap. The cap remains tethered as it rotates, and Coca-Cola begins to pour from the mouth."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": false
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 4.0,
+    "topic_precision": 8.0
+  },
+  "base_quality_score": 5.4,
+  "final_score": 4.2,
+  "feedback": "Overall, the sequence captures a single subject opening a Coca-Cola with a tethered cap, but the timing and shot structure deviate from the gold standard. The second shot should illustrate the cap separating from the ring but remaining hinged and resting against the bottle, not merely rotating. To align with the gold standard, adopt exact segment timings and camera angles: [00:00-00:03] side-view medium shot, [00:03-00:05] close-up on the cap/hinge, and [00:05-00:08] tilt to drink, emphasizing the hinge mechanism preventing detachment.\nFailed checks: example_alignment",
+  "strengths": [
+    "Clear three-shot progression with explicit tethered-cap presence.",
+    "Concise, action-forward descriptions that emphasize the opening sequence."
+  ],
+  "fixes": [
+    "Match gold-standard timestamp durations exactly (e.g., [00:00-00:03], [00:03-00:05], [00:05-00:08]).",
+    "Describe the hinge behavior explicitly: cap separates from the ring but stays tethered, resting against the bottle side before tilting to drink."
+  ]
+}

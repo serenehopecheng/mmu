@@ -1,0 +1,34 @@
+{
+  "task_id": "1.mp4",
+  "topic": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+  "raw_generation": "{\n  \"script\": \"[00:00-00:02] Shot 1: Close-up of Tesla Cybertruck at edge of puddle - Camera: Low angle, Framing: Close, Movement: Static, Subject: Tesla Cybertruck.\\n[00:02-00:05] Shot 2: Cybertruck entering puddle, water spray - Camera: Low angle, Framing: Medium, Movement: Slow tracking, Subject: Tesla Cybertruck.\\n[00:05-00:08] Shot 3: Close-up of water splashing around tire as Cybertruck passes - Camera: Low angle, Framing: Close, Movement: Slow tracking, Subject: Tesla Cybertruck.\",\n  \"narration\": \"Shot 1 shows a low-angle close-up of the Tesla Cybertruck at the edge of a puddle, establishing the subject from a dramatic perspective. Shot 2 follows as the Cybertruck drives through the puddle, water sprays around the tires in a slow tracking motion from a low angle. Shot 3 returns to a tight, low-angle close-up as the vehicle moves through the remaining ripples, sealing the moment. Together, the sequence anchors the topic of a close-up of a Tesla Cybertruck driving through a puddle, low angle, highlighting the truck's rugged presence and its interaction with water.\"\n}",
+  "parsed_generation": {
+    "script": "[00:00-00:02] Shot 1: Close-up of Tesla Cybertruck at edge of puddle - Camera: Low angle, Framing: Close, Movement: Static, Subject: Tesla Cybertruck.\n[00:02-00:05] Shot 2: Cybertruck entering puddle, water spray - Camera: Low angle, Framing: Medium, Movement: Slow tracking, Subject: Tesla Cybertruck.\n[00:05-00:08] Shot 3: Close-up of water splashing around tire as Cybertruck passes - Camera: Low angle, Framing: Close, Movement: Slow tracking, Subject: Tesla Cybertruck.",
+    "narration": "Shot 1 shows a low-angle close-up of the Tesla Cybertruck at the edge of a puddle, establishing the subject from a dramatic perspective. Shot 2 follows as the Cybertruck drives through the puddle, water sprays around the tires in a slow tracking motion from a low angle. Shot 3 returns to a tight, low-angle close-up as the vehicle moves through the remaining ripples, sealing the moment. Together, the sequence anchors the topic of a close-up of a Tesla Cybertruck driving through a puddle, low angle, highlighting the truck's rugged presence and its interaction with water."
+  },
+  "hard_checks": {
+    "valid_json": true,
+    "topic_fidelity": true,
+    "narration_adds_context": true,
+    "single_subject_focus": true,
+    "example_alignment": true
+  },
+  "quality_scores": {
+    "visual_richness": 4.0,
+    "temporal_depth": 6.0,
+    "veo_prompt_craft": 5.0,
+    "narration_insight": 6.0,
+    "topic_precision": 7.0
+  },
+  "base_quality_score": 5.6,
+  "final_score": 5.6,
+  "feedback": "The sequence centers on a close-up, low-angle Cybertruck near and through a puddle, but the pacing and visual specificity could better mirror the gold standard (e.g., ground-shot intro, tire splash in slow motion, and a follow-through tracking shot with water displacement). Consider aligning the three shots to the exact cadence and line-by-line style of the gold standard (00:00–00:03, 00:03–00:06, 00:06–00:08) and adding SFX cues for cinematic impact. Also tighten the language to emphasize a front-tire splash and the water’s interaction with the vehicle’s form from a low-angle perspective.",
+  "strengths": [
+    "Maintains the close-up, low-angle framing centered on the Cybertruck.",
+    "Provides a clear three-shot progression with distinct actions around the puddle."
+  ],
+  "fixes": [
+    "Realign shot structure and language to the gold standard: [00:00-00:03] ground-shot intro, [00:03-00:06] slow-motion tire splash, [00:06-00:08] tracking through water with trailing spray.",
+    "Incorporate more cinematic details (e.g., water displacement, reflections on stainless steel, front tire interaction) and add an SFX cue (electric hum + whoosh) to heighten impact."
+  ]
+}
