@@ -480,45 +480,45 @@ class PromptCritiqueTool(BaseTool[PromptCritiqueArgs, Dict[str, Any]]):
     async def run(self, args: PromptCritiqueArgs, context):
         critique_prompt = f"""You are an expert script editor for Veo 3, a text-to-video AI that generates photorealistic 8-second clips.
 
-TOPIC: {args.topic}
-VIDEO SCRIPT: {args.video_prompt}
-NARRATION: {args.narration}
+    TOPIC: {args.topic}
+    VIDEO SCRIPT: {args.video_prompt}
+    NARRATION: {args.narration}
 
-SCORE each dimension 0-10, then REWRITE the script to maximize all scores.
+    SCORE each dimension 0-10, then REWRITE the script to maximize all scores.
 
-SCORING DIMENSIONS:
-1. policy_compliance: No sensitive content, text overlays, graphics, animation, fantasy, or prohibited camera moves (zooms, whip pans, rack focus, scanning).
-2. visual_specificity: Names concrete materials, textures, colors, lighting source/quality, and spatial relationships. Avoids vague words like "beautiful", "amazing", "stunning".
-3. temporal_clarity: Describes a clear start-to-end progression across exactly 8 seconds. The reader can picture what happens at second 1 vs second 4 vs second 8.
-4. single_subject_focus: One subject performing one simple, observable action. No competing elements, no multi-step processes.
-5. camera_feasibility: Camera angle explicitly stated (e.g. eye-level, overhead, 45-degree low angle). Movement is stationary or slow dolly/pan only.
-6. narration_quality: One sentence, max 18 words. Adds insight or context beyond what is visible—not a description of the visuals.
-7. veo_compatibility: Likely to succeed with Veo 3. Penalize: abstract concepts shown literally, grid/pattern layouts, technical measurement setups, multiple scene transitions, complex hand manipulations.
+    SCORING DIMENSIONS:
+    1. policy_compliance: No sensitive content, text overlays, graphics, animation, fantasy, or prohibited camera moves (zooms, whip pans, rack focus, scanning).
+    2. visual_specificity: Names concrete materials, textures, colors, lighting source/quality, and spatial relationships. Avoids vague words like "beautiful", "amazing", "stunning".
+    3. temporal_clarity: Describes a clear start-to-end progression across exactly 8 seconds. The reader can picture what happens at second 1 vs second 4 vs second 8.
+    4. single_subject_focus: One subject performing one simple, observable action. No competing elements, no multi-step processes.
+    5. camera_feasibility: Camera angle explicitly stated (e.g. eye-level, overhead, 45-degree low angle). Movement is stationary or slow dolly/pan only.
+    6. narration_quality: One sentence, max 18 words. Adds insight or context beyond what is visible—not a description of the visuals.
+    7. veo_compatibility: Likely to succeed with Veo 3. Penalize: abstract concepts shown literally, grid/pattern layouts, technical measurement setups, multiple scene transitions, complex hand manipulations.
 
-REWRITE RULES:
-- Replace every vague adjective with a concrete visual detail (color, material, texture, light).
-- Add explicit temporal beats ("The shot opens with...", "Over the next few seconds...", "The clip ends as...").
-- Specify camera angle and movement in the first sentence of the script.
-- Ensure the narration teaches or contextualizes—never just restates the visuals.
-- Simplify any action that requires precise timing or coordination.
-- If the original is fundamentally incompatible with Veo 3, reimagine the scene using an everyday analogy that conveys the same concept.
+    REWRITE RULES:
+    - Replace every vague adjective with a concrete visual detail (color, material, texture, light).
+    - Add explicit temporal beats ("The shot opens with...", "Over the next few seconds...", "The clip ends as...").
+    - Specify camera angle and movement in the first sentence of the script.
+    - Ensure the narration teaches or contextualizes—never just restates the visuals.
+    - Simplify any action that requires precise timing or coordination.
+    - If the original is fundamentally incompatible with Veo 3, reimagine the scene using an everyday analogy that conveys the same concept.
 
-Respond with ONLY valid JSON:
-{{
-    "scores": {{
-        "policy_compliance": 0-10,
-        "visual_specificity": 0-10,
-        "temporal_clarity": 0-10,
-        "single_subject_focus": 0-10,
-        "camera_feasibility": 0-10,
-        "narration_quality": 0-10,
-        "veo_compatibility": 0-10
-    }},
-    "issues": ["specific issue 1", "..."],
-    "rewritten_script": "The improved 8-second video description with all fixes applied.",
-    "rewritten_narration": "Improved narration, max 18 words.",
-    "explanation": "What was changed and why."
-}}"""
+    Respond with ONLY valid JSON:
+    {{
+        "scores": {{
+            "policy_compliance": 0-10,
+            "visual_specificity": 0-10,
+            "temporal_clarity": 0-10,
+            "single_subject_focus": 0-10,
+            "camera_feasibility": 0-10,
+            "narration_quality": 0-10,
+            "veo_compatibility": 0-10
+        }},
+        "issues": ["specific issue 1", "..."],
+        "rewritten_script": "The improved 8-second video description with all fixes applied.",
+        "rewritten_narration": "Improved narration, max 18 words.",
+        "explanation": "What was changed and why."
+    }}"""
 
         r = openai_client.chat.completions.create(
             model="gpt-4o",
@@ -530,8 +530,8 @@ Respond with ONLY valid JSON:
         result_text = clean_json_block(result_text)
         return json.loads(result_text)
 
-QUALITY_THRESHOLD = 7.0
-MAX_CRITIQUE_ROUNDS = 3
+    QUALITY_THRESHOLD = 7.0
+    MAX_CRITIQUE_ROUNDS = 3
 
 async def run_iterative_critique(query: str, script_data: dict) -> dict:
     """Score-and-rewrite loop: critique the script, rewrite weak areas, repeat until good enough."""
