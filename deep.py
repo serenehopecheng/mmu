@@ -186,11 +186,7 @@ class SemanticCache:
     def set_bytes(self, key: str, value: bytes) -> None:
         path = self.cache_dir / f"{self._hash_key(key)}.bin"
         path.write_bytes(value)
-
-
 semantic_cache = SemanticCache()
-
-
 @retry(
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=1, min=2, max=30),
@@ -199,8 +195,6 @@ semantic_cache = SemanticCache()
 def robust_request(url: str, **kwargs) -> requests.Response:
     """HTTP request with automatic retry and exponential backoff"""
     return requests.get(url, **kwargs)
-
-
 @retry(
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=1, min=2, max=30),
@@ -209,7 +203,6 @@ def robust_request(url: str, **kwargs) -> requests.Response:
 def robust_openai_call(func, *args, **kwargs):
     """OpenAI API call with automatic retry"""
     return func(*args, **kwargs)
-
 
 def _strip_metadata_json_block(text: str) -> str:
     """Remove 'The following metadata...' plus the following balanced {...} (nested-safe)."""
@@ -238,7 +231,6 @@ def _strip_metadata_json_block(text: str) -> str:
         text = text[:i] + text[k:]
     return text
 
-
 def _strip_empty_relevant_context_sections(text: str) -> str:
     """Drop ## Relevant Context sections whose body is empty after cleaning."""
     pattern = re.compile(r"^## Relevant Context \d+\s*$", re.MULTILINE)
@@ -256,7 +248,6 @@ def _strip_empty_relevant_context_sections(text: str) -> str:
         if body:
             out.append(text[m.start() : end].rstrip())
     return "\n\n".join(out).strip()
-
 
 def _sanitize_web_surfer_text(text: str) -> str:
     """Remove Playwright tracebacks, web surfer errors, image reprs, and Bing boilerplate from MultimodalWebSurfer output."""
@@ -345,7 +336,6 @@ def _sanitize_web_surfer_text(text: str) -> str:
     text = _strip_empty_relevant_context_sections(text)
     return text.strip()
 
-
 def _flatten_surfer_content(content) -> str:
     """Turn multimodal surfer content into plain text without Image repr strings."""
     if content is None:
@@ -368,7 +358,6 @@ def _flatten_surfer_content(content) -> str:
                 parts.append(s)
         return " ".join(parts)
     return str(content)
-
 
 class WebKnowledgeRetrieverArgs(BaseModel):
     query: str
@@ -886,7 +875,7 @@ class ScriptGeneratorTool(BaseTool[ScriptGeneratorArgs, str]):
         - [00:05-00:08] Shot 3: [scene/context] - Camera: [angle], Framing: [distance], Movement: [type], Subject: [single].
         - Camera specificity: Each shot must specify explicit camera angles/distance/movement (e.g., wide shot, eye-level tracking, close-up; distance: wide/medium/close; movement: static/slow tracking). No vague language.
         - Single-subject focus: The sequence must keep a single subject in frame across all shots; no two-shot or cutaways to additional subjects.
-        - Narration alignment: The "narration" should be a cohesive, context-rich paragraph (or two) that clearly references the three shots in order, describing what is seen and why it matters for the topic. Each shot's context should be evident in the narration, without introducing information outside of what is visible on screen.
+        - Narration alignment: The "narration" should be less than 18 words and add context to the video.
         - Style: Use present tense, concrete imagery, and concise phrasing. Avoid extraneous or meta-language.
         - JSON integrity: The output must be valid JSON with exactly the keys "script" and "narration". Do not include any text outside the JSON.
         - Placeholder integrity: Do not replace {args.query} with synonyms or altered phrasing; use the placeholder as the basis for the content."""
@@ -923,19 +912,36 @@ class PromptCritiqueTool(BaseTool[PromptCritiqueArgs, Dict[str, Any]]):
 
     SCORE each dimension 0-10, then REWRITE the script to maximize all scores.
 
+    GOLDEN STANDARD FORMAT:
+    Scripts must use time-stamped segments with specific camera angles and concrete details:
+    
+    Example 1 (Product showcase):
+    "[00:00-00:02] Top-down close-up of the iPhone 16 Pro resting on a dark wooden table. The Desert Titanium finish catches soft studio light, emphasizing its metallic texture and triple-lens camera bump.
+    [00:02-00:04] Side-angle shot as a hand lifts the phone, highlighting its thin profile. The screen reflects a subtle gradient from the overhead lighting.
+    [00:04-00:06] Macro shot of a thumb pressing the side button. The display illuminates, revealing the lock screen with crisp colors.
+    [00:06-00:08] Slow rotation shot as the phone is turned to show the camera array, with light glinting off the sapphire lens covers.
+    SFX: A soft click of the button, followed by the subtle chime of the screen waking."
+    
+    Example 2 (Action shot):
+    "[00:00-00:03] Low-angle ground shot. The sharp, geometric stainless-steel body of a Cybertruck approaches the camera, reflecting the environment on its flat panels.
+    [00:03-00:06] Slow-motion close-up on the front tire as it strikes a large puddle. Water explodes outward in a dramatic arc, showing massive displacement.
+    [00:06-00:08] Tracking shot following the truck as it accelerates smoothly through the resistance, water trailing from the tires.
+    SFX: A deep electric motor hum followed by a heavy, cinematic 'whoosh' of water."
+
     SCORING DIMENSIONS:
     1. policy_compliance: No sensitive content, text overlays, graphics, animation, fantasy, or prohibited camera moves (zooms, whip pans, rack focus, scanning).
     2. visual_specificity: Names concrete materials, textures, colors, lighting source/quality, and spatial relationships. Avoids vague words like "beautiful", "amazing", "stunning".
-    3. temporal_clarity: Describes a clear start-to-end progression across exactly 8 seconds. The reader can picture what happens at second 1 vs second 4 vs second 8.
+    3. temporal_clarity: Uses time-stamped segments [00:00-00:02], [00:02-00:04], etc. The reader can picture exactly what happens in each segment.
     4. single_subject_focus: One subject performing one simple, observable action. No competing elements, no multi-step processes.
-    5. camera_feasibility: Camera angle explicitly stated (e.g. eye-level, overhead, 45-degree low angle). Movement is stationary or slow dolly/pan only.
+    5. camera_feasibility: Camera angle explicitly stated per segment (e.g. top-down view, tight close-up, side-angle shot, macro shot). Movement is stationary or slow dolly/pan only.
     6. narration_quality: One sentence, max 18 words. Adds insight or context beyond what is visible—not a description of the visuals.
     7. veo_compatibility: Likely to succeed with Veo 3. Penalize: abstract concepts shown literally, grid/pattern layouts, technical measurement setups, multiple scene transitions, complex hand manipulations.
 
-    REWRITE RULES:
+    RULES:
+    - The first shot [00:00-00:XX] MUST display the main subject directly. If the topic is "iPhone," the phone must be visible in the first shot—not a box or packaging. If "Cybertruck," the truck must appear immediately.
+    - Use time-stamped segments: [00:00-00:02], [00:02-00:04], [00:04-00:06], [00:06-00:08] (or similar 2-4 second intervals).
+    - Start each segment with the camera angle/shot type (e.g. "Close-up of...", "Wide shot of...", "Macro shot of...").
     - Replace every vague adjective with a concrete visual detail (color, material, texture, light).
-    - Add explicit temporal beats ("The shot opens with...", "Over the next few seconds...", "The clip ends as...").
-    - Specify camera angle and movement in the first sentence of the script.
     - Ensure the narration teaches or contextualizes—never just restates the visuals.
     - Simplify any action that requires precise timing or coordination.
     - If the original is fundamentally incompatible with Veo 3, reimagine the scene using an everyday analogy that conveys the same concept.
@@ -952,7 +958,7 @@ class PromptCritiqueTool(BaseTool[PromptCritiqueArgs, Dict[str, Any]]):
             "veo_compatibility": 0-10
         }},
         "issues": ["specific issue 1", "..."],
-        "rewritten_script": "The improved 8-second video description with all fixes applied.",
+        "rewritten_script": "The improved 8-second script using time-stamped segments and golden standard format.",
         "rewritten_narration": "Improved narration, max 18 words.",
         "explanation": "What was changed and why."
     }}"""
@@ -1103,7 +1109,7 @@ class PostProcessingAgent(BaseTool[PostProcessingArgs, str]):
             }
         
         audio_stream = elevenlabs_client.text_to_speech.convert(
-            voice_id="21m00Tcm4TlvDq8ikWAM",
+            voice_id="a1TnjruAs5jTzdrjL8Vd",
             model_id="eleven_turbo_v2_5",
             text=text,
             voice_settings=voice_settings,
@@ -1193,16 +1199,6 @@ class PostProcessingAgent(BaseTool[PostProcessingArgs, str]):
         return output_path
 
 async def run_pipeline(query: str, iid: int):  
-    """
-    Enhanced RAG pipeline for video generation with:
-    - Parallel web search with semantic ranking
-    - Async image downloads with batch validation
-    - Reference image integration into script generation
-    - GPT-4o with few-shot examples and JSON mode
-    - Iterative critique loop for quality assurance
-    - Retry logic with exponential backoff
-    - Semantic caching to avoid redundant API calls
-    """
     iid = str(iid)
     start_time = time.time()
     

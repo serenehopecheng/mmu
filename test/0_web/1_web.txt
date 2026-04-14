@@ -28,6 +28,25 @@ iPhone 16 pro desert titanium
 reviewapple iPhone 16 desert titanium 
 review
 
+The following metadata was extracted from the webpage:
+
+{
+    "meta_tags": {
+        "referrer": "origin-when-cross-origin",
+        "og:description": "Check out what I just created on Bing Image Creator",
+        "og:site_name": "Bing",
+        "og:title": "unboxing iPhone 16 Pro Desert Titanium on wooden table step by step guide - Bing",
+        "og:url": "https://www.bing.com/search?q=unboxing+iPhone+16+Pro+Desert+Titanium+on+wooden+table+step+by+step+guide&form=QBLH&sp=-1&lq=0&pq=&sc=0-0&qs=n&sk=&cvid=136ED36CB91947E49FE5461EC737075E",
+        "fb:app_id": "3732605936979161",
+        "og:image": "http://www.bing.com/sa/simg/facebook_sharing_5.png",
+        "og:type": "website",
+        "og:image:width": "600",
+        "og:image:height": "315"
+    }
+}
+
+Here is a screenshot of the page.
+
 ## Relevant Context 3
 The viewport shows 30% of the webpage, and is positioned at the top of the page
 The following text is visible in the viewport:
@@ -54,3 +73,83 @@ More videos
 iPhone 16 PRO Unboxing & Setup| Apple's Festive Offer Purchase | Desert Titanium #iphone16pro
 YouTubeMandeep Kumar115.7K viewsOct 29, 202408:07
 Desert Titanium iPhone 16 Pro Max 🤎 — unboxing, accessories, set up!
+
+## Relevant Context 4
+)
+    ^
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at https://www.bing.com/
+Call log:
+  - navigating to "https://www.bing.com/", waiting until "load"
+
+
+
+I typed 'unboxing iPhone 16 Pro Desert Titanium on wooden table step by step guide' into 'Enter your search here - Search suggestions will show as you type'. The web browser is open to the page [unboxing iPhone 16 Pro Desert Titanium on wooden table step by step guide - Search](https://www.bing.com/search?q=unboxing+iPhone+16+Pro+Desert+Titanium+on+wooden+table+step+by+step+guide&form=QBLH&sp=-1&lq=0&pq=&sc=0-0&qs=n&sk=&cvid=136ED36CB91947E49FE5461EC737075E).
+
+## Relevant Context 5
+<autogen_core._image.Image object at 0x115e96e90>
+
+## Relevant Context 6
+Web surfing error:
+
+Traceback (most recent call last):
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/autogen_ext/agents/web_surfer/_multimodal_web_surfer.py", line 440, in on_messages_stream
+    content = await self._generate_reply(cancellation_token=cancellation_token)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/autogen_ext/agents/web_surfer/_multimodal_web_surfer.py", line 467, in _generate_reply
+    await self._lazy_init()
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/autogen_ext/agents/web_surfer/_multimodal_web_surfer.py", line 344, in _lazy_init
+    await self._page.goto(self.start_page)
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/playwright/async_api/_generated.py", line 8992, in goto
+    await self._impl_obj.goto(
+        url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+    )
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/playwright/_impl/_page.py", line 555, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+
+## Relevant Context 7
+)
+    ^
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at https://www.bing.com/
+Call log:
+  - navigating to "https://www.bing.com/", waiting until "load"
+
+
+
+Web surfing error:
+
+Traceback (most recent call last):
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/autogen_ext/agents/web_surfer/_multimodal_web_surfer.py", line 440, in on_messages_stream
+    content = await self._generate_reply(cancellation_token=cancellation_token)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/autogen_ext/agents/web_surfer/_multimodal_web_surfer.py", line 467, in _generate_reply
+    await self._lazy_init()
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/autogen_ext/agents/web_surfer/_multimodal_web_surfer.py", line 344, in _lazy_init
+    await self._page.goto(self.start_page)
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/playwright/async_api/_generated.py", line 8992, in goto
+    await self._impl_obj.goto(
+        url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+    )
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/playwright/_impl/_page.py", line 555, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/playwright/_impl/_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "/Users/serenecheng/mmu/.venv/lib/python3.14/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
