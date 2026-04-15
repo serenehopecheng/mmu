@@ -1,0 +1,74 @@
+{
+  "final": {
+    "script": "[00:00-00:03] Top-down close-up of shattered ceramic pieces on a smooth mahogany tabletop. Gold powder scattered among the shards catches a warm light from an overhead lamp.\n[00:03-00:06] Side-angle view: the artisan's hand applies gold resin along the jagged edge of a shard; the resin glistens, capturing hints of the light.\n[00:06-00:08] Oblique close-up of the repaired ceramic bowl, displaying elegant, gold-infused veins contrasting with its matte glaze.",
+    "narration": "Kintsugi crafts beauty by illuminating life's fractures and celebrating the art in imperfection."
+  },
+  "scores": {
+    "policy_compliance": 9,
+    "visual_specificity": 8,
+    "temporal_clarity": 9,
+    "single_subject_focus": 8,
+    "camera_feasibility": 9,
+    "narration_quality": 8,
+    "veo_compatibility": 8
+  },
+  "rounds": [
+    {
+      "scores": {
+        "policy_compliance": 9,
+        "visual_specificity": 7,
+        "temporal_clarity": 8,
+        "single_subject_focus": 9,
+        "camera_feasibility": 7,
+        "narration_quality": 6,
+        "veo_compatibility": 8
+      },
+      "issues": [
+        "Zooming is not permissible as per policy",
+        "Visual details could be more specific",
+        "Narration repeats some visual elements"
+      ],
+      "rewritten_script": "[00:00-00:03] Top-down close-up of the broken ceramic bowl shards amidst a sparkling dust of gold powder on a mahogany table lit by soft overhead lighting. [00:03-00:06] Side-angle shot capturing the artisan\u2019s hand applying gold resin to a shard; the resin glistens under gentle warm light. [00:06-00:08] Oblique close-up of the fully repaired ceramic bowl, its smooth surface adorned with gleaming gold veins naturally catching the light.",
+      "rewritten_narration": "Kintsugi reveals beauty in repair, honoring the bowl's unique history and resilience.",
+      "explanation": "Zoom was removed to comply with policy on camera movements. The script was modified to incorporate more precise visual details, especially concerning materials and lighting, enhancing visual specificity. The narration was rewritten to provide context without describing the visual scene. The focus was kept solely on the artisan's process and the resulting art to streamline the subject focus and compatibility with Veo 3."
+    },
+    {
+      "scores": {
+        "policy_compliance": 10,
+        "visual_specificity": 8,
+        "temporal_clarity": 10,
+        "single_subject_focus": 9,
+        "camera_feasibility": 10,
+        "narration_quality": 9,
+        "veo_compatibility": 9
+      },
+      "issues": [
+        "Original script descriptions were somewhat vague.",
+        "Narration could be more contextually insightful.",
+        "Minor multifaceted actions in original script."
+      ],
+      "rewritten_script": "[00:00-00:03] Top-down close-up of broken ceramic bowl shards surrounded by gold powder. The mahogany table is softly lit from above.\n[00:03-00:06] Side-angle view: the artisan's hand carefully applies gold resin to a shard, the resin shimmering in warm, gentle light.\n[00:06-00:08] Oblique close-up of the completely repaired ceramic bowl, now displaying intricate, gleaming gold veins.",
+      "rewritten_narration": "Kintsugi honors each flaw, showing the beauty of embracing cracks and imperfection.",
+      "explanation": "The rewritten script enhances visual specificity with descriptive details of lighting and actions, ensuring clarity and simplicity. The narration is refined to offer insight into the philosophy of Kintsugi, emphasizing the beauty in imperfections. Camera angles and subject focus were maintained or simplified to align with Veo 3 capabilities, eliminating unnecessary complexity."
+    },
+    {
+      "scores": {
+        "policy_compliance": 9,
+        "visual_specificity": 8,
+        "temporal_clarity": 9,
+        "single_subject_focus": 8,
+        "camera_feasibility": 9,
+        "narration_quality": 8,
+        "veo_compatibility": 8
+      },
+      "issues": [
+        "The original script lacks concrete environmental details surrounding the shards.",
+        "The description of the resin can be more visually specific.",
+        "Narration slightly overlaps with description of visuals."
+      ],
+      "rewritten_script": "[00:00-00:03] Top-down close-up of shattered ceramic pieces on a smooth mahogany tabletop. Gold powder scattered among the shards catches a warm light from an overhead lamp.\n[00:03-00:06] Side-angle view: the artisan's hand applies gold resin along the jagged edge of a shard; the resin glistens, capturing hints of the light.\n[00:06-00:08] Oblique close-up of the repaired ceramic bowl, displaying elegant, gold-infused veins contrasting with its matte glaze.",
+      "rewritten_narration": "Kintsugi crafts beauty by illuminating life's fractures and celebrating the art in imperfection.",
+      "explanation": "Emphasis was placed on detailing the environment surrounding the shards by mentioning the tabletop's texture and the nature of lighting. The original generalized description of the resin's shimmer was specified to indicate how it interacts visually with its environment. The narration was refined to avoid mirroring visual elements, instead framing the philosophical aspect, which adds narrative depth."
+    }
+  ]
+}

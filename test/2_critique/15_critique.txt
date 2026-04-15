@@ -1,0 +1,75 @@
+{
+  "final": {
+    "script": "[00:00-00:03] Close-up shot on a hand holding a bright red cereal box over the self-checkout scanner. Glossy packaging reflects the warm overhead lights.\n[00:03-00:06] Tight side-angle of the self-checkout screen as the cereal's vibrant image and $3.49 price appear.\n[00:06-00:08] Static shot of the cereal box being gently placed into a woven, brown paper bag in the bagging area.",
+    "narration": "Revolutionize your shopping with quick scanning and immediate price display at checkout."
+  },
+  "scores": {
+    "policy_compliance": 10,
+    "visual_specificity": 7,
+    "temporal_clarity": 9,
+    "single_subject_focus": 8,
+    "camera_feasibility": 8,
+    "narration_quality": 6,
+    "veo_compatibility": 8
+  },
+  "rounds": [
+    {
+      "scores": {
+        "policy_compliance": 9,
+        "visual_specificity": 6,
+        "temporal_clarity": 8,
+        "single_subject_focus": 7,
+        "camera_feasibility": 6,
+        "narration_quality": 7,
+        "veo_compatibility": 6
+      },
+      "issues": [
+        "Lack of detailed material and color descriptions.",
+        "Some camera movements may not be feasible.",
+        "The script's subject actions are slightly complex.",
+        "Narration closely resembles visual description."
+      ],
+      "rewritten_script": "[00:00-00:02] Close-up of a hand holding a cereal box, positioned above the self-checkout scanner. Warm overhead lighting highlights the box's glossy packaging. [00:02-00:05] Side-angle shot of the self-checkout screen as it lights up, displaying the cereal's image and price against a blue background. [00:05-00:08] Frontal shot showing the hand placing the cereal box into a brown paper bag within the bagging area, the overhead lighting casting soft shadows.",
+      "rewritten_narration": "Shop independently with quick scans and instant price displays at your fingertips.",
+      "explanation": "The script was revised to include specific visual details such as lighting and packaging textures while simplifying actions to ensure they are observable and straightforward. The narration was revised to provide context and insights into the user experience while differentiating from the visuals."
+    },
+    {
+      "scores": {
+        "policy_compliance": 9,
+        "visual_specificity": 7,
+        "temporal_clarity": 8,
+        "single_subject_focus": 8,
+        "camera_feasibility": 9,
+        "narration_quality": 6,
+        "veo_compatibility": 7
+      },
+      "issues": [
+        "Narration is descriptive rather than insightful.",
+        "Visual details could be more specific regarding lighting and texture.",
+        "The script lacks variety in camera angles and focus."
+      ],
+      "rewritten_script": "[00:00-00:03] Close-up shot of a cereal box under warm overhead lights, highlighting its glossy, colorful packaging as it hovers over the self-checkout scanner.\n[00:03-00:06] Tight shot of the self-checkout screen, showcasing a vivid display of the cereal's image and price appearing instantly on a sleek, matte black panel.\n[00:06-00:08] Side-angle view of the cereal box being placed into a sturdy, brown paper bag in the bagging area, with soft shadows enhancing the texture of the bag.",
+      "rewritten_narration": "Experience efficient shopping with seamless scanning and instant digital checkout feedback.",
+      "explanation": "The script was revised for greater visual specificity by describing the matte black panel and vivid display on the checkout screen, enhancing comprehension of the setting. Camera angles were refined and varied to ensure feasibility and maintain viewer engagement. The narration was rephrased to provide context about the shopping experience, moving beyond mere visual description and offering insight into the efficiency the process provides. This approach improves overall clarity, focus, and alignment with Veo 3 capabilities."
+    },
+    {
+      "scores": {
+        "policy_compliance": 10,
+        "visual_specificity": 7,
+        "temporal_clarity": 9,
+        "single_subject_focus": 8,
+        "camera_feasibility": 8,
+        "narration_quality": 6,
+        "veo_compatibility": 8
+      },
+      "issues": [
+        "The original script lacks specific colors, materials, and lighting details in some segments.",
+        "Multiple actions are combined in some segments, affecting single subject focus.",
+        "The narration closely repeats what is visible rather than adding context."
+      ],
+      "rewritten_script": "[00:00-00:03] Close-up shot on a hand holding a bright red cereal box over the self-checkout scanner. Glossy packaging reflects the warm overhead lights.\n[00:03-00:06] Tight side-angle of the self-checkout screen as the cereal's vibrant image and $3.49 price appear.\n[00:06-00:08] Static shot of the cereal box being gently placed into a woven, brown paper bag in the bagging area.",
+      "rewritten_narration": "Revolutionize your shopping with quick scanning and immediate price display at checkout.",
+      "explanation": "The script was revised to include more specific visual and descriptive details, such as the color of the cereal box and the price displayed on the screen. Simplified the actions to maintain a single-subject focus. The narration was improved by providing context rather than reiterating the action displayed in the video."
+    }
+  ]
+}

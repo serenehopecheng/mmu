@@ -1,0 +1,59 @@
+# Knowledge Summary: A close-up of a Newton's Cradle in motion on a desk, macro view.
+
+## Relevant Context 1
+I typed 'Newton's Cradle motion explained macro view' into the browser search bar. The web browser is open to the page [Newton's Cradle motion explained macro view - Search](https://www.bing.com/search?q=Newton%27s+Cradle+motion+explained+macro+view&FORM=QBLH). The viewport shows 20% of the webpage, and is positioned at the top of the page
+The following text is visible in the viewport:
+
+Skip to content
+Accessibility Feedback
+Newton's Cradle motion explained macro view5
+5 bonus entries with Edge as your default browser
+A luxury car or $1,000,000 USD cash could be yours. Terms apply.Get bonus entries
+Later
+All
+Search
+Images
+Videos
+Maps
+News
+Copilot
+More
+About 5,780 resultsIn the macro view, Newton's Cradle illustrates how energy is propagated through a system of balls. When one ball is lifted and released, it strikes the stationary balls, compressing them and creating a pressure wave that transmits a force through the system.
+
+## Relevant Context 2
+The succeeding ball acquires most …
+Deep dive into 
+Newton's Cradle motion explained macro viewnewton's cradle explained
+newton's cradle 
+diagramnewton's cradle 
+videonewton's cradle 
+examplesnewton's cradle 
+velocitynewton's cradle 
+animationnewton's cradle 
+movementnewton's cradle 
+physics
+
+at eval (eval at evaluate (:290:30), <anonymous>:1:1)
+    at eval (<anonymous>)
+    at UtilityScript.evaluate (<anonymous>:290:30)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+
+## Relevant Context 3
+One is that…
+View all
+Wikipedia
+https://en.wikipedia.org › wiki › Newton's_cradle
+Newton's cradle - WikipediaNewton's cradle is a device, usually made of metal, that demonstrates the principles of conservation of momentum and conservation of energy in physics with swinging spheres. When one sphere at the end is lifted and released, it strikes the stationary spheres, compressing them and thereby …
+Operation
+When one of the balls at the end ("the first") is pulled sideways, the attached string constrains it along an upward arc. When released it strikes the second ball and comes nearly, but not entirely, to a dead stop.
+
+## Relevant Context 4
+This force pushes the last ball upward, causing it to swing back and strike the stationary balls, repeating the process. The motion of the balls can be visualized as a line of touching coins, where the energy is temporarily stored as potential energy in the compression of the material rather than being lost as heat. This principle is fundamental to understanding the conservation of energy and momentum in physical systems. Wikipedia
++1
+Read more
+Wikipedia
+Newton's cradle - Wikipedia
+Newton's cradle is a device, usually made of metal, that demonstrates the principles of conservation of momentum and conservation of energy in physics with swinging spheres. When o…
+Universe of Particles
+Newton’s Cradle – Energy and Inertia | Universe of Particles
+The strict particle model presented here makes no distinction between the subatomic level and macrolevel when it comes to motion. However, it does make two bold claims.

@@ -1197,122 +1197,122 @@ class PostProcessingAgent(BaseTool[PostProcessingArgs, str]):
 
 async def run_pipeline(query: str, iid: int | str):
     iid = str(iid)
-    # start_time = time.time()
+    start_time = time.time()
     
-    # web_retriever = WebKnowledgeRetrieverTool()
-    # image_retriever = ImageRetrieverTool()
-    # script_generator = ScriptGeneratorTool()
-    # simple_critique = PromptCritiqueTool()
-    # veo_tool = VeoVideoGeneratorTool()
-    # post_processor = PostProcessingAgent()
-    
-    # print("[STEP 1/5] Retrieving web knowledge...")
-    # retriever_args = WebKnowledgeRetrieverArgs(query=query, detail_level="comprehensive")
-    # web_context = await web_retriever.run(retriever_args, None)
-    
-    # out_dir = Path("test") / "0_web"
-    # out_dir.mkdir(parents=True, exist_ok=True)
-    # filename = out_dir / f"{iid}_web.txt"
-    # with open(filename, "w", encoding="utf-8") as f:
-    #     f.write(web_context)
-
-    # print("\n[STEP 2/6] Retrieving reference images (async download + batch validation)...")
-    # reference_images = await image_retriever.run(
-    #     ImageRetrieverArgs(query=query, iid=iid, num_images=1), 
-    #     None
-    # )
-    # if not reference_images:
-    #     raise Exception("No reference images were retrieved")
-
-    # frame_image = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
-    # frame_buffer = io.BytesIO()
-    # frame_image.save(frame_buffer, format="JPEG", quality=95)
-    # frame = frame_buffer.getvalue()
-    
-    # ref_dir = Path("test/2_images")
-    # ref_dir.mkdir(parents=True, exist_ok=True)
-    # for ref in reference_images:
-    #     url = str(ref.get("url", ""))
-    #     m = re.search(r"\.(jpg|jpeg|png|gif|webp)(?:$|[?#])", url, flags=re.IGNORECASE)
-    #     ext = (m.group(1).lower() if m else "jpg")
-    #     img_bytes = ref["bytes"]
-    #     out_name = f"{iid}.{ext}"
-    #     out_path = ref_dir / out_name
-    #     with open(out_path, "wb") as imgf:
-    #         imgf.write(img_bytes)
-    # print(f"  Best reference image score: {reference_images[0].get('relevance_score', 'N/A')}/10")
-    
-    # print("\n[STEP 3/6] Generating script (GPT-4o + few-shot + reference image analysis)...")
-    # generator_args = ScriptGeneratorArgs(
-    #     query=query, 
-    #     context_info=web_context,
-    #     reference_image_bytes=frame
-    # )
-    # raw = await script_generator.run(generator_args, None)
-    # script = clean_json_block(raw)
-    # data = json.loads(script)
-
-    # out_dir = Path("test") / "1_script"
-    # out_dir.mkdir(parents=True, exist_ok=True)
-    # filename = out_dir / f"{iid}_script.txt"
-    # with open(filename, "w", encoding="utf-8") as f:
-    #     f.write(script)
-    # print(f"  Script generated: {len(data.get('script', ''))} chars")
-    # print(f"  Narration: {data.get('narration', '')[:80]}...")
-
-    # print("\n[STEP 4/6] Running iterative critique (score + rewrite loop)...")
-    # critique_result = await run_iterative_critique(query, data)
-    # data = {
-    #     "script": critique_result["script"],
-    #     "narration": critique_result["narration"],
-    # }
-    
-    # out_dir = Path("test") / "2_critique"
-    # out_dir.mkdir(parents=True, exist_ok=True)
-    # filename = out_dir / f"{iid}_critique.txt"
-    # with open(filename, "w", encoding="utf-8") as f:
-    #     f.write(json.dumps({
-    #         "final": data,
-    #         "scores": critique_result["final_scores"],
-    #         "rounds": critique_result["rounds"],
-    #     }, indent=2))
-    
-    # final_scores = critique_result.get("final_scores", {})
-    # avg_score = sum(final_scores.values()) / len(final_scores) if final_scores else 0
-    # print(f"  Final average score: {avg_score:.1f}/10")
-    # print(f"  Critiqued script saved")
-    
-    # print("\n[STEP 5/6] Generating video with Veo 3...")
-    # generated_paths = []
-    # narrations = []
-
-    # if not data:
-    #     raise Exception("No validated prompts to generate video")
-
-    # script_text = str(data["script"]).strip()
-    # narration = str(data["narration"]).strip()
-
-    # try:
-    #     veo_args = VeoVideoGeneratorArgs(
-    #         query=script_text,
-    #         iid=iid,
-    #         duration_seconds=8,
-    #         frame=frame
-    #     )
-    #     veo_result = await veo_tool.run(veo_args, None)
-    #     generated_paths.extend(veo_result["video_paths"])
-    #     narrations.append(narration)
-    #     print(f"  Generated {len(veo_result['video_paths'])} video(s)")
-
-    # except Exception as e:
-    #     print(f"  Video generation failed: {str(e)}")
-    #     raise
-
-    # if not generated_paths:
-    #     raise Exception("No videos were successfully generated")
+    web_retriever = WebKnowledgeRetrieverTool()
+    image_retriever = ImageRetrieverTool()
+    script_generator = ScriptGeneratorTool()
+    simple_critique = PromptCritiqueTool()
+    veo_tool = VeoVideoGeneratorTool()
     post_processor = PostProcessingAgent()
-    generated_paths = ["test/parts/1_0.mp4"]
-    narrations = ["Experience artistry and technology intertwined in the design of the iPhone 16 Pro."]
+    
+    print("[STEP 1/5] Retrieving web knowledge...")
+    retriever_args = WebKnowledgeRetrieverArgs(query=query, detail_level="comprehensive")
+    web_context = await web_retriever.run(retriever_args, None)
+    
+    out_dir = Path("test") / "0_web"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    filename = out_dir / f"{iid}_web.txt"
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(web_context)
+
+    print("\n[STEP 2/6] Retrieving reference images (async download + batch validation)...")
+    reference_images = await image_retriever.run(
+        ImageRetrieverArgs(query=query, iid=iid, num_images=1), 
+        None
+    )
+    if not reference_images:
+        raise Exception("No reference images were retrieved")
+
+    frame_image = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
+    frame_buffer = io.BytesIO()
+    frame_image.save(frame_buffer, format="JPEG", quality=95)
+    frame = frame_buffer.getvalue()
+    
+    ref_dir = Path("test/2_images")
+    ref_dir.mkdir(parents=True, exist_ok=True)
+    for ref in reference_images:
+        url = str(ref.get("url", ""))
+        m = re.search(r"\.(jpg|jpeg|png|gif|webp)(?:$|[?#])", url, flags=re.IGNORECASE)
+        ext = (m.group(1).lower() if m else "jpg")
+        img_bytes = ref["bytes"]
+        out_name = f"{iid}.{ext}"
+        out_path = ref_dir / out_name
+        with open(out_path, "wb") as imgf:
+            imgf.write(img_bytes)
+    print(f"  Best reference image score: {reference_images[0].get('relevance_score', 'N/A')}/10")
+    
+    print("\n[STEP 3/6] Generating script (GPT-4o + few-shot + reference image analysis)...")
+    generator_args = ScriptGeneratorArgs(
+        query=query, 
+        context_info=web_context,
+        reference_image_bytes=frame
+    )
+    raw = await script_generator.run(generator_args, None)
+    script = clean_json_block(raw)
+    data = json.loads(script)
+
+    out_dir = Path("test") / "1_script"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    filename = out_dir / f"{iid}_script.txt"
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(script)
+    print(f"  Script generated: {len(data.get('script', ''))} chars")
+    print(f"  Narration: {data.get('narration', '')[:80]}...")
+
+    print("\n[STEP 4/6] Running iterative critique (score + rewrite loop)...")
+    critique_result = await run_iterative_critique(query, data)
+    data = {
+        "script": critique_result["script"],
+        "narration": critique_result["narration"],
+    }
+    
+    out_dir = Path("test") / "2_critique"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    filename = out_dir / f"{iid}_critique.txt"
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(json.dumps({
+            "final": data,
+            "scores": critique_result["final_scores"],
+            "rounds": critique_result["rounds"],
+        }, indent=2))
+    
+    final_scores = critique_result.get("final_scores", {})
+    avg_score = sum(final_scores.values()) / len(final_scores) if final_scores else 0
+    print(f"  Final average score: {avg_score:.1f}/10")
+    print(f"  Critiqued script saved")
+    
+    print("\n[STEP 5/6] Generating video with Veo 3...")
+    generated_paths = []
+    narrations = []
+
+    if not data:
+        raise Exception("No validated prompts to generate video")
+
+    script_text = str(data["script"]).strip()
+    narration = str(data["narration"]).strip()
+
+    try:
+        veo_args = VeoVideoGeneratorArgs(
+            query=script_text,
+            iid=iid,
+            duration_seconds=8,
+            frame=frame
+        )
+        veo_result = await veo_tool.run(veo_args, None)
+        generated_paths.extend(veo_result["video_paths"])
+        narrations.append(narration)
+        print(f"  Generated {len(veo_result['video_paths'])} video(s)")
+
+    except Exception as e:
+        print(f"  Video generation failed: {str(e)}")
+        raise
+
+    if not generated_paths:
+        raise Exception("No videos were successfully generated")
+    # post_processor = PostProcessingAgent()
+    # generated_paths = ["test/parts/1_0.mp4"]
+    # narrations = ["Experience artistry and technology intertwined in the design of the iPhone 16 Pro."]
         
     print("\n[STEP 6/6] Post-processing (TTS + assembly)...")
     post_args = PostProcessingArgs(

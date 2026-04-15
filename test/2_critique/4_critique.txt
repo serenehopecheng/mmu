@@ -1,0 +1,73 @@
+{
+  "final": {
+    "script": "[00:00-00:03] Macro shot of the Newton's Cradle on a polished, dark mahogany desk. The leading steel ball, gleaming under soft, warm light, arcs backward gracefully. [00:03-00:06] Side-angle close-up capturing the alignment of the balls as energy passes through them with a precise clink. [00:06-00:08] Overhead view as the last ball swings out in a steady rhythm, creating an entrancing cycle against the desk's glossy sheen.",
+    "narration": "Newton's Cradle is a timeless demonstration of energy transfer and motion in physics."
+  },
+  "scores": {
+    "policy_compliance": 10,
+    "visual_specificity": 8,
+    "temporal_clarity": 9,
+    "single_subject_focus": 10,
+    "camera_feasibility": 9,
+    "narration_quality": 7,
+    "veo_compatibility": 8
+  },
+  "rounds": [
+    {
+      "scores": {
+        "policy_compliance": 10,
+        "visual_specificity": 6,
+        "temporal_clarity": 8,
+        "single_subject_focus": 9,
+        "camera_feasibility": 9,
+        "narration_quality": 6,
+        "veo_compatibility": 7
+      },
+      "issues": [
+        "Lacks specific lighting details or material descriptions.",
+        "Narration merely describes what is visible.",
+        "Could improve visual specificity with more texture and color details."
+      ],
+      "rewritten_script": "[00:00-00:03] Macro shot of a Newton's Cradle on a dark polished wooden desk. The first steel ball gleams under soft, direct light as it begins to swing back.\n[00:03-00:06] Close-up side view showing the smooth silver spheres. They align perfectly as momentum visibly transfers from one ball to the next, creating a precise chain reaction.\n[00:06-00:08] Overhead shot as the last ball in the sequence arches outward before swinging back, creating a distinct rhythmic pattern.",
+      "rewritten_narration": "Newton's Cradle demonstrates the elegance of kinetic energy conservation through perfect motion.",
+      "explanation": "The script is refined to improve logical flow, specificity and compatibility. We enhanced visual specificity by clarifying textures and lighting sources. Temporal clarity was ensured with accurate time-stamping. Segments focus on distinct, simple actions. The narration was modified to provide insight, referencing kinetic energy conservation instead of describing visible details."
+    },
+    {
+      "scores": {
+        "policy_compliance": 10,
+        "visual_specificity": 8,
+        "temporal_clarity": 9,
+        "single_subject_focus": 9,
+        "camera_feasibility": 10,
+        "narration_quality": 8,
+        "veo_compatibility": 9
+      },
+      "issues": [
+        "Vague adjectives limiting visual specificity.",
+        "Initial narration somewhat descriptive rather than insightful."
+      ],
+      "rewritten_script": "[00:00-00:03] Macro shot of a Newton's Cradle on a sleek, dark mahogany desk. The leading steel ball reflects the dimmed overhead lights as it arcs backward. [00:03-00:06] Side view close-up showing seamless alignment of the polished balls. Energy visibly passes in a precise, rippling sequence. [00:06-00:08] Overhead shot where the terminal ball swings outward gracefully, forming a consistent, hypnotic motion cycle.",
+      "rewritten_narration": "Newton\u2019s Cradle elegantly illustrates kinetic energy conservation through a mesmerizing, rhythmic steel dance.",
+      "explanation": "The script now eliminates vague adjectives, favoring specific material and lighting descriptions to enhance visual specificity. Temporal clarity and camera feasibility were already strong but now better aligned to golden standard. The narration now provides insight into the principle being demonstrated, rather than merely describing the visual. These changes collectively improve the scores across visual specificity, narration quality, and Veo compatibility."
+    },
+    {
+      "scores": {
+        "policy_compliance": 10,
+        "visual_specificity": 8,
+        "temporal_clarity": 9,
+        "single_subject_focus": 10,
+        "camera_feasibility": 9,
+        "narration_quality": 7,
+        "veo_compatibility": 8
+      },
+      "issues": [
+        "Some camera angles and movements were not explicitly stated.",
+        "The narration restated the video content without adding much context.",
+        "Visual details could be more specific."
+      ],
+      "rewritten_script": "[00:00-00:03] Macro shot of the Newton's Cradle on a polished, dark mahogany desk. The leading steel ball, gleaming under soft, warm light, arcs backward gracefully. [00:03-00:06] Side-angle close-up capturing the alignment of the balls as energy passes through them with a precise clink. [00:06-00:08] Overhead view as the last ball swings out in a steady rhythm, creating an entrancing cycle against the desk's glossy sheen.",
+      "rewritten_narration": "Newton's Cradle is a timeless demonstration of energy transfer and motion in physics.",
+      "explanation": "The original script's camera shots were adjusted to include clear camera angles and specific details about lighting and textures to improve visual specificity. Time-stamped segments were maintained for temporal clarity, and all descriptions were refined for single-subject focus by removing any competing elements. The narration was rewritten to provide contextual information about the physical principle, rather than merely describing the visual shown, enhancing the narration quality."
+    }
+  ]
+}

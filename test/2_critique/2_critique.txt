@@ -1,0 +1,73 @@
+{
+  "final": {
+    "script": "[00:00-00:03] Low-angle ground shot. The stainless-steel Cybertruck enters the frame, its flat surfaces reflecting the muted gray of an overcast sky. [00:03-00:05] Slow-motion close-up on the angular front tire as it meets the puddle. Water erupts skyward, detailed patterns forming arches. [00:05-00:08] Tracking shot as the Cybertruck swiftly moves forward, droplets gleaming as they fall away from the whirling tires.",
+    "narration": "Engineered for tough conditions, the Cybertruck dominates all terrain effortlessly and gracefully."
+  },
+  "scores": {
+    "policy_compliance": 10,
+    "visual_specificity": 8,
+    "temporal_clarity": 10,
+    "single_subject_focus": 9,
+    "camera_feasibility": 9,
+    "narration_quality": 8,
+    "veo_compatibility": 9
+  },
+  "rounds": [
+    {
+      "scores": {
+        "policy_compliance": 9,
+        "visual_specificity": 7,
+        "temporal_clarity": 8,
+        "single_subject_focus": 9,
+        "camera_feasibility": 8,
+        "narration_quality": 7,
+        "veo_compatibility": 8
+      },
+      "issues": [
+        "Lack of detailed visual description for environmental context.",
+        "Narration too descriptive, not adding additional insight.",
+        "Vague words like 'showcases' and 'challenging' in the narration."
+      ],
+      "rewritten_script": "[00:00-00:03] Low-angle ground shot. The angular stainless-steel body of the Tesla Cybertruck advances, its metallic panels reflecting ambient light. [00:03-00:06] Slow-motion close-up on the front tire as it contacts the puddle. Water splashes upward, capturing kinetic energy. [00:06-00:08] Tracking shot as the Cybertruck accelerates effortlessly, leaving a trail of splashed water in its wake.",
+      "rewritten_narration": "The Cybertruck masters obstacles, highlighting its design for resilience and adventure.",
+      "explanation": "The revisions focused on adding specific visual details to enhance clarity and remove vague descriptions. The shot breakdown was adjusted for better temporal clarity and consistency. The narration was rewritten to provide insight into the truck's capabilities rather than just restating the visuals. This improved compliance with Veo 3's requirements and enhanced the video's communicative effectiveness."
+    },
+    {
+      "scores": {
+        "policy_compliance": 10,
+        "visual_specificity": 8,
+        "temporal_clarity": 9,
+        "single_subject_focus": 10,
+        "camera_feasibility": 9,
+        "narration_quality": 8,
+        "veo_compatibility": 9
+      },
+      "issues": [
+        "Original narration describes the visuals without adding context.",
+        "Visual specificity can be increased with more concrete details.",
+        "Temporal clarity can be improved slightly for easier understanding."
+      ],
+      "rewritten_script": "[00:00-00:03] Low-angle ground shot. The angular stainless-steel Tesla Cybertruck approaches, its surfaces mirroring the overcast sky.\n[00:03-00:06] Slow-motion close-up on the front tire contacting the puddle. Water bursts upward, forming intricate patterns.\n[00:06-00:08] Tracking shot of the Cybertruck accelerating forward, droplets glistening as they trail off the spinning tires.",
+      "rewritten_narration": "Designed for resilience, the Cybertruck effortlessly navigates water and terrain.",
+      "explanation": "The script was adjusted to provide more detailed visual specificity, ensuring each segment has clear camera angles and actions. The narration was refined to offer additional insight into the Cybertruck's design, emphasizing its capability in an engaging way. Slight adjustments were made for better temporal clarity, ensuring a precise depiction of events within the allotted time segments."
+    },
+    {
+      "scores": {
+        "policy_compliance": 10,
+        "visual_specificity": 8,
+        "temporal_clarity": 10,
+        "single_subject_focus": 9,
+        "camera_feasibility": 9,
+        "narration_quality": 8,
+        "veo_compatibility": 9
+      },
+      "issues": [
+        "Some missing concrete details regarding textures and lighting.",
+        "Original narration slightly mirrored the visuals."
+      ],
+      "rewritten_script": "[00:00-00:03] Low-angle ground shot. The stainless-steel Cybertruck enters the frame, its flat surfaces reflecting the muted gray of an overcast sky. [00:03-00:05] Slow-motion close-up on the angular front tire as it meets the puddle. Water erupts skyward, detailed patterns forming arches. [00:05-00:08] Tracking shot as the Cybertruck swiftly moves forward, droplets gleaming as they fall away from the whirling tires.",
+      "rewritten_narration": "Engineered for tough conditions, the Cybertruck dominates all terrain effortlessly and gracefully.",
+      "explanation": "The script's visual specificity was improved by highlighting the muted gray of the sky and the angular design of the tires for enhanced imagery. The temporal clarity and simplicity were retained, maintaining a clear focus on the Cybertruck as a single subject. The camera angles and movements were refined for consistency with Veo 3's output capabilities. The narration was enhanced to provide context about the vehicle's engineering while eliminating redundancy with the visuals."
+    }
+  ]
+}

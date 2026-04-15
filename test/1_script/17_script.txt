@@ -1,0 +1,4 @@
+{
+    "script": "[00:00-00:02] Shot 1: A person changing a flat tire on a car - Camera: low-angle, Framing: medium, Movement: static, Subject: person tightening lug nuts.\n[00:02-00:05] Shot 2: A person changing a flat tire on a car - Camera: close-up, Framing: tight, Movement: slow zoom, Subject: hand on the jack lever lifting the car.\n[00:05-00:08] Shot 3: A person changing a flat tire on a car - Camera: side-angle, Framing: wide, Movement: tracking, Subject: person placing spare tire onto hub.",
+    "narration": "Watch as the tire change process unfolds, demonstrating essential car maintenance skills."
+}
