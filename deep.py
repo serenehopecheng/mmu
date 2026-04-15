@@ -660,8 +660,11 @@ class ImageRetrieverTool(BaseTool[ImageRetrieverArgs, list]):
             - Are relevant to the query topic
             - Have acceptable visual quality
 
+            If there are several watermarks on an image, remove it.
+
             Respond with JSON array only, one object per image in order:
             [{{"index": 0, "is_valid": true/false, "reason": "brief", "relevance_score": 0-10}}, ...]"""
+       
 
             try:
                 response = robust_openai_call(

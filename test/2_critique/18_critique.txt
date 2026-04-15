@@ -1,0 +1,74 @@
+{
+  "final": {
+    "script": "[00:00-00:03] Front close-up of the Maori dancer's face under sunlight, highlighting intricate black facial tattoos and his piercing eyes. Sweat glistens subtly.\n[00:03-00:06] Side view shot of his powerful arm movements, emphasizing the muscles through his traditional flax garments, with lush greenery softly blurred.\n[00:06-00:08] Low-angle close-up as his eyes widen fiercely in 'Pukana', facial muscles tense, feathers catching the light.",
+    "narration": "Feel the Haka's essence in its commanding motion and expressive Maori cultural practice."
+  },
+  "scores": {
+    "policy_compliance": 9,
+    "visual_specificity": 8,
+    "temporal_clarity": 9,
+    "single_subject_focus": 9,
+    "camera_feasibility": 9,
+    "narration_quality": 7,
+    "veo_compatibility": 8
+  },
+  "rounds": [
+    {
+      "scores": {
+        "policy_compliance": 9,
+        "visual_specificity": 7,
+        "temporal_clarity": 9,
+        "single_subject_focus": 10,
+        "camera_feasibility": 8,
+        "narration_quality": 7,
+        "veo_compatibility": 8
+      },
+      "issues": [
+        "Prohibited camera moves: zoom",
+        "Lack of visual specificity in color and texture",
+        "Simple narration requiring more context or insight"
+      ],
+      "rewritten_script": "[00:00-00:03] Front-angle close-up of a Maori dancer's intense eyes and expressive face, muscles taut in concentration. Natural light reflects off his perspiring skin, emphasizing the ceremonial tattoos on his cheeks.\n[00:03-00:06] Side-angle medium shot focusing on the dancer's powerful arm movements and rhythmic stomping. The traditional feathered attire contrasts against the natural backdrop.\n[00:06-00:08] Low-angle close-up of his wide-eyed 'Pukana' expression as he performs the final haka move, muscles visibly tense under the bright, high sunlight.",
+      "rewritten_narration": "Feel the cultural power of the 'Haka' through authentic 'Pukana' expressions and movement.",
+      "explanation": "Camera movement, like zooms, was removed to make the scene easier to capture. Visual specificity was improved by adding details about the dancer's appearance, attire, and environment. The narration was revised to add cultural context, making it more informative. The script maintains a clear focus on the dancer, ensuring simple, observable actions with the main subject appearing immediately."
+    },
+    {
+      "scores": {
+        "policy_compliance": 9,
+        "visual_specificity": 8,
+        "temporal_clarity": 9,
+        "single_subject_focus": 9,
+        "camera_feasibility": 9,
+        "narration_quality": 7,
+        "veo_compatibility": 8
+      },
+      "issues": [
+        "Narration restates the visuals instead of adding new context.",
+        "Visual details could be more specific, particularly in lighting and texture.",
+        "Initial script elements are somewhat vague and general."
+      ],
+      "rewritten_script": "[00:00-00:03] Direct front-angle close-up of a Maori dancer's intense eyes, brows furrowed, under bright natural light. Sweat glistens on his skin, accentuating the dense black ink of his facial tattoos. [00:03-00:06] Side-angle shot showing his broad shoulders and muscular arms in forceful movement, each flex visible under his traditional woven garments. The green foliage blurs gently in the distant background as his feet stomp rhythmically. [00:06-00:08] Low-angle close-up capturing the culmination of emotion as the dancer's eyes widen in a fierce 'Pukana', his facial muscles visibly tense while sunlight highlights the texture of feathers in his attire.",
+      "rewritten_narration": "Experience the Haka's power through its intense movements and traditional expressions.",
+      "explanation": "I adjusted the script to add more specific visual elements such as the texture of tattoos and clothing materials. Each segment now vividly focuses on the subject, ensuring no competing elements distract. The camera angles and lighting are detailed to provide mental imagery, enhancing temporal clarity. Narration was revised to offer context rather than describing the visible actions, aiming to improve its quality by linking cultural significance."
+    },
+    {
+      "scores": {
+        "policy_compliance": 9,
+        "visual_specificity": 8,
+        "temporal_clarity": 9,
+        "single_subject_focus": 9,
+        "camera_feasibility": 9,
+        "narration_quality": 7,
+        "veo_compatibility": 8
+      },
+      "issues": [
+        "Narration is somewhat descriptive of visuals.",
+        "Visual specificity could be enhanced with more details about lighting and colors.",
+        "Initial script contained multiple movement elements that could be simplified."
+      ],
+      "rewritten_script": "[00:00-00:03] Front close-up of the Maori dancer's face under sunlight, highlighting intricate black facial tattoos and his piercing eyes. Sweat glistens subtly.\n[00:03-00:06] Side view shot of his powerful arm movements, emphasizing the muscles through his traditional flax garments, with lush greenery softly blurred.\n[00:06-00:08] Low-angle close-up as his eyes widen fiercely in 'Pukana', facial muscles tense, feathers catching the light.",
+      "rewritten_narration": "Feel the Haka's essence in its commanding motion and expressive Maori cultural practice.",
+      "explanation": "The script was revised to start directly with the subject and to ensure precise camera angles and lighting details. The narration was refocused to provide additional context about the cultural importance of the Haka rather than describing visuals. Movements were kept singular to maintain focus on the subject. Visual elements like lighting and material texture were enhanced for clarity. Unnecessary complexity in description was reduced for improved compatibility with Veo 3."
+    }
+  ]
+}
