@@ -789,14 +789,14 @@ class ScriptGeneratorTool(BaseTool[ScriptGeneratorArgs, str]):
     INPUT: "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view."
     OUTPUT:
     {
-        "script": "[00:00-00:02] Top-down view of a sealed, minimalist Apple box on a dark wooden table. Two hands enter the frame and slowly slide the lid upward, showing a tight friction fit.\\n[00:02-00:04] Tight close-up as the lid is removed to reveal the iPhone 16 Pro face-down. The Desert Titanium finish catches the soft studio light, emphasizing its metallic texture.\\n[00:04-00:06] Side-angle shot as a hand lifts the phone, highlighting the thin profile and the triple-lens camera bump. Underneath, a coiled USB-C cable and documentation are visible.\\n[00:06-00:08] Macro shot of a thumb peeling back the protective film from the screen in one slow, satisfying motion.\\nSFX: The smooth slide of cardboard, subtle paper rustle, and a crisp, high-quality plastic peel ASMR."
+        "script": "[00:00-00:02] Top-down close-up of the iPhone 16 Pro resting on a dark wooden table. The Desert Titanium finish catches soft studio light, emphasizing its metallic texture and triple-lens camera bump. [00:02-00:04] Side-angle shot as a hand lifts the phone, highlighting its thin profile. The screen reflects a subtle gradient from the overhead lighting. [00:04-00:08] Slow rotation shot as the phone is turned to show the camera array, with light glinting off the sapphire lens covers."
     }
 
     === EXAMPLE 2 ===
     INPUT: "A close-up of a Tesla Cybertruck driving through a puddle, low angle."
     OUTPUT:
     {
-        "script": "[00:00-00:03] Low-angle ground shot. The sharp, geometric stainless-steel body of a Cybertruck approaches the camera, reflecting the environment on its flat panels.\\n[00:03-00:06] Slow-motion close-up on the front tire as it strikes a large puddle. Water explodes outward in a dramatic arc, showing massive displacement.\\n[00:06-00:08] Tracking shot following the truck as it accelerates smoothly through the resistance, water trailing from the tires.\\nSFX: A deep electric motor hum followed by a heavy, cinematic \\\"whoosh\\\" of water."
+        "script": "[00:00-00:03] Low-angle ground shot. The sharp, geometric stainless-steel body of a Cybertruck approaches the camera, reflecting the environment on its flat panels.\\n[00:03-00:06] Slow-motion close-up on the front tire as it strikes a large puddle. Water explodes outward in a dramatic arc, showing massive displacement.\\n[00:06-00:08] Tracking shot following the truck as it accelerates smoothly through the resistance, water trailing from the tires."
     }
 
     === EXAMPLE 3 ===
@@ -918,20 +918,17 @@ class PromptCritiqueTool(BaseTool[PromptCritiqueArgs, Dict[str, Any]]):
     Example 1 (Product showcase):
     "[00:00-00:02] Top-down close-up of the iPhone 16 Pro resting on a dark wooden table. The Desert Titanium finish catches soft studio light, emphasizing its metallic texture and triple-lens camera bump.
     [00:02-00:04] Side-angle shot as a hand lifts the phone, highlighting its thin profile. The screen reflects a subtle gradient from the overhead lighting.
-    [00:04-00:06] Macro shot of a thumb pressing the side button. The display illuminates, revealing the lock screen with crisp colors.
-    [00:06-00:08] Slow rotation shot as the phone is turned to show the camera array, with light glinting off the sapphire lens covers.
-    SFX: A soft click of the button, followed by the subtle chime of the screen waking."
+    [00:04-00:08] Slow rotation shot as the phone is turned to show the camera array, with light glinting off the sapphire lens covers."
     
     Example 2 (Action shot):
     "[00:00-00:03] Low-angle ground shot. The sharp, geometric stainless-steel body of a Cybertruck approaches the camera, reflecting the environment on its flat panels.
     [00:03-00:06] Slow-motion close-up on the front tire as it strikes a large puddle. Water explodes outward in a dramatic arc, showing massive displacement.
-    [00:06-00:08] Tracking shot following the truck as it accelerates smoothly through the resistance, water trailing from the tires.
-    SFX: A deep electric motor hum followed by a heavy, cinematic 'whoosh' of water."
+    [00:06-00:08] Tracking shot following the truck as it accelerates smoothly through the resistance, water trailing from the tires."
 
     SCORING DIMENSIONS:
     1. policy_compliance: No sensitive content, text overlays, graphics, animation, fantasy, or prohibited camera moves (zooms, whip pans, rack focus, scanning).
     2. visual_specificity: Names concrete materials, textures, colors, lighting source/quality, and spatial relationships. Avoids vague words like "beautiful", "amazing", "stunning".
-    3. temporal_clarity: Uses time-stamped segments [00:00-00:02], [00:02-00:04], etc. The reader can picture exactly what happens in each segment.
+    3. temporal_clarity: Uses time-stamped segments [00:00-00:03], [00:03-00:06], etc. The reader can picture exactly what happens in each segment.
     4. single_subject_focus: One subject performing one simple, observable action. No competing elements, no multi-step processes.
     5. camera_feasibility: Camera angle explicitly stated per segment (e.g. top-down view, tight close-up, side-angle shot, macro shot). Movement is stationary or slow dolly/pan only.
     6. narration_quality: One sentence, max 18 words. Adds insight or context beyond what is visible—not a description of the visuals.
@@ -939,7 +936,7 @@ class PromptCritiqueTool(BaseTool[PromptCritiqueArgs, Dict[str, Any]]):
 
     RULES:
     - The first shot [00:00-00:XX] MUST display the main subject directly. If the topic is "iPhone," the phone must be visible in the first shot—not a box or packaging. If "Cybertruck," the truck must appear immediately.
-    - Use time-stamped segments: [00:00-00:02], [00:02-00:04], [00:04-00:06], [00:06-00:08] (or similar 2-4 second intervals).
+    - Use time-stamped segments: [00:00-00:03], [00:03-00:06], [00:06-00:08] (or similar 2-3 second intervals).
     - Start each segment with the camera angle/shot type (e.g. "Close-up of...", "Wide shot of...", "Macro shot of...").
     - Replace every vague adjective with a concrete visual detail (color, material, texture, light).
     - Ensure the narration teaches or contextualizes—never just restates the visuals.
@@ -1109,7 +1106,7 @@ class PostProcessingAgent(BaseTool[PostProcessingArgs, str]):
             }
         
         audio_stream = elevenlabs_client.text_to_speech.convert(
-            voice_id="a1TnjruAs5jTzdrjL8Vd",
+            voice_id="hpp4J3VqNfWAUOO0d1Us",
             model_id="eleven_turbo_v2_5",
             text=text,
             voice_settings=voice_settings,
@@ -1198,121 +1195,124 @@ class PostProcessingAgent(BaseTool[PostProcessingArgs, str]):
         
         return output_path
 
-async def run_pipeline(query: str, iid: int):  
+async def run_pipeline(query: str, iid: int | str):
     iid = str(iid)
-    start_time = time.time()
+    # start_time = time.time()
     
-    web_retriever = WebKnowledgeRetrieverTool()
-    image_retriever = ImageRetrieverTool()
-    script_generator = ScriptGeneratorTool()
-    simple_critique = PromptCritiqueTool()
-    veo_tool = VeoVideoGeneratorTool()
+    # web_retriever = WebKnowledgeRetrieverTool()
+    # image_retriever = ImageRetrieverTool()
+    # script_generator = ScriptGeneratorTool()
+    # simple_critique = PromptCritiqueTool()
+    # veo_tool = VeoVideoGeneratorTool()
+    # post_processor = PostProcessingAgent()
+    
+    # print("[STEP 1/5] Retrieving web knowledge...")
+    # retriever_args = WebKnowledgeRetrieverArgs(query=query, detail_level="comprehensive")
+    # web_context = await web_retriever.run(retriever_args, None)
+    
+    # out_dir = Path("test") / "0_web"
+    # out_dir.mkdir(parents=True, exist_ok=True)
+    # filename = out_dir / f"{iid}_web.txt"
+    # with open(filename, "w", encoding="utf-8") as f:
+    #     f.write(web_context)
+
+    # print("\n[STEP 2/6] Retrieving reference images (async download + batch validation)...")
+    # reference_images = await image_retriever.run(
+    #     ImageRetrieverArgs(query=query, iid=iid, num_images=1), 
+    #     None
+    # )
+    # if not reference_images:
+    #     raise Exception("No reference images were retrieved")
+
+    # frame_image = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
+    # frame_buffer = io.BytesIO()
+    # frame_image.save(frame_buffer, format="JPEG", quality=95)
+    # frame = frame_buffer.getvalue()
+    
+    # ref_dir = Path("test/2_images")
+    # ref_dir.mkdir(parents=True, exist_ok=True)
+    # for ref in reference_images:
+    #     url = str(ref.get("url", ""))
+    #     m = re.search(r"\.(jpg|jpeg|png|gif|webp)(?:$|[?#])", url, flags=re.IGNORECASE)
+    #     ext = (m.group(1).lower() if m else "jpg")
+    #     img_bytes = ref["bytes"]
+    #     out_name = f"{iid}.{ext}"
+    #     out_path = ref_dir / out_name
+    #     with open(out_path, "wb") as imgf:
+    #         imgf.write(img_bytes)
+    # print(f"  Best reference image score: {reference_images[0].get('relevance_score', 'N/A')}/10")
+    
+    # print("\n[STEP 3/6] Generating script (GPT-4o + few-shot + reference image analysis)...")
+    # generator_args = ScriptGeneratorArgs(
+    #     query=query, 
+    #     context_info=web_context,
+    #     reference_image_bytes=frame
+    # )
+    # raw = await script_generator.run(generator_args, None)
+    # script = clean_json_block(raw)
+    # data = json.loads(script)
+
+    # out_dir = Path("test") / "1_script"
+    # out_dir.mkdir(parents=True, exist_ok=True)
+    # filename = out_dir / f"{iid}_script.txt"
+    # with open(filename, "w", encoding="utf-8") as f:
+    #     f.write(script)
+    # print(f"  Script generated: {len(data.get('script', ''))} chars")
+    # print(f"  Narration: {data.get('narration', '')[:80]}...")
+
+    # print("\n[STEP 4/6] Running iterative critique (score + rewrite loop)...")
+    # critique_result = await run_iterative_critique(query, data)
+    # data = {
+    #     "script": critique_result["script"],
+    #     "narration": critique_result["narration"],
+    # }
+    
+    # out_dir = Path("test") / "2_critique"
+    # out_dir.mkdir(parents=True, exist_ok=True)
+    # filename = out_dir / f"{iid}_critique.txt"
+    # with open(filename, "w", encoding="utf-8") as f:
+    #     f.write(json.dumps({
+    #         "final": data,
+    #         "scores": critique_result["final_scores"],
+    #         "rounds": critique_result["rounds"],
+    #     }, indent=2))
+    
+    # final_scores = critique_result.get("final_scores", {})
+    # avg_score = sum(final_scores.values()) / len(final_scores) if final_scores else 0
+    # print(f"  Final average score: {avg_score:.1f}/10")
+    # print(f"  Critiqued script saved")
+    
+    # print("\n[STEP 5/6] Generating video with Veo 3...")
+    # generated_paths = []
+    # narrations = []
+
+    # if not data:
+    #     raise Exception("No validated prompts to generate video")
+
+    # script_text = str(data["script"]).strip()
+    # narration = str(data["narration"]).strip()
+
+    # try:
+    #     veo_args = VeoVideoGeneratorArgs(
+    #         query=script_text,
+    #         iid=iid,
+    #         duration_seconds=8,
+    #         frame=frame
+    #     )
+    #     veo_result = await veo_tool.run(veo_args, None)
+    #     generated_paths.extend(veo_result["video_paths"])
+    #     narrations.append(narration)
+    #     print(f"  Generated {len(veo_result['video_paths'])} video(s)")
+
+    # except Exception as e:
+    #     print(f"  Video generation failed: {str(e)}")
+    #     raise
+
+    # if not generated_paths:
+    #     raise Exception("No videos were successfully generated")
     post_processor = PostProcessingAgent()
-    
-    print("[STEP 1/5] Retrieving web knowledge...")
-    retriever_args = WebKnowledgeRetrieverArgs(query=query, detail_level="comprehensive")
-    web_context = await web_retriever.run(retriever_args, None)
-    
-    out_dir = Path("test") / "0_web"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    filename = out_dir / f"{iid}_web.txt"
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(web_context)
-
-    print("\n[STEP 2/6] Retrieving reference images (async download + batch validation)...")
-    reference_images = await image_retriever.run(
-        ImageRetrieverArgs(query=query, iid=iid, num_images=1), 
-        None
-    )
-    if not reference_images:
-        raise Exception("No reference images were retrieved")
-
-    frame_image = PILImage.open(io.BytesIO(reference_images[0]["bytes"])).convert("RGB")
-    frame_buffer = io.BytesIO()
-    frame_image.save(frame_buffer, format="JPEG", quality=95)
-    frame = frame_buffer.getvalue()
-    
-    ref_dir = Path("test/2_images")
-    ref_dir.mkdir(parents=True, exist_ok=True)
-    for ref in reference_images:
-        url = str(ref.get("url", ""))
-        m = re.search(r"\.(jpg|jpeg|png|gif|webp)(?:$|[?#])", url, flags=re.IGNORECASE)
-        ext = (m.group(1).lower() if m else "jpg")
-        img_bytes = ref["bytes"]
-        out_name = f"{iid}.{ext}"
-        out_path = ref_dir / out_name
-        with open(out_path, "wb") as imgf:
-            imgf.write(img_bytes)
-    print(f"  Best reference image score: {reference_images[0].get('relevance_score', 'N/A')}/10")
-    
-    print("\n[STEP 3/6] Generating script (GPT-4o + few-shot + reference image analysis)...")
-    generator_args = ScriptGeneratorArgs(
-        query=query, 
-        context_info=web_context,
-        reference_image_bytes=frame
-    )
-    raw = await script_generator.run(generator_args, None)
-    script = clean_json_block(raw)
-    data = json.loads(script)
-
-    out_dir = Path("test") / "1_script"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    filename = out_dir / f"{iid}_script.txt"
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(script)
-    print(f"  Script generated: {len(data.get('script', ''))} chars")
-    print(f"  Narration: {data.get('narration', '')[:80]}...")
-
-    print("\n[STEP 4/6] Running iterative critique (score + rewrite loop)...")
-    critique_result = await run_iterative_critique(query, data)
-    data = {
-        "script": critique_result["script"],
-        "narration": critique_result["narration"],
-    }
-    
-    out_dir = Path("test") / "2_critique"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    filename = out_dir / f"{iid}_critique.txt"
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(json.dumps({
-            "final": data,
-            "scores": critique_result["final_scores"],
-            "rounds": critique_result["rounds"],
-        }, indent=2))
-    
-    final_scores = critique_result.get("final_scores", {})
-    avg_score = sum(final_scores.values()) / len(final_scores) if final_scores else 0
-    print(f"  Final average score: {avg_score:.1f}/10")
-    print(f"  Critiqued script saved")
-    
-    print("\n[STEP 5/6] Generating video with Veo 3...")
-    generated_paths = []
-    narrations = []
-
-    if not data:
-        raise Exception("No validated prompts to generate video")
-
-    script_text = str(data["script"]).strip()
-    narration = str(data["narration"]).strip()
-
-    try:
-        veo_args = VeoVideoGeneratorArgs(
-            query=script_text,
-            iid=iid,
-            duration_seconds=8,
-            frame=frame
-        )
-        veo_result = await veo_tool.run(veo_args, None)
-        generated_paths.extend(veo_result["video_paths"])
-        narrations.append(narration)
-        print(f"  Generated {len(veo_result['video_paths'])} video(s)")
-
-    except Exception as e:
-        print(f"  Video generation failed: {str(e)}")
-        raise
-
-    if not generated_paths:
-        raise Exception("No videos were successfully generated")
+    generated_paths = ["test/parts/1_0.mp4"]
+    narrations = ["Experience artistry and technology intertwined in the design of the iPhone 16 Pro."]
         
     print("\n[STEP 6/6] Post-processing (TTS + assembly)...")
     post_args = PostProcessingArgs(
@@ -1336,18 +1336,11 @@ async def run_pipeline(query: str, iid: int):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("query", type=str, help="Video topic query")
-    parser.add_argument("iid", type=int, help="Unique identifier for this generation")
+    parser.add_argument("iid", type=str, help="Unique identifier for this generation")
     args = parser.parse_args()
     
-    try:
-        result = asyncio.run(run_pipeline(args.query, args.iid))
-        print(f"\n{'='*60}")
-        print("SUCCESS!")
-        print(f"Final video: {result}")
-        print('='*60)
-    except Exception as e:
-        print(f"\n{'='*60}")
-        print("PIPELINE FAILED")
-        print(f"Error: {str(e)}")
-        print('='*60)
-        sys.exit(1)
+    result = asyncio.run(run_pipeline(args.query, args.iid))
+    print(f"\n{'='*60}")
+    print("SUCCESS!")
+    print(f"Final video: {result}")
+    print('='*60)

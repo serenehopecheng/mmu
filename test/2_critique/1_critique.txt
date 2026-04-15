@@ -1,74 +1,76 @@
 {
   "final": {
-    "script": "[00:00-00:02] Top-down view of a sealed, minimalist iPhone box on a rich oak table. Sunlight creates soft, diagonal shadows as two hands gently lift the lid.\n[00:02-00:04] Tight close-up of the lid being removed, revealing the iPhone 16 Pro face-up. The Desert Titanium finish gleams under direct light.\n[00:04-00:06] Side-angle shot of a hand lifting the phone, showcasing its slim build and prominent camera bump. A neatly coiled USB-C cable sits below.\n[00:06-00:08] Macro shot focusing on a finger peeling the protective screen film back with a crisp sound.\nSFX: Soft cardboard slide, light rustle of paper, and sharp peel ASMR.",
-    "narration": "Discover the future of innovation with iPhone 16 Pro's exclusive Desert Titanium allure."
+    "script": "[00:00-00:02] Top-down close-up of the iPhone 16 Pro on a rustic oak table. Its Desert Titanium finish arranges the soft lighting into a gentle metallic sheen.\n[00:02-00:04] Side-angle shot as a hand lifts the phone, showcasing sleek, polished edges against the wood grain.\n[00:04-00:06] Macro shot of the rear camera lenses, glinting under ambient light, set in smooth metal.\n[00:06-00:08] Wide shot highlighting the iPhone with a charging cable and earphones arranged neatly beside it on the table.\nSFX: A subtle click and rustling of unwrapping material.",
+    "narration": "Experience artistry and technology intertwined in the design of the iPhone 16 Pro."
   },
   "scores": {
     "policy_compliance": 10,
-    "visual_specificity": 9,
-    "temporal_clarity": 10,
-    "single_subject_focus": 10,
+    "visual_specificity": 7,
+    "temporal_clarity": 9,
+    "single_subject_focus": 8,
     "camera_feasibility": 9,
-    "narration_quality": 8,
-    "veo_compatibility": 9
+    "narration_quality": 6,
+    "veo_compatibility": 8
   },
   "rounds": [
     {
       "scores": {
         "policy_compliance": 9,
         "visual_specificity": 6,
-        "temporal_clarity": 8,
-        "single_subject_focus": 7,
-        "camera_feasibility": 5,
-        "narration_quality": 5,
+        "temporal_clarity": 7,
+        "single_subject_focus": 5,
+        "camera_feasibility": 6,
+        "narration_quality": 6,
         "veo_compatibility": 6
       },
       "issues": [
-        "Shot movements include zoom and pan, which aren't allowed.",
-        "Original script lacks specific material, texture, and lighting details.",
-        "The narration restates the visuals rather than providing added context.",
-        "Complex hand movements picking up the phone."
+        "Main subject (iPhone) isn't shown immediately at the start.",
+        "Lacks concrete visual details such as texture and specific colors.",
+        "Camera movements are not clearly specified in each segment.",
+        "Script focuses on multiple elements in a single shot."
       ],
-      "rewritten_script": "[00:00-00:02] Top-down view of a sealed, minimalist iPhone box on a textured oak wooden table. Strong ambient light accents the clean, white design.\n[00:02-00:04] Close-up of the box as the lid is gently lifted, revealing the iPhone 16 Pro in Desert Titanium. The metallic sheen reflects soft light.\n[00:04-00:06] Side-angle shot of a hand lifting the phone, displaying its ultrathin profile and triple-lens camera. Beneath, the USB-C cable is neatly coiled.\n[00:06-00:08] Macro shot focused on a finger peeling away the screen\u2019s protective film, sound capturing a crisp peel.\nSFX: Soft cardboard slide, subtle rustle of paper, and a sharp, clean plastic peel sound.",
-      "rewritten_narration": "Discover the sleek evolution of innovation with the iPhone 16 Pro in Desert Titanium.",
-      "explanation": "Camera movements like zoom and pan were replaced with static shots or simple lifts for compliance. More specific material and lighting details were added to enhance visual specificity, while the narration now provides context rather than describing the visual. Complexity in actions was minimized to improve single subject focus and compatibility with Veo 3."
+      "rewritten_script": "[00:00-00:02] Front view close-up of the iPhone 16 Pro upon opening. Its Desert Titanium finish gleams under soft ambient light.\n[00:02-00:04] Side-angle medium close-up as a hand lifts the iPhone from the box, highlighting its sleek edges.\n[00:04-00:06] Macro shot of the phone's back, spotlighting the texture and shimmering color.\n[00:06-00:08] Wide shot of the iPhone alongside its accessories, neatly arranged on the wooden table.\nSFX: A gentle rustle of packaging material and a soft 'click' as the box opens.",
+      "rewritten_narration": "Experience the elegance of iPhone 16 Pro in Desert Titanium, unlocked from its new home.",
+      "explanation": "The rewritten script improves by featuring the iPhone immediately in the first segment, increasing visual specificity by describing the light and materials in more detail. Each time-stamped segment begins with a clear camera angle, ensuring a single subject focus per shot. The narration was refined to provide contextual insight rather than merely describing the action seen."
     },
     {
       "scores": {
-        "policy_compliance": 10,
-        "visual_specificity": 8,
-        "temporal_clarity": 10,
-        "single_subject_focus": 10,
-        "camera_feasibility": 10,
-        "narration_quality": 8,
-        "veo_compatibility": 9
+        "policy_compliance": 8,
+        "visual_specificity": 6,
+        "temporal_clarity": 7,
+        "single_subject_focus": 7,
+        "camera_feasibility": 5,
+        "narration_quality": 6,
+        "veo_compatibility": 5
       },
       "issues": [
-        "The original script lacked specific details about lighting sources and surface textures.",
-        "The narration did not provide additional insight beyond describing visuals.",
-        "Vague adjectives like 'strong' and 'ambient' were used."
+        "Limited visual specificity in describing lighting and reflections.",
+        "Camera feasibility unclear for certain shots\u2014macro and wide shots require precise execution.",
+        "Vague terms like 'elegance' in narration and might not add value.",
+        "Initial shot does not immediately confirm the iPhone as the main subject."
       ],
-      "rewritten_script": "[00:00-00:02] Top-down view of a pristine, sealed iPhone box on a textured oak surface. Natural daylight casts subtle shadows.\n[00:02-00:04] Tight close-up as the lid slides off, unveiling the iPhone 16 Pro in Desert Titanium, its metallic finish shimmering.\n[00:04-00:06] Side-angle shot of a hand lifting the sleek phone, capturing its ultrathin body and distinct camera design with a USB-C cable underneath.\n[00:06-00:08] Macro shot of a gentle finger motion peeling the phone's screen protector with a satisfying, distinct sound.\nSFX: Soft shuffle of the box, light paper rustle, and a satisfying peel sound.",
-      "rewritten_narration": "Experience cutting-edge design embodied in the iPhone 16 Pro with Desert Titanium elegance.",
-      "explanation": "Improvements focused on addressing vague descriptions by specifying lighting conditions and textures to enhance visual specificity. The narration was revised to provide context about the design and finish of the iPhone rather than merely describing the action. Concrete visuals were added to align more closely with the golden standard format while maintaining clarity and subject focus."
+      "rewritten_script": "[00:00-00:02] Top-down close-up of the iPhone 16 Pro on rich oak. The Desert Titanium finish reflects soft, diffused light.\n[00:02-00:04] Side-angle shot as a hand gently lifts the phone, revealing its polished edges against the wooden surface.\n[00:04-00:06] Macro shot of the iPhone's camera lens glinting under the soft ambient glow.\n[00:06-00:08] Wide-angle shot of the iPhone neatly positioned beside its accessories on the textured table.\nSFX: A soft box opening with a gentle rustling sound.",
+      "rewritten_narration": "Discover the seamless design of iPhone 16 Pro, blending art with advanced technology.",
+      "explanation": "The script was revised to improve the first shot by making the phone the visible main subject immediately. Visual specifics were added, focusing on the materials and textures of the table and phone. The revised narration contextualizes the visuals while avoiding repetition of what is shown, enhancing the viewer's understanding. Timings were adjusted to match the necessary format and clarify actions within each segment."
     },
     {
       "scores": {
         "policy_compliance": 10,
-        "visual_specificity": 9,
-        "temporal_clarity": 10,
-        "single_subject_focus": 10,
+        "visual_specificity": 7,
+        "temporal_clarity": 9,
+        "single_subject_focus": 8,
         "camera_feasibility": 9,
-        "narration_quality": 8,
-        "veo_compatibility": 9
+        "narration_quality": 6,
+        "veo_compatibility": 8
       },
       "issues": [
-        "Slight inconsistency in visual specificity with lighting description.",
-        "Narration is close to describing the visuals directly rather than adding new insight."
+        "Lacks detailed visual description in some segments.",
+        "Narration is somewhat descriptive of the visuals.",
+        "Visuals lack context or insight into design or technological innovation."
       ],
-      "rewritten_script": "[00:00-00:02] Top-down view of a sealed, minimalist iPhone box on a rich oak table. Sunlight creates soft, diagonal shadows as two hands gently lift the lid.\n[00:02-00:04] Tight close-up of the lid being removed, revealing the iPhone 16 Pro face-up. The Desert Titanium finish gleams under direct light.\n[00:04-00:06] Side-angle shot of a hand lifting the phone, showcasing its slim build and prominent camera bump. A neatly coiled USB-C cable sits below.\n[00:06-00:08] Macro shot focusing on a finger peeling the protective screen film back with a crisp sound.\nSFX: Soft cardboard slide, light rustle of paper, and sharp peel ASMR.",
-      "rewritten_narration": "Discover the future of innovation with iPhone 16 Pro's exclusive Desert Titanium allure.",
-      "explanation": "Adjusted the script for more specific lighting and clearer action descriptions. Revised the narration to provide context beyond the visuals, emphasizing innovation and elegance. Adjusted visual descriptions for better specificity and maintained simplicity in actions to ensure compatibility with Veo 3 capabilities."
+      "rewritten_script": "[00:00-00:02] Top-down close-up of the iPhone 16 Pro on a rustic oak table. Its Desert Titanium finish arranges the soft lighting into a gentle metallic sheen.\n[00:02-00:04] Side-angle shot as a hand lifts the phone, showcasing sleek, polished edges against the wood grain.\n[00:04-00:06] Macro shot of the rear camera lenses, glinting under ambient light, set in smooth metal.\n[00:06-00:08] Wide shot highlighting the iPhone with a charging cable and earphones arranged neatly beside it on the table.\nSFX: A subtle click and rustling of unwrapping material.",
+      "rewritten_narration": "Experience artistry and technology intertwined in the design of the iPhone 16 Pro.",
+      "explanation": "Improved visual specificity by adding details like 'rustic oak table' and describing the lighting effects. Enhanced temporal clarity by clearly defining slow and static movements in each segment. Provided additional context about design and technological innovation in the narration, rather than repeating visuals. Ensured each segment focused on one action with explicit camera angles to comply with policy and camera feasibility."
     }
   ]
 }
