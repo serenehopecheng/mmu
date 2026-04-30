@@ -1,0 +1,50 @@
+[baseline] 0.mp4 (2 refs)
+[baseline] 1.mp4 (3 refs)
+[baseline] 4.mp4 (3 refs)
+[baseline] 15.mp4 (3 refs)
+[baseline] 17.mp4 (3 refs)
+[baseline] 18.mp4 (3 refs)
+[baseline] 20.mp4 (3 refs)
+[baseline] 22.mp4 (3 refs)
+[baseline] 25.mp4 (3 refs)
+[baseline] 26.mp4 (3 refs)
+[naive] 0.mp4 (2 refs)
+[naive] 1.mp4 (3 refs)
+[naive] 4.mp4 (3 refs)
+[naive] 15.mp4 (3 refs)
+[naive] 17.mp4 (3 refs)
+[naive] 18.mp4 (3 refs)
+[naive] 20.mp4 (3 refs)
+[naive] 22.mp4 (3 refs)
+[naive] 25.mp4 (3 refs)
+[naive] 26.mp4 (3 refs)
+[deep] 0.mp4 (2 refs)
+[deep] 1.mp4 (3 refs)
+[deep] 4.mp4 (3 refs)
+[deep] 15.mp4 (3 refs)
+[deep] 17.mp4 (3 refs)
+[deep] 18.mp4 (3 refs)
+[deep] 20.mp4 (3 refs)
+[deep] 22.mp4 (3 refs)
+[deep] 25.mp4 (3 refs)
+[deep] 26.mp4 (3 refs)
+
+--- Final CLIP Comparison (max-over-refs image / prompt text) ---
+model           image       text
+BASELINE       0.7448     0.2707
+NAIVE          0.7393     0.2825
+DEEP           0.7803     0.2695
+
+--- Per-video breakdown ---
+video    |           baseline              naive               deep
+         |       img      txt       img      txt       img      txt
+0.mp4    |    0.6919   0.2802    0.7333   0.2884    0.7968   0.2550
+1.mp4    |    0.6501   0.2932    0.6334   0.2857    0.7769   0.2344
+4.mp4    |    0.8559   0.2809    0.8047   0.2987    0.8320   0.3044
+15.mp4   |    0.7603   0.2513    0.7176   0.2311    0.6984   0.2985
+17.mp4   |    0.8016   0.2624    0.7163   0.2798    0.8212   0.2511
+18.mp4   |    0.7581   0.2517    0.8043   0.2566    0.8324   0.2993
+20.mp4   |    0.6986   0.2929    0.8188   0.3036    0.7372   0.2454
+22.mp4   |    0.7535   0.2744    0.7020   0.2696    0.8197   0.2749
+25.mp4   |    0.7923   0.2483    0.7722   0.2694    0.7279   0.2311
+26.mp4   |    0.6856   0.2722    0.6905   0.3421    0.7606   0.3005
