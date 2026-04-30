@@ -1,0 +1,292 @@
+{
+    "subject_consistency": [
+        0.9581263083750041,
+        [
+            {
+                "video_path": "naive/1.mp4",
+                "video_results": 0.9001281646845852
+            },
+            {
+                "video_path": "naive/0.mp4",
+                "video_results": 0.9087648575842693
+            },
+            {
+                "video_path": "naive/20.mp4",
+                "video_results": 0.9577387708643968
+            },
+            {
+                "video_path": "naive/17.mp4",
+                "video_results": 0.9783052026601362
+            },
+            {
+                "video_path": "naive/25.mp4",
+                "video_results": 0.9863473318946299
+            },
+            {
+                "video_path": "naive/26.mp4",
+                "video_results": 0.9598514985351663
+            },
+            {
+                "video_path": "naive/22.mp4",
+                "video_results": 0.9634359310434751
+            },
+            {
+                "video_path": "naive/18.mp4",
+                "video_results": 0.9662001359213085
+            },
+            {
+                "video_path": "naive/15.mp4",
+                "video_results": 0.978150110438232
+            },
+            {
+                "video_path": "naive/4.mp4",
+                "video_results": 0.9823410801238415
+            }
+        ]
+    ],
+    "background_consistency": [
+        0.9658722083606021,
+        [
+            {
+                "video_path": "naive/1.mp4",
+                "video_results": 0.9510133753272252,
+                "video_sim": 181.6435546875,
+                "cnt_per_video": 191
+            },
+            {
+                "video_path": "naive/0.mp4",
+                "video_results": 0.9359482370746073,
+                "video_sim": 178.76611328125,
+                "cnt_per_video": 191
+            },
+            {
+                "video_path": "naive/20.mp4",
+                "video_results": 0.9665092747873036,
+                "video_sim": 184.603271484375,
+                "cnt_per_video": 191
+            },
+            {
+                "video_path": "naive/17.mp4",
+                "video_results": 0.9725987299574608,
+                "video_sim": 185.766357421875,
+                "cnt_per_video": 191
+            },
+            {
+                "video_path": "naive/25.mp4",
+                "video_results": 0.9824180403304974,
+                "video_sim": 187.641845703125,
+                "cnt_per_video": 191
+            },
+            {
+                "video_path": "naive/26.mp4",
+                "video_results": 0.9697252842768325,
+                "video_sim": 185.217529296875,
+                "cnt_per_video": 191
+            },
+            {
+                "video_path": "naive/22.mp4",
+                "video_results": 0.9601373322971204,
+                "video_sim": 183.38623046875,
+                "cnt_per_video": 191
+            },
+            {
+                "video_path": "naive/18.mp4",
+                "video_results": 0.9801709240019634,
+                "video_sim": 187.212646484375,
+                "cnt_per_video": 191
+            },
+            {
+                "video_path": "naive/15.mp4",
+                "video_results": 0.956151832460733,
+                "video_sim": 182.625,
+                "cnt_per_video": 191
+            },
+            {
+                "video_path": "naive/4.mp4",
+                "video_results": 0.9840490530922775,
+                "video_sim": 187.953369140625,
+                "cnt_per_video": 191
+            }
+        ]
+    ],
+    "motion_smoothness": [
+        0.9927143344787963,
+        [
+            {
+                "video_path": "naive/1.mp4",
+                "video_results": 0.989930382407288
+            },
+            {
+                "video_path": "naive/0.mp4",
+                "video_results": 0.9912828035417384
+            },
+            {
+                "video_path": "naive/20.mp4",
+                "video_results": 0.9819385283935089
+            },
+            {
+                "video_path": "naive/17.mp4",
+                "video_results": 0.9949566189460068
+            },
+            {
+                "video_path": "naive/25.mp4",
+                "video_results": 0.9967124337088636
+            },
+            {
+                "video_path": "naive/26.mp4",
+                "video_results": 0.9958358308071035
+            },
+            {
+                "video_path": "naive/22.mp4",
+                "video_results": 0.9959416640837012
+            },
+            {
+                "video_path": "naive/18.mp4",
+                "video_results": 0.9923842749511477
+            },
+            {
+                "video_path": "naive/15.mp4",
+                "video_results": 0.9941753395629085
+            },
+            {
+                "video_path": "naive/4.mp4",
+                "video_results": 0.9939854683856973
+            }
+        ]
+    ],
+    "dynamic_degree": [
+        0.9,
+        [
+            {
+                "video_path": "naive/1.mp4",
+                "video_results": true
+            },
+            {
+                "video_path": "naive/0.mp4",
+                "video_results": true
+            },
+            {
+                "video_path": "naive/20.mp4",
+                "video_results": true
+            },
+            {
+                "video_path": "naive/17.mp4",
+                "video_results": true
+            },
+            {
+                "video_path": "naive/25.mp4",
+                "video_results": false
+            },
+            {
+                "video_path": "naive/26.mp4",
+                "video_results": true
+            },
+            {
+                "video_path": "naive/22.mp4",
+                "video_results": true
+            },
+            {
+                "video_path": "naive/18.mp4",
+                "video_results": true
+            },
+            {
+                "video_path": "naive/15.mp4",
+                "video_results": true
+            },
+            {
+                "video_path": "naive/4.mp4",
+                "video_results": true
+            }
+        ]
+    ],
+    "aesthetic_quality": [
+        0.5225976794958115,
+        [
+            {
+                "video_path": "naive/1.mp4",
+                "video_results": 0.4553125500679016
+            },
+            {
+                "video_path": "naive/0.mp4",
+                "video_results": 0.43206915259361267
+            },
+            {
+                "video_path": "naive/20.mp4",
+                "video_results": 0.49470430612564087
+            },
+            {
+                "video_path": "naive/17.mp4",
+                "video_results": 0.5366663336753845
+            },
+            {
+                "video_path": "naive/25.mp4",
+                "video_results": 0.6307744979858398
+            },
+            {
+                "video_path": "naive/26.mp4",
+                "video_results": 0.5329111814498901
+            },
+            {
+                "video_path": "naive/22.mp4",
+                "video_results": 0.48579585552215576
+            },
+            {
+                "video_path": "naive/18.mp4",
+                "video_results": 0.6417238712310791
+            },
+            {
+                "video_path": "naive/15.mp4",
+                "video_results": 0.5669007301330566
+            },
+            {
+                "video_path": "naive/4.mp4",
+                "video_results": 0.44911831617355347
+            }
+        ]
+    ],
+    "imaging_quality": [
+        0.7009803828001023,
+        [
+            {
+                "video_path": "naive/1.mp4",
+                "video_results": 70.19265935818355
+            },
+            {
+                "video_path": "naive/0.mp4",
+                "video_results": 63.7134104569753
+            },
+            {
+                "video_path": "naive/20.mp4",
+                "video_results": 70.81853999694188
+            },
+            {
+                "video_path": "naive/17.mp4",
+                "video_results": 74.63771092891693
+            },
+            {
+                "video_path": "naive/25.mp4",
+                "video_results": 66.78373030821483
+            },
+            {
+                "video_path": "naive/26.mp4",
+                "video_results": 68.63491169611613
+            },
+            {
+                "video_path": "naive/22.mp4",
+                "video_results": 77.02452592055003
+            },
+            {
+                "video_path": "naive/18.mp4",
+                "video_results": 71.35036464532216
+            },
+            {
+                "video_path": "naive/15.mp4",
+                "video_results": 70.43340508143108
+            },
+            {
+                "video_path": "naive/4.mp4",
+                "video_results": 67.39112440745036
+            }
+        ]
+    ]
+}
