@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "videos_path": "baseline",
+    "mp4_count": 10,
+    "dimensions": [
+      "subject_consistency",
+      "background_consistency",
+      "motion_smoothness",
+      "dynamic_degree",
+      "aesthetic_quality",
+      "imaging_quality"
+    ]
+  },
+  "deep": {
+    "videos_path": "deep",
+    "mp4_count": 10,
+    "dimensions": [
+      "subject_consistency",
+      "background_consistency",
+      "motion_smoothness",
+      "dynamic_degree",
+      "aesthetic_quality",
+      "imaging_quality"
+    ]
+  },
+  "naive": {
+    "videos_path": "naive",
+    "mp4_count": 10,
+    "dimensions": [
+      "subject_consistency",
+      "background_consistency",
+      "motion_smoothness",
+      "dynamic_degree",
+      "aesthetic_quality",
+      "imaging_quality"
+    ]
+  }
+}
