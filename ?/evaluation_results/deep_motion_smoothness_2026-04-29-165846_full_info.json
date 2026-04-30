@@ -1,0 +1,92 @@
+[
+    {
+        "prompt_en": "A close-up of a Newton's Cradle in motion on a desk, macro view.",
+        "dimension": [
+            "motion_smoothness"
+        ],
+        "video_list": [
+            "/Users/serenecheng/mmu/evaluation/deep/4.mp4"
+        ]
+    },
+    {
+        "prompt_en": "A close-up of a Tesla Cybertruck driving through a puddle, low angle.",
+        "dimension": [
+            "motion_smoothness"
+        ],
+        "video_list": [
+            "/Users/serenecheng/mmu/evaluation/deep/1.mp4"
+        ]
+    },
+    {
+        "prompt_en": "A person unboxing the latest iPhone 16 Pro in Desert Titanium on a wooden table, front view.",
+        "dimension": [
+            "motion_smoothness"
+        ],
+        "video_list": [
+            "/Users/serenecheng/mmu/evaluation/deep/0.mp4"
+        ]
+    },
+    {
+        "prompt_en": "A person mailing a letter at a blue USPS mailbox.",
+        "dimension": [
+            "motion_smoothness"
+        ],
+        "video_list": [
+            "/Users/serenecheng/mmu/evaluation/deep/22.mp4"
+        ]
+    },
+    {
+        "prompt_en": "A close-up of a 'Mantis Shrimp' punching a glass tank.",
+        "dimension": [
+            "motion_smoothness"
+        ],
+        "video_list": [
+            "/Users/serenecheng/mmu/evaluation/deep/20.mp4"
+        ]
+    },
+    {
+        "prompt_en": "A dancer performing the 'Haka' with correct 'Pukana' facial expressions.",
+        "dimension": [
+            "motion_smoothness"
+        ],
+        "video_list": [
+            "/Users/serenecheng/mmu/evaluation/deep/18.mp4"
+        ]
+    },
+    {
+        "prompt_en": "An archer demonstrating the Khatra technique upon releasing an arrow, slow-motion side view.",
+        "dimension": [
+            "motion_smoothness"
+        ],
+        "video_list": [
+            "/Users/serenecheng/mmu/evaluation/deep/25.mp4"
+        ]
+    },
+    {
+        "prompt_en": "An artisan practicing Kintsugi on a broken ceramic bowl, soft-lit tabletop scene.",
+        "dimension": [
+            "motion_smoothness"
+        ],
+        "video_list": [
+            "/Users/serenecheng/mmu/evaluation/deep/26.mp4"
+        ]
+    },
+    {
+        "prompt_en": "A person changing a flat tire on a car.",
+        "dimension": [
+            "motion_smoothness"
+        ],
+        "video_list": [
+            "/Users/serenecheng/mmu/evaluation/deep/17.mp4"
+        ]
+    },
+    {
+        "prompt_en": "A person using a 'Self-Checkout' machine at a grocery store.",
+        "dimension": [
+            "motion_smoothness"
+        ],
+        "video_list": [
+            "/Users/serenecheng/mmu/evaluation/deep/15.mp4"
+        ]
+    }
+]

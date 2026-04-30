@@ -1,0 +1,1257 @@
+{
+  "config": {
+    "models": [
+      "deep",
+      "naive"
+    ],
+    "target_video_ids": [
+      "0.mp4",
+      "1.mp4",
+      "4.mp4",
+      "15.mp4",
+      "17.mp4",
+      "18.mp4",
+      "20.mp4",
+      "22.mp4",
+      "25.mp4",
+      "26.mp4"
+    ],
+    "model_used": "gpt-4o"
+  },
+  "models": {
+    "deep": {
+      "aggregate": {
+        "videos_evaluated": 10,
+        "avg_prompt_alignment_score": 4.5,
+        "avg_correctness_score": 4.4,
+        "checklist_element_recall": 0.9259259259259259
+      },
+      "per_video": {
+        "0.mp4": {
+          "prompt_alignment_score": 4,
+          "correctness_score": 4,
+          "elements": [
+            {
+              "element": "sealed iPhone box present",
+              "present": false,
+              "confidence": 0.7,
+              "evidence": "The box appears to be already opened in the frames."
+            },
+            {
+              "element": "Desert Titanium phone color",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The phone shown matches the Desert Titanium color description."
+            },
+            {
+              "element": "iPhone box is opened",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The box is shown open with the phone being handled."
+            },
+            {
+              "element": "a table surface is present",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The phone and box are placed on a wooden table surface."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, showing the iPhone 16 Pro in Desert Titanium being unboxed on a wooden table. However, the box is not shown sealed, which slightly affects the prompt alignment."
+        },
+        "1.mp4": {
+          "prompt_alignment_score": 4,
+          "correctness_score": 4,
+          "elements": [
+            {
+              "element": "Tesla Cybertruck present",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The vehicle in the frames resembles a Tesla Cybertruck."
+            },
+            {
+              "element": "low-angle camera perspective",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "The camera angle is low, capturing the vehicle from below its midline."
+            },
+            {
+              "element": "vehicle driving through water",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The vehicle is shown moving through a puddle in multiple frames."
+            },
+            {
+              "element": "visible water splash",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Water splashes are visible around the vehicle as it moves."
+            },
+            {
+              "element": "reflective metallic body panels",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The body panels of the vehicle appear metallic and reflective."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, showing a Tesla Cybertruck driving through water with visible splashes. The low-angle perspective and reflective metallic panels are evident, though the close-up aspect could be more pronounced."
+        },
+        "4.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "Newton's Cradle device present",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The Newton's Cradle is clearly visible in all frames."
+            },
+            {
+              "element": "suspended metal balls aligned in frame",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The metal balls are aligned and visible in each frame."
+            },
+            {
+              "element": "swinging ball is in motion",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The swinging motion of the balls is evident in the frames."
+            },
+            {
+              "element": "alternating swing on opposite side",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The alternating swing is visible as balls move from one side to the other."
+            },
+            {
+              "element": "desk surface visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The desk surface is clearly visible beneath the Newton's Cradle."
+            }
+          ],
+          "summary": "The video perfectly aligns with the prompt, showing a Newton's Cradle in motion with all expected elements present and clearly visible. The swinging motion and desk surface are well depicted."
+        },
+        "15.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "self-checkout kiosk machine visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The self-checkout machine is clearly visible in multiple frames."
+            },
+            {
+              "element": "person scanning items or interacting with screen",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "A person is seen scanning items and interacting with the machine."
+            },
+            {
+              "element": "barcode scanner or scanning motion",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The scanning motion is visible as the person moves items across the scanner."
+            },
+            {
+              "element": "items placed on checkout scale area",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Items are seen being placed in a bag, likely on the scale area."
+            },
+            {
+              "element": "payment interface or screen prompts visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "Screen prompts are visible on the self-checkout machine."
+            },
+            {
+              "element": "grocery store environment context",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The background shows shelves with products, indicating a grocery store environment."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, showing a person using a self-checkout machine in a grocery store. All expected elements are present with high confidence, including the machine, scanning actions, and store context."
+        },
+        "17.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "car with visibly flat tire",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The first frame shows a car with a flat tire."
+            },
+            {
+              "element": "person using a jack to lift car",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The second frame shows a person using a jack to lift the car."
+            },
+            {
+              "element": "lug wrench loosening/tightening bolts",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The first and last frames show a person using a lug wrench on the wheel."
+            },
+            {
+              "element": "wheel being removed or replaced",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The third frame shows a person removing or replacing a wheel."
+            },
+            {
+              "element": "spare tire present",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The first frame shows a spare tire on the ground."
+            },
+            {
+              "element": "kneeling or crouched working posture",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The person is crouched in multiple frames while working on the tire."
+            }
+          ],
+          "summary": "The video accurately depicts a person changing a flat tire on a car, with all expected elements present and clearly visible. The actions and tools used are consistent with the task described in the prompt."
+        },
+        "18.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "strong stance and rhythmic body movements",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The dancers are shown with a strong stance and appear to be in motion."
+            },
+            {
+              "element": "exaggerated facial expressions (wide eyes, tongue out)",
+              "present": true,
+              "confidence": 0.95,
+              "evidence": "The dancers display wide eyes and intense facial expressions."
+            },
+            {
+              "element": "synchronized arm and body gestures",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The dancers' arm and body movements appear synchronized."
+            },
+            {
+              "element": "forceful stomping or chest slapping",
+              "present": true,
+              "confidence": 0.85,
+              "evidence": "The posture and gestures suggest forceful movements typical of the Haka."
+            },
+            {
+              "element": "cultural authenticity in motion style",
+              "present": true,
+              "confidence": 0.95,
+              "evidence": "The traditional attire and gestures reflect cultural authenticity."
+            }
+          ],
+          "summary": "The video effectively captures the essence of a Haka performance with strong stances, exaggerated facial expressions, synchronized movements, and cultural authenticity. All expected elements are present with high confidence."
+        },
+        "20.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "mantis shrimp clearly visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The mantis shrimp is prominently visible in all frames."
+            },
+            {
+              "element": "glass tank environment",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The glass tank is evident from the reflections and structure visible in the frames."
+            },
+            {
+              "element": "rapid striking motion of claw",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The claw is shown in motion, indicating a rapid strike."
+            },
+            {
+              "element": "contact with glass surface",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The cracked glass indicates contact with the surface."
+            },
+            {
+              "element": "visible impact or disturbance in water",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "Water disturbance is visible in the frames following the strike."
+            },
+            {
+              "element": "close-up framing on shrimp",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The frames are focused closely on the mantis shrimp."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, showing a mantis shrimp in a glass tank environment, executing a rapid strike with visible impact and water disturbance. All expected elements are present with high confidence."
+        },
+        "22.mp4": {
+          "prompt_alignment_score": 3,
+          "correctness_score": 2,
+          "elements": [
+            {
+              "element": "blue USPS mailbox clearly visible",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The mailbox is blue and prominently visible in the frames."
+            },
+            {
+              "element": "person holding letter/envelope",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "A hand is shown holding an envelope in multiple frames."
+            },
+            {
+              "element": "inserting letter into mailbox slot",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The hand is shown inserting the envelope into the mailbox slot."
+            },
+            {
+              "element": "outdoor or street setting",
+              "present": false,
+              "confidence": 0.3,
+              "evidence": "The setting is not clearly visible as outdoor or street."
+            },
+            {
+              "element": "USPS logo or recognizable design",
+              "present": false,
+              "confidence": 0.7,
+              "evidence": "The mailbox has 'USPIS' instead of the USPS logo."
+            }
+          ],
+          "summary": "The video shows a blue mailbox and a person inserting a letter, aligning partially with the prompt. However, the setting is unclear, and the mailbox lacks the USPS logo, affecting correctness."
+        },
+        "25.mp4": {
+          "prompt_alignment_score": 4,
+          "correctness_score": 4,
+          "elements": [
+            {
+              "element": "archer holding bow and arrow",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The archer is clearly seen holding the bow and arrow in multiple frames."
+            },
+            {
+              "element": "side-view perspective",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The video consistently shows a side-view perspective of the archer."
+            },
+            {
+              "element": "release of arrow captured",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The arrow is seen being released in the frames."
+            },
+            {
+              "element": "bow rotating or twisting",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "There is a visible rotation of the bow upon release."
+            },
+            {
+              "element": "follow-through hand movement",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The archer's hand follows through after releasing the arrow."
+            },
+            {
+              "element": "slow-motion effect highlighting technique",
+              "present": false,
+              "confidence": 0.5,
+              "evidence": "The frames do not clearly indicate a slow-motion effect."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, showing an archer demonstrating the Khatra technique. Most elements are present, but the slow-motion effect is not clearly depicted, affecting the overall alignment and correctness scores."
+        },
+        "26.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "broken ceramic bowl pieces",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Visible in the initial frames with scattered pieces on the table."
+            },
+            {
+              "element": "artisan applying lacquer or adhesive",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Hand applying substance to the ceramic pieces."
+            },
+            {
+              "element": "gold powder or gold seams visible",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Gold powder is visible on the pieces and seams are highlighted in gold."
+            },
+            {
+              "element": "careful joining of fragments",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "Fragments are being carefully aligned and joined."
+            },
+            {
+              "element": "soft, warm tabletop lighting",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Lighting is warm and soft, enhancing the tabletop scene."
+            },
+            {
+              "element": "detailed handwork close-up",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Close-up shots of hands working on the ceramic pieces."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, depicting an artisan practicing Kintsugi with all expected elements present. The lighting, handwork, and use of gold powder are clearly visible, ensuring high fidelity to the prompt's intent."
+        }
+      }
+    },
+    "naive": {
+      "aggregate": {
+        "videos_evaluated": 10,
+        "avg_prompt_alignment_score": 4.1,
+        "avg_correctness_score": 3.9,
+        "checklist_element_recall": 0.8333333333333334
+      },
+      "per_video": {
+        "0.mp4": {
+          "prompt_alignment_score": 4,
+          "correctness_score": 3,
+          "elements": [
+            {
+              "element": "sealed iPhone box present",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The box appears sealed in the first frame."
+            },
+            {
+              "element": "Desert Titanium phone color",
+              "present": false,
+              "confidence": 0.7,
+              "evidence": "The phone appears to be a dark color, not Desert Titanium."
+            },
+            {
+              "element": "iPhone box is opened",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The box is shown being opened in the second frame."
+            },
+            {
+              "element": "a table surface is present",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "A wooden table surface is visible in all frames."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, showing an unboxing on a wooden table. However, the phone color does not match the specified Desert Titanium, affecting the correctness score."
+        },
+        "1.mp4": {
+          "prompt_alignment_score": 2,
+          "correctness_score": 3,
+          "elements": [
+            {
+              "element": "Tesla Cybertruck present",
+              "present": false,
+              "confidence": 0.9,
+              "evidence": "The vehicle shown is a Tesla, but it is not the Cybertruck model."
+            },
+            {
+              "element": "low-angle camera perspective",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "The camera is positioned low, capturing the vehicle from a low angle."
+            },
+            {
+              "element": "vehicle driving through water",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The vehicle is shown driving through a puddle."
+            },
+            {
+              "element": "visible water splash",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Water splashes are visible as the vehicle moves through the puddle."
+            },
+            {
+              "element": "reflective metallic body panels",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "The vehicle's body panels appear metallic and reflective."
+            }
+          ],
+          "summary": "The video features a Tesla vehicle driving through a puddle with visible water splashes and a low-angle perspective. However, the vehicle is not a Cybertruck, affecting prompt alignment. The reflective metallic body panels are correctly depicted."
+        },
+        "4.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "Newton's Cradle device present",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The Newton's Cradle is clearly visible in all frames."
+            },
+            {
+              "element": "suspended metal balls aligned in frame",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The metal balls are aligned and visible in each frame."
+            },
+            {
+              "element": "swinging ball is in motion",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The swinging motion of the balls is evident in the frames."
+            },
+            {
+              "element": "alternating swing on opposite side",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The alternating swing is visible as balls move from one side to the other."
+            },
+            {
+              "element": "desk surface visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The desk surface is visible beneath the Newton's Cradle."
+            }
+          ],
+          "summary": "The video perfectly aligns with the prompt, showing a Newton's Cradle in motion with all expected elements clearly visible and correctly depicted."
+        },
+        "15.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "self-checkout kiosk machine visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The self-checkout kiosk is clearly visible in all frames."
+            },
+            {
+              "element": "person scanning items or interacting with screen",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The person is interacting with the screen in multiple frames."
+            },
+            {
+              "element": "barcode scanner or scanning motion",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "A barcode scanner is visible and being used in the frames."
+            },
+            {
+              "element": "items placed on checkout scale area",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Items are seen being placed near the checkout area."
+            },
+            {
+              "element": "payment interface or screen prompts visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "Screen prompts are visible on the self-checkout machine."
+            },
+            {
+              "element": "grocery store environment context",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The background clearly shows a grocery store environment."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, showing a person using a self-checkout machine in a grocery store. All expected elements are present with high confidence, including the kiosk, interaction with the screen, and the grocery store context."
+        },
+        "17.mp4": {
+          "prompt_alignment_score": 4,
+          "correctness_score": 4,
+          "elements": [
+            {
+              "element": "car with visibly flat tire",
+              "present": false,
+              "confidence": 0.6,
+              "evidence": "The tire does not appear visibly flat in the frames."
+            },
+            {
+              "element": "person using a jack to lift car",
+              "present": false,
+              "confidence": 0.3,
+              "evidence": "No jack is visible in the frames."
+            },
+            {
+              "element": "lug wrench loosening/tightening bolts",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The person is using a lug wrench on the wheel bolts."
+            },
+            {
+              "element": "wheel being removed or replaced",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "The person is handling the wheel, suggesting removal or replacement."
+            },
+            {
+              "element": "spare tire present",
+              "present": true,
+              "confidence": 0.7,
+              "evidence": "A tire is visible on the ground, likely a spare."
+            },
+            {
+              "element": "kneeling or crouched working posture",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The person is kneeling while working on the tire."
+            }
+          ],
+          "summary": "The video mostly aligns with the prompt, showing a person changing a tire. Key actions like using a lug wrench and handling the wheel are present. However, the tire does not appear visibly flat, and no jack is seen lifting the car."
+        },
+        "18.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "strong stance and rhythmic body movements",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The dancer maintains a strong stance with bent knees and rhythmic movements throughout."
+            },
+            {
+              "element": "exaggerated facial expressions (wide eyes, tongue out)",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The dancer displays wide eyes and a protruding tongue, characteristic of 'Pukana'."
+            },
+            {
+              "element": "synchronized arm and body gestures",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "The dancer's arm and body movements are synchronized, enhancing the performance."
+            },
+            {
+              "element": "forceful stomping or chest slapping",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "The dancer performs forceful stomping and chest slapping, typical of the Haka."
+            },
+            {
+              "element": "cultural authenticity in motion style",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The overall motion style is consistent with traditional Haka performances."
+            }
+          ],
+          "summary": "The video effectively captures the essence of a Haka performance with strong stance, exaggerated facial expressions, synchronized gestures, and cultural authenticity. All expected elements are present with high confidence."
+        },
+        "20.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "mantis shrimp clearly visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The mantis shrimp is prominently visible in all frames."
+            },
+            {
+              "element": "glass tank environment",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The glass tank is clearly visible surrounding the shrimp."
+            },
+            {
+              "element": "rapid striking motion of claw",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The claw is shown in a rapid striking motion in the second frame."
+            },
+            {
+              "element": "contact with glass surface",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The claw makes contact with the glass surface in the third frame."
+            },
+            {
+              "element": "visible impact or disturbance in water",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "Bubbles and disturbance in the water are visible in the third and fourth frames."
+            },
+            {
+              "element": "close-up framing on shrimp",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The framing is consistently close-up on the shrimp throughout the video."
+            }
+          ],
+          "summary": "The video aligns perfectly with the prompt, showing a mantis shrimp in a glass tank environment, executing a rapid strike with visible impact and close-up framing. All expected elements are present with high confidence."
+        },
+        "22.mp4": {
+          "prompt_alignment_score": 3,
+          "correctness_score": 2,
+          "elements": [
+            {
+              "element": "blue USPS mailbox clearly visible",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "A blue mailbox is visible in multiple frames."
+            },
+            {
+              "element": "person holding letter/envelope",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The person is holding an envelope in several frames."
+            },
+            {
+              "element": "inserting letter into mailbox slot",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The person is shown inserting the envelope into the mailbox."
+            },
+            {
+              "element": "outdoor or street setting",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The setting is clearly outdoors on a street."
+            },
+            {
+              "element": "USPS logo or recognizable design",
+              "present": false,
+              "confidence": 0.7,
+              "evidence": "The mailbox has 'US Pos' which is not the official USPS logo."
+            }
+          ],
+          "summary": "The video mostly aligns with the prompt, showing a person mailing a letter at a blue mailbox in an outdoor setting. However, the mailbox lacks the official USPS logo, affecting the correctness score."
+        },
+        "25.mp4": {
+          "prompt_alignment_score": 3,
+          "correctness_score": 2,
+          "elements": [
+            {
+              "element": "archer holding bow and arrow",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The archer is clearly holding a bow and arrow in all frames."
+            },
+            {
+              "element": "side-view perspective",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The perspective is consistently from the side in all frames."
+            },
+            {
+              "element": "release of arrow captured",
+              "present": false,
+              "confidence": 0.5,
+              "evidence": "The frames do not show the arrow being released."
+            },
+            {
+              "element": "bow rotating or twisting",
+              "present": false,
+              "confidence": 0.4,
+              "evidence": "There is no visible rotation or twisting of the bow."
+            },
+            {
+              "element": "follow-through hand movement",
+              "present": false,
+              "confidence": 0.4,
+              "evidence": "The hand position remains static, with no follow-through visible."
+            },
+            {
+              "element": "slow-motion effect highlighting technique",
+              "present": false,
+              "confidence": 0.3,
+              "evidence": "No slow-motion effect is evident in the frames."
+            }
+          ],
+          "summary": "The video shows an archer holding a bow and arrow from a side-view perspective, but lacks key elements such as the release of the arrow, bow rotation, follow-through hand movement, and a slow-motion effect. This results in moderate alignment with the prompt and low correctness in demonstrating the Khatra technique."
+        },
+        "26.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "broken ceramic bowl pieces",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Visible broken pieces on the table."
+            },
+            {
+              "element": "artisan applying lacquer or adhesive",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Artisan is seen applying substance with a brush."
+            },
+            {
+              "element": "gold powder or gold seams visible",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Gold seams are visible on the bowl."
+            },
+            {
+              "element": "careful joining of fragments",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Artisan is carefully aligning and joining pieces."
+            },
+            {
+              "element": "soft, warm tabletop lighting",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Lighting is soft and warm, illuminating the scene."
+            },
+            {
+              "element": "detailed handwork close-up",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Close-up shots of the artisan's hands working."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, depicting an artisan practicing Kintsugi with all expected elements present, including broken pieces, application of lacquer, visible gold seams, and soft lighting."
+        }
+      }
+    }
+  }
+}
+{
+  "config": {
+    "models": [
+      "baseline"
+    ],
+    "target_video_ids": [
+      "0.mp4",
+      "1.mp4",
+      "4.mp4",
+      "15.mp4",
+      "17.mp4",
+      "18.mp4",
+      "20.mp4",
+      "22.mp4",
+      "25.mp4",
+      "26.mp4"
+    ],
+    "model_used": "gpt-4o"
+  },
+  "models": {
+    "baseline": {
+      "aggregate": {
+        "videos_evaluated": 10,
+        "avg_prompt_alignment_score": 4.4,
+        "avg_correctness_score": 4.4,
+        "checklist_element_recall": 0.9259259259259259
+      },
+      "per_video": {
+        "0.mp4": {
+          "prompt_alignment_score": 4,
+          "correctness_score": 4,
+          "elements": [
+            {
+              "element": "sealed iPhone box present",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The box appears sealed in the initial frames."
+            },
+            {
+              "element": "Desert Titanium phone color",
+              "present": false,
+              "confidence": 0.6,
+              "evidence": "The phone color appears dark, but it's unclear if it's Desert Titanium."
+            },
+            {
+              "element": "iPhone box is opened",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The box is clearly opened in the later frames."
+            },
+            {
+              "element": "a table surface is present",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "A wooden table surface is visible throughout the video."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, showing the unboxing of an iPhone on a wooden table. The box is initially sealed and then opened. However, the phone color is not clearly identifiable as Desert Titanium, affecting the correctness score."
+        },
+        "1.mp4": {
+          "prompt_alignment_score": 2,
+          "correctness_score": 2,
+          "elements": [
+            {
+              "element": "Tesla Cybertruck present",
+              "present": false,
+              "confidence": 0.9,
+              "evidence": "The vehicle shown is not a Tesla Cybertruck."
+            },
+            {
+              "element": "low-angle camera perspective",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "The camera angle is low, close to the ground."
+            },
+            {
+              "element": "vehicle driving through water",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The vehicle is shown driving through a puddle."
+            },
+            {
+              "element": "visible water splash",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Water splashes are visible as the vehicle moves through the puddle."
+            },
+            {
+              "element": "reflective metallic body panels",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "The vehicle has reflective metallic panels."
+            }
+          ],
+          "summary": "The video does not feature a Tesla Cybertruck, which is a significant deviation from the prompt. However, it does capture a low-angle perspective of a vehicle driving through water with visible splashes and reflective metallic panels."
+        },
+        "4.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "Newton's Cradle device present",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The Newton's Cradle is clearly visible in all frames."
+            },
+            {
+              "element": "suspended metal balls aligned in frame",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The metal balls are aligned and visible in each frame."
+            },
+            {
+              "element": "swinging ball is in motion",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The first ball is seen swinging in the frames."
+            },
+            {
+              "element": "alternating swing on opposite side",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The opposite ball swings in response, visible in the frames."
+            },
+            {
+              "element": "desk surface visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The desk surface is visible beneath the Newton's Cradle."
+            }
+          ],
+          "summary": "The video accurately depicts a Newton's Cradle in motion on a desk, with all expected elements present and clearly visible. The swinging motion and desk surface are well captured, aligning perfectly with the prompt."
+        },
+        "15.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "self-checkout kiosk machine visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The self-checkout kiosk is clearly visible in multiple frames."
+            },
+            {
+              "element": "person scanning items or interacting with screen",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "A person is seen interacting with the screen and scanning items."
+            },
+            {
+              "element": "barcode scanner or scanning motion",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The person is holding an item near the screen, indicating scanning motion."
+            },
+            {
+              "element": "items placed on checkout scale area",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Items are visible on the checkout scale area."
+            },
+            {
+              "element": "payment interface or screen prompts visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "Screen prompts and payment interface are visible on the kiosk."
+            },
+            {
+              "element": "grocery store environment context",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The background shows a grocery store environment with shelves and products."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, showing a person using a self-checkout machine in a grocery store. All expected elements are present with high confidence, including the kiosk, interaction, and store context."
+        },
+        "17.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "car with visibly flat tire",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The car's tire appears deflated in the initial frames."
+            },
+            {
+              "element": "person using a jack to lift car",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "A jack is visible under the car, and the person is operating it."
+            },
+            {
+              "element": "lug wrench loosening/tightening bolts",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The person is using a lug wrench on the wheel bolts."
+            },
+            {
+              "element": "wheel being removed or replaced",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The wheel is shown being removed and a spare is ready to be installed."
+            },
+            {
+              "element": "spare tire present",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "A spare tire is visible on the ground next to the car."
+            },
+            {
+              "element": "kneeling or crouched working posture",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The person is kneeling while working on the tire."
+            }
+          ],
+          "summary": "The video accurately depicts a person changing a flat tire, with all expected elements present and clearly visible. The actions and tools used align well with the target prompt."
+        },
+        "18.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "strong stance and rhythmic body movements",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The dancer maintains a strong stance and exhibits rhythmic movements throughout the video."
+            },
+            {
+              "element": "exaggerated facial expressions (wide eyes, tongue out)",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The dancer shows exaggerated facial expressions with wide eyes and tongue out in multiple frames."
+            },
+            {
+              "element": "synchronized arm and body gestures",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The dancer's arm and body gestures are synchronized, as seen in the frames."
+            },
+            {
+              "element": "forceful stomping or chest slapping",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "The dancer performs forceful stomping and chest slapping in several frames."
+            },
+            {
+              "element": "cultural authenticity in motion style",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The motion style appears culturally authentic, consistent with traditional Haka performance."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, showcasing a dancer performing the Haka with correct 'Pukana' expressions. All expected elements are present with high confidence, demonstrating cultural authenticity and correct execution of movements and expressions."
+        },
+        "20.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "mantis shrimp clearly visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The mantis shrimp is clearly visible in multiple frames."
+            },
+            {
+              "element": "glass tank environment",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The environment appears to be a glass tank with visible glass surfaces."
+            },
+            {
+              "element": "rapid striking motion of claw",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The frames show a rapid motion consistent with a striking action."
+            },
+            {
+              "element": "contact with glass surface",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "There is visible contact with the glass surface, indicated by the impact mark."
+            },
+            {
+              "element": "visible impact or disturbance in water",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "Disturbance in the water is visible around the impact area."
+            },
+            {
+              "element": "close-up framing on shrimp",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The framing is close-up, focusing on the mantis shrimp."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, showing a mantis shrimp in a glass tank environment with a clear striking motion and visible impact. All expected elements are present with high confidence."
+        },
+        "22.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "blue USPS mailbox clearly visible",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The blue USPS mailbox is prominently visible in multiple frames."
+            },
+            {
+              "element": "person holding letter/envelope",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The person is holding an envelope in their hand in several frames."
+            },
+            {
+              "element": "inserting letter into mailbox slot",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The person is shown inserting the envelope into the mailbox slot."
+            },
+            {
+              "element": "outdoor or street setting",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The setting is clearly outdoors on a street with buildings and cars visible."
+            },
+            {
+              "element": "USPS logo or recognizable design",
+              "present": true,
+              "confidence": 1.0,
+              "evidence": "The USPS logo is clearly visible on the mailbox."
+            }
+          ],
+          "summary": "The video perfectly aligns with the prompt, showing a person mailing a letter at a blue USPS mailbox in an outdoor street setting. All expected elements are clearly present with high confidence."
+        },
+        "25.mp4": {
+          "prompt_alignment_score": 3,
+          "correctness_score": 3,
+          "elements": [
+            {
+              "element": "archer holding bow and arrow",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The archer is clearly holding a bow and arrow in multiple frames."
+            },
+            {
+              "element": "side-view perspective",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "The perspective is consistently from the side throughout the frames."
+            },
+            {
+              "element": "release of arrow captured",
+              "present": true,
+              "confidence": 0.8,
+              "evidence": "The arrow is seen being released in the sequence of frames."
+            },
+            {
+              "element": "bow rotating or twisting",
+              "present": false,
+              "confidence": 0.5,
+              "evidence": "There is no clear indication of the bow rotating or twisting."
+            },
+            {
+              "element": "follow-through hand movement",
+              "present": true,
+              "confidence": 0.7,
+              "evidence": "The archer's hand moves after the release, indicating follow-through."
+            },
+            {
+              "element": "slow-motion effect highlighting technique",
+              "present": false,
+              "confidence": 0.4,
+              "evidence": "The frames do not clearly show a slow-motion effect."
+            }
+          ],
+          "summary": "The video captures the archer holding and releasing the arrow from a side view, with follow-through hand movement. However, the bow's rotation and slow-motion effect are not clearly depicted, affecting the alignment with the prompt."
+        },
+        "26.mp4": {
+          "prompt_alignment_score": 5,
+          "correctness_score": 5,
+          "elements": [
+            {
+              "element": "broken ceramic bowl pieces",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Visible in the first frame with separate pieces on the table."
+            },
+            {
+              "element": "artisan applying lacquer or adhesive",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Artisan is seen using a brush to apply adhesive in the second frame."
+            },
+            {
+              "element": "gold powder or gold seams visible",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Gold seams are visible on the bowl in the later frames."
+            },
+            {
+              "element": "careful joining of fragments",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Fragments are being carefully joined in the third frame."
+            },
+            {
+              "element": "soft, warm tabletop lighting",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Lighting is warm and soft throughout all frames."
+            },
+            {
+              "element": "detailed handwork close-up",
+              "present": true,
+              "confidence": 0.9,
+              "evidence": "Close-up of hands working on the bowl is visible in multiple frames."
+            }
+          ],
+          "summary": "The video aligns well with the prompt, depicting an artisan practicing Kintsugi with all expected elements present, including broken pieces, application of adhesive, and visible gold seams, under soft lighting."
+        }
+      }
+    }
+  }
+}

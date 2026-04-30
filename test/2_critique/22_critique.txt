@@ -1,0 +1,74 @@
+{
+  "final": {
+    "script": "[00:00-00:03] Close-up of a hand holding a white envelope with a bold red stamp, hovering above a blue USPS mailbox slot. The metal surface is cold and catches the late afternoon's golden glow. [00:03-00:06] Side view showing the hand sliding the envelope halfway into the slot, sunlight reflecting subtly on the blue paint. [00:06-00:08] Top-down shot as the hand releases the envelope, which quietly slips into the mailbox with a soft thud.",
+    "narration": "Mail a letter, signal to the world, as tradition and connection converge once more."
+  },
+  "scores": {
+    "policy_compliance": 10,
+    "visual_specificity": 8,
+    "temporal_clarity": 10,
+    "single_subject_focus": 10,
+    "camera_feasibility": 10,
+    "narration_quality": 8,
+    "veo_compatibility": 10
+  },
+  "rounds": [
+    {
+      "scores": {
+        "policy_compliance": 10,
+        "visual_specificity": 5,
+        "temporal_clarity": 8,
+        "single_subject_focus": 7,
+        "camera_feasibility": 8,
+        "narration_quality": 6,
+        "veo_compatibility": 6
+      },
+      "issues": [
+        "Lack of concrete visual details such as colors and textures.",
+        "Narration simply describes the visuals without added context or insight.",
+        "Slightly abstract and lacks tactile elements to maximize Veo compatibility.",
+        "Framing is somewhat vague, lacking clear emphasis on action."
+      ],
+      "rewritten_script": "[00:00-00:03] Close-up of a hand holding a white envelope with a red stamp, hovering above the mail slot of a blue USPS mailbox. Dim afternoon sun casts soft shadows on the textured blue metal.\n[00:03-00:06] Side-angle shot showing the hand steadily pushing the envelope halfway into the mailbox slot. The mailbox reflects streaks of sunlight, emphasizing its iconic blue color.\n[00:06-00:08] Wide top-down view as the hand releases the envelope, and it slides completely into the slot, echoing faintly within the hollow mailbox.",
+      "rewritten_narration": "Connect with history by mailing a letter in an iconic USPS blue mailbox.",
+      "explanation": "The script was revised to improve specificity by adding details such as the envelope's white color and red stamp, and the blue colored, textured metal of the USPS mailbox. The narration was reworked to provide context, emphasizing a connection to history rather than describing the visuals. Camera angles and movements were clarified to align with Veo 3 compatibility by ensuring steady, realistic action and focus on a single subject. The rewritten script starts with the subject immediately visible, maintaining the focus and consistency required by Veo 3."
+    },
+    {
+      "scores": {
+        "policy_compliance": 9,
+        "visual_specificity": 7,
+        "temporal_clarity": 9,
+        "single_subject_focus": 9,
+        "camera_feasibility": 8,
+        "narration_quality": 6,
+        "veo_compatibility": 8
+      },
+      "issues": [
+        "Narration partially repeats visual information.",
+        "Initial script lacks some visual specificity, especially around lighting and texture.",
+        "The camera movement can be simplified for feasibility with Veo 3."
+      ],
+      "rewritten_script": "[00:00-00:03] Close-up of a hand holding a white envelope with a distinct red stamp, poised above the blue mail slot. The textured metal of the mailbox catches the soft glow of the dim afternoon sunlight.\n[00:03-00:06] Side-angle shot as the hand smoothly slides the envelope halfway into the slot. Sunlight streaks reflect on the gleaming blue surface of the mailbox.\n[00:06-00:08] Top-down wide shot capturing the hand releasing the envelope, which disappears into the slot with a faint echo inside the mailbox.",
+      "rewritten_narration": "Mail a letter and embrace a timeless tradition with every delivery.",
+      "explanation": "The revised script enhances visual specificity by describing the sunlight interaction with the mailbox and the envelope, maintaining compliance by avoiding complex camera movements. The narration was adjusted to provide context rather than restate visuals, aiming to emphasize the timeless nature of mailing a letter. Simplification of camera movements avoids potential issues in rendering and maintains clarity across segments."
+    },
+    {
+      "scores": {
+        "policy_compliance": 10,
+        "visual_specificity": 8,
+        "temporal_clarity": 10,
+        "single_subject_focus": 10,
+        "camera_feasibility": 10,
+        "narration_quality": 8,
+        "veo_compatibility": 10
+      },
+      "issues": [
+        "Visual specificity could be enhanced with more descriptors of the environment.",
+        "Narration could add more context beyond the timeless aspect."
+      ],
+      "rewritten_script": "[00:00-00:03] Close-up of a hand holding a white envelope with a bold red stamp, hovering above a blue USPS mailbox slot. The metal surface is cold and catches the late afternoon's golden glow. [00:03-00:06] Side view showing the hand sliding the envelope halfway into the slot, sunlight reflecting subtly on the blue paint. [00:06-00:08] Top-down shot as the hand releases the envelope, which quietly slips into the mailbox with a soft thud.",
+      "rewritten_narration": "Mail a letter, signal to the world, as tradition and connection converge once more.",
+      "explanation": "The original script was strong but required slight enhancements in visual specificity and narration. I added more descriptive details about the mailbox surface and the environment to improve visual specificity. The narration now highlights the concept of connection in addition to tradition, providing slightly more context and emotional resonance."
+    }
+  ]
+}

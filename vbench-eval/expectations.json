@@ -1,0 +1,78 @@
+{
+  "0.mp4": [
+    "sealed iPhone box present",
+    "Desert Titanium phone color",
+    "iPhone box is opened",
+    "a table surface is present"
+  ],
+  "1.mp4": [
+    "Tesla Cybertruck present",
+    "low-angle camera perspective",
+    "vehicle driving through water",
+    "visible water splash",
+    "reflective metallic body panels"
+  ],
+  "4.mp4": [
+    "Newton's Cradle device present",
+    "suspended metal balls aligned in frame",
+    "swining ball is in motion",
+    "transfer of motion across balls",
+    "alternating swing on opposite side",
+    "desk surface visible",
+    "macro/close-up framing"
+  ],
+  "15.mp4": [
+    "self-checkout kiosk machine visible",
+    "person scanning items or interacting with screen",
+    "barcode scanner or scanning motion",
+    "items placed on checkout scale area",
+    "payment interface or screen prompts visible",
+    "grocery store environment context"
+  ],
+  "17.mp4": [
+    "car with visibly flat tire",
+    "person using a jack to lift car",
+    "lug wrench loosening/tightening bolts",
+    "wheel being removed or replaced",
+    "spare tire present",
+    "kneeling or crouched working posture"
+  ],
+  "18.mp4": [
+    "strong stance and rhythmic body movements",
+    "exaggerated facial expressions (wide eyes, tongue out – Pukana)",
+    "synchronized arm and body gestures",
+    "forceful stomping or chest slapping",
+    "cultural authenticity in motion style"
+  ],
+  "20.mp4": [
+    "mantis shrimp clearly visible",
+    "glass tank environment",
+    "rapid striking motion of claw",
+    "contact with glass surface",
+    "visible impact or disturbance in water",
+    "close-up framing on shrimp"
+  ],
+  "22.mp4": [
+    "blue USPS mailbox clearly visible",
+    "person holding letter/envelope",
+    "inserting letter into mailbox slot",
+    "outdoor or street setting",
+    "USPS logo or recognizable design"
+  ],
+  "25.mp4": [
+    "archer holding bow and arrow",
+    "side-view perspective",
+    "release of arrow captured",
+    "bow rotating or twisting (Khatra motion)",
+    "follow-through hand movement",
+    "slow-motion effect highlighting technique"
+  ],
+  "26.mp4": [
+    "broken ceramic bowl pieces",
+    "artisan applying lacquer or adhesive",
+    "gold powder or gold seams visible",
+    "careful joining of fragments",
+    "soft, warm tabletop lighting",
+    "detailed handwork close-up"
+  ]
+}

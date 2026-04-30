@@ -1,0 +1,74 @@
+{
+  "final": {
+    "script": "[00:00-00:02] Macro close-up of a mantis shrimp's shell, showing its intricate iridescent patterns reflecting vivid blues and greens under the bright tank lights. [00:02-00:05] Side-angle shot as the shrimp\u2019s hammer-like appendage swiftly collides with the glass, sending micro-bubbles spiraling from the point of impact. [00:05-00:08] Top-down view as waves of ripples spread across the water's surface, sunlight highlighting the concentric circles.",
+    "narration": "Mantis shrimp hits can rival bullet speeds, swiftly shattering even sturdy barriers."
+  },
+  "scores": {
+    "policy_compliance": 9,
+    "visual_specificity": 7,
+    "temporal_clarity": 8,
+    "single_subject_focus": 9,
+    "camera_feasibility": 9,
+    "narration_quality": 7,
+    "veo_compatibility": 8
+  },
+  "rounds": [
+    {
+      "scores": {
+        "policy_compliance": 8,
+        "visual_specificity": 5,
+        "temporal_clarity": 6,
+        "single_subject_focus": 8,
+        "camera_feasibility": 7,
+        "narration_quality": 5,
+        "veo_compatibility": 6
+      },
+      "issues": [
+        "Lacks concrete visual details, especially about lighting and textures.",
+        "Camera movements like zoom-out are prohibited.",
+        "The script does not initially present the main subject."
+      ],
+      "rewritten_script": "[00:00-00:03] Tight close-up of a vibrant mantis shrimp, its colorful shell glistening under the aquarium lights, poised to strike. [00:03-00:06] Side-angle slow-motion shot as the mantis shrimp's club-like appendage rockets into the glass, sending small bubbles swirling. [00:06-00:08] Top-down view of ripples radiating across the tank surface as the impact reverberates, with sunlight streaming through the water.",
+      "rewritten_narration": "The mantis shrimp can break glass with a punch as fast as a bullet.",
+      "explanation": "I introduced specific details like the shrimp's 'vibrant, colorful shell' and 'sunlight streaming through the water' to enhance visual specificity. I removed prohibited camera movements, such as zoom-out, and simplified action sequences. The new script adheres to the golden standard format by starting with the main subject, ensuring clarity with time-stamped segments and providing insightful narration."
+    },
+    {
+      "scores": {
+        "policy_compliance": 10,
+        "visual_specificity": 8,
+        "temporal_clarity": 9,
+        "single_subject_focus": 9,
+        "camera_feasibility": 8,
+        "narration_quality": 8,
+        "veo_compatibility": 9
+      },
+      "issues": [
+        "Initial script lacked detailed visual descriptions.",
+        "Some shots needed more explicit camera angles.",
+        "Narration was descriptive but could provide more context."
+      ],
+      "rewritten_script": "[00:00-00:03] Macro close-up of a mantis shrimp's vibrant shell, iridescent greens and blues gleaming under aquarium lighting. The shrimp hovers, preparing to strike. [00:03-00:06] Slow-motion side-angle shot as the mantis shrimp's club-like appendage smashes into the glass, tiny air bubbles dancing upon impact. [00:06-00:08] Top-down shot capturing ripples radiating across the tank, sunlight cutting through water, highlighting the disturbance.",
+      "rewritten_narration": "Mantis shrimp punches create forces comparable to high-speed impacts, breaking obstacles like glass effortlessly.",
+      "explanation": "The script was refined to include more precise visual details and camera angles, improving visual specificity and camera feasibility. The narration was reworded to provide better context and insight into the mantis shrimp's unique ability, rather than just describing the visible action."
+    },
+    {
+      "scores": {
+        "policy_compliance": 9,
+        "visual_specificity": 7,
+        "temporal_clarity": 8,
+        "single_subject_focus": 9,
+        "camera_feasibility": 9,
+        "narration_quality": 7,
+        "veo_compatibility": 8
+      },
+      "issues": [
+        "The original script had some vague descriptions.",
+        "The narration partially repeated visual information.",
+        "Visual specificity could be enhanced."
+      ],
+      "rewritten_script": "[00:00-00:02] Macro close-up of a mantis shrimp's shell, showing its intricate iridescent patterns reflecting vivid blues and greens under the bright tank lights. [00:02-00:05] Side-angle shot as the shrimp\u2019s hammer-like appendage swiftly collides with the glass, sending micro-bubbles spiraling from the point of impact. [00:05-00:08] Top-down view as waves of ripples spread across the water's surface, sunlight highlighting the concentric circles.",
+      "rewritten_narration": "Mantis shrimp hits can rival bullet speeds, swiftly shattering even sturdy barriers.",
+      "explanation": "I enhanced visual specificity by describing colors and light explicitly. I maintained a single subject focus by keeping the shrimp's action singular and observable. I ensured camera feasibility by specifying each camera angle clearly. The narration was improved to offer context beyond the visuals and refrains from repetition, providing insightful details on the shrimp's power without describing the visuals directly."
+    }
+  ]
+}
